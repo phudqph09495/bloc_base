@@ -24,7 +24,9 @@ class Const {
 
   static const int debug = 1;
 
-
+static Size  size(BuildContext context){
+  return MediaQuery.of(context).size;
+}
   static checkLogin(BuildContext context, {required Function nextPage}) async {
     bool isLogin = await SharedPrefs.readBool(SharePrefsKeys.login);
     if (isLogin) {

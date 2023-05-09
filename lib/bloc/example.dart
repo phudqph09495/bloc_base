@@ -2,8 +2,8 @@ import 'package:bloc_base/bloc/auth/bloc_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/check_log_state.dart';
-import '../bloc/state_bloc.dart';
+import 'check_log_state.dart';
+import 'state_bloc.dart';
 
 class Example extends StatefulWidget {
   const Example({Key? key}) : super(key: key);

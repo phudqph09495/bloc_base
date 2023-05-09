@@ -6,7 +6,7 @@ import '../../../styles/init_style.dart';
 
 class InputText1 extends StatefulWidget {
   IconData? iconData;
-  IconData? suffix;
+  Widget? suffix;
   bool obscureText;
   bool hasSuffix;
   bool hasLeading;
@@ -44,7 +44,7 @@ Color suffixColor;
       this.validator,this.iconPreFix,
       this.radius = 20,
       this.width = double.infinity,
-      this.borderColor = ColorApp.orangeF8,
+      this.borderColor = ColorApp.bottomBar,
       this.colorBg = Colors.white,
       this.colorLabel = 0.5,
       this.height = 50,
@@ -122,10 +122,7 @@ class _InputText1State extends State<InputText1> {
           suffixIcon: widget.hasSuffix
               ? InkWell(
                   onTap: widget.search,
-                  child: Icon(
-                    widget.suffix,
-                    color: widget.suffixColor,
-                  ),
+                  child: widget.suffix,
                 )
               : null,
           errorText: null,
