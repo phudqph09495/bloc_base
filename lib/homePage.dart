@@ -2,6 +2,8 @@ import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/screen/ex.dart';
 import 'package:bloc_base/screen/home/home_screen.dart';
+import 'package:bloc_base/screen/search/search_tab_screen.dart';
+import 'package:bloc_base/widget/drawler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,6 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   _launchURL(url) async {
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
@@ -45,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: BlocBuilder<BlocCheckLogin, StateBloc>(
         builder: (context, StateBloc state) {
           final check = state is LoadSuccess ? state.data as bool : false;
@@ -54,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
               HomeScreen(),
               // Scene(),
               Container(),
-              Container(),
+              SearchTabScreen(),
               Container(),
               // LoveScreen(),
               check ? Container() : Container()

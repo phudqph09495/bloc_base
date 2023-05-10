@@ -14,7 +14,6 @@ class BlocLang extends Bloc<EventBloc2, StateBloc> {
     if(event is getLang){
       Language language=Language(code: type);
 
-        print(language.string1);
 
         yield LoadSuccess(
           data: language
@@ -25,6 +24,11 @@ class BlocLang extends Bloc<EventBloc2, StateBloc> {
       type='en';
       prefs.setString('code', 'en');
 yield LoadSuccess();
+    }
+    if(event is sangVn){
+      type='vi';
+      prefs.setString('code', 'vi');
+      yield LoadSuccess();
     }
   }
 }
