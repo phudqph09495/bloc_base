@@ -14,6 +14,7 @@ import '../../styles/utils.dart';
 import '../../widget/item/appBar.dart';
 import '../../widget/item/input/text_filed.dart';
 import '../ex.dart';
+import '../search/info_spa_screen.dart';
 import 'notifi_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -226,60 +227,66 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     0.47,
                                                 child: ListView.builder(
                                                   itemBuilder: (context, index) {
-                                                    return Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            Icon(
-                                                              Icons.location_on,
-                                                              color: Colors.white,
-                                                            ),
-                                                            Text(
-                                                              '2.3km',
+                                                    return InkWell(
+                                                      onTap: (){
+                                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoSpaScreen()));
+
+                                                      },
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.location_on,
+                                                                color: Colors.white,
+                                                              ),
+                                                              Text(
+                                                                '2.3km',
+                                                                style: StyleApp
+                                                                    .textStyle600(
+                                                                    fontSize: 12,
+                                                                    color: Colors
+                                                                        .white),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Image.asset(
+                                                            'assets/images/exKhamPha.png',
+                                                            width: Const.size(context)
+                                                                .width *
+                                                                0.25,
+                                                            height:
+                                                            Const.size(context)
+                                                                .width *
+                                                                0.22,
+                                                          ),
+                                                          Text('Sorella Beauty',
                                                               style: StyleApp
                                                                   .textStyle600(
-                                                                  fontSize: 12,
+                                                                  fontSize: 14,
                                                                   color: Colors
-                                                                      .white),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Image.asset(
-                                                          'assets/images/exKhamPha.png',
-                                                          width: Const.size(context)
-                                                              .width *
-                                                              0.25,
-                                                          height:
-                                                          Const.size(context)
-                                                              .width *
-                                                              0.22,
-                                                        ),
-                                                        Text('Sorella Beauty',
-                                                            style: StyleApp
-                                                                .textStyle600(
-                                                                fontSize: 14,
-                                                                color: Colors
-                                                                    .white)),
-                                                        Row(
-                                                          children: [
-                                                            Icon(
-                                                              Icons.star,
-                                                              color: Colors.yellow,
-                                                            ),
-                                                            Text(
-                                                              '4.8',
-                                                              style: StyleApp
-                                                                  .textStyle600(
-                                                                  fontSize: 12,
-                                                                  color: Colors
-                                                                      .white),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ],
+                                                                      .white)),
+                                                          Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.star,
+                                                                color: ColorApp.yellow,
+                                                              ),
+                                                              Text(
+                                                                '4.8',
+                                                                style: StyleApp
+                                                                    .textStyle600(
+                                                                    fontSize: 12,
+                                                                    color: Colors
+                                                                        .white),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                   itemCount: 10,
@@ -441,8 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               borderRadius:
                                               BorderRadius.circular(12)),
                                           child: Padding(
-                                            padding: EdgeInsets.all(
-                                                Const.size(context).width * 0.03),
+                                            padding: EdgeInsets.symmetric(horizontal: Const.size(context).width *0.01,vertical: Const.size(context).width * 0.03),
                                             child: Row(
                                               mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -463,7 +469,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Padding(
                                           padding: EdgeInsets.only(
                                               right: Const.size(context).width *
-                                                  0.05277777777),
+                                                  0.03277777777),
                                           child: Text(
                                             'Nhận Ngay',
                                             style: StyleApp.textStyle700(
@@ -548,70 +554,75 @@ class _HomeScreenState extends State<HomeScreen> {
                                   shrinkWrap: true,
                                   physics: NeverScrollableScrollPhysics(),
                                   itemBuilder: (BuildContext ctx, index) {
-                                    return Container(
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15)),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Stack(
-                                            alignment: Alignment.bottomCenter,
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/mostRate.png',
-                                                fit: BoxFit.fitWidth,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 2.5),
-                                                child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ColorApp.dark,
-                                                        borderRadius:
-                                                        BorderRadius.only(
-                                                            bottomLeft:
-                                                            Radius.circular(
-                                                                15),
-                                                            bottomRight:
-                                                            Radius.circular(
-                                                                15))),
-                                                    width: double.infinity,
+                                    return InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoSpaScreen()));
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15)),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Stack(
+                                              alignment: Alignment.bottomCenter,
+                                              children: [
+                                                Image.asset(
+                                                  'assets/images/mostRate.png',
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(horizontal: 2.5),
+                                                  child: Container(
+                                                      decoration: BoxDecoration(
+                                                          color: ColorApp.dark,
+                                                          borderRadius:
+                                                          BorderRadius.only(
+                                                              bottomLeft:
+                                                              Radius.circular(
+                                                                  15),
+                                                              bottomRight:
+                                                              Radius.circular(
+                                                                  15))),
+                                                      width: double.infinity,
 
-                                                    child: Padding(
-                                                      padding:  EdgeInsets.symmetric(vertical: Const.size(context).width*0.0111111111111),
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        children: [SizedBox(),
-                                                          Row(
-                                                            children: [
-                                                              Icon(Icons.location_on,color: Colors.white,size: 15,),
-                                                              Text('2.3 km',style: StyleApp.textStyle600(color: Colors.white,fontSize: 12),),
-                                                            ],
-                                                          ),
-                                                          SizedBox()
-                                                        ],
-                                                      ),
-                                                    )),
-                                              )
-                                            ],
-                                          ),
-                                          Text('Sorella Beauty',style: StyleApp.textStyle600(color: ColorApp.dark),),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              SizedBox(),
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.star,color: Colors.yellow,),
-                                                  Text('4.7',style: StyleApp.textStyle700(color: Colors.yellow),),
-                                                  Text(' (98)',style: StyleApp.textStyle700(color: Color(0xff717171))),
-                                                ],
-                                              ),
-                                              SizedBox(),
-                                            ],
-                                          ),
-                                        ],
+                                                      child: Padding(
+                                                        padding:  EdgeInsets.symmetric(vertical: Const.size(context).width*0.0111111111111),
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [SizedBox(),
+                                                            Row(
+                                                              children: [
+                                                                Icon(Icons.location_on,color: Colors.white,size: 15,),
+                                                                Text('2.3 km',style: StyleApp.textStyle600(color: Colors.white,fontSize: 12),),
+                                                              ],
+                                                            ),
+                                                            SizedBox()
+                                                          ],
+                                                        ),
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                            Text('Sorella Beauty',style: StyleApp.textStyle600(color: ColorApp.dark),),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                SizedBox(),
+                                                Row(
+                                                  children: [
+                                                    Icon(Icons.star,color: ColorApp.yellow,),
+                                                    Text('4.7',style: StyleApp.textStyle700(color: ColorApp.yellow),),
+                                                    Text(' (98)',style: StyleApp.textStyle700(color: Color(0xff717171))),
+                                                  ],
+                                                ),
+                                                SizedBox(),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     );
                                   }),

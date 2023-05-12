@@ -329,32 +329,29 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                                                                                 Container(
                                                                               width: double.infinity,
                                                                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: ColorApp.greyF9),
-                                                                              child: Card(
-                                                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.only(left: Const.size(context).width * 0.04615384615),
-                                                                                  child: CheckboxListTile(
-                                                                                    checkboxShape: CircleBorder(),
-                                                                                    activeColor: Colors.green,
-                                                                                    controlAffinity: ListTileControlAffinity.trailing,
-                                                                                    contentPadding: EdgeInsets.zero,
-                                                                                    dense: true,
-                                                                                    title: Text(
-                                                                                      checkListItems[index].name ?? '',
-                                                                                      style: StyleApp.textStyle500(),
-                                                                                    ),
-                                                                                    value: checkListItems[index].value,
-                                                                                    onChanged: (value) {
-                                                                                      setState1(() {
-                                                                                        checkListItems[index].value = value;
-                                                                                        // if (multipleSelected.contains(checkListItems[index])) {
-                                                                                        //   multipleSelected.remove(checkListItems[index]);
-                                                                                        // } else {
-                                                                                        //   multipleSelected.add(checkListItems[index]);
-                                                                                        // }
-                                                                                      });
-                                                                                    },
+                                                                              child: Padding(
+                                                                                padding: EdgeInsets.only(left: Const.size(context).width * 0.04615384615),
+                                                                                child: CheckboxListTile(
+                                                                                  checkboxShape: CircleBorder(),
+                                                                                  activeColor: Colors.green,
+                                                                                  controlAffinity: ListTileControlAffinity.trailing,
+                                                                                  contentPadding: EdgeInsets.zero,
+                                                                                  dense: true,
+                                                                                  title: Text(
+                                                                                    checkListItems[index].name ?? '',
+                                                                                    style: StyleApp.textStyle500(),
                                                                                   ),
+                                                                                  value: checkListItems[index].value,
+                                                                                  onChanged: (value) {
+                                                                                    setState1(() {
+                                                                                      checkListItems[index].value = value;
+                                                                                      // if (multipleSelected.contains(checkListItems[index])) {
+                                                                                      //   multipleSelected.remove(checkListItems[index]);
+                                                                                      // } else {
+                                                                                      //   multipleSelected.add(checkListItems[index]);
+                                                                                      // }
+                                                                                    });
+                                                                                  },
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -855,7 +852,7 @@ setState(() {
                                                   width: double.infinity,
                                                   alignment: Alignment.center,
                                                   decoration: BoxDecoration(
-                                                    color:Colors.yellow,
+                                                    color:ColorApp.yellow,
                                                     borderRadius: BorderRadius.circular(20)
                                                   ),
                                                   child: Padding(
@@ -994,14 +991,14 @@ setState(() {
                                                     )
                                                   : Icon(
                                                       Icons.favorite,
-                                                      color: Colors.yellow,
+                                                      color: ColorApp.yellow,
                                                     )
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Text(
-                                                'đ ${Const.ConvertPrice.format(1450000)} đ',
+                                                'đ ${Const.ConvertPrice.format(1450000)} ',
                                                 style: StyleApp.textStyle700(
                                                     color: ColorApp.dark500,
                                                     decoration: TextDecoration
@@ -1061,12 +1058,12 @@ setState(() {
                                                 children: [
                                                   Icon(
                                                     Icons.star,
-                                                    color: Colors.yellow,
+                                                    color: ColorApp.yellow,
                                                   ),
                                                   Text(
                                                     '4.7  ',
                                                     style: StyleApp.textStyle700(
-                                                      color: Colors.yellow,
+                                                      color: ColorApp.yellow,
                                                     ),
                                                   ),
                                                   Text(
@@ -1110,12 +1107,12 @@ setState(() {
                     ):
                     GridView.builder(
                         padding: EdgeInsets.symmetric(
-                            horizontal: Const.size(context).width * 0.02),
+                            horizontal: Const.size(context).width * 0.01),
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,
                             childAspectRatio: 0.7,
                             crossAxisSpacing:
-                                Const.size(context).width * 0.03819444444,
+                                Const.size(context).width * 0.0100444444,
                             mainAxisSpacing: 20),
                         itemCount: 10,
                         shrinkWrap: true,
@@ -1131,7 +1128,7 @@ setState(() {
                                 //set border radius more than 50% of height and width to make circle
                               ),
                               child: Container(
-                                alignment: Alignment.center,
+
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15)),
                                 child: Padding(
@@ -1170,7 +1167,7 @@ setState(() {
                                                     )
                                                   : Icon(
                                                       Icons.favorite,
-                                                      color: Colors.yellow,
+                                                      color: ColorApp.yellow,
                                                     )),
                                           Positioned(
                                             right: 5,
@@ -1190,7 +1187,7 @@ setState(() {
                                                   children: [
                                                     Icon(
                                                       Icons.star,
-                                                      color: Colors.yellow,
+                                                      color: ColorApp.yellow,
                                                       size: 12,
                                                     ),
                                                     Text(
@@ -1198,7 +1195,7 @@ setState(() {
                                                       style:
                                                           StyleApp.textStyle500(
                                                               color:
-                                                                  Colors.yellow,
+                                                                  ColorApp.yellow,
                                                               fontSize: 12),
                                                     ),
                                                     Text(

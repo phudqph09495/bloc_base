@@ -1,4 +1,5 @@
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
+import 'package:bloc_base/screen/auth/login_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,8 @@ class MyApp extends StatelessWidget {
         useInheritedMediaQuery: true,
         supportedLocales: [const Locale('en'), const Locale('vi')],
         home: UpgradeAlert(
-          child: MyHomePage(),
+          // child: MyHomePage()
+          child: LoginScreen(),
         ),
       ),
     );

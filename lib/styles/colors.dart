@@ -11,7 +11,7 @@ class ColorApp {
   static const Color grey8B = Color(0xff8B8B8B);
 
   static const Color blue00 = Color(0xff008284);
-  static const Color blue7A = Color(0xff7AA7AA);
+  static const Color blue3A = Color(0xff3A559F);
   static const Color blue6D = Color(0xff006DFF);
   static const Color blue3D = Color(0xff003C3D);
   static const Color greyAD = Color(0xffADADAD);
@@ -38,9 +38,10 @@ static const Color dark=Color(0xff252525);
   static const Color pink=Color(0xffF59398);
   static const Color dark500=Color(0xff717171);
   static const Color border=Color(0xffEAEAEA);
-  static const Color greyF9=Color(0xffF9F9F4);
+  static  Color greyF9= const Color(0xff8B8B8B).withOpacity(0.1);
+  static const Color yellow=Color(0xffEFB839);
   static const LinearGradient linearGradientMain =
-      LinearGradient(colors: [blue1F, blue00]);
+      LinearGradient(colors: [whiteF7, whiteF0],begin: Alignment.topCenter,end: Alignment.bottomCenter);
   static const LinearGradient linearGradientSale =
       LinearGradient(colors: [orangeF8, orangeFF]);
 }

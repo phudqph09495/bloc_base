@@ -2,12 +2,13 @@ abstract class EventBloc2 {}
 
 class Language {
   String string1;
-  String string2;
+  String codeNow;
   String co;
   String timKiem;
   String dichvu;
   String khamPhaGanBan;
   String xemThem;
+  String xemThem1;
   String danhGiaCaoNhat;
   String gioiThieu;
   String hoTro;
@@ -35,55 +36,55 @@ class Language {
   String danhSach;
   String luoi;
   String apDung;
-  String string34;
-  String string35;
-  String string36;
-  String string37;
-  String string38;
-  String string39;
-  String string40;
-  String string41;
-  String string42;
-  String string43;
-  String string44;
-  String string45;
-  String string46;
-  String string47;
-  String string48;
-  String string49;
-  String string50;
-  String string51;
-  String string52;
-  String string53;
-  String string54;
-  String string55;
-  String string56;
-  String string57;
-  String string58;
-  String string59;
-  String string60;
-  String string61;
-  String string62;
-  String string63;
-  String string64;
-  String string65;
-  String string66;
-  String string67;
-  String string68;
-  String string69;
-  String string70;
-  String string71;
-  String string72;
-  String string73;
-  String string74;
-  String string75;
-  String string76;
-  String string77;
-  String string78;
-  String string79;
-  String string80;
-  String string81;
-  String string82;
+  String chiNhanh;
+  String trangThai;
+  String khoangCach;
+  String thongTin;
+  String danhGia;
+  String diaChi;
+  String chiDuong;
+  String dienThoai;
+  String website;
+  String gioHoatDOng;
+  String ngayThuong;
+  String cuoiTuan;
+  String lienHe;
+
+  String chonLoaiDV;
+  String chiTiet;
+  String dvKhac;
+  String muaGoi;
+  String datLichNgay;
+  String thongTinDichVu;
+  String chonDV;
+  String thuNho;
+  String daHet;
+  String datLich;
+  String chonChiNhanh;
+  String ngayThucHien;
+  String gioGoiY;
+  String yeuCauDacBiet;
+  String maGiamGia;
+  String tongThanhToan;
+  String daThemVaoGioHang;
+  String banDaThem;
+  String camOnBan;
+  String thanhToan;
+  String timDVKhac;
+  String dangNhap;
+  String soDienThoai;
+  String matKhau;
+  String quenMK;
+  String dangKyTaiKhoan;
+  String hoacDangNhap;
+  String khiDangNhap;
+  String dieuKhoanSuDung;
+  String va;
+  String chinhSachbaoMat;
+  String cuaJoyBookie;
+  String dangKy;
+  String hoTen;
+  String ngaySinh;
   String string83;
   String string84;
   String string85;
@@ -106,13 +107,14 @@ class Language {
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
         co = code == 'en' ? 'coAnh.png' : 'coVN.png',
-        string2 = code == 'en' ? 'Good night' : 'Ngủ ngon',
+        codeNow = code == 'en' ? 'en' : 'vi',
 
 
         timKiem = code == 'en' ? '' : 'Tìm Kiếm',
         dichvu = code == 'en' ? '' : 'Dịch Vụ',
         khamPhaGanBan = code == 'en' ? '' : 'Khám Phá Gần Bạn',
         xemThem = code == 'en' ? '' : 'Xem Thêm',
+        xemThem1 = code == 'en' ? '' : 'Xem Thêm',
         danhGiaCaoNhat = code == 'en' ? '' : 'Đánh Giá Cao Nhất',
         gioiThieu = code == 'en' ? '' : 'Giới Thiệu',
         hoTro = code == 'en' ? '' : 'Hỗ Trợ',
@@ -140,60 +142,60 @@ class Language {
         danhSach = code == 'en' ? '' : 'DANH SÁCH',
         luoi = code == 'en' ? '' : 'LƯỚI     ',
         apDung = code == 'en' ? '' : 'ÁP DỤNG',
-        string34 = code == 'en' ? '' : 'Tên thành phần con 34',
-        string35 = code == 'en' ? '' : 'Tên thành phần con 35',
-        string36 = code == 'en' ? '' : 'Tên thành phần con 36',
-        string37 = code == 'en' ? '' : 'Tên thành phần con 37',
-        string38 = code == 'en' ? '' : 'Tên thành phần con 38',
-        string39 = code == 'en' ? '' : 'Tên thành phần con 39',
-        string40 = code == 'en' ? '' : 'Tên thành phần con 40',
-        string41 = code == 'en' ? '' : 'Tên thành phần con 41',
-        string42 = code == 'en' ? '' : 'Tên thành phần con 42',
-        string43 = code == 'en' ? '' : 'Tên thành phần con 43',
-        string44 = code == 'en' ? '' : 'Tên thành phần con 44',
-        string45 = code == 'en' ? '' : 'Tên thành phần con 45',
-        string46 = code == 'en' ? '' : 'Tên thành phần con 46',
-        string47 = code == 'en' ? '' : 'Tên thành phần con 47',
-        string48 = code == 'en' ? '' : 'Tên thành phần con 48',
-        string49 = code == 'en' ? '' : 'Tên thành phần con 49',
-        string50 = code == 'en' ? '' : 'Tên thành phần con 50',
-        string51 = code == 'en' ? '' : 'Tên thành phần con 51',
-        string52 = code == 'en' ? '' : 'Tên thành phần con 52',
-        string53 = code == 'en' ? '' : 'Tên thành phần con 53',
-        string54 = code == 'en' ? '' : 'Tên thành phần con 54',
-        string55 = code == 'en' ? '' : 'Tên thành phần con 55',
-        string56 = code == 'en' ? '' : 'Tên thành phần con 56',
-        string57 = code == 'en' ? '' : 'Tên thành phần con 57',
-        string58 = code == 'en' ? '' : 'Tên thành phần con 58',
-        string59 = code == 'en' ? '' : 'Tên thành phần con 59',
-        string60 = code == 'en' ? '' : 'Tên thành phần con 60',
-        string61 = code == 'en' ? '' : 'Tên thành phần con 61',
-        string62 = code == 'en' ? '' : 'Tên thành phần con 62',
-        string63 = code == 'en' ? '' : 'Tên thành phần con 63',
-        string64 = code == 'en' ? '' : 'Tên thành phần con 64',
-        string65 = code == 'en' ? '' : 'Tên thành phần con 65',
-        string66 = code == 'en' ? '' : 'Tên thành phần con 66',
-        string67 = code == 'en' ? '' : 'Tên thành phần con 67',
-        string68 = code == 'en' ? '' : 'Tên thành phần con 68',
-        string69 = code == 'en' ? '' : 'Tên thành phần con 69',
-        string70 = code == 'en' ? '' : 'Tên thành phần con 70',
-        string71 = code == 'en' ? '' : 'Tên thành phần con 71',
-        string72 = code == 'en' ? '' : 'Tên thành phần con 72',
-        string73 = code == 'en' ? '' : 'Tên thành phần con 73',
-        string74 = code == 'en' ? '' : 'Tên thành phần con 74',
-        string75 = code == 'en' ? '' : 'Tên thành phần con 75',
-        string76 = code == 'en' ? '' : 'Tên thành phần con 76',
-        string77 = code == 'en' ? '' : 'Tên thành phần con 77',
-        string78 = code == 'en' ? '' : 'Tên thành phần con 78',
-        string79 = code == 'en' ? '' : 'Tên thành phần con 79',
-        string80 = code == 'en' ? '' : 'Tên thành phần con 80',
-        string81 = code == 'en' ? '' : 'Tên thành phần con 81',
-        string82 = code == 'en' ? '' : 'Tên thành phần con 82',
-        string83 = code == 'en' ? '' : 'Tên thành phần con 83',
-        string84 = code == 'en' ? '' : 'Tên thành phần con 84',
-        string85 = code == 'en' ? '' : 'Tên thành phần con 85',
-        string86 = code == 'en' ? '' : 'Tên thành phần con 86',
-        string87 = code == 'en' ? '' : 'Tên thành phần con 87',
+        chiNhanh = code == 'en' ? '' : 'Chi Nhánh',
+        trangThai = code == 'en' ? '' : 'Trạng Thái',
+        khoangCach = code == 'en' ? '' : 'Khoảng Cách',
+        thongTin = code == 'en' ? '' : 'THÔNG TIN',
+        danhGia = code == 'en' ? '' : 'ĐÁNH GIÁ',
+        diaChi = code == 'en' ? '' : 'Địa Chỉ',
+        chiDuong = code == 'en' ? '' : 'Chỉ đường',
+        dienThoai = code == 'en' ? '' : 'Điện Thoại ',
+        website = code == 'en' ? '' : 'Website',
+        gioHoatDOng = code == 'en' ? '' : 'Giờ Hoạt Động',
+        ngayThuong = code == 'en' ? '' : 'Ngày thường',
+        cuoiTuan = code == 'en' ? '' : 'Cuối tuần',
+        lienHe = code == 'en' ? '' : 'LIÊN HỆ',
+
+        chonLoaiDV = code == 'en' ? '' : 'Chọn loại dịch vụ',
+        chiTiet = code == 'en' ? '' : 'Chi Tiết',
+        dvKhac = code == 'en' ? '' : 'Dịch Vụ Khác',
+        muaGoi = code == 'en' ? '' : 'MUA GÓI',
+        datLichNgay = code == 'en' ? '' : 'ĐẶT LỊCH NGAY',
+        thongTinDichVu = code == 'en' ? '' : 'THÔNG TIN DỊCH VỤ',
+        chonDV = code == 'en' ? '' : 'Chọn Dịch Vụ',
+        thuNho = code == 'en' ? '' : 'Thu Nhỏ',
+        daHet = code == 'en' ? '' : 'Đã hết',
+        datLich = code == 'en' ? '' : 'Đặt Lịch',
+        chonChiNhanh = code == 'en' ? '' : 'Chọn chi nhánh',
+        ngayThucHien = code == 'en' ? '' : 'Ngày Thực Hiện',
+        gioGoiY = code == 'en' ? '' : 'Giờ Gợi Ý',
+        yeuCauDacBiet = code == 'en' ? '' : 'Yêu Cầu Đặc Biệt',
+        maGiamGia = code == 'en' ? '' : 'Mã giảm giá',
+        tongThanhToan = code == 'en' ? '' : 'Tổng Thanh Toán',
+        daThemVaoGioHang = code == 'en' ? '' : 'Đã Thêm Vào Giỏ Hàng',
+        banDaThem = code == 'en' ? '' : 'Bạn đã thêm dịch vụ vào giỏ hàng, vui lòng thanh toán dịch vụ trước thời gian đặt lịch!',
+        camOnBan = code == 'en' ? '' : 'Cảm ơn bạn đã sử dụng dịch vụ của Joy Bookie!',
+        thanhToan = code == 'en' ? '' : 'Thanh toán',
+        timDVKhac = code == 'en' ? '' : 'Tìm dịch vụ khác',
+        dangNhap = code == 'en' ? '' : 'Đăng Nhập',
+        soDienThoai = code == 'en' ? '' : 'Số Điện Thoại',
+        matKhau = code == 'en' ? '' : 'Mật Khẩu',
+        quenMK = code == 'en' ? '' : 'Quên mật khẩu',
+        dangKyTaiKhoan = code == 'en' ? '' : 'Đăng ký tài khoản',
+        hoacDangNhap = code == 'en' ? '' : 'hoặc đăng nhập bằng',
+        khiDangNhap = code == 'en' ? '' : 'Khi đăng nhập, tôi đồng ý với các',
+        dieuKhoanSuDung = code == 'en' ? '' : ' Điều khoản sử dụng',
+        va = code == 'en' ? '' : 'và',
+        chinhSachbaoMat = code == 'en' ? '' : ' Chính sách bảo mật',
+        cuaJoyBookie = code == 'en' ? '' : ' của Joy Bookie.',
+        dangKy = code == 'en' ? '' : 'Đăng Ký',
+        hoTen = code == 'en' ? '' : 'Họ Tên',
+        ngaySinh = code == 'en' ? '' : 'Ngày Sinh',
+        string83 = code == 'en' ? '' : 'Giới Tính',
+        string84 = code == 'en' ? '' : 'Xác Nhận Mật Khẩu',
+        string85 = code == 'en' ? '' : 'Nam',
+        string86 = code == 'en' ? '' : 'Nữ',
+        string87 = code == 'en' ? '' : 'Nhận email khuyến mãi độc quyền từ Joy Bookie. Có thể hủy đăng ký này về sau như đã nêu trong Chính sách bảo mật.',
         string88 = code == 'en' ? '' : 'Tên thành phần con 88',
         string89 = code == 'en' ? '' : 'Tên thành phần con 89',
         string90 = code == 'en' ? '' : 'Tên thành phần con 90',

@@ -27,6 +27,7 @@ Widget? iconPreFix;
   double colorLabel;
   String? initVal;
 Color suffixColor;
+int maxLine;
   Function()? onComplete;
   List<TextInputFormatter>? inputformater;
 
@@ -49,6 +50,7 @@ Color suffixColor;
       this.colorLabel = 0.5,
       this.height = 50,
         this.initVal,
+        this.maxLine=1,
       this.readOnly = false,
       this.inputformater,
       this.onComplete,
@@ -71,7 +73,7 @@ class _InputText1State extends State<InputText1> {
       elevation: 5.0,
       shadowColor: ColorApp.grey4F.withOpacity(0.3),
       child: TextFormField(
-
+maxLines: widget.maxLine,
         initialValue:widget.initVal ,
         onEditingComplete: widget.onComplete,
         inputFormatters: widget.inputformater,
@@ -118,7 +120,7 @@ class _InputText1State extends State<InputText1> {
               : null,
           hintText: widget.label,
           hintStyle: StyleApp.textStyle400(
-              fontSize: 16, color: Colors.black.withOpacity(widget.colorLabel)),
+              fontSize: 16, color: ColorApp.dark500),
           suffixIcon: widget.hasSuffix
               ? InkWell(
                   onTap: widget.search,

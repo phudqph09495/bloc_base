@@ -71,7 +71,7 @@ class _Button1State extends State<Button1> {
                       stops: [0.7, 1],
                       colors: [
                         Colors.white,
-                        Colors.yellow,
+                        ColorApp.yellow,
                       ],
                     ).createShader(bounds),
                     child: Icon(

@@ -213,7 +213,7 @@ static Size  size(BuildContext context){
     }
   }
 
-  static checkTime(int timestamp) {
+  static checkTime(int timestamp,String code) {
     if (timestamp == 0) {
       return "";
     }
@@ -239,23 +239,23 @@ static Size  size(BuildContext context){
 
     switch (key) {
       case "s":
-        return "$text giây trước";
+        return code=='en'?"$text seconds ago" :"$text giây trước";
       case "m":
-        return "$text phút trước";
+        return code=='en'?"$text minutes ago":"$text phút trước";
       case "h":
-        return "$text giờ trước";
+        return code=='en'?"$text hours ago":"$text giờ trước";
       case "d":
-        return "$text ngày trước";
+        return code=='en'?"$text days trước":"$text ngày trước";
       case "w":
         if (int.parse(text) >= 52) {
-          return "${(int.parse(text) / 52).round()} năm trước";
+          return code=='en'? "${(int.parse(text) / 52).round()} years ago":"${(int.parse(text) / 52).round()} năm trước";
         }
         if (int.parse(text) >= 4) {
-          return "${(int.parse(text) / 4).round()} tháng trước";
+          return code=='en'?"${(int.parse(text) / 4).round()} months ago": "${(int.parse(text) / 4).round()} tháng trước";
         }
         return "$text tuần trước";
       default:
-        return "vừa xong";
+        return  code=='en'?"just now": "vừa xong";
     }
   }
 
