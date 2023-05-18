@@ -73,6 +73,8 @@ dependencies:
   group_button: ^5.2.2
   read_more_less: ^1.0.0
   dropdown_button2: ^2.1.2
+  printing: ^5.10.4
+  flutter_switch: ^0.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

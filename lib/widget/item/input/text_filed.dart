@@ -28,6 +28,7 @@ Widget? iconPreFix;
   String? initVal;
 Color suffixColor;
 int maxLine;
+Widget? widgetLabel;
   Function()? onComplete;
   List<TextInputFormatter>? inputformater;
 
@@ -55,6 +56,7 @@ int maxLine;
       this.inputformater,
       this.onComplete,
         this.search,
+        this.widgetLabel,
       this.onTap});
 
   @override
@@ -112,6 +114,7 @@ maxLines: widget.maxLine,
             // borderSide:
             // const BorderSide(color: ColorApp.black, width: 1),
           ),
+          label: widget.widgetLabel,
           filled: true,
           fillColor: widget.colorBg,
           contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -120,7 +123,7 @@ maxLines: widget.maxLine,
               : null,
           hintText: widget.label,
           hintStyle: StyleApp.textStyle400(
-              fontSize: 16, color: ColorApp.dark500),
+              fontSize: 16, color: ColorApp.dark500.withOpacity(0.7)),
           suffixIcon: widget.hasSuffix
               ? InkWell(
                   onTap: widget.search,

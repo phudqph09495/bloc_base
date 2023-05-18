@@ -1,5 +1,7 @@
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
+import 'package:bloc_base/screen/Cart/gioHang_screen.dart';
+import 'package:bloc_base/screen/auth/account_screen.dart';
 import 'package:bloc_base/screen/ex.dart';
 import 'package:bloc_base/screen/home/home_screen.dart';
 import 'package:bloc_base/screen/search/search_tab_screen.dart';
@@ -18,7 +20,8 @@ import '../bloc/state_bloc.dart';
 import '../styles/init_style.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  int index;
+  MyHomePage({this.index=0});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -34,13 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  int index = 0;
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<BlocCheckLogin>().add(GetData());
+    // context.read<BlocCheckLogin>().add(GetData());
     context.read<BlocLang>().add(getLang());
     // context.read<BlocFireBaseMS>().add(firebase());
   }
@@ -49,24 +52,37 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body: BlocBuilder<BlocCheckLogin, StateBloc>(
-        builder: (context, StateBloc state) {
-          final check = state is LoadSuccess ? state.data as bool : false;
-          return IndexedStack(
-            index: index,
-            children: [
-              HomeScreen(),
-              // Scene(),
-              Container(),
-              SearchTabScreen(),
-              Container(),
-              // LoveScreen(),
-              check ? Container() : Container()
-              // AccountScreen()
-            ],
-          );
-        },
+      body:  IndexedStack(
+        index: widget.index,
+        children: [
+          HomeScreen(),
+          // Scene(),
+          Container(),
+          SearchTabScreen(),
+          GioHangScreen(),
+          // LoveScreen(),
+          AccountScreen(),
+          // AccountScreen()
+        ],
       ),
+      // body: BlocBuilder<BlocCheckLogin, StateBloc>(
+      //   builder: (context, StateBloc state) {
+      //     final check = state is LoadSuccess ? state.data as bool : false;
+      //     return IndexedStack(
+      //       index: widget.index,
+      //       children: [
+      //         HomeScreen(),
+      //         // Scene(),
+      //         Container(),
+      //         SearchTabScreen(),
+      //         GioHangScreen(),
+      //         // LoveScreen(),
+      //         AccountScreen(),
+      //         // AccountScreen()
+      //       ],
+      //     );
+      //   },
+      // ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.025,
@@ -83,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: '',
                     icon: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:index==0? ColorApp.darkGreen:Colors.transparent),
+                            shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
                         child: Padding(
                           padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: SvgPicture.asset(
@@ -94,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: '',
                     icon: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle,  color:index==1? ColorApp.darkGreen:Colors.transparent),
+                            shape: BoxShape.circle,  color:widget.index==1? ColorApp.darkGreen:Colors.transparent),
                         child: Padding(
                           padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: SvgPicture.asset(
@@ -105,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: '',
                     icon: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:index==2? ColorApp.darkGreen:Colors.transparent),
+                            shape: BoxShape.circle, color:widget.index==2? ColorApp.darkGreen:Colors.transparent),
                         child: Padding(
                           padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: SvgPicture.asset(
@@ -116,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: '',
                     icon: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:index==3? ColorApp.darkGreen:Colors.transparent),
+                            shape: BoxShape.circle, color:widget.index==3? ColorApp.darkGreen:Colors.transparent),
                         child: Padding(
                           padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: SvgPicture.asset(
@@ -127,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: '',
                     icon: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:index==4? ColorApp.darkGreen:Colors.transparent),
+                            shape: BoxShape.circle, color:widget.index==4? ColorApp.darkGreen:Colors.transparent),
                         child: Padding(
                           padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: SvgPicture.asset(
@@ -138,13 +154,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 //     icon:ImageIcon(AssetImage(ImagePath.bottomBarAccount)), label: "Tài khoản"),
               ],
               onTap: (val) {
-                index = val;
+                widget.index = val;
                 setState(() {});
               },
               showSelectedLabels: false,
               showUnselectedLabels: false,
               backgroundColor: ColorApp.bottomBar,
-              currentIndex: index,
+              currentIndex: widget.index,
               type: BottomNavigationBarType.fixed,
               selectedItemColor: ColorApp.red,
               selectedLabelStyle:

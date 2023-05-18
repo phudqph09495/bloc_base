@@ -100,7 +100,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
               height: MediaQuery.of(context).size.height * 0.065,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: ColorApp.yellow,
+                  color: ColorApp.orange,
                   borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: EdgeInsets.symmetric(

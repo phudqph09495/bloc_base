@@ -323,3 +323,80 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
     return newValue;
   }
 }
+class CardExpirationFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final newValueString = newValue.text;
+    String valueToReturn = '';
+
+    for (int i = 0; i < newValueString.length; i++) {
+      if (newValueString[i] != '/') valueToReturn += newValueString[i];
+      var nonZeroIndex = i + 1;
+      final contains = valueToReturn.contains(RegExp(r'\/'));
+      if (nonZeroIndex % 2 == 0 &&
+          nonZeroIndex != newValueString.length &&
+          !(contains)) {
+        valueToReturn += '/';
+      }
+    }
+    return newValue.copyWith(
+      text: valueToReturn,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: valueToReturn.length),
+      ),
+    );
+  }
+}
+class NoSpaceFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue,
+      TextEditingValue newValue,
+      ) {
+    final hasEmptySpace = newValue.text.trim() == oldValue.text;
+    if (hasEmptySpace) {
+      return TextEditingValue(
+        text: newValue.text.trim(),
+        selection: oldValue.selection,
+      );
+    }
+    return newValue;
+  }
+}
+
+class ExpiryDateFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final newText = newValue.text;
+
+    if (newText.length < oldValue.text.length) return newValue;
+
+    var result = "";
+
+    if (newText.contains("/")) {
+      final dates = newText.split("/");
+      final month = dates.first;
+      final year = dates.last;
+      if (year.length >= 2) {
+        result = "$month/${year.substring(0, 2)}";
+      } else {
+        result = newText;
+      }
+    } else {
+      if (newText.length == 2) {
+        result = "$newText/";
+      } else {
+        result = newText;
+      }
+    }
+
+    return newValue.copyWith(
+      text: result,
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: result.length),
+      ),
+    );
+  }
+}

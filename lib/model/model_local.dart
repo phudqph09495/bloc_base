@@ -10,3 +10,11 @@ class ModelLocal2 {
   bool? value;
   ModelLocal2({this.id, this.name,this.value=false});
 }
+class ModelCart {
+  String name;
+  int soLuong;
+  int gia;
+  bool? value;
+
+  ModelCart({required this.name, this.soLuong=1, this.gia=150000, this.value=false});
+}

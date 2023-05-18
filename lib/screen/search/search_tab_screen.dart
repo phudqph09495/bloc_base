@@ -1020,7 +1020,7 @@ setState(() {
                                               Row(
                                                 children: [
                                                   Icon(
-                                                    Icons.home,
+                                                    Icons.home,size: 16,
                                                     color: ColorApp.darkGreen,
                                                   ),
                                                   Text(
@@ -1039,7 +1039,7 @@ setState(() {
                                                     size: 18,
                                                   ),
                                                   Text(
-                                                    '125 phút',
+                                                    ' 125 phút',
                                                     style: StyleApp.textStyle700(
                                                         color: ColorApp.dark500,
                                                         fontSize: 12,
@@ -1057,7 +1057,7 @@ setState(() {
                                               Row(
                                                 children: [
                                                   Icon(
-                                                    Icons.star,
+                                                    Icons.star,size: 16,
                                                     color: ColorApp.yellow,
                                                   ),
                                                   Text(
@@ -1082,7 +1082,7 @@ setState(() {
                                                     size: 18,
                                                   ),
                                                   Text(
-                                                    '2.3 km',
+                                                    ' 2.3 km',
                                                     style: StyleApp.textStyle700(
                                                         color: ColorApp.dark500,
                                                         fontSize: 12,

@@ -24,6 +24,7 @@ class InputText2 extends StatefulWidget {
   Function()? search;
   bool readOnly;
   double colorLabel;
+  Widget? widgetLabel;
   List<TextInputFormatter>? inputformater;
 
   InputText2(
@@ -39,13 +40,13 @@ class InputText2 extends StatefulWidget {
         this.validator,
         this.radius = 20,
         this.width = double.infinity,
-        this.borderColor = ColorApp.orangeF8,
+        this.borderColor = ColorApp.bottomBar,
         this.colorBg = Colors.white,
         this.colorLabel = 0.5,
         this.height = 50,
         this.readOnly = false,
         this.inputformater,
-
+this.widgetLabel,
         this.search,
         this.onTap});
 
@@ -102,6 +103,7 @@ class _InputText2State extends State<InputText2> {
             // borderSide:
             // const BorderSide(color: ColorApp.black, width: 1),
           ),
+          label: widget.widgetLabel,
           filled: true,
           fillColor: widget.colorBg,
           contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),

@@ -1081,7 +1081,7 @@ class _Info_ServiceState extends State<Info_Service> {
                                                                   height: MediaQuery.of(context).size.height * 0.065,
                                                                   alignment: Alignment.center,
                                                                   decoration: BoxDecoration(
-                                                                      color: ColorApp.yellow,
+                                                                      color: ColorApp.orange,
                                                                       borderRadius: BorderRadius.circular(20)),
                                                                   child: Padding(
                                                                     padding: EdgeInsets.symmetric(
@@ -1161,7 +1161,7 @@ class _Info_ServiceState extends State<Info_Service> {
                       height: MediaQuery.of(context).size.height * 0.065,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: ColorApp.yellow,
+                          color: ColorApp.orange,
                           borderRadius: BorderRadius.circular(20)),
                       child: Padding(
                         padding: EdgeInsets.symmetric(

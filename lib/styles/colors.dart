@@ -40,6 +40,7 @@ static const Color dark=Color(0xff252525);
   static const Color border=Color(0xffEAEAEA);
   static  Color greyF9= const Color(0xff8B8B8B).withOpacity(0.1);
   static const Color yellow=Color(0xffEFB839);
+  static const Color black3F=Color(0xff3F3F3F);
   static const LinearGradient linearGradientMain =
       LinearGradient(colors: [whiteF7, whiteF0],begin: Alignment.topCenter,end: Alignment.bottomCenter);
   static const LinearGradient linearGradientSale =

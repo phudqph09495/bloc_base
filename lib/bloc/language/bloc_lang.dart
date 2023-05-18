@@ -13,8 +13,6 @@ class BlocLang extends Bloc<EventBloc2, StateBloc> {
     String type= prefs.getString('code')??'vi';
     if(event is getLang){
       Language language=Language(code: type);
-
-
         yield LoadSuccess(
           data: language
         );

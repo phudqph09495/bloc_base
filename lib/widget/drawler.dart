@@ -1,3 +1,5 @@
+import 'package:bloc_base/screen/Cart/gioHang_screen.dart';
+import 'package:bloc_base/screen/auth/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -146,11 +148,24 @@ class _ItemDrawerState extends State<ItemDrawer> {
                         numW: SizedBox()),
                     Divider(),
                     buildRow(
-                        title: '${lang.hoTro}', onTap: () {}, numW: SizedBox()),
+                        title: '${lang.hoTro}',
+                        onTap: () {},
+                        numW: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              '',
+                              style: StyleApp.textStyle600(
+                                  fontSize: 14, color: Colors.white),
+                            ),
+                          ),
+                        )),
                     Divider(),
                     buildRow(
                         title: '${lang.gioHang}',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>GioHangScreen()));
+                        },
                         numW: Container(
                           decoration: BoxDecoration(
                               color: ColorApp.darkGreen,
@@ -166,7 +181,20 @@ class _ItemDrawerState extends State<ItemDrawer> {
                         )),
                     Divider(),
                     buildRow(
-                        title: '${lang.ttTK}', onTap: () {}, numW: SizedBox()),
+                        title: '${lang.ttTK}',
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                        },
+                        numW: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              '',
+                              style: StyleApp.textStyle600(
+                                  fontSize: 14, color: Colors.white),
+                            ),
+                          ),
+                        )),
                     Divider(),
                     buildRow(
                         title: '${lang.thongBao}',
@@ -188,7 +216,16 @@ class _ItemDrawerState extends State<ItemDrawer> {
                     buildRow(
                         title: '${lang.dieuKhoan}',
                         onTap: () {},
-                        numW: SizedBox()),
+                        numW: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              '',
+                              style: StyleApp.textStyle600(
+                                  fontSize: 14, color: Colors.white),
+                            ),
+                          ),
+                        )),
                   ],
                 );
               }
