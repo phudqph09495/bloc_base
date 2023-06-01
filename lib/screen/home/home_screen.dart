@@ -17,6 +17,7 @@ import '../../widget/item/appBar.dart';
 import '../../widget/item/input/text_filed.dart';
 import '../ex.dart';
 import '../search/info_spa_screen.dart';
+import 'list_spa_more_screen.dart';
 import 'notifi_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,7 +30,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List<String> listSer = ['Triệt lông', ' Chăm Sóc Da Mặt', 'Massage', 'Tóc'];
-
+bool showmore=false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -553,69 +554,77 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: StyleApp.textStyle700(
                                           color: ColorApp.dark, fontSize: 18),
                                     ),
-                                    Container(
-                                      padding: EdgeInsets.fromLTRB(
-                                          10 * fem, 6 * fem, 13 * fem, 4 * fem),
-                                      width: 101 * fem,
-                                      height: 27 * fem,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffffc94d),
-                                        borderRadius:
-                                            BorderRadius.circular(7 * fem),
-                                      ),
+                                    InkWell(
+                                      onTap: (){
+                                        setState(() {
+                                          showmore=true;
+                                        });
+                                      },
                                       child: Container(
-                                        // group56G8 (157:9170)
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              // frame3BN (157:9171)
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  5 * fem,
-                                                  0 * fem),
-                                              width: 14 * fem,
-                                              height: 14 * fem,
-                                              child: Image.asset(
-                                                'assets/page-1/images/frame-LNU.png',
+                                        padding: EdgeInsets.fromLTRB(
+                                            10 * fem, 6 * fem, 13 * fem, 4 * fem),
+                                        width: 102 * fem,
+                                        height: 27 * fem,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffffc94d),
+                                          borderRadius:
+                                              BorderRadius.circular(7 * fem),
+                                        ),
+                                        child: Container(
+                                          // group56G8 (157:9170)
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                // frame3BN (157:9171)
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    5 * fem,
+                                                    0 * fem),
                                                 width: 14 * fem,
                                                 height: 14 * fem,
-                                              ),
-                                            ),
-                                            Container(
-                                              // xemthmwnY (157:9174)
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  1 * fem,
-                                                  0 * fem,
-                                                  0 * fem),
-                                              child: Text(
-                                                'Xem Thêm',
-                                                style: SafeGoogleFont(
-                                                  'SVN-Gilroy',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w700,
-                                                  height: 1.2575 * ffem / fem,
-                                                  letterSpacing:
-                                                      0.0120000001 * fem,
-                                                  color: Color(0xff252525),
+                                                child: Image.asset(
+                                                  'assets/page-1/images/frame-LNU.png',
+                                                  width: 14 * fem,
+                                                  height: 14 * fem,
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                // xemthmwnY (157:9174)
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    1 * fem,
+                                                    0 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Xem Thêm',
+                                                  style: SafeGoogleFont(
+                                                    'SVN-Gilroy',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.2575 * ffem / fem,
+                                                    letterSpacing:
+                                                        0.0120000001 * fem,
+                                                    color: Color(0xff252525),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: Const.size(context).width * 0.03,
+                                  height: Const.size(context).width * 0.02,
                                 ),
-                                GridView.builder(
+                        showmore?MoreSpaScreen():        GridView.builder(
+                                  padding: EdgeInsets.zero,
                                     gridDelegate:
                                         const SliverGridDelegateWithMaxCrossAxisExtent(
                                             maxCrossAxisExtent: 200,
@@ -736,6 +745,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       );
                                     }),
+                                SizedBox(
+                                  height: Const.size(context).width * 0.3,
+                                ),
                               ],
                             )),
                       ],

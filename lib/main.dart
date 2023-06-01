@@ -65,8 +65,8 @@ class MyApp extends StatelessWidget {
         useInheritedMediaQuery: true,
         supportedLocales: [const Locale('en'), const Locale('vi')],
         home: UpgradeAlert(
-          child: MyHomePage()
-          // child: LoginScreen(),
+          // child: MyHomePage()
+          child: LoginScreen(),
         ),
       ),
     );

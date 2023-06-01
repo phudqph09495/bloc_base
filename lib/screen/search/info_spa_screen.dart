@@ -23,7 +23,9 @@ class InfoSpaScreen extends StatefulWidget {
 
 class _InfoSpaScreenState extends State<InfoSpaScreen> {
   TextEditingController chiNhanh = TextEditingController();
+  TextEditingController loaiDV = TextEditingController();
   int selectedIndex = 0;
+  int selectedIndexDV = 0;
   int constLength = 3;
   List<ModelLocal2> checkListItems = [
     ModelLocal2(
@@ -475,6 +477,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                           height: Const.size(context).width * 0.031794871794),
                       Expanded(
                         child: DefaultTabController(
+                          initialIndex: 1,
                             length: 3,
                             child: Column(
                               children: [
@@ -684,7 +687,118 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                         SizedBox(
                                           height: 10,
                                         ),
-
+                                        InputText1(
+                                          radius: 12,
+                                          controller: loaiDV,
+                                          label: 'Chọn loại Dịch vụ',
+                                          readOnly: true,
+                                          hasSuffix: true,
+                                          onTap: () {
+                                            showModalBottomSheet(
+                                                context: context,
+                                                builder: (BuildContext context) {
+                                                  return StatefulBuilder(builder:
+                                                      (BuildContext context,
+                                                      StateSetter setState) {
+                                                    return Container(
+                                                      height: Const.size(context).height * 0.8,
+                                                      child: SingleChildScrollView(
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: Column(
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                                children: [
+                                                                  InkWell(
+                                                                    onTap: () {
+                                                                      Navigator.pop(context);
+                                                                    },
+                                                                    child: Icon(Icons.clear),
+                                                                  ),
+                                                                  Text(
+                                                                    '${lang.loaiDV}',
+                                                                    style: StyleApp.textStyle700(
+                                                                        fontSize: 18,
+                                                                        color: ColorApp.dark),
+                                                                  ),
+                                                                  SizedBox()
+                                                                ],
+                                                              ),
+                                                              Divider(),
+                                                              ListView.builder(
+                                                                shrinkWrap: true,
+                                                                physics:
+                                                                NeverScrollableScrollPhysics(),
+                                                                itemCount: checkListItems
+                                                                    .length, // The number of RadioListTiles you want to display
+                                                                itemBuilder:
+                                                                    (BuildContext context,
+                                                                    int index) {
+                                                                  return Padding(
+                                                                    padding:
+                                                                    const EdgeInsets.only(
+                                                                        bottom: 5),
+                                                                    child: Container(
+                                                                      decoration: BoxDecoration(
+                                                                          color: ColorApp.grey8B
+                                                                              .withOpacity(0.1),
+                                                                          borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(15)),
+                                                                      child: Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                            horizontal: 5),
+                                                                        child: RadioListTile<int>(
+                                                                          controlAffinity:
+                                                                          ListTileControlAffinity
+                                                                              .trailing,
+                                                                          contentPadding:
+                                                                          EdgeInsets.zero,
+                                                                          title: Text(
+                                                                            '${checkListItems[index].name}',
+                                                                            style: StyleApp
+                                                                                .textStyle600(
+                                                                                color: ColorApp
+                                                                                    .dark500),
+                                                                          ),
+                                                                          value: index,
+                                                                          activeColor:
+                                                                          ColorApp.darkGreen,
+                                                                          groupValue:
+                                                                          selectedIndexDV,
+                                                                          onChanged:
+                                                                              (int? value) {
+                                                                            setState(() {
+                                                                              selectedIndexDV =
+                                                                              value!;
+                                                                            });
+                                                                            loaiDV.text =
+                                                                                checkListItems[index]
+                                                                                    .name
+                                                                                    .toString();
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  });
+                                                });
+                                          },
+                                          suffix: Icon(Icons.keyboard_arrow_down_rounded),
+                                        ),
+                                        SizedBox(height: 10,),
                                         ListView.builder(
                                           padding: EdgeInsets.only(bottom:MediaQuery.of(context).size.height * 0.066,top: 15 ),
                                           itemBuilder: (context, index) {

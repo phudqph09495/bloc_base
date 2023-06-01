@@ -15,6 +15,7 @@ import '../../widget/item/input/text_filed.dart';
 import '../home/notifi_screen.dart';
 import 'package:group_button/group_button.dart';
 
+import 'info_service.dart';
 import 'info_spa_screen.dart';
 
 class SearchTabScreen extends StatefulWidget {
@@ -949,10 +950,11 @@ setState(() {
                 child: Column(
                   children: [
                   chooseList?  ListView.builder(
+                    padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoSpaScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Info_Service()));
                           },
                           child: Card(
                             child: Padding(
@@ -1103,7 +1105,7 @@ setState(() {
                       },
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: 5,
+                      itemCount: 10,
                     ):
                     GridView.builder(
                         padding: EdgeInsets.symmetric(
@@ -1120,7 +1122,7 @@ setState(() {
                         itemBuilder: (BuildContext ctx, index) {
                           return InkWell(
                             onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoSpaScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Info_Service()));
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(
@@ -1291,6 +1293,9 @@ setState(() {
                             ),
                           );
                         }),
+                    SizedBox(
+                      height: Const.size(context).width * 0.3,
+                    ),
                   ],
                 ),
               ))

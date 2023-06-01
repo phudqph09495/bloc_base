@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
 import 'package:bloc_base/homePage.dart';
+import 'package:bloc_base/screen/auth/signup_screen.dart';
 import 'package:bloc_base/widget/item/input/text_filed2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import '../../bloc/language/bloc_lang.dart';
 import '../../config/const.dart';
 import '../../styles/init_style.dart';
 import '../../widget/item/input/text_filed.dart';
+import 'forgetPass_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -116,14 +118,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(),
-                              Row(
-                                children: [
-                                  SvgPicture.asset('assets/svg/forgot.svg'),
-                                  Text(
-                                    '  ${language.quenMK}',
-                                    style: StyleApp.textStyle500(color: ColorApp.bottomBar),
-                                  )
-                                ],
+                              InkWell(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassScreen()));
+                                },
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset('assets/svg/forgot.svg'),
+                                    Text(
+                                      '  ${language.quenMK}',
+                                      style: StyleApp.textStyle500(color: ColorApp.bottomBar),
+                                    )
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -155,11 +162,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [SizedBox(),
-                              Row(
-                                children: [
-                                  SvgPicture.asset('assets/svg/IconAcc2.svg'),
-                                  Text(' ${language.dangKyTaiKhoan}',style: StyleApp.textStyle400(color: ColorApp.darkGreen),)
-                                ],
+                              InkWell(
+                                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                                },
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset('assets/svg/IconAcc2.svg'),
+                                    Text(' ${language.dangKyTaiKhoan}',style: StyleApp.textStyle400(color: ColorApp.darkGreen),)
+                                  ],
+                                ),
                               ),
                               SizedBox()
                             ],

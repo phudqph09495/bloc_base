@@ -75,9 +75,11 @@ class Language {
   String soDienThoai;
   String matKhau;
   String quenMK;
+  String quenMK2;
   String dangKyTaiKhoan;
   String hoacDangNhap;
   String khiDangNhap;
+  String khiDangKy;
   String dieuKhoanSuDung;
   String va;
   String chinhSachbaoMat;
@@ -126,8 +128,17 @@ class Language {
   String matKhauCu;
   String matKhauMoi;
   String luuThayDoi;
-String spa;
-String lichSu;
+  String spa;
+  String lichSu;
+  String dkDoiTac;
+  String nhapTTDK;
+  String tenSpa;
+  String nguoiDaiDien;
+  String fanpage;
+  String gui;
+  String vuiLongNhap;
+  String maOTP;
+  String nhap;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
@@ -209,9 +220,11 @@ String lichSu;
         soDienThoai = code == 'en' ? 'Phone number' : 'Số Điện Thoại',
         matKhau = code == 'en' ? '' : 'Mật Khẩu',
         quenMK = code == 'en' ? '' : 'Quên mật khẩu',
+        quenMK2 = code == 'en' ? '' : 'Quên Mật Khẩu',
         dangKyTaiKhoan = code == 'en' ? '' : 'Đăng ký tài khoản',
         hoacDangNhap = code == 'en' ? '' : 'hoặc đăng nhập bằng',
         khiDangNhap = code == 'en' ? '' : 'Khi đăng nhập, tôi đồng ý với các',
+        khiDangKy = code == 'en' ? '' : 'Khi đăng ký, tôi đồng ý với các',
         dieuKhoanSuDung =
             code == 'en' ? 'Terms and conditions' : ' Điều khoản sử dụng',
         va = code == 'en' ? '' : 'và',
@@ -253,9 +266,9 @@ String lichSu;
         cauHoiThuongGap = code == 'en' ? 'English' : 'Câu hỏi thường gặp',
         string14 = code == 'en' ? 'English' : '',
         caiDat = code == 'en' ? 'English' : 'Cài đặt',
-        dangXuat = code == 'en' ? 'English' : 'Đăng xuất',
+        dangXuat = code == 'en' ? 'English' : 'Đăng Xuất',
         xinChao = code == 'en' ? 'Hello' : 'Xin Chào',
-        datThem = code == 'en' ? 'English' : 'Đặt Thêm',
+        datThem = code == 'en' ? 'English' : 'Mua Thêm',
         caiDatThongBao = code == 'en' ? 'English' : 'Cài Đặt Thông Báo',
         nhanThongBao = code == 'en' ? 'English' : 'Nhận thông báo',
         tat = code == 'en' ? 'English' : 'Tắt',
@@ -266,6 +279,16 @@ String lichSu;
         luuThayDoi = code == 'en' ? 'English' : 'Lưu thay đổi',
         spa = code == 'en' ? 'English' : 'Spa & Salon',
         lichSu = code == 'en' ? 'English' : 'Lịch Sử',
+        dkDoiTac = code == 'en' ? 'English' : 'Đăng Ký Trở Thành Đối Tác',
+        nhapTTDK = code == 'en' ? 'English' : 'Nhập Thông Tin Để Đăng Ký',
+        tenSpa = code == 'en' ? 'English' : 'Tên Spa',
+        nguoiDaiDien = code == 'en' ? 'English' : 'Người Đại Diện',
+        fanpage = code == 'en' ? 'English' : 'Fanpage (nếu có)',
+        gui = code == 'en' ? 'English' : 'GỬI',
+        vuiLongNhap = code == 'en' ? 'English' : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',
+        maOTP = code == 'en' ? 'English' : 'Mã OTP của quý khách',
+        nhap = code == 'en' ? 'English' : 'Nhập',
+
         bat = code == 'en' ? 'English' : 'Bật';
 }
 

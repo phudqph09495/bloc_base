@@ -1,6 +1,8 @@
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/screen/auth/caiDat_screen.dart';
+import 'package:bloc_base/screen/auth/dangKy_Tv_green.dart';
+import 'package:bloc_base/screen/auth/login_screen.dart';
 import 'package:bloc_base/screen/auth/yeuThich_screen.dart';
 import 'package:bloc_base/widget/drawler.dart';
 import 'package:flutter/material.dart';
@@ -284,7 +286,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SvgPicture.asset('assets/svg/lichDaDat.svg'),
+                                    SvgPicture.asset('assets/svg/goiDaDat.svg'),
                                     Text(
                                       '${lang.goiDaDat}',
                                       style: StyleApp.textStyle600(
@@ -308,7 +310,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SvgPicture.asset('assets/svg/lichDaDat.svg'),
+                                    SvgPicture.asset('assets/svg/heart.svg'),
                                     Text(
                                       '${lang.yeuThich}',
                                       style: StyleApp.textStyle600(
@@ -323,20 +325,25 @@ class _AccountScreenState extends State<AccountScreen> {
                         SizedBox(
                           height: Const.size(context).width * 0.04,
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.065,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: ColorApp.orange,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical:
-                                    Const.size(context).width * 0.02615384615),
-                            child: Text(
-                              '${lang.dangKyDoiTac.toUpperCase()}',
-                              style:
-                                  StyleApp.textStyle700(color: ColorApp.dark),
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>DangKyTVScreen()));
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.065,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                color: ColorApp.orange,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical:
+                                      Const.size(context).width * 0.02615384615),
+                              child: Text(
+                                '${lang.dangKyDoiTac.toUpperCase()}',
+                                style:
+                                    StyleApp.textStyle700(color: ColorApp.dark),
+                              ),
                             ),
                           ),
                         ),
@@ -623,33 +630,41 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                   ),
                                 ),
                                 SizedBox(height: 7,),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: Const.size(context).width *
-                                            0.03846153846,
-                                        vertical: Const.size(context).width *
-                                            0.03076923076),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                                'assets/svg/dangXuat.svg'),
-                                            Text('  ${lang.dangXuat}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
-                                          ],
-                                        ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
-                                      ],
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: Const.size(context).width *
+                                              0.03846153846,
+                                          vertical: Const.size(context).width *
+                                              0.03076923076),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                  'assets/svg/dangXuat.svg'),
+                                              Text('  ${lang.dangXuat}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            ],
+                                          ),
+                                          Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 7,),
+                                SizedBox(
+                                  height: Const.size(context).width * 0.2,
+                                ),
                               ],
                             ),
                           ),

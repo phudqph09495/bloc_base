@@ -28,7 +28,7 @@ class LichSuScreen extends StatefulWidget {
 class _LichSuScreenState extends State<LichSuScreen> {
   final controller = GroupButtonController();
 
-  bool dv=true;
+  bool dv = true;
 
   @override
   void initState() {
@@ -36,9 +36,9 @@ class _LichSuScreenState extends State<LichSuScreen> {
     super.initState();
     controller.selectIndex(0);
   }
+
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
@@ -114,7 +114,6 @@ class _LichSuScreenState extends State<LichSuScreen> {
                     height: MediaQuery.of(context).size.height * 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-
                       children: [
                         // Container(
                         //     height: MediaQuery.of(context).size.height * 0.03,
@@ -131,43 +130,210 @@ class _LichSuScreenState extends State<LichSuScreen> {
                                   Const.size(context).width * 0.02615384615),
                           child: Column(
                             children: [
-                              Container(width: double.infinity,
+                              Container(
+                                width: double.infinity,
                                 child: GroupButton(
                                   controller: controller,
                                   options: GroupButtonOptions(
-                                      buttonWidth: Const.size(context).width*0.28205128205,
-                                      selectedColor:
-
-                                      ColorApp.darkGreen,
-                                    mainGroupAlignment: MainGroupAlignment.spaceBetween,
+                                      buttonWidth: Const.size(context).width *
+                                          0.28205128205,
+                                      selectedColor: ColorApp.darkGreen,
+                                      mainGroupAlignment:
+                                          MainGroupAlignment.spaceBetween,
                                       unselectedTextStyle:
-                                      StyleApp.textStyle500(
-                                          color: ColorApp
-                                              .dark500),
-                                      borderRadius:
-                                      BorderRadius.circular(
-                                          12)),
+                                          StyleApp.textStyle500(
+                                              color: ColorApp.dark500),
+                                      borderRadius: BorderRadius.circular(12)),
                                   isRadio: true,
-                                  onSelected: (name, index,
-                                      isSelected) {
-
-
-
-                                  },
+                                  onSelected: (name, index, isSelected) {},
                                   buttons: [
                                     "Tất cả",
                                     "Đã đặt",
                                     "Đã huỷ",
-
                                   ],
                                 ),
                               ),
+                              SizedBox(height: Const.size(context).height * 10 / 844 ,),
+                              SizedBox(   height:
+                              Const.size(context).height * 38 / 844,
+                                child: Row(
+                                  children: [
+                                    Expanded(flex: 14,
+                                        child: InputText1(
+
+                                      label: '${language.timKiem}',
+                                      hasLeading: true,
+                                      iconPreFix: Icon(
+                                        Icons.search,
+                                        color: ColorApp.bottomBar,
+                                      ),
+                                    )),
+                                    Expanded(child: SizedBox(),flex: 1,),
+                                    Expanded(flex: 14,
+                                        child: InputText1(
+
+                                      label: '30 ngày gần đây',
+                                    hasSuffix: true,
+                                          suffix: Transform.scale(scale: 0.5,child: SvgPicture.asset('assets/svg/notiIcon.svg')),
+                                    ))
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: Const.size(context).height * 20 / 844 ,),
+                              ListView.builder(
+                                padding: EdgeInsets.zero,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: (){
+                                    },
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                                flex: 8,
+                                                child:    Stack(
+                                                  alignment: Alignment.bottomCenter,
+                                                  children: [
+                                                    ClipRRect(borderRadius:
+                                                BorderRadius.only(
+                                                bottomLeft: Radius
+                                                    .circular(
+                                                    5),
+                                            bottomRight: Radius
+                                                .circular(
+                                                5)),
+                                                      child: Container(
+                                                        width: Const.size(context).width*0.45,
+                                                        height: Const.size(context).height*0.1,
+                                                        child: Image.asset(
+                                                          'assets/images/exSpa.png',fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                        decoration: BoxDecoration(
+                                                            color: index%2==1?ColorApp.bottomBar:ColorApp.pink,
+                                                            borderRadius:
+                                                            BorderRadius.only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                    5),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                    5))),
+                                                        child: Padding(
+                                                          padding: EdgeInsets.symmetric(
+                                                              vertical: Const.size(
+                                                                  context)
+                                                                  .width *
+                                                                  0.0111111111111),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                            children: [
+                                                              SizedBox(),
+                                                              Row(
+                                                                children: [
+
+                                                                  Text(
+                                                                    index%2==1  ?'Đã đặt':'Đã huỷ',
+                                                                    style: StyleApp.textStyle600(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                        12),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              SizedBox()
+                                                            ],
+                                                          ),
+                                                        )),
+                                                  ],
+                                                ),),
+                                            Expanded(flex: 1, child: SizedBox()),
+                                            Expanded(
+                                                flex: 20,
+                                                child: Container(
+                                                  height:  Const.size(context).height*0.1,
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        'Chăm sóc da mặt',
+                                                        style: StyleApp.textStyle600(
+                                                            color: ColorApp.dark),
+                                                      ),
+
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            'đ ${Const.ConvertPrice.format(1450000)} ',
+                                                            style: StyleApp.textStyle700(
+                                                                color: ColorApp.dark500,
+                                                                decoration: TextDecoration
+                                                                    .lineThrough),
+                                                          ),
+                                                          Text(
+                                                            '  ${Const.ConvertPrice.format(1200000)} đ',
+                                                            style: StyleApp.textStyle700(
+                                                                color: ColorApp.dark,
+                                                                decoration:
+                                                                TextDecoration.none),
+                                                          )
+                                                        ],
+                                                      ),
+
+                                                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              Transform.scale(
+                                                                  scale: 0.7,
+                                                                  child:
+                                                                  SvgPicture
+                                                                      .asset(
+                                                                    'assets/svg/notiIcon.svg',
+                                                                    color: ColorApp
+                                                                        .dark500,
+                                                                  )),
+                                                              Text(
+                                                                ' 4/6/2023 - 15:35',
+                                                                style: StyleApp
+                                                                    .textStyle400(
+                                                                    color: ColorApp
+                                                                        .dark500,
+                                                                    fontSize:
+                                                                    14),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                      index%2==1?    Text('Hoàn thành',style: StyleApp.textStyle600(color: ColorApp.bottomBar),):
+                                                          Text('Sắp tới',style: StyleApp.textStyle600(color: ColorApp.darkGreen),)
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: 6,
+                              )
                             ],
                           ),
                         ),
-
-
-
                       ],
                     ),
                   )),

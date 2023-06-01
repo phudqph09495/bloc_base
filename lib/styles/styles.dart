@@ -63,4 +63,5 @@ class StyleApp {
       decoration: decoration,
     );
   }
+
 }

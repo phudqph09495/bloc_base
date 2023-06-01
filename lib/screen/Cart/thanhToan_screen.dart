@@ -17,9 +17,7 @@ import '../../styles/init_style.dart';
 import '../../widget/item/input/text_filed.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
+
 
 class ThanhToanScreen extends StatefulWidget {
   const ThanhToanScreen({Key? key}) : super(key: key);
@@ -550,7 +548,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                   SizedBox(width: 24.0,
                                     height: 24.0,
                                     child: Checkbox(
-                                      side: BorderSide(color: ColorApp.border),
+                                      side: BorderSide(color: ColorApp.black3F),
                                         shape: CircleBorder(),
 
                                         activeColor: ColorApp.bottomBar,

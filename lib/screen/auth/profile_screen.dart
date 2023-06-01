@@ -167,6 +167,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               0.02179487179,
                                         ),
                                         InputText1(
+                                          suffix: Transform.scale(scale: 0.5,child: SvgPicture.asset('assets/svg/notiIcon.svg')),
                                           colorBg: ColorApp.whiteF0,
                                           controller: ngaySinh,
                                           onTap: () {
@@ -411,12 +412,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                              InputText2(colorBg: ColorApp.whiteF0,label: '${language.matKhauCu}',radius: 10,hasPass: true,obscureText: true,),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.02179487179,
+                                Const.size(context).width * 0.03179487179,
                               ),
                               InputText2(label: '${language.matKhauMoi}',hasPass: true,obscureText: true,radius: 10,colorBg: ColorApp.whiteF0,),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.02179487179,
+                                Const.size(context).width * 0.03179487179,
                               ),
                               InputText2(label: '${language.xacNhanMatKhau}',hasPass: true,obscureText: true,radius: 10,colorBg: ColorApp.whiteF0,),
                               SizedBox(

@@ -21,7 +21,7 @@ import '../styles/init_style.dart';
 
 class MyHomePage extends StatefulWidget {
   int index;
-  MyHomePage({this.index=0});
+  MyHomePage({this.index = 0});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -37,8 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -52,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body:  IndexedStack(
+      body: IndexedStack(
         index: widget.index,
         children: [
           HomeScreen(),
@@ -83,95 +81,200 @@ class _MyHomePageState extends State<MyHomePage> {
       //     );
       //   },
       // ),
-      bottomNavigationBar: Padding(
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.025,
             right: MediaQuery.of(context).size.width * 0.025,
-            bottom: MediaQuery.of(context).size.width * 0.021,
-            top: MediaQuery.of(context).size.width * 0.013),
+          ),
         child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: BottomNavigationBar(
-              items: [
-                BottomNavigationBarItem(
-                  label: '',
-                    icon: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
-                        child: Padding(
-                          padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                          child: SvgPicture.asset(
-                            'assets/svg/IconHome.svg',
-                          ),
-                        ))),
-                BottomNavigationBarItem(
-                    label: '',
-                    icon: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,  color:widget.index==1? ColorApp.darkGreen:Colors.transparent),
-                        child: Padding(
-                          padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                          child: SvgPicture.asset(
-                            'assets/svg/IconMap.svg',
-                          ),
-                        ))),
-                BottomNavigationBarItem(
-                    label: '',
-                    icon: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:widget.index==2? ColorApp.darkGreen:Colors.transparent),
-                        child: Padding(
-                          padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                          child: SvgPicture.asset(
-                            'assets/svg/IconSe.svg',
-                          ),
-                        ))),
-                BottomNavigationBarItem(
-                    label: '',
-                    icon: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:widget.index==3? ColorApp.darkGreen:Colors.transparent),
-                        child: Padding(
-                          padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                          child: SvgPicture.asset(
-                            'assets/svg/IconCart.svg',
-                          ),
-                        ))),
-                BottomNavigationBarItem(
-                    label: '',
-                    icon: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color:widget.index==4? ColorApp.darkGreen:Colors.transparent),
-                        child: Padding(
-                          padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                          child: SvgPicture.asset(
-                            'assets/svg/IconAcc.svg',
-                          ),
-                        ))),
-                // BottomNavigationBarItem(
-                //     icon:ImageIcon(AssetImage(ImagePath.bottomBarAccount)), label: "Tài khoản"),
+          decoration: BoxDecoration(color: ColorApp.bottomBar,borderRadius: BorderRadius.circular(25)),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: MediaQuery.of(context).size.height * 8 / 844,
+                horizontal: MediaQuery.of(context).size.width * 20 / 390),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      widget.index=0;
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+
+                          shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.03),
+                        child: SvgPicture.asset(
+                          'assets/svg/IconHome.svg',
+                        ),
+                      )),
+                ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      widget.index=1;
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: widget.index==1? ColorApp.darkGreen:Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.03),
+                        child: SvgPicture.asset(
+                          'assets/svg/IconMap.svg',
+                        ),
+                      )),
+                ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                       widget.index=2;
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: widget.index==2? ColorApp.darkGreen:Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.03),
+                        child: SvgPicture.asset(
+                          'assets/svg/IconSe.svg',
+                        ),
+                      )),
+                ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      widget.index=3;
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: widget.index==3? ColorApp.darkGreen:Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.03),
+                        child: SvgPicture.asset(
+                          'assets/svg/IconCart.svg',
+                        ),
+                      )),
+                ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      widget.index=4;
+                    });
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: widget.index==4? ColorApp.darkGreen:Colors.transparent),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * 0.03),
+                        child: SvgPicture.asset(
+                          'assets/svg/IconAcc.svg',
+                        ),
+                      )),
+                )
               ],
-              onTap: (val) {
-                widget.index = val;
-                setState(() {});
-              },
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              backgroundColor: ColorApp.bottomBar,
-              currentIndex: widget.index,
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: ColorApp.red,
-              selectedLabelStyle:
-                  StyleApp.textStyle400(color: ColorApp.red, fontSize: 12),
-              unselectedItemColor: ColorApp.black,
-              unselectedLabelStyle:
-                  StyleApp.textStyle400(color: ColorApp.black, fontSize: 12),
             ),
           ),
         ),
       ),
+      // bottomNavigationBar: Padding(
+      //   padding: EdgeInsets.only(
+      //       left: MediaQuery.of(context).size.width * 0.025,
+      //       right: MediaQuery.of(context).size.width * 0.025,
+      //       bottom: MediaQuery.of(context).size.width * 0.021,
+      //       top: MediaQuery.of(context).size.width * 0.013),
+      //   child: ClipRRect(
+      //     borderRadius: BorderRadius.circular(25),
+      //     child: BottomNavigationBar(
+      //       items: [
+      //         BottomNavigationBarItem(
+      //           label: 'a',
+      //             icon: Container(
+      //                 decoration: BoxDecoration(
+      //                     shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
+      //                 child: Padding(
+      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      //                   child: SvgPicture.asset(
+      //                     'assets/svg/IconHome.svg',
+      //                   ),
+      //                 ))),
+      //         BottomNavigationBarItem(
+      //             label: 'a',
+      //             icon: Container(
+      //                 decoration: BoxDecoration(
+      //                     shape: BoxShape.circle,  color:widget.index==1? ColorApp.darkGreen:Colors.transparent),
+      //                 child: Padding(
+      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      //                   child: SvgPicture.asset(
+      //                     'assets/svg/IconMap.svg',
+      //                   ),
+      //                 ))),
+      //         BottomNavigationBarItem(
+      //             label: 'a',
+      //             icon: Container(
+      //                 decoration: BoxDecoration(
+      //                     shape: BoxShape.circle, color:widget.index==2? ColorApp.darkGreen:Colors.transparent),
+      //                 child: Padding(
+      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      //                   child: SvgPicture.asset(
+      //                     'assets/svg/IconSe.svg',
+      //                   ),
+      //                 ))),
+      //         BottomNavigationBarItem(
+      //             label: 'a',
+      //             icon: Container(
+      //                 decoration: BoxDecoration(
+      //                     shape: BoxShape.circle, color:widget.index==3? ColorApp.darkGreen:Colors.transparent),
+      //                 child: Padding(
+      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      //                   child: SvgPicture.asset(
+      //                     'assets/svg/IconCart.svg',
+      //                   ),
+      //                 ))),
+      //         BottomNavigationBarItem(
+      //             label: 'a',
+      //             icon: Container(
+      //                 decoration: BoxDecoration(
+      //                     shape: BoxShape.circle, color:widget.index==4? ColorApp.darkGreen:Colors.transparent),
+      //                 child: Padding(
+      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+      //                   child: SvgPicture.asset(
+      //                     'assets/svg/IconAcc.svg',
+      //                   ),
+      //                 ))),
+      //         // BottomNavigationBarItem(
+      //         //     icon:ImageIcon(AssetImage(ImagePath.bottomBarAccount)), label: "Tài khoản"),
+      //       ],
+      //       onTap: (val) {
+      //         widget.index = val;
+      //         setState(() {});
+      //       },
+      //       selectedFontSize: 0,
+      //       showSelectedLabels: false,
+      //       showUnselectedLabels: false,
+      //       backgroundColor: ColorApp.bottomBar,
+      //       currentIndex: widget.index,
+      //       type: BottomNavigationBarType.fixed,
+      //       selectedItemColor: ColorApp.red,
+      //       selectedLabelStyle:
+      //           StyleApp.textStyle400(color: ColorApp.red, fontSize: 12),
+      //       unselectedItemColor: ColorApp.black,
+      //       unselectedLabelStyle:
+      //           StyleApp.textStyle400(color: ColorApp.black, fontSize: 12),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
