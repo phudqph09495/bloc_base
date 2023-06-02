@@ -17,6 +17,8 @@ import '../../styles/init_style.dart';
 import '../../widget/item/input/text_filed.dart';
 import 'package:http/http.dart' as http;
 
+import 'thanhcong_screen.dart';
+
 
 
 class ThanhToanScreen extends StatefulWidget {
@@ -634,8 +636,9 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                   SizedBox(height: 30,),
                                   InkWell(
                                     onTap: (){
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Thành công',style: StyleApp.textStyle500(),)));
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+Navigator.push(context, MaterialPageRoute(builder: (context)=>ThanhCongScreen()));
+                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: ColorApp.bottomBar,content: Text('Thành công',style: StyleApp.textStyle500(color: ColorApp.whiteF0),)));
+                                      // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
                                     },
                                     child: Container(
                                       height: MediaQuery.of(context).size.height * 0.065,

@@ -9,12 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 import '../../bloc/state_bloc.dart';
 import '../../styles/init_style.dart';
 import '../../styles/utils.dart';
 import '../../widget/item/appBar.dart';
 import '../../widget/item/input/text_filed.dart';
+import '../Cart/xacNhanScreen.dart';
 import '../ex.dart';
 import '../search/info_spa_screen.dart';
 import 'list_spa_more_screen.dart';
@@ -76,6 +78,28 @@ bool showmore=false;
                                       'assets/svg/LogoApp.svg')),
                               Row(
                                 children: [
+                                  InkWell(
+                                    child: Icon(
+                                      Icons.qr_code_scanner,
+                                      size: 25,
+                                    ),
+                                    onTap: () async {
+                                      var res =
+                                      await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                             SimpleBarcodeScannerPage(
+                                              cancelButtonText: '${language.huyBo}',
+                                            ),
+                                          ));
+                                      setState(() {
+                                        if (res is String) {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>XacNhanScreen()));
+                                        }
+                                      });
+                                    },
+                                  ),
                                   InkWell(
                                     onTap: () {
                                       Navigator.push(
@@ -220,6 +244,7 @@ bool showmore=false;
                                     height: 317 * fem,
                                     child: Stack(
                                       children: [
+
                                         Positioned(
                                           // group3JZE (157:9162)
 

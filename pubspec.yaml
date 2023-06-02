@@ -74,6 +74,7 @@ dependencies:
   read_more_less: ^1.0.0
   dropdown_button2: ^2.1.2
   flutter_switch: ^0.3.2
+  simple_barcode_scanner: ^0.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter

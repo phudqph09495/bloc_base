@@ -27,6 +27,15 @@ class Const {
 static Size  size(BuildContext context){
   return MediaQuery.of(context).size;
 }
+
+  static double  sizeHeight(BuildContext context,double size){
+
+    return MediaQuery.of(context).size.height*size/844;
+  }
+  static double  sizeWidth(BuildContext context,double size){
+
+    return MediaQuery.of(context).size.width*size/390;
+  }
   static checkLogin(BuildContext context, {required Function nextPage}) async {
     bool isLogin = await SharedPrefs.readBool(SharePrefsKeys.login);
     if (isLogin) {

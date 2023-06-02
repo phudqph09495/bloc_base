@@ -114,7 +114,7 @@ class Language {
   String uuDai;
   String ttHT;
   String cauHoiThuongGap;
-  String string14;
+  String timHieuThem;
   String caiDat;
   String dangXuat;
   String xinChao;
@@ -139,6 +139,18 @@ class Language {
   String vuiLongNhap;
   String maOTP;
   String nhap;
+  String maDatLich;
+  String xemthemMaDatLich;
+  String soBooking;
+  String luuY;
+  String day;
+  String xemthemDV;
+  String xacnhanBooking;
+  String vuiLongKT;
+  String huyBo;
+  String xacNhan;
+
+
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
@@ -264,7 +276,7 @@ class Language {
         uuDai = code == 'en' ? 'English' : 'Ưu đãi',
         ttHT = code == 'en' ? 'English' : 'Trung tâm hỗ trợ',
         cauHoiThuongGap = code == 'en' ? 'English' : 'Câu hỏi thường gặp',
-        string14 = code == 'en' ? 'English' : '',
+        timHieuThem = code == 'en' ? 'English' : 'Tìm hiểu thêm',
         caiDat = code == 'en' ? 'English' : 'Cài đặt',
         dangXuat = code == 'en' ? 'English' : 'Đăng Xuất',
         xinChao = code == 'en' ? 'Hello' : 'Xin Chào',
@@ -288,8 +300,19 @@ class Language {
         vuiLongNhap = code == 'en' ? 'English' : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',
         maOTP = code == 'en' ? 'English' : 'Mã OTP của quý khách',
         nhap = code == 'en' ? 'English' : 'Nhập',
+        maDatLich = code == 'en' ? 'English' : 'Mã Đặt Lịch',
+        bat = code == 'en' ? 'English' : 'Bật',
 
-        bat = code == 'en' ? 'English' : 'Bật';
+        soBooking = code == 'en' ? 'English' : 'Số Booking:',
+        luuY = code == 'en' ? 'English' : 'Lưu ý: Lịch hẹn của quý khách cần được xác nhận, xem quy trình xác nhận và check in tại ',
+        day = code == 'en' ? 'English' : 'đây.',
+        xemthemDV = code == 'en' ? 'English' : 'Xem thêm dịch vụ khác',
+
+        xacnhanBooking = code == 'en' ? 'English' : 'Xác nhận booking!',
+        vuiLongKT = code == 'en' ? 'English' : 'Vui lòng kiểm tra lại thông tin và xác nhận dịch vụ của khách hàng',
+        huyBo = code == 'en' ? 'English' : 'Huỷ bỏ',
+        xacNhan = code == 'en' ? 'English' : 'Xác nhận',
+  xemthemMaDatLich = code == 'en' ? 'English' : 'Xem mã đặt lịch của bạn';
 }
 
 class getLang extends EventBloc2 {}
