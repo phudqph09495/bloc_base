@@ -85,11 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.025,
-            right: MediaQuery.of(context).size.width * 0.025,
-          ),
+          left: MediaQuery.of(context).size.width * 0.025,
+          right: MediaQuery.of(context).size.width * 0.025,
+        ),
         child: Container(
-          decoration: BoxDecoration(color: ColorApp.bottomBar,borderRadius: BorderRadius.circular(25)),
+          decoration: BoxDecoration(
+              color: ColorApp.bottomBar,
+              borderRadius: BorderRadius.circular(25)),
           child: Padding(
             padding: EdgeInsets.symmetric(
                 vertical: MediaQuery.of(context).size.height * 8 / 844,
@@ -98,15 +100,17 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      widget.index=0;
+                      widget.index = 0;
                     });
                   },
                   child: Container(
                       decoration: BoxDecoration(
-
-                          shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
+                          shape: BoxShape.circle,
+                          color: widget.index == 0
+                              ? ColorApp.darkGreen
+                              : Colors.transparent),
                       child: Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.03),
@@ -116,14 +120,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       )),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      widget.index=1;
+                      widget.index = 1;
                     });
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: widget.index==1? ColorApp.darkGreen:Colors.transparent),
+                          shape: BoxShape.circle,
+                          color: widget.index == 1
+                              ? ColorApp.darkGreen
+                              : Colors.transparent),
                       child: Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.03),
@@ -133,14 +140,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       )),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                       widget.index=2;
+                      widget.index = 2;
                     });
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: widget.index==2? ColorApp.darkGreen:Colors.transparent),
+                          shape: BoxShape.circle,
+                          color: widget.index == 2
+                              ? ColorApp.darkGreen
+                              : Colors.transparent),
                       child: Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.03),
@@ -150,14 +160,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       )),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      widget.index=3;
+                      widget.index = 3;
                     });
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: widget.index==3? ColorApp.darkGreen:Colors.transparent),
+                          shape: BoxShape.circle,
+                          color: widget.index == 3
+                              ? ColorApp.darkGreen
+                              : Colors.transparent),
                       child: Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.03),
@@ -167,14 +180,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       )),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      widget.index=4;
+                      widget.index = 4;
                     });
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: widget.index==4? ColorApp.darkGreen:Colors.transparent),
+                          shape: BoxShape.circle,
+                          color: widget.index == 4
+                              ? ColorApp.darkGreen
+                              : Colors.transparent),
                       child: Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.03),
