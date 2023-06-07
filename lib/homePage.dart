@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   _launchURL(url) async {
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
@@ -39,10 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // context.read<BlocCheckLogin>().add(GetData());
-    context.read<BlocLang>().add(getLang());
+    context.read<BlocLang>().add(GetLang());
     // context.read<BlocFireBaseMS>().add(firebase());
   }
 
@@ -53,13 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: IndexedStack(
         index: widget.index,
         children: [
-          HomeScreen(),
+          const HomeScreen(),
           // Scene(),
           Container(),
-          SearchTabScreen(),
-          GioHangScreen(),
+          const SearchTabScreen(),
+          const GioHangScreen(),
           // LoveScreen(),
-          AccountScreen(),
+          const AccountScreen(),
           // AccountScreen()
         ],
       ),

@@ -31,7 +31,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                 _scaffoldKey.currentState!.openDrawer();
                               },
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 child:
                                     SvgPicture.asset('assets/svg/Vector.svg'),
                               ),
@@ -91,35 +92,32 @@ class _AccountScreenState extends State<AccountScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => NotifyScreen()));
+                                        builder: (context) =>
+                                            const NotifyScreen()));
                               },
-                              child: Container(
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Icon(
-                                        Icons.notifications_none_outlined,
-                                        color: ColorApp.dark,
-                                        size: 25,
-                                      ),
+                              child: Stack(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(3.0),
+                                    child: Icon(
+                                      Icons.notifications_none_outlined,
+                                      color: ColorApp.dark,
+                                      size: 25,
                                     ),
-                                    Positioned(
-                                        left: 3,
-                                        top: 5,
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.03,
-                                          width:
-                                              Const.size(context).width * 0.03,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: ColorApp.orange),
-                                        ))
-                                  ],
-                                ),
+                                  ),
+                                  Positioned(
+                                      left: 3,
+                                      top: 5,
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                0.03,
+                                        width: Const.size(context).width * 0.03,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: ColorApp.orange),
+                                      ))
+                                ],
                               ),
                             )
                           ],
@@ -155,7 +153,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                       child: Container(
                                           height: 25,
                                           width: 25,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               color: ColorApp.orange,
                                               shape: BoxShape.circle),
                                           child: const Icon(
@@ -192,7 +190,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                             style: StyleApp.textStyle600(
                                                 color: ColorApp.dark),
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.arrow_forward_ios,
                                             size: 16,
                                           )
@@ -226,13 +224,17 @@ class _AccountScreenState extends State<AccountScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${lang.dichvu}',
+                              lang.dichvu,
                               style:
                                   StyleApp.textStyle700(color: ColorApp.dark),
                             ),
                             InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>LichSuScreen()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LichSuScreen()));
                               },
                               child: Row(
                                 children: [
@@ -265,7 +267,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 children: [
                                   SvgPicture.asset('assets/svg/lichDaDat.svg'),
                                   Text(
-                                    '${lang.lichDaDat}',
+                                    lang.lichDaDat,
                                     style: StyleApp.textStyle600(
                                         color: ColorApp.dark),
                                   )
@@ -273,12 +275,18 @@ class _AccountScreenState extends State<AccountScreen> {
                               ),
                             ),
                             InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>GoiDaDatScreen()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GoiDaDatScreen()));
                               },
                               child: Container(
-                                width: Const.size(context).width * 0.28205128205,
-                                height: Const.size(context).width * 0.25076923076,
+                                width:
+                                    Const.size(context).width * 0.28205128205,
+                                height:
+                                    Const.size(context).width * 0.25076923076,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(12)),
@@ -288,7 +296,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   children: [
                                     SvgPicture.asset('assets/svg/goiDaDat.svg'),
                                     Text(
-                                      '${lang.goiDaDat}',
+                                      lang.goiDaDat,
                                       style: StyleApp.textStyle600(
                                           color: ColorApp.dark),
                                     )
@@ -297,12 +305,18 @@ class _AccountScreenState extends State<AccountScreen> {
                               ),
                             ),
                             InkWell(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>YeuThichScreen()));
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const YeuThichScreen()));
                               },
                               child: Container(
-                                width: Const.size(context).width * 0.28205128205,
-                                height: Const.size(context).width * 0.25076923076,
+                                width:
+                                    Const.size(context).width * 0.28205128205,
+                                height:
+                                    Const.size(context).width * 0.25076923076,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(12)),
@@ -312,7 +326,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   children: [
                                     SvgPicture.asset('assets/svg/heart.svg'),
                                     Text(
-                                      '${lang.yeuThich}',
+                                      lang.yeuThich,
                                       style: StyleApp.textStyle600(
                                           color: ColorApp.dark),
                                     )
@@ -326,8 +340,12 @@ class _AccountScreenState extends State<AccountScreen> {
                           height: Const.size(context).width * 0.04,
                         ),
                         InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>DangKyTVScreen()));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const DangKyTVScreen()));
                           },
                           child: Container(
                             height: MediaQuery.of(context).size.height * 0.065,
@@ -337,10 +355,10 @@ class _AccountScreenState extends State<AccountScreen> {
                                 borderRadius: BorderRadius.circular(20)),
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical:
-                                      Const.size(context).width * 0.02615384615),
+                                  vertical: Const.size(context).width *
+                                      0.02615384615),
                               child: Text(
-                                '${lang.dangKyDoiTac.toUpperCase()}',
+                                lang.dangKyDoiTac.toUpperCase(),
                                 style:
                                     StyleApp.textStyle700(color: ColorApp.dark),
                               ),
@@ -364,7 +382,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '${lang.taiKhoan}',
+                                  lang.taiKhoan,
                                   style: StyleApp.textStyle700(
                                       color: ColorApp.dark, fontSize: 16),
                                 ),
@@ -374,8 +392,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -384,25 +402,35 @@ class _AccountScreenState extends State<AccountScreen> {
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/language.svg'),
-                                            Text('  ${lang.ngonNgu}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.ngonNgu}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('${lang.string1}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          lang.string1,
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -411,24 +439,35 @@ class _AccountScreenState extends State<AccountScreen> {
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/tinNhan.svg'),
-                                            Text('  ${lang.tinNhan}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.tinNhan}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)                                      ],
+                                        const Icon(
+                                          Icons.arrow_circle_right_outlined,
+                                          size: 18,
+                                          color: ColorApp.darkGreen,
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -437,25 +476,35 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/star.svg'),
-                                            Text('  ${lang.danhGiaCuaToi}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.danhGiaCuaToi}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('23',style: StyleApp.textStyle500(color: ColorApp.darkGreen),)
+                                        Text(
+                                          '23',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.darkGreen),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -464,16 +513,24 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/coupon.svg'),
-                                            Text('  ${lang.uuDai}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.uuDai}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          '',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -482,18 +539,18 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                   height: Const.size(context).width * 0.08,
                                 ),
                                 Text(
-                                  '${lang.thongTin}',
+                                  lang.thongTin,
                                   style: StyleApp.textStyle700(
                                       color: ColorApp.dark, fontSize: 16),
                                 ),
                                 SizedBox(
                                   height:
-                                  Const.size(context).width * 0.03179487179,
+                                      Const.size(context).width * 0.03179487179,
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -502,25 +559,35 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/ttHt.svg'),
-                                            Text('  ${lang.ttHT}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.ttHT}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          '',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -529,25 +596,35 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/cauHoi.svg'),
-                                            Text('  ${lang.cauHoiThuongGap}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.cauHoiThuongGap}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          '',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -556,25 +633,35 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/gioiThieu.svg'),
-                                            Text('  ${lang.gioiThieu}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.gioiThieu}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          '',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                  ),
+                                      color: ColorApp.whiteF0,
+                                      borderRadius: BorderRadius.circular(12)),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: Const.size(context).width *
@@ -583,85 +670,127 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                                             0.03076923076),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             SvgPicture.asset(
                                                 'assets/svg/dieuKhoan.svg'),
-                                            Text('  ${lang.dieuKhoanSuDung}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                            Text(
+                                              '  ${lang.dieuKhoanSuDung}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.black3F),
+                                            )
                                           ],
                                         ),
-                                        Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                        Text(
+                                          '',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.black3F),
+                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 InkWell(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>CaiDatScreen()));
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CaiDatScreen()));
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                    ),
+                                        color: ColorApp.whiteF0,
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: Const.size(context).width *
-                                              0.03846153846,
+                                          horizontal:
+                                              Const.size(context).width *
+                                                  0.03846153846,
                                           vertical: Const.size(context).width *
                                               0.03076923076),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
                                               SvgPicture.asset(
                                                   'assets/svg/caiDat.svg'),
-                                              Text('  ${lang.caiDat}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                              Text(
+                                                '  ${lang.caiDat}',
+                                                style: StyleApp.textStyle500(
+                                                    color: ColorApp.black3F),
+                                              )
                                             ],
                                           ),
-                                          Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                          Text(
+                                            '',
+                                            style: StyleApp.textStyle500(
+                                                color: ColorApp.black3F),
+                                          )
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 InkWell(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginScreen()));
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: ColorApp.whiteF0,borderRadius: BorderRadius.circular(12)
-                                    ),
+                                        color: ColorApp.whiteF0,
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: Const.size(context).width *
-                                              0.03846153846,
+                                          horizontal:
+                                              Const.size(context).width *
+                                                  0.03846153846,
                                           vertical: Const.size(context).width *
                                               0.03076923076),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
                                               SvgPicture.asset(
                                                   'assets/svg/dangXuat.svg'),
-                                              Text('  ${lang.dangXuat}',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                              Text(
+                                                '  ${lang.dangXuat}',
+                                                style: StyleApp.textStyle500(
+                                                    color: ColorApp.black3F),
+                                              )
                                             ],
                                           ),
-                                          Text('',style: StyleApp.textStyle500(color: ColorApp.black3F),)
+                                          Text(
+                                            '',
+                                            style: StyleApp.textStyle500(
+                                                color: ColorApp.black3F),
+                                          )
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 7,),
+                                const SizedBox(
+                                  height: 7,
+                                ),
                                 SizedBox(
                                   height: Const.size(context).width * 0.2,
                                 ),
@@ -669,7 +798,6 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -678,7 +806,7 @@ Icon(Icons.arrow_circle_right_outlined,size: 18,color: ColorApp.darkGreen,)     
             ],
           );
         }
-        return SizedBox();
+        return const SizedBox();
       }),
     );
   }

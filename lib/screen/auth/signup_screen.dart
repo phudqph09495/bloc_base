@@ -49,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: MediaQuery.of(context).size.height * 0.05,
                           ),
                           Text(
-                            '${language.dangKy}',
+                            language.dangKy,
                             style: StyleApp.textStyle700(
                                 color: Colors.white, fontSize: 20),
                           ),
@@ -67,8 +67,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -86,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: ColorApp.whiteF0,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${language.hoTen}',
+                                language.hoTen,
                                 style:
                                     StyleApp.textStyle700(color: ColorApp.dark),
                               ),
@@ -132,7 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${language.ngaySinh}',
+                                          language.ngaySinh,
                                           style: StyleApp.textStyle700(
                                               color: ColorApp.dark),
                                         ),
@@ -142,7 +142,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
                                         InputText1(
                                           hasSuffix: true,
-                                          suffix: Transform.scale(scale: 0.5,child: SvgPicture.asset('assets/svg/notiIcon.svg')),
+                                          suffix: Transform.scale(
+                                              scale: 0.5,
+                                              child: SvgPicture.asset(
+                                                  'assets/svg/notiIcon.svg')),
                                           colorBg: Colors.white,
                                           controller: ngaySinh,
                                           onTap: () {
@@ -165,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       ],
                                     ),
                                   ),
-                                  Expanded(
+                                  const Expanded(
                                     flex: 1,
                                     child: SizedBox(),
                                   ),
@@ -176,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${language.gioiTinh}',
+                                          language.gioiTinh,
                                           style: StyleApp.textStyle700(
                                               color: ColorApp.dark),
                                         ),
@@ -235,18 +238,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                                             Navigator.pop(context);
                                                                           },
                                                                           child:
-                                                                              Icon(Icons.clear),
+                                                                              const Icon(Icons.clear),
                                                                         ),
                                                                         Text(
-                                                                          '${language.gioiTinh}',
+                                                                          language
+                                                                              .gioiTinh,
                                                                           style: StyleApp.textStyle700(
                                                                               fontSize: 18,
                                                                               color: ColorApp.dark),
                                                                         ),
-                                                                        SizedBox()
+                                                                        const SizedBox()
                                                                       ],
                                                                     ),
-                                                                    Divider(),
+                                                                    const Divider(),
                                                                     Padding(
                                                                       padding: const EdgeInsets
                                                                               .only(
@@ -270,7 +274,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                                                 EdgeInsets.zero,
                                                                             title:
                                                                                 Text(
-                                                                              '${language.nam}',
+                                                                              language.nam,
                                                                               style: StyleApp.textStyle600(color: ColorApp.dark500),
                                                                             ),
                                                                             value:
@@ -313,7 +317,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                                                 EdgeInsets.zero,
                                                                             title:
                                                                                 Text(
-                                                                              '${language.nu}',
+                                                                              language.nu,
                                                                               style: StyleApp.textStyle600(color: ColorApp.dark500),
                                                                             ),
                                                                             value:
@@ -345,7 +349,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               '${language.nam}/${language.nu}',
                                           radius: 10,
                                           hasSuffix: true,
-                                          suffix: Icon(
+                                          suffix: const Icon(
                                             Icons.keyboard_arrow_down_rounded,
                                             color: ColorApp.dark500,
                                           ),
@@ -361,7 +365,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Const.size(context).width * 0.05179487179,
                               ),
                               Text(
-                                '${language.soDienThoai}',
+                                language.soDienThoai,
                                 style:
                                     StyleApp.textStyle700(color: ColorApp.dark),
                               ),
@@ -380,41 +384,55 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Const.size(context).width * 0.05179487179,
                               ),
                               Text(
-                                '${language.matKhau}',
+                                language.matKhau,
                                 style:
-                                StyleApp.textStyle700(color: ColorApp.dark),
+                                    StyleApp.textStyle700(color: ColorApp.dark),
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.03179487179,
+                                    Const.size(context).width * 0.03179487179,
                               ),
-                              InputText2(label: '',hasPass: true,obscureText: true,radius: 10,colorBg: Colors.white,),
+                              InputText2(
+                                label: '',
+                                hasPass: true,
+                                obscureText: true,
+                                radius: 10,
+                                colorBg: Colors.white,
+                              ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.05179487179,
+                                    Const.size(context).width * 0.05179487179,
                               ),
                               Text(
-                                '${language.xacNhanMatKhau}',
+                                language.xacNhanMatKhau,
                                 style:
-                                StyleApp.textStyle700(color: ColorApp.dark),
+                                    StyleApp.textStyle700(color: ColorApp.dark),
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.03179487179,
+                                    Const.size(context).width * 0.03179487179,
                               ),
-                              InputText2(label: '',hasPass: true,obscureText: true,radius: 10,colorBg: Colors.white,),
+                              InputText2(
+                                label: '',
+                                hasPass: true,
+                                obscureText: true,
+                                radius: 10,
+                                colorBg: Colors.white,
+                              ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.04179487179,
+                                    Const.size(context).width * 0.04179487179,
                               ),
-                              Row(crossAxisAlignment: CrossAxisAlignment.start,
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(width: 24.0,
+                                  SizedBox(
+                                    width: 24.0,
                                     height: 24.0,
                                     child: Checkbox(
-                                        side: BorderSide(color: ColorApp.black3F),
-                                        shape: CircleBorder(),
-
+                                        side: const BorderSide(
+                                            color: ColorApp.black3F),
+                                        shape: const CircleBorder(),
                                         activeColor: ColorApp.bottomBar,
                                         value: taoTKMoi,
                                         onChanged: (value) {
@@ -423,41 +441,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           });
                                         }),
                                   ),
-                                  SizedBox(width: 10,),
-                                  Expanded(child: Text(' ${language.nhanEmail}',style: StyleApp.textStyle500(color: ColorApp.dark500),))
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    ' ${language.nhanEmail}',
+                                    style: StyleApp.textStyle500(
+                                        color: ColorApp.dark500),
+                                  ))
                                 ],
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.05179487179,
+                                    Const.size(context).width * 0.05179487179,
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.065,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.065,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color: ColorApp.orange,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                      vertical: Const.size(context).width * 0.02615384615),
+                                      vertical: Const.size(context).width *
+                                          0.02615384615),
                                   child: Text(
-                                    '${language.dangKy.toUpperCase()}',
-                                    style: StyleApp.textStyle700(color: ColorApp.dark),
+                                    language.dangKy.toUpperCase(),
+                                    style: StyleApp.textStyle700(
+                                        color: ColorApp.dark),
                                   ),
                                 ),
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.05179487179,
+                                    Const.size(context).width * 0.05179487179,
                               ),
-                              RichText(textAlign: TextAlign.center,
+                              RichText(
+                                textAlign: TextAlign.center,
                                 text: TextSpan(
                                   text: '${language.khiDangKy} ',
-                                  style: StyleApp.textStyle500(color: ColorApp.dark500),
-                                  children:  <TextSpan>[
-                                    TextSpan(text: '${language.dieuKhoanSuDung}',style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
-                                    TextSpan(text: ' ${language.va}',style:StyleApp.textStyle500(color: ColorApp.dark500),),
-                                    TextSpan(text: ' ${language.chinhSachbaoMat}.',style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.dark500),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: language.dieuKhoanSuDung,
+                                      style: StyleApp.textStyle500(
+                                          color: ColorApp.bottomBar),
+                                    ),
+                                    TextSpan(
+                                      text: ' ${language.va}',
+                                      style: StyleApp.textStyle500(
+                                          color: ColorApp.dark500),
+                                    ),
+                                    TextSpan(
+                                      text: ' ${language.chinhSachbaoMat}.',
+                                      style: StyleApp.textStyle500(
+                                          color: ColorApp.bottomBar),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -473,7 +515,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

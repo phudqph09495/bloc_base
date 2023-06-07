@@ -19,8 +19,6 @@ import 'package:http/http.dart' as http;
 
 import 'thanhcong_screen.dart';
 
-
-
 class ThanhToanScreen extends StatefulWidget {
   const ThanhToanScreen({Key? key}) : super(key: key);
 
@@ -55,13 +53,13 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
-                                '${language.thanhToan}',
+                                language.thanhToan,
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -78,8 +76,8 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -98,7 +96,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -111,7 +109,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                       children: [
                         Container(
                             height: MediaQuery.of(context).size.height * 0.03,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(25),
@@ -131,7 +129,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                           0.04615384615,
                                       right: Const.size(context).width *
                                           0.04615384615),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: Const.size(context).width * 0.9,
                                     child: Column(
                                       children: [
@@ -141,7 +139,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                           children: [
                                             Expanded(
                                               flex: 4,
-                                              child: Container(
+                                              child: SizedBox(
                                                 width:
                                                     Const.size(context).width *
                                                         0.17948717948,
@@ -160,8 +158,8 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                               ),
                                             ),
                                             Expanded(
-                                              child: Container(),
                                               flex: 1,
+                                              child: Container(),
                                             ),
                                             Expanded(
                                               flex: 14,
@@ -188,10 +186,10 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                                                   color: ColorApp
                                                                       .dark),
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           height: 10,
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           height: 10,
                                                         ),
                                                         Row(
@@ -249,7 +247,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                           },
                           shrinkWrap: true,
                           itemCount: 3,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -261,7 +259,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${language.phuongThucThanhToan}',
+                                language.phuongThucThanhToan,
                                 style: StyleApp.textStyle700(
                                     color: ColorApp.dark, fontSize: 16),
                               ),
@@ -304,7 +302,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                   ),
                                   children: [
                                     Text(
-                                      '${language.hoTen}',
+                                      language.hoTen,
                                       style: StyleApp.textStyle700(
                                           color: ColorApp.dark),
                                     ),
@@ -321,7 +319,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                           0.02615384615,
                                     ),
                                     Text(
-                                      '${language.soThe}',
+                                      language.soThe,
                                       style: StyleApp.textStyle700(
                                           color: ColorApp.dark),
                                     ),
@@ -346,7 +344,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  '${language.ngayHetHan}',
+                                                  language.ngayHetHan,
                                                   style: StyleApp.textStyle700(
                                                       color: ColorApp.dark),
                                                 ),
@@ -367,7 +365,8 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                                 ),
                                               ],
                                             )),
-                                        Expanded(flex: 1, child: SizedBox()),
+                                        const Expanded(
+                                            flex: 1, child: SizedBox()),
                                         Expanded(
                                             flex: 13,
                                             child: Column(
@@ -395,7 +394,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Container(
@@ -424,13 +423,13 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                       ),
                                     ],
                                   ),
-                                  children: [
+                                  children: const [
                                     Text('data'),
                                     Text('data2'),
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Container(
@@ -460,7 +459,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                       ),
                                     ],
                                   ),
-                                  children: [
+                                  children: const [
                                     Text('data'),
                                     Text('data2'),
                                   ],
@@ -471,7 +470,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                     Const.size(context).width * 0.04615384615,
                               ),
                               Text(
-                                '${language.thongtinLienHe}',
+                                language.thongtinLienHe,
                                 style: StyleApp.textStyle700(
                                     color: ColorApp.dark, fontSize: 16),
                               ),
@@ -483,7 +482,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                 widgetLabel: Row(
                                   children: [
                                     Text(
-                                      '${language.hoTen}',
+                                      language.hoTen,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500),
                                     ),
@@ -527,7 +526,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                 widgetLabel: Row(
                                   children: [
                                     Text(
-                                      '${language.soDienThoai}',
+                                      language.soDienThoai,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500),
                                     ),
@@ -547,12 +546,13 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                               ),
                               Row(
                                 children: [
-                                  SizedBox(width: 24.0,
+                                  SizedBox(
+                                    width: 24.0,
                                     height: 24.0,
                                     child: Checkbox(
-                                      side: BorderSide(color: ColorApp.black3F),
-                                        shape: CircleBorder(),
-
+                                        side: const BorderSide(
+                                            color: ColorApp.black3F),
+                                        shape: const CircleBorder(),
                                         activeColor: ColorApp.bottomBar,
                                         value: taoTKMoi,
                                         onChanged: (value) {
@@ -561,12 +561,16 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                           });
                                         }),
                                   ),
-                                  Text(' ${language.taoTaiKhoanMoi}',style: StyleApp.textStyle500(color: ColorApp.dark500),)
+                                  Text(
+                                    ' ${language.taoTaiKhoanMoi}',
+                                    style: StyleApp.textStyle500(
+                                        color: ColorApp.dark500),
+                                  )
                                 ],
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.02615384615,
+                                    Const.size(context).width * 0.02615384615,
                               ),
                               InputText2(
                                 hasPass: true,
@@ -574,7 +578,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                 widgetLabel: Row(
                                   children: [
                                     Text(
-                                      '${language.matKhau}',
+                                      language.matKhau,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500),
                                     ),
@@ -590,7 +594,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.02615384615,
+                                    Const.size(context).width * 0.02615384615,
                               ),
                               InputText2(
                                 hasPass: true,
@@ -598,7 +602,7 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                                 widgetLabel: Row(
                                   children: [
                                     Text(
-                                      '${language.xacNhanMatKhau}',
+                                      language.xacNhanMatKhau,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500),
                                     ),
@@ -614,44 +618,82 @@ class _ThanhToanScreenState extends State<ThanhToanScreen> {
                               ),
                               SizedBox(
                                 height:
-                                Const.size(context).width * 0.06615384615,
+                                    Const.size(context).width * 0.06615384615,
                               ),
                               Column(
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('${language.tongThanhToan}',style: StyleApp.textStyle600(color: ColorApp.dark,fontSize: 16),),
-                                      Text('₫ 3.820.000',style: StyleApp.textStyle700(color: ColorApp.dark500,fontSize: 12,decoration: TextDecoration.lineThrough),)
+                                      Text(
+                                        language.tongThanhToan,
+                                        style: StyleApp.textStyle600(
+                                            color: ColorApp.dark, fontSize: 16),
+                                      ),
+                                      Text(
+                                        '₫ 3.820.000',
+                                        style: StyleApp.textStyle700(
+                                            color: ColorApp.dark500,
+                                            fontSize: 12,
+                                            decoration:
+                                                TextDecoration.lineThrough),
+                                      )
                                     ],
                                   ),
-                                  SizedBox(height: 10,),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('Đã chọn 3 dịch vụ, giá đã bao gồm thuế',style: StyleApp.textStyle400(color: ColorApp.dark500,fontSize: 14),),
-                                      Text('₫ ${Const.ConvertPrice.format(2500000)}',style: StyleApp.textStyle700(color: ColorApp.darkGreen,fontSize: 16,),)
+                                      Text(
+                                        'Đã chọn 3 dịch vụ, giá đã bao gồm thuế',
+                                        style: StyleApp.textStyle400(
+                                            color: ColorApp.dark500,
+                                            fontSize: 14),
+                                      ),
+                                      Text(
+                                        '₫ ${Const.ConvertPrice.format(2500000)}',
+                                        style: StyleApp.textStyle700(
+                                          color: ColorApp.darkGreen,
+                                          fontSize: 16,
+                                        ),
+                                      )
                                     ],
                                   ),
-                                  SizedBox(height: 30,),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
                                   InkWell(
-                                    onTap: (){
-Navigator.push(context, MaterialPageRoute(builder: (context)=>ThanhCongScreen()));
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const ThanhCongScreen()));
                                       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor: ColorApp.bottomBar,content: Text('Thành công',style: StyleApp.textStyle500(color: ColorApp.whiteF0),)));
                                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
                                     },
                                     child: Container(
-                                      height: MediaQuery.of(context).size.height * 0.065,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.065,
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                           color: ColorApp.orange,
-                                          borderRadius: BorderRadius.circular(20)),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
-                                            vertical: Const.size(context).width * 0.02615384615),
+                                            vertical:
+                                                Const.size(context).width *
+                                                    0.02615384615),
                                         child: Text(
-                                          '${language.thanhToan.toUpperCase()}',
-                                          style: StyleApp.textStyle700(color: ColorApp.dark),
+                                          language.thanhToan.toUpperCase(),
+                                          style: StyleApp.textStyle700(
+                                              color: ColorApp.dark),
                                         ),
                                       ),
                                     ),
@@ -670,7 +712,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>ThanhCongScreen())
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

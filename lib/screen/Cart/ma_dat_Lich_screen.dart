@@ -51,13 +51,13 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
-                                '${language.maDatLich}',
+                                language.maDatLich,
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -74,8 +74,8 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -94,7 +94,7 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -107,7 +107,7 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                       children: [
                         Container(
                             height: MediaQuery.of(context).size.height * 0.1,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(25),
@@ -121,7 +121,7 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                           style: StyleApp.textStyle500(
                               color: ColorApp.dark500, fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
@@ -132,18 +132,24 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                         SizedBox(
                           height: Const.sizeHeight(context, 28),
                         ),
-                        Container(width: Const.sizeWidth(context, 354),
-                          child: RichText(textAlign: TextAlign.center,
+                        SizedBox(
+                          width: Const.sizeWidth(context, 354),
+                          child: RichText(
+                            textAlign: TextAlign.center,
                             text: TextSpan(
-                              text: '${language.luuY}',
-                              style: StyleApp.textStyle500(color: ColorApp.dark500),
-                              children:  <TextSpan>[
-                                TextSpan(text: '${language.day}',style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
+                              text: language.luuY,
+                              style: StyleApp.textStyle500(
+                                  color: ColorApp.dark500),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: language.day,
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.bottomBar),
+                                ),
                               ],
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   )),
@@ -154,8 +160,9 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
           bottomSheet: Padding(
             padding: const EdgeInsets.all(16.0),
             child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
               },
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.065,
@@ -167,7 +174,7 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
                   padding: EdgeInsets.symmetric(
                       vertical: Const.size(context).width * 0.02615384615),
                   child: Text(
-                    '${language.xemthemDV.toUpperCase()}',
+                    language.xemthemDV.toUpperCase(),
                     style: StyleApp.textStyle700(color: ColorApp.dark),
                   ),
                 ),
@@ -176,7 +183,7 @@ class _MaDatLichScreenState extends State<MaDatLichScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

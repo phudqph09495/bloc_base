@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import '../../styles/init_style.dart';
 
-Widget ItemLoadMore({
+Widget itemLoadMore({
   bool length = false,
   bool hasMore = false,
 }) {
@@ -20,7 +19,8 @@ Widget ItemLoadMore({
     ),
   );
 }
-Widget ItemListEmpty() {
+
+Widget itemListEmpty() {
   return Center(
     child: Text(
       "Danh sách trống",

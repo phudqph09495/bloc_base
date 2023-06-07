@@ -20,7 +20,7 @@ class MoreSpaScreen extends StatefulWidget {
 }
 
 class _MoreSpaScreenState extends State<MoreSpaScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,8 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
 
     double ffem = fem * 0.97;
 
-    return   BlocBuilder<BlocLang, StateBloc>(builder: (context, StateBloc state) {
+    return BlocBuilder<BlocLang, StateBloc>(
+        builder: (context, StateBloc state) {
       if (state is LoadSuccess) {
         Language lang = state.data;
         return Column(
@@ -203,7 +204,6 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20)),
@@ -215,22 +215,16 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
                         ),
                         child: Padding(
                           padding: EdgeInsets.only(
-                              top: Const.size(context).width *
-                                  0.04615384615,
-                              bottom: Const.size(context).width *
-                                  0.04615384615,
-                              right: Const.size(context).width *
-                                  0.07948717948,
-                              left: Const.size(context).width *
-                                  0.04615384615),
+                              top: Const.size(context).width * 0.04615384615,
+                              bottom: Const.size(context).width * 0.04615384615,
+                              right: Const.size(context).width * 0.07948717948,
+                              left: Const.size(context).width * 0.04615384615),
                           child: Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SvgPicture.asset(
-                                  'assets/svg/filterIcon.svg'),
+                              SvgPicture.asset('assets/svg/filterIcon.svg'),
                               Text(
-                                '${lang.locKQ}',
+                                lang.locKQ,
                                 style: StyleApp.textStyle700(),
                               )
                             ],
@@ -240,8 +234,8 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     width: Const.size(context).width * 0.43846153846,
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -250,20 +244,15 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top:
-                            Const.size(context).width * 0.04615384615,
-                            bottom:
-                            Const.size(context).width * 0.04615384615,
-                            left:
-                            Const.size(context).width * 0.07948717948,
-                            right: Const.size(context).width *
-                                0.04615384615),
+                            top: Const.size(context).width * 0.04615384615,
+                            bottom: Const.size(context).width * 0.04615384615,
+                            left: Const.size(context).width * 0.07948717948,
+                            right: Const.size(context).width * 0.04615384615),
                         child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${lang.xemBanDo}',
+                              lang.xemBanDo,
                               style: StyleApp.textStyle700(),
                             ),
                             SvgPicture.asset('assets/svg/mapIcon.svg'),
@@ -277,82 +266,67 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
             ),
             GridView.builder(
                 padding: EdgeInsets.zero,
-                gridDelegate:
-                const SliverGridDelegateWithMaxCrossAxisExtent(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20),
                 itemCount: 50,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext ctx, index) {
                   return InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  InfoSpaScreen()));
+                              builder: (context) => const InfoSpaScreen()));
                     },
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(15)),
                       child: Column(
-                        mainAxisAlignment:
-                        MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Stack(
                             alignment: Alignment.bottomCenter,
                             children: [
                               Image.asset(
-                                'assets/images/mostRate.png',width: Const.size(context).width*0.45,fit: BoxFit.fitHeight,
+                                'assets/images/mostRate.png',
+                                width: Const.size(context).width * 0.45,
+                                fit: BoxFit.fitHeight,
                               ),
                               Container(
                                   decoration: BoxDecoration(
-                                      color: ColorApp.dark
-                                          .withOpacity(0.3),
-                                      borderRadius:
-                                      BorderRadius.only(
-                                          bottomLeft: Radius
-                                              .circular(
-                                              15),
-                                          bottomRight: Radius
-                                              .circular(
-                                              15))),
+                                      color: ColorApp.dark.withOpacity(0.3),
+                                      borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(15),
+                                          bottomRight: Radius.circular(15))),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
-                                        vertical: Const.size(
-                                            context)
-                                            .width *
+                                        vertical: Const.size(context).width *
                                             0.0111111111111),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment
-                                          .spaceEvenly,
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        SizedBox(),
+                                        const SizedBox(),
                                         Row(
                                           children: [
-                                            Icon(
-                                              Icons
-                                                  .location_on,
-                                              color: Colors
-                                                  .white,
+                                            const Icon(
+                                              Icons.location_on,
+                                              color: Colors.white,
                                               size: 15,
                                             ),
                                             Text(
                                               '2.3 km',
                                               style: StyleApp.textStyle600(
-                                                  color: Colors
-                                                      .white,
-                                                  fontSize:
-                                                  12),
+                                                  color: Colors.white,
+                                                  fontSize: 12),
                                             ),
                                           ],
                                         ),
-                                        SizedBox()
+                                        const SizedBox()
                                       ],
                                     ),
                                   )),
@@ -360,36 +334,29 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
                           ),
                           Text(
                             'Sorella Beauty',
-                            style: StyleApp.textStyle600(
-                                color: ColorApp.dark),
+                            style: StyleApp.textStyle600(color: ColorApp.dark),
                           ),
                           Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: ColorApp.yellow,
                                   ),
                                   Text(
                                     '4.7',
-                                    style: StyleApp
-                                        .textStyle700(
-                                        color: ColorApp
-                                            .yellow),
+                                    style: StyleApp.textStyle700(
+                                        color: ColorApp.yellow),
                                   ),
                                   Text(' (98)',
-                                      style: StyleApp
-                                          .textStyle700(
-                                          color: Color(
-                                              0xff717171))),
+                                      style: StyleApp.textStyle700(
+                                          color: const Color(0xff717171))),
                                 ],
                               ),
-                              SizedBox(),
+                              const SizedBox(),
                             ],
                           ),
                         ],
@@ -403,7 +370,7 @@ class _MoreSpaScreenState extends State<MoreSpaScreen> {
           ],
         );
       }
-      return SizedBox();
+      return const SizedBox();
     });
   }
 }

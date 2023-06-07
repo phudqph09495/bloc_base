@@ -149,8 +149,7 @@ class Language {
   String vuiLongKT;
   String huyBo;
   String xacNhan;
-
-
+  String CommomViewCart;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
@@ -227,6 +226,7 @@ class Language {
         camOnBan =
             code == 'en' ? '' : 'Cảm ơn bạn đã sử dụng dịch vụ của Joy Bookie!',
         thanhToan = code == 'en' ? 'Payment' : 'Thanh toán',
+        CommomViewCart = code == 'en' ? 'View Cart' : 'Xem Giỏ Hàng',
         timDVKhac = code == 'en' ? 'Browse more services' : 'Tìm dịch vụ khác',
         dangNhap = code == 'en' ? 'Log in' : 'Đăng Nhập',
         soDienThoai = code == 'en' ? 'Phone number' : 'Số Điện Thoại',
@@ -297,26 +297,30 @@ class Language {
         nguoiDaiDien = code == 'en' ? 'English' : 'Người Đại Diện',
         fanpage = code == 'en' ? 'English' : 'Fanpage (nếu có)',
         gui = code == 'en' ? 'English' : 'GỬI',
-        vuiLongNhap = code == 'en' ? 'English' : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',
+        vuiLongNhap = code == 'en'
+            ? 'English'
+            : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',
         maOTP = code == 'en' ? 'English' : 'Mã OTP của quý khách',
         nhap = code == 'en' ? 'English' : 'Nhập',
         maDatLich = code == 'en' ? 'English' : 'Mã Đặt Lịch',
         bat = code == 'en' ? 'English' : 'Bật',
-
         soBooking = code == 'en' ? 'English' : 'Số Booking:',
-        luuY = code == 'en' ? 'English' : 'Lưu ý: Lịch hẹn của quý khách cần được xác nhận, xem quy trình xác nhận và check in tại ',
+        luuY = code == 'en'
+            ? 'English'
+            : 'Lưu ý: Lịch hẹn của quý khách cần được xác nhận, xem quy trình xác nhận và check in tại ',
         day = code == 'en' ? 'English' : 'đây.',
         xemthemDV = code == 'en' ? 'English' : 'Xem thêm dịch vụ khác',
-
         xacnhanBooking = code == 'en' ? 'English' : 'Xác nhận booking!',
-        vuiLongKT = code == 'en' ? 'English' : 'Vui lòng kiểm tra lại thông tin và xác nhận dịch vụ của khách hàng',
+        vuiLongKT = code == 'en'
+            ? 'English'
+            : 'Vui lòng kiểm tra lại thông tin và xác nhận dịch vụ của khách hàng',
         huyBo = code == 'en' ? 'English' : 'Huỷ bỏ',
         xacNhan = code == 'en' ? 'English' : 'Xác nhận',
-  xemthemMaDatLich = code == 'en' ? 'English' : 'Xem mã đặt lịch của bạn';
+        xemthemMaDatLich = code == 'en' ? 'English' : 'Xem mã đặt lịch của bạn';
 }
 
-class getLang extends EventBloc2 {}
+class GetLang extends EventBloc2 {}
 
-class sangE extends EventBloc2 {}
+class SangE extends EventBloc2 {}
 
-class sangVn extends EventBloc2 {}
+class SangVn extends EventBloc2 {}

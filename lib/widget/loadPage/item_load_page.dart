@@ -4,7 +4,7 @@ import '../../bloc/state_bloc.dart';
 import '../../styles/init_style.dart';
 import 'item_loadfaild.dart';
 
-Widget ItemLoadPage({
+Widget itemLoadPage({
   required StateBloc state,
   Widget? success,
   Widget? loadError,

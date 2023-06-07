@@ -25,7 +25,7 @@ class _ItemDrawerState extends State<ItemDrawer> {
   BlocLang blocLang = BlocLang();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.9,
       child: Drawer(
         backgroundColor: Colors.white,
@@ -50,12 +50,12 @@ class _ItemDrawerState extends State<ItemDrawer> {
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              child: Icon(Icons.clear)),
+                              child: const Icon(Icons.clear)),
                           BlocListener(
                             bloc: blocLang,
                             listener: (_, StateBloc state) {
                               if (state is LoadSuccess) {
-                                context.read<BlocLang>().add(getLang());
+                                context.read<BlocLang>().add(GetLang());
                               }
                             },
                             child: PopupMenuButton(
@@ -63,13 +63,14 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                 return List.generate(
                                     list.length,
                                     (index) => PopupMenuItem(
-                                          padding: EdgeInsets.only(left: 20),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           value: index,
                                           onTap: () {
                                             if (index == 0) {
-                                              blocLang.add(sangVn());
+                                              blocLang.add(SangVn());
                                             } else if (index == 1) {
-                                              blocLang.add(sangE());
+                                              blocLang.add(SangE());
                                             }
                                           },
                                           child: Row(
@@ -89,7 +90,7 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                                 width:
                                                     Const.size(context).width *
                                                         0.06153846153,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                     shape: BoxShape.circle),
                                                 child: ClipOval(
                                                     child: Image.asset(
@@ -104,11 +105,11 @@ class _ItemDrawerState extends State<ItemDrawer> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${lang.string1}',
+                                    lang.string1,
                                     style: StyleApp.textStyle700(
                                         color: ColorApp.dark),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Container(
@@ -116,8 +117,8 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                         0.06153846153,
                                     width: Const.size(context).width *
                                         0.06153846153,
-                                    decoration:
-                                        BoxDecoration(shape: BoxShape.circle),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle),
                                     child: ClipOval(
                                         child: Image.asset(
                                       'assets/images/${lang.co}',
@@ -143,31 +144,32 @@ class _ItemDrawerState extends State<ItemDrawer> {
                       ),
                     ),
                     buildRow(
-                        title: '${lang.gioiThieu}',
+                        title: lang.gioiThieu,
                         onTap: () {},
-                        numW: SizedBox()),
-                    Divider(),
+                        numW: const SizedBox()),
+                    const Divider(),
                     buildRow(
-                        title: '${lang.hoTro}',
+                        title: lang.hoTro,
                         onTap: () {},
-                        numW: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              '',
-                              style: StyleApp.textStyle600(
-                                  fontSize: 14, color: Colors.white),
-                            ),
+                        numW: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            '',
+                            style: StyleApp.textStyle600(
+                                fontSize: 14, color: Colors.white),
                           ),
                         )),
-                    Divider(),
+                    const Divider(),
                     buildRow(
-                        title: '${lang.gioHang}',
+                        title: lang.gioHang,
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>GioHangScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GioHangScreen()));
                         },
                         numW: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: ColorApp.darkGreen,
                               shape: BoxShape.circle),
                           child: Padding(
@@ -179,28 +181,29 @@ class _ItemDrawerState extends State<ItemDrawer> {
                             ),
                           ),
                         )),
-                    Divider(),
+                    const Divider(),
                     buildRow(
-                        title: '${lang.ttTK}',
+                        title: lang.ttTK,
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ProfileScreen()));
                         },
-                        numW: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              '',
-                              style: StyleApp.textStyle600(
-                                  fontSize: 14, color: Colors.white),
-                            ),
+                        numW: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            '',
+                            style: StyleApp.textStyle600(
+                                fontSize: 14, color: Colors.white),
                           ),
                         )),
-                    Divider(),
+                    const Divider(),
                     buildRow(
-                        title: '${lang.thongBao}',
+                        title: lang.thongBao,
                         onTap: () {},
                         numW: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: ColorApp.darkGreen,
                               shape: BoxShape.circle),
                           child: Padding(
@@ -212,24 +215,22 @@ class _ItemDrawerState extends State<ItemDrawer> {
                             ),
                           ),
                         )),
-                    Divider(),
+                    const Divider(),
                     buildRow(
-                        title: '${lang.dieuKhoan}',
+                        title: lang.dieuKhoan,
                         onTap: () {},
-                        numW: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              '',
-                              style: StyleApp.textStyle600(
-                                  fontSize: 14, color: Colors.white),
-                            ),
+                        numW: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            '',
+                            style: StyleApp.textStyle600(
+                                fontSize: 14, color: Colors.white),
                           ),
                         )),
                   ],
                 );
               }
-              return SizedBox();
+              return const SizedBox();
             },
           ),
         ),

@@ -108,45 +108,44 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                 padding: EdgeInsets.symmetric(
                     vertical: Const.size(context).width * 0.02615384615),
                 child: Text(
-                  '${lang.lienHe}',
+                  lang.lienHe,
                   style: StyleApp.textStyle700(color: ColorApp.dark),
                 ),
               ),
             ),
           ),
-          backgroundColor: Color(0xffF5F6EE),
+          backgroundColor: const Color(0xffF5F6EE),
           body: Column(
             children: [
               Stack(
                 children: [
                   ImageSlideshow(
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    width: double.infinity,
+                    indicatorColor: ColorApp.dark,
+                    isLoop: true,
+                    autoPlayInterval: 2000,
                     children: List.generate(
                         3,
                         (index) => Image.asset(
                               'assets/images/exSpa.png',
                               fit: BoxFit.cover,
                             )),
-                    //
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    width: double.infinity,
-                    indicatorColor: ColorApp.dark,
-                    isLoop: true,
-                    autoPlayInterval: 2000,
                   ),
                   Positioned(
                     top: Const.size(context).width * 0.08064516129,
                     left: 10,
                     child: InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.3),
                             borderRadius: BorderRadius.circular(20)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 8),
+                        child: const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                           child: FaIcon(
                             FontAwesomeIcons.arrowLeftLong,
                             color: Colors.white,
@@ -165,8 +164,8 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                             shape: BoxShape.circle,
                             color: Colors.black.withOpacity(0.3),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.heart,
@@ -174,7 +173,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Container(
@@ -182,8 +181,8 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                             shape: BoxShape.circle,
                             color: Colors.black.withOpacity(0.3),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 8),
                             child: Icon(
                               Icons.share_outlined,
@@ -198,21 +197,19 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/images/logoSpaEX.png',
-                              height: Const.size(context).width * 0.11794871794,
-                              width: Const.size(context).width * 0.11794871794,
-                            ),
+                          Image.asset(
+                            'assets/images/logoSpaEX.png',
+                            height: Const.size(context).width * 0.11794871794,
+                            width: Const.size(context).width * 0.11794871794,
                           ),
-                          Container(
+                          SizedBox(
                             width: Const.size(context).width * 0.6282051282,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,7 +230,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                               ],
                             ),
                           ),
-                          SizedBox(),
+                          const SizedBox(),
                         ],
                       ),
                       SizedBox(
@@ -248,7 +245,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                           ),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: ColorApp.yellow,
                               ),
@@ -281,7 +278,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                 return StatefulBuilder(builder:
                                     (BuildContext context,
                                         StateSetter setState) {
-                                  return Container(
+                                  return SizedBox(
                                     height: Const.size(context).height * 0.8,
                                     child: SingleChildScrollView(
                                       child: Padding(
@@ -297,22 +294,23 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                   onTap: () {
                                                     Navigator.pop(context);
                                                   },
-                                                  child: Icon(Icons.clear),
+                                                  child:
+                                                      const Icon(Icons.clear),
                                                 ),
                                                 Text(
-                                                  '${lang.chiNhanh}',
+                                                  lang.chiNhanh,
                                                   style: StyleApp.textStyle700(
                                                       fontSize: 18,
                                                       color: ColorApp.dark),
                                                 ),
-                                                SizedBox()
+                                                const SizedBox()
                                               ],
                                             ),
-                                            Divider(),
+                                            const Divider(),
                                             ListView.builder(
                                               shrinkWrap: true,
                                               physics:
-                                                  NeverScrollableScrollPhysics(),
+                                                  const NeverScrollableScrollPhysics(),
                                               itemCount: listFilter
                                                   .length, // The number of RadioListTiles you want to display
                                               itemBuilder:
@@ -376,7 +374,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                 });
                               });
                         },
-                        suffix: Icon(Icons.keyboard_arrow_down_rounded),
+                        suffix: const Icon(Icons.keyboard_arrow_down_rounded),
                       ),
                       SizedBox(
                           height: Const.size(context).width * 0.051794871794),
@@ -400,12 +398,12 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      '${lang.dichvu}',
+                                      lang.dichvu,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500,
                                           fontSize: 12),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -429,12 +427,12 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        '${lang.trangThai}',
+                                        lang.trangThai,
                                         style: StyleApp.textStyle500(
                                             color: ColorApp.dark500,
                                             fontSize: 12),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Text(
@@ -453,12 +451,12 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      '${lang.khoangCach}',
+                                      lang.khoangCach,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.dark500,
                                           fontSize: 12),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
@@ -477,7 +475,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                           height: Const.size(context).width * 0.031794871794),
                       Expanded(
                         child: DefaultTabController(
-                          initialIndex: 1,
+                            initialIndex: 1,
                             length: 3,
                             child: Column(
                               children: [
@@ -486,19 +484,19 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                     print(ind);
                                   },
                                   isScrollable: true,
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700),
                                   indicatorColor: ColorApp.bottomBar,
-                                  unselectedLabelStyle: TextStyle(
+                                  unselectedLabelStyle: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400),
                                   labelColor: ColorApp.bottomBar,
                                   unselectedLabelColor: ColorApp.dark,
                                   tabs: [
-                                    Tab(text: '${lang.thongTin}'),
-                                    Tab(text: '${lang.dichvu.toUpperCase()}'),
-                                    Tab(text: '${lang.danhGia}'),
+                                    Tab(text: lang.thongTin),
+                                    Tab(text: lang.dichvu.toUpperCase()),
+                                    Tab(text: lang.danhGia),
                                   ],
                                 ),
                                 Expanded(
@@ -536,7 +534,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                     width: Const.size(context)
                                                             .width *
                                                         0.55,
@@ -572,7 +570,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                                   color: Colors
                                                                       .white),
                                                         ),
-                                                        FaIcon(
+                                                        const FaIcon(
                                                           FontAwesomeIcons
                                                               .paperPlane,
                                                           color: Colors.white,
@@ -684,7 +682,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                   SingleChildScrollView(
                                     child: Column(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         InputText1(
@@ -696,90 +694,105 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                           onTap: () {
                                             showModalBottomSheet(
                                                 context: context,
-                                                builder: (BuildContext context) {
-                                                  return StatefulBuilder(builder:
-                                                      (BuildContext context,
-                                                      StateSetter setState) {
-                                                    return Container(
-                                                      height: Const.size(context).height * 0.8,
-                                                      child: SingleChildScrollView(
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return StatefulBuilder(
+                                                      builder:
+                                                          (BuildContext context,
+                                                              StateSetter
+                                                                  setState) {
+                                                    return SizedBox(
+                                                      height:
+                                                          Const.size(context)
+                                                                  .height *
+                                                              0.8,
+                                                      child:
+                                                          SingleChildScrollView(
                                                         child: Padding(
-                                                          padding: const EdgeInsets.all(8.0),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
                                                           child: Column(
                                                             children: [
                                                               Row(
                                                                 mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
                                                                   InkWell(
                                                                     onTap: () {
-                                                                      Navigator.pop(context);
+                                                                      Navigator.pop(
+                                                                          context);
                                                                     },
-                                                                    child: Icon(Icons.clear),
+                                                                    child: const Icon(
+                                                                        Icons
+                                                                            .clear),
                                                                   ),
                                                                   Text(
-                                                                    '${lang.loaiDV}',
+                                                                    lang.loaiDV,
                                                                     style: StyleApp.textStyle700(
-                                                                        fontSize: 18,
-                                                                        color: ColorApp.dark),
+                                                                        fontSize:
+                                                                            18,
+                                                                        color: ColorApp
+                                                                            .dark),
                                                                   ),
-                                                                  SizedBox()
+                                                                  const SizedBox()
                                                                 ],
                                                               ),
-                                                              Divider(),
+                                                              const Divider(),
                                                               ListView.builder(
-                                                                shrinkWrap: true,
+                                                                shrinkWrap:
+                                                                    true,
                                                                 physics:
-                                                                NeverScrollableScrollPhysics(),
-                                                                itemCount: checkListItems
-                                                                    .length, // The number of RadioListTiles you want to display
+                                                                    const NeverScrollableScrollPhysics(),
+                                                                itemCount:
+                                                                    checkListItems
+                                                                        .length, // The number of RadioListTiles you want to display
                                                                 itemBuilder:
-                                                                    (BuildContext context,
-                                                                    int index) {
+                                                                    (BuildContext
+                                                                            context,
+                                                                        int index) {
                                                                   return Padding(
-                                                                    padding:
-                                                                    const EdgeInsets.only(
-                                                                        bottom: 5),
-                                                                    child: Container(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        bottom:
+                                                                            5),
+                                                                    child:
+                                                                        Container(
                                                                       decoration: BoxDecoration(
-                                                                          color: ColorApp.grey8B
-                                                                              .withOpacity(0.1),
+                                                                          color: ColorApp.grey8B.withOpacity(
+                                                                              0.1),
                                                                           borderRadius:
-                                                                          BorderRadius
-                                                                              .circular(15)),
-                                                                      child: Padding(
-                                                                        padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                            horizontal: 5),
-                                                                        child: RadioListTile<int>(
+                                                                              BorderRadius.circular(15)),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.symmetric(horizontal: 5),
+                                                                        child: RadioListTile<
+                                                                            int>(
                                                                           controlAffinity:
-                                                                          ListTileControlAffinity
-                                                                              .trailing,
+                                                                              ListTileControlAffinity.trailing,
                                                                           contentPadding:
-                                                                          EdgeInsets.zero,
-                                                                          title: Text(
+                                                                              EdgeInsets.zero,
+                                                                          title:
+                                                                              Text(
                                                                             '${checkListItems[index].name}',
-                                                                            style: StyleApp
-                                                                                .textStyle600(
-                                                                                color: ColorApp
-                                                                                    .dark500),
+                                                                            style:
+                                                                                StyleApp.textStyle600(color: ColorApp.dark500),
                                                                           ),
-                                                                          value: index,
+                                                                          value:
+                                                                              index,
                                                                           activeColor:
-                                                                          ColorApp.darkGreen,
+                                                                              ColorApp.darkGreen,
                                                                           groupValue:
-                                                                          selectedIndexDV,
+                                                                              selectedIndexDV,
                                                                           onChanged:
                                                                               (int? value) {
                                                                             setState(() {
-                                                                              selectedIndexDV =
-                                                                              value!;
+                                                                              selectedIndexDV = value!;
                                                                             });
                                                                             loaiDV.text =
-                                                                                checkListItems[index]
-                                                                                    .name
-                                                                                    .toString();
+                                                                                checkListItems[index].name.toString();
                                                                             Navigator.pop(context);
                                                                           },
                                                                         ),
@@ -796,25 +809,38 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                   });
                                                 });
                                           },
-                                          suffix: Icon(Icons.keyboard_arrow_down_rounded),
+                                          suffix: const Icon(Icons
+                                              .keyboard_arrow_down_rounded),
                                         ),
-                                        SizedBox(height: 10,),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
                                         ListView.builder(
-                                          padding: EdgeInsets.only(bottom:MediaQuery.of(context).size.height * 0.066,top: 15 ),
+                                          padding: EdgeInsets.only(
+                                              bottom: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.066,
+                                              top: 15),
                                           itemBuilder: (context, index) {
                                             return InkWell(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Info_Service()));
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const InfoService()));
                                               },
                                               child: Column(
                                                 children: [
                                                   Row(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Expanded(
                                                         flex: 2,
-                                                        child: Container(
+                                                        child: SizedBox(
                                                             height: Const.size(
                                                                         context)
                                                                     .width *
@@ -828,9 +854,11 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                                   BorderRadius
                                                                       .circular(
                                                                           12),
-                                                              child: Image.asset(
+                                                              child:
+                                                                  Image.asset(
                                                                 'assets/images/exSpa.png',
-                                                                fit: BoxFit.cover,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             )),
                                                       ),
@@ -842,10 +870,10 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                                           context)
                                                                       .width *
                                                                   0.02948717948),
-                                                          height:
-                                                              Const.size(context)
-                                                                      .width *
-                                                                  0.17948717948,
+                                                          height: Const.size(
+                                                                      context)
+                                                                  .width *
+                                                              0.17948717948,
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
@@ -865,9 +893,10 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                                 children: [
                                                                   Text(
                                                                     '₫ 400.000 ',
-
-                                                                    style: StyleApp
-                                                                        .textStyle700(decoration: TextDecoration.lineThrough,
+                                                                    style: StyleApp.textStyle700(
+                                                                        decoration:
+                                                                            TextDecoration
+                                                                                .lineThrough,
                                                                         color: ColorApp
                                                                             .dark500),
                                                                   ),
@@ -875,20 +904,25 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                                     '₫ 200.000',
                                                                     style: StyleApp
                                                                         .textStyle700(
-                                                                            color: ColorApp
-                                                                                .darkGreen),
+                                                                            color:
+                                                                                ColorApp.darkGreen),
                                                                   ),
                                                                 ],
                                                               ),
                                                               Row(
                                                                 children: [
-                                                                  Icon(Icons.star,color: ColorApp.yellow,size: 18,),
+                                                                  const Icon(
+                                                                    Icons.star,
+                                                                    color: ColorApp
+                                                                        .yellow,
+                                                                    size: 18,
+                                                                  ),
                                                                   Text(
                                                                     ' 4.5',
                                                                     style: StyleApp
                                                                         .textStyle500(
-                                                                            color: ColorApp
-                                                                                .dark500),
+                                                                            color:
+                                                                                ColorApp.dark500),
                                                                   ),
                                                                 ],
                                                               ),
@@ -898,36 +932,63 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                                       ),
                                                       Expanded(
                                                         flex: 2,
-                                                        child: Container(
-                                                          height:
-                                                          Const.size(context)
-                                                              .width *
+                                                        child: SizedBox(
+                                                          height: Const.size(
+                                                                      context)
+                                                                  .width *
                                                               0.17948717948,
                                                           child: Column(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
-Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,),
-                                                              Container(decoration: BoxDecoration(
-                                                                color: ColorApp.bottomBar,
-                                                                borderRadius: BorderRadius.circular(10)
-                                                              ),child: Padding(
-                                                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                                                                child: Text('${lang.chiTiet}',style: StyleApp.textStyle700(color: Colors.white),),
-                                                              ))
+                                                              Icon(
+                                                                Icons.favorite,
+                                                                size: 18,
+                                                                color: index %
+                                                                            2 ==
+                                                                        1
+                                                                    ? ColorApp
+                                                                        .yellow
+                                                                    : ColorApp
+                                                                        .dark500,
+                                                              ),
+                                                              Container(
+                                                                  decoration: BoxDecoration(
+                                                                      color: ColorApp
+                                                                          .bottomBar,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10)),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                        horizontal:
+                                                                            10,
+                                                                        vertical:
+                                                                            5),
+                                                                    child: Text(
+                                                                      lang.chiTiet,
+                                                                      style: StyleApp.textStyle700(
+                                                                          color:
+                                                                              Colors.white),
+                                                                    ),
+                                                                  ))
                                                             ],
                                                           ),
                                                         ),
                                                       )
                                                     ],
                                                   ),
-                                                  Divider()
+                                                  const Divider()
                                                 ],
                                               ),
                                             );
                                           },
                                           shrinkWrap: true,
                                           physics:
-                                              NeverScrollableScrollPhysics(),
+                                              const NeverScrollableScrollPhysics(),
                                           itemCount: 10,
                                         )
                                       ],
@@ -983,9 +1044,8 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                                               ),
                                                             ),
                                                           ),
-
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           width: 10,
                                                         ),
                                                         Expanded(
@@ -1028,7 +1088,7 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                                                       .generate(
                                                                           5,
                                                                           (index) =>
-                                                                              Icon(
+                                                                              const Icon(
                                                                                 Icons.star,
                                                                                 size: 18,
                                                                                 color: ColorApp.yellow,
@@ -1074,13 +1134,13 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                                       ],
                                                     ),
                                                   ),
-                                                  Divider()
+                                                  const Divider()
                                                 ],
                                               );
                                             },
                                             shrinkWrap: true,
                                             physics:
-                                                NeverScrollableScrollPhysics(),
+                                                const NeverScrollableScrollPhysics(),
                                           ),
                                           InkWell(
                                             onTap: () {
@@ -1090,7 +1150,7 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                             },
                                             child: Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(
@@ -1100,17 +1160,17 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    SizedBox(),
+                                                    const SizedBox(),
                                                     Row(
                                                       children: [
                                                         Text(
-                                                          '${lang.xemThem}',
+                                                          lang.xemThem,
                                                           style: StyleApp
                                                               .textStyle400(
                                                                   color: ColorApp
                                                                       .bottomBar),
                                                         ),
-                                                        Icon(
+                                                        const Icon(
                                                           Icons
                                                               .keyboard_arrow_down,
                                                           size: 16,
@@ -1119,7 +1179,7 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
                                                         )
                                                       ],
                                                     ),
-                                                    SizedBox(),
+                                                    const SizedBox(),
                                                   ],
                                                 ),
                                               ),
@@ -1147,7 +1207,7 @@ Icon(Icons.favorite,size: 18,color: index%2==1?ColorApp.yellow:ColorApp.dark500,
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

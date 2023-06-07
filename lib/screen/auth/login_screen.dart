@@ -15,7 +15,6 @@ import '../../styles/init_style.dart';
 import '../../widget/item/input/text_filed.dart';
 import 'forgetPass_screen.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -30,10 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
-
           body: Stack(
             children: [
-
               Positioned(
                 top: 0,
                 child: Container(
@@ -42,11 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: [
-                      SizedBox(height:MediaQuery.of(context).size.height*0.05 ,),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
                       Text(
-                        '${language.dangNhap}',
+                        language.dangNhap,
                         style: StyleApp.textStyle700(
-                        color: Colors.white, fontSize: 20),
+                            color: Colors.white, fontSize: 20),
                       ),
                     ],
                   ),
@@ -57,33 +56,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                   color: ColorApp.whiteF0,
+                  decoration: const BoxDecoration(
+                      color: ColorApp.whiteF0,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
                   child: SingleChildScrollView(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height*1.5,
-                        child: Padding(
-                    padding: EdgeInsets.only(
+                    height: MediaQuery.of(context).size.height * 1.5,
+                    child: Padding(
+                      padding: EdgeInsets.only(
                           top: Const.size(context).width * 0.07692307692,
-
                           left: Const.size(context).width * 0.04615384615,
                           right: Const.size(context).width * 0.04615384615),
-                    child: Column(
+                      child: Column(
                         children: [
                           SvgPicture.asset('assets/svg/LogoApp.svg'),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${language.soDienThoai}',
+                                language.soDienThoai,
                                 style:
                                     StyleApp.textStyle700(color: ColorApp.dark),
                               ),
                               SizedBox(
-                                height: Const.size(context).width * 0.02615384615,
+                                height:
+                                    Const.size(context).width * 0.02615384615,
                               ),
                               InputText1(
                                 label: '',
@@ -98,12 +97,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${language.matKhau}',
+                                language.matKhau,
                                 style:
                                     StyleApp.textStyle700(color: ColorApp.dark),
                               ),
                               SizedBox(
-                                height: Const.size(context).width * 0.02615384615,
+                                height:
+                                    Const.size(context).width * 0.02615384615,
                               ),
                               InputText2(
                                 label: '',
@@ -115,19 +115,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: Const.size(context).width * 0.04615384615,
                           ),
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               InkWell(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassScreen()));
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ForgetPassScreen()));
                                 },
                                 child: Row(
                                   children: [
                                     SvgPicture.asset('assets/svg/forgot.svg'),
                                     Text(
                                       '  ${language.quenMK}',
-                                      style: StyleApp.textStyle500(color: ColorApp.bottomBar),
+                                      style: StyleApp.textStyle500(
+                                          color: ColorApp.bottomBar),
                                     )
                                   ],
                                 ),
@@ -138,21 +144,27 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: Const.size(context).width * 0.05615384615,
                           ),
                           InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage()));
                             },
                             child: Container(
-                              height: MediaQuery.of(context).size.height * 0.065,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.065,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   color: ColorApp.orange,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: Const.size(context).width * 0.02615384615),
+                                    vertical: Const.size(context).width *
+                                        0.02615384615),
                                 child: Text(
-                                  '${language.dangNhap.toUpperCase()}',
-                                  style: StyleApp.textStyle700(color: ColorApp.dark),
+                                  language.dangNhap.toUpperCase(),
+                                  style: StyleApp.textStyle700(
+                                      color: ColorApp.dark),
                                 ),
                               ),
                             ),
@@ -160,121 +172,188 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: Const.size(context).width * 0.03615384615,
                           ),
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [SizedBox(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SizedBox(),
                               InkWell(
-                                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignUpScreen()));
                                 },
                                 child: Row(
                                   children: [
                                     SvgPicture.asset('assets/svg/IconAcc2.svg'),
-                                    Text(' ${language.dangKyTaiKhoan}',style: StyleApp.textStyle400(color: ColorApp.darkGreen),)
+                                    Text(
+                                      ' ${language.dangKyTaiKhoan}',
+                                      style: StyleApp.textStyle400(
+                                          color: ColorApp.darkGreen),
+                                    )
                                   ],
                                 ),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                           SizedBox(
                             height: Const.size(context).width * 0.08615384615,
                           ),
-                          Row(crossAxisAlignment: CrossAxisAlignment.center,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Expanded(flex: 1,child: Divider(thickness: 1.5,)),
-                              Text('  ${language.hoacDangNhap}  ',style: StyleApp.textStyle500(color: ColorApp.dark500),),
-                              Expanded(flex: 1,child: Divider(thickness: 1.5,)),
+                              const Expanded(
+                                  flex: 1,
+                                  child: Divider(
+                                    thickness: 1.5,
+                                  )),
+                              Text(
+                                '  ${language.hoacDangNhap}  ',
+                                style: StyleApp.textStyle500(
+                                    color: ColorApp.dark500),
+                              ),
+                              const Expanded(
+                                  flex: 1,
+                                  child: Divider(
+                                    thickness: 1.5,
+                                  )),
                             ],
                           ),
                           SizedBox(
                             height: Const.size(context).width * 0.06615384615,
                           ),
-                          Row(crossAxisAlignment: CrossAxisAlignment.center,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Expanded(flex: 1,child:  Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Const.size(context).width * 0.01),
-                                child: InkWell(
-                                  onTap: (){},
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          Const.size(context).width * 0.01),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.065,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical:
+                                                Const.size(context).width *
+                                                    0.02615384615,
+                                            horizontal:
+                                                Const.size(context).width *
+                                                    0.08615384615),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SvgPicture.asset(
+                                                'assets/svg/google.svg'),
+                                            Text(
+                                              'GOOGLE',
+                                              style: StyleApp.textStyle700(
+                                                  color: Colors.red),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '    ',
+                                style: StyleApp.textStyle500(
+                                    color: ColorApp.dark500),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          Const.size(context).width * 0.01),
                                   child: Container(
-                                    height: MediaQuery.of(context).size.height * 0.065,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.065,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          vertical: Const.size(context).width * 0.02615384615,horizontal:Const.size(context).width * 0.08615384615 ),
+                                          vertical: Const.size(context).width *
+                                              0.02615384615,
+                                          horizontal:
+                                              Const.size(context).width *
+                                                  0.08615384615),
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          SvgPicture.asset('assets/svg/google.svg'),
+                                          SvgPicture.asset(
+                                              'assets/svg/facebook.svg'),
                                           Text(
-                                            'GOOGLE',
-                                            style: StyleApp.textStyle700(color: Colors.red),
+                                            'FACEBOOK',
+                                            style: StyleApp.textStyle700(
+                                                color: ColorApp.blue3A),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),),
-                              Text('    ',style: StyleApp.textStyle500(color: ColorApp.dark500),),
-                              Expanded(flex: 1,child:  Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Const.size(context).width * 0.01),
-                                child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.065,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: Const.size(context).width * 0.02615384615,horizontal:Const.size(context).width * 0.08615384615 ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SvgPicture.asset('assets/svg/facebook.svg'),
-                                        Text(
-                                          'FACEBOOK',
-                                          style: StyleApp.textStyle700(color: ColorApp.blue3A),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),),
+                              ),
                             ],
                           ),
                           SizedBox(
                             height: Const.size(context).width * 0.06615384615,
                           ),
-                          RichText(textAlign: TextAlign.center,
+                          RichText(
+                            textAlign: TextAlign.center,
                             text: TextSpan(
                               text: '${language.khiDangNhap} ',
-style: StyleApp.textStyle500(color: ColorApp.dark500),
-                              children:  <TextSpan>[
-                                TextSpan(text: '${language.dieuKhoanSuDung}',style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
-                                TextSpan(text: ' ${language.va}',style:StyleApp.textStyle500(color: ColorApp.dark500),),
-                          TextSpan(text: ' ${language.chinhSachbaoMat}.',style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
+                              style: StyleApp.textStyle500(
+                                  color: ColorApp.dark500),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: language.dieuKhoanSuDung,
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.bottomBar),
+                                ),
+                                TextSpan(
+                                  text: ' ${language.va}',
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.dark500),
+                                ),
+                                TextSpan(
+                                  text: ' ${language.chinhSachbaoMat}.',
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.bottomBar),
+                                ),
                               ],
                             ),
                           ),
-
                         ],
+                      ),
                     ),
-                  ),
-                      )),
+                  )),
                 ),
               ),
             ],
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }
-
-
-

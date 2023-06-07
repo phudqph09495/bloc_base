@@ -52,13 +52,13 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
-                                '${language.caiDat}',
+                                language.caiDat,
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -75,8 +75,8 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -95,7 +95,7 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -108,7 +108,7 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
                       children: [
                         Container(
                             height: MediaQuery.of(context).size.height * 0.03,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(25),
@@ -119,15 +119,17 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('${language.caiDatThongBao}',
+                              Text(language.caiDatThongBao,
                                   style: StyleApp.textStyle700(
                                       color: ColorApp.dark, fontSize: 18)),
-                              SizedBox(height: Const.size(context).width*28/390,),
+                              SizedBox(
+                                height: Const.size(context).width * 28 / 390,
+                              ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('${language.nhanThongBao}',
+                                  Text(language.nhanThongBao,
                                       style: StyleApp.textStyle500(
                                           color: ColorApp.black3F)),
                                   Row(
@@ -168,7 +170,7 @@ class _CaiDatScreenState extends State<CaiDatScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

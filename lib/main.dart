@@ -16,8 +16,9 @@ import 'bloc/event_bloc.dart';
 import 'bloc/language/bloc_lang.dart';
 import 'config/share_pref.dart';
 import 'homePage.dart';
+import 'router/router.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
@@ -26,12 +27,12 @@ void main()async {
   await SharedPrefs.init();
   Bloc.observer = CounterObserver();
   runApp(
-  //   DevicePreview(
-  //   enabled: !kReleaseMode,
-  //   builder: (context) => MyApp(), // Wrap your app
-  // )
-    MyApp()
-    ,);
+    //   DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(), // Wrap your app
+    // )
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => CounterCubit()),
         BlocProvider(create: (_) => BlocCheckLogin()..add(GetData())),
-        BlocProvider(create: (_) => BlocLang()..add(getLang())),
+        BlocProvider(create: (_) => BlocLang()..add(GetLang())),
 
         // BlocProvider(create: (_) => BlocFireBaseMS()..add(firebase())),
         // In this sample app, CatalogModel never changes, so a simple Provider
@@ -55,22 +56,21 @@ class MyApp extends StatelessWidget {
         // on CatalogModel, so a ProxyProvider is needed.
       ],
       child: MaterialApp(
-        localizationsDelegates: [
-
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
-        supportedLocales: [const Locale('en'), const Locale('vi')],
+        supportedLocales: const [Locale('en'), Locale('vi')],
         home: UpgradeAlert(
           // child: MyHomePage()
-          child: LoginScreen(),
+          child: const LoginScreen(),
         ),
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: RouterName.loginScreen,
       ),
     );
   }
 }
-
-

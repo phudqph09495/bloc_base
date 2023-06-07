@@ -1,5 +1,3 @@
-
-
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/config/const.dart';
@@ -12,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 import '../../bloc/state_bloc.dart';
+import '../../router/router.dart';
 import '../../styles/init_style.dart';
 import '../../styles/utils.dart';
 import '../../widget/item/appBar.dart';
@@ -30,9 +29,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> listSer = ['Triệt lông', ' Chăm Sóc Da Mặt', 'Massage', 'Tóc'];
-bool showmore=false;
+  bool showmore = false;
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -54,7 +53,8 @@ bool showmore=false;
                       alignment: Alignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/bgApp.png',fit: BoxFit.fitHeight,
+                          'assets/images/bgApp.png',
+                          fit: BoxFit.fitHeight,
                           width: double.infinity,
                         ),
                         Positioned(
@@ -66,12 +66,13 @@ bool showmore=false;
                                   _scaffoldKey.currentState!.openDrawer();
                                 },
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   child:
                                       SvgPicture.asset('assets/svg/Vector.svg'),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                   width:
                                       MediaQuery.of(context).size.width * 0.6,
                                   child: SvgPicture.asset(
@@ -79,63 +80,68 @@ bool showmore=false;
                               Row(
                                 children: [
                                   InkWell(
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.qr_code_scanner,
                                       size: 25,
                                     ),
                                     onTap: () async {
-                                      var res =
-                                      await Navigator.push(
+                                      var res = await Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                             SimpleBarcodeScannerPage(
-                                              cancelButtonText: '${language.huyBo}',
+                                                SimpleBarcodeScannerPage(
+                                              cancelButtonText: language.huyBo,
                                             ),
                                           ));
                                       setState(() {
                                         if (res is String) {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>XacNhanScreen()));
+                                          Navigator.pushNamed(context,
+                                              RouterName.xacNhanScreen);
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //       builder: (context) =>
+                                          //           const XacNhanScreen()),
+                                          // );
                                         }
                                       });
                                     },
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  NotifyScreen()));
+                                      Navigator.pushNamed(
+                                          context, RouterName.notifyScreen);
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             const NotifyScreen()));
                                     },
-                                    child: Container(
-                                      child: Stack(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(3.0),
-                                            child: Icon(
-                                              Icons.notifications_none_outlined,
-                                              color: ColorApp.dark,
-                                              size: 25,
-                                            ),
+                                    child: Stack(
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.all(3.0),
+                                          child: Icon(
+                                            Icons.notifications_none_outlined,
+                                            color: ColorApp.dark,
+                                            size: 25,
                                           ),
-                                          Positioned(
-                                              left: 3,
-                                              top: 5,
-                                              child: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.03,
-                                                width:
-                                                    Const.size(context).width *
-                                                        0.03,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: ColorApp.orange),
-                                              ))
-                                        ],
-                                      ),
+                                        ),
+                                        Positioned(
+                                            left: 3,
+                                            top: 5,
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.03,
+                                              width: Const.size(context).width *
+                                                  0.03,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: ColorApp.orange),
+                                            ))
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -150,21 +156,22 @@ bool showmore=false;
                       padding: EdgeInsets.symmetric(
                           horizontal: Const.size(context).width * 0.025),
                       child: InputText1(
-                        label: '${language.timKiem}',
+                        label: language.timKiem,
                         hasLeading: true,
                         iconPreFix:
-                            Icon(Icons.search, color: ColorApp.bottomBar),
+                            const Icon(Icons.search, color: ColorApp.bottomBar),
                         hasSuffix: true,
                         suffix: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Container(width:Const.size(context).width * 0.1,
-                              decoration: BoxDecoration(
+                          child: Container(
+                              width: Const.size(context).width * 0.1,
+                              decoration: const BoxDecoration(
                                   color: ColorApp.bottomBar,
                                   shape: BoxShape.circle),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(
-                                    'assets/svg/locator.svg'),
+                                child:
+                                    SvgPicture.asset('assets/svg/locator.svg'),
                               )),
                         ),
                       ),
@@ -179,304 +186,25 @@ bool showmore=false;
                           padding: EdgeInsets.symmetric(
                               horizontal: Const.size(context).width * 0.025,
                               vertical: Const.size(context).width * 0.06),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${language.dichvu}',
-                                  style: StyleApp.textStyle700(fontSize: 18),
-                                ),
-                                SizedBox(
-                                  height: Const.size(context).width * 0.05,
-                                ),
-                                Container(
-                                  height: Const.size(context).width * 0.29,
-                                  child: ListView.builder(
-                                    itemBuilder: (context, index) {
-                                      return Container(
-                                        height:
-                                            Const.size(context).width * 0.28,
-                                        width: Const.size(context).width * 0.25,
-                                        child: Card(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              SvgPicture.asset(
-                                                  'assets/svg/serviceIcon${index}.svg'),
-                                              Text(
-                                                listSer[index],
-                                                style: StyleApp.textStyle600(
-                                                    color: ColorApp.dark),
-                                                textAlign: TextAlign.center,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    itemCount: listSer.length,
-                                    shrinkWrap: true,
-                                    physics: AlwaysScrollableScrollPhysics(),
-                                    scrollDirection: Axis.horizontal,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          child: _listService(language, context),
                         ),
                         Container(
-                          width: double.infinity,
-                          child: Container(
-                            // home2uyi (117:10394)
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40 * fem),
-                            ),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    // autogroupkubnXVJ (WiaWecQA7afnEnGakiKuBN)
-                                    width: double.infinity,
-                                    height: 317 * fem,
-                                    child: Stack(
-                                      children: [
-
-                                        Positioned(
-                                          // group3JZE (157:9162)
-
-                                          child: Container(
-                                            width: 372 * fem,
-                                            height: 317 * fem,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: AssetImage(
-                                                  'assets/page-1/images/vector-1EY.png',
-                                                ),
-                                              ),
-                                            ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: Const.size(context)
-                                                            .width *
-                                                        0.09),
-                                                child: Container(
-                                                  height: Const.size(context)
-                                                          .width *
-                                                      0.4,
-
-                                                  child: ListView.builder(
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return InkWell(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          InfoSpaScreen()));
-                                                        },
-                                                        child: Padding(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                                                          child: Column(mainAxisSize: MainAxisSize.min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              Row(
-                                                                children: [
-                                                                  Icon(
-                                                                    Icons
-                                                                        .location_on,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                  Text(
-                                                                    '2.3 km',
-                                                                    style: StyleApp.textStyle600(
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: Colors
-                                                                            .white),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              Image.asset(
-                                                                'assets/images/exKhamPha.png',
-                                                                width: Const.size(
-                                                                            context)
-                                                                        .width *
-                                                                    0.25,
-                                                                height: Const.size(
-                                                                            context)
-                                                                        .width *
-                                                                    0.22,
-                                                              ),
-                                                              Container(width:Const.size(
-                                                                  context)
-                                                                  .width *
-                                                                  0.25 ,
-                                                                child: Text(
-                                                                    'Sorella Beauty ',
-                                                                    style: StyleApp
-                                                                        .textStyle600(
-                                                                            fontSize:
-                                                                                14,
-                                                                            color: Colors
-                                                                                .white)),
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Icon(
-                                                                    Icons.star,
-                                                                    color: ColorApp
-                                                                        .yellow,size: 16,
-                                                                  ),
-                                                                  Text(
-                                                                    '4.8',
-                                                                    style: StyleApp.textStyle600(
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: Colors
-                                                                            .white),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                    itemCount: 10,
-                                                    physics:
-                                                        AlwaysScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // khmphgnbnJxY (157:9167)
-                                          left: 18 * fem,
-                                          top: 54 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 156 * fem,
-                                              height: 23 * fem,
-                                              child: Text(
-                                                '${language.khamPhaGanBan}',
-                                                style: SafeGoogleFont(
-                                                  'SVN-Gilroy',
-                                                  fontSize: 18 * ffem,
-                                                  fontWeight: FontWeight.w700,
-                                                  height: 1.2575 * ffem / fem,
-                                                  letterSpacing:
-                                                      0.0180000003 * fem,
-                                                  color: Color(0xffffffff),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // group6z4g (157:9168)
-                                          left: 256 * fem,
-                                          top: 50 * fem,
-                                          child: Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                10 * fem,
-                                                6 * fem,
-                                                13 * fem,
-                                                4 * fem),
-                                            width: 101 * fem,
-                                            height: 27 * fem,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffc94d),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      7 * fem),
-                                            ),
-                                            child: Container(
-                                              // group56G8 (157:9170)
-                                              width: double.infinity,
-                                              height: double.infinity,
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    // frame3BN (157:9171)
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        5 * fem,
-                                                        0 * fem),
-                                                    width: 14 * fem,
-                                                    height: 14 * fem,
-                                                    child: Image.asset(
-                                                      'assets/page-1/images/frame-LNU.png',
-                                                      width: 14 * fem,
-                                                      height: 14 * fem,
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    // xemthmwnY (157:9174)
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        1 * fem,
-                                                        0 * fem,
-                                                        0 * fem),
-                                                    child: Text(
-                                                      'Xem Thêm',
-                                                      style: SafeGoogleFont(
-                                                        'SVN-Gilroy',
-                                                        fontSize: 12 * ffem,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        height:
-                                                            1.2575 * ffem / fem,
-                                                        letterSpacing:
-                                                            0.012 * fem,
-                                                        color:
-                                                            Color(0xff252525),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+                            color: Colors.blue,
+                            child: _discoveryNearYou(
+                                fem, context, language, ffem)),
                         // Image.asset('assets/images/bannerHome.png'),
-                        ImageSlideshow(
-                          children: List.generate(
-                              3,
-                              (index) =>
-                                  Image.asset('assets/images/bannerHome.png')),
-                          // [
-
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          indicatorColor: ColorApp.bottomBar,
-                          isLoop: true,
-                          autoPlayInterval: 2000,
+                        Container(
+                          color: Colors.red,
+                          child: ImageSlideshow(
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            indicatorColor: ColorApp.bottomBar,
+                            isLoop: true,
+                            autoPlayInterval: 2000,
+                            children: List.generate(
+                                3,
+                                (index) => Image.asset(
+                                    'assets/images/bannerHome.png')),
+                          ),
                         ),
                         Padding(
                             padding: EdgeInsets.symmetric(
@@ -512,7 +240,7 @@ bool showmore=false;
                                     color: ColorApp.pink,
                                     dashPattern: const [5, 1],
                                     child: Padding(
-                                      padding: EdgeInsets.all(3),
+                                      padding: const EdgeInsets.all(3),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -547,7 +275,7 @@ bool showmore=false;
                                                             color: Colors.white,
                                                             fontSize: 13),
                                                   ),
-                                                  SizedBox(),
+                                                  const SizedBox(),
                                                 ],
                                               ),
                                             ),
@@ -575,27 +303,27 @@ bool showmore=false;
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '${language.danhGiaCaoNhat}',
+                                      language.danhGiaCaoNhat,
                                       style: StyleApp.textStyle700(
                                           color: ColorApp.dark, fontSize: 18),
                                     ),
                                     InkWell(
-                                      onTap: (){
+                                      onTap: () {
                                         setState(() {
-                                          showmore=true;
+                                          showmore = true;
                                         });
                                       },
                                       child: Container(
-                                        padding: EdgeInsets.fromLTRB(
-                                            10 * fem, 6 * fem, 13 * fem, 4 * fem),
+                                        padding: EdgeInsets.fromLTRB(10 * fem,
+                                            6 * fem, 13 * fem, 4 * fem),
                                         width: 102 * fem,
                                         height: 27 * fem,
                                         decoration: BoxDecoration(
-                                          color: Color(0xffffc94d),
+                                          color: const Color(0xffffc94d),
                                           borderRadius:
                                               BorderRadius.circular(7 * fem),
                                         ),
-                                        child: Container(
+                                        child: SizedBox(
                                           // group56G8 (157:9170)
                                           width: double.infinity,
                                           height: double.infinity,
@@ -627,14 +355,15 @@ bool showmore=false;
                                                     0 * fem),
                                                 child: Text(
                                                   'Xem Thêm',
-                                                  style: SafeGoogleFont(
+                                                  style: safeGoogleFont(
                                                     'SVN-Gilroy',
                                                     fontSize: 12 * ffem,
                                                     fontWeight: FontWeight.w700,
                                                     height: 1.2575 * ffem / fem,
                                                     letterSpacing:
                                                         0.0120000001 * fem,
-                                                    color: Color(0xff252525),
+                                                    color:
+                                                        const Color(0xff252525),
                                                   ),
                                                 ),
                                               ),
@@ -648,128 +377,145 @@ bool showmore=false;
                                 SizedBox(
                                   height: Const.size(context).width * 0.02,
                                 ),
-                        showmore?MoreSpaScreen():        GridView.builder(
-                                  padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                                            maxCrossAxisExtent: 200,
-                                            crossAxisSpacing: 20,
-                                            mainAxisSpacing: 20),
-                                    itemCount: 6,
-                                    shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (BuildContext ctx, index) {
-                                      return InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      InfoSpaScreen()));
-                                        },
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Stack(
-                                                alignment: Alignment.bottomCenter,
+                                showmore
+                                    ? const MoreSpaScreen()
+                                    : GridView.builder(
+                                        padding: EdgeInsets.zero,
+                                        gridDelegate:
+                                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 200,
+                                                crossAxisSpacing: 20,
+                                                mainAxisSpacing: 20),
+                                        itemCount: 6,
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemBuilder: (BuildContext ctx, index) {
+                                          return InkWell(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  RouterName.infoSpaScreen);
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             const InfoSpaScreen()));
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
                                                 children: [
-                                                  Image.asset(
-                                                    'assets/images/mostRate.png',width: Const.size(context).width*0.45,fit: BoxFit.fitHeight,
-                                                  ),
-                                                  Container(
-                                                      decoration: BoxDecoration(
-                                                          color: ColorApp.dark
-                                                              .withOpacity(0.3),
-                                                          borderRadius:
-                                                              BorderRadius.only(
+                                                  Stack(
+                                                    alignment:
+                                                        Alignment.bottomCenter,
+                                                    children: [
+                                                      Image.asset(
+                                                        'assets/images/mostRate.png',
+                                                        width:
+                                                            Const.size(context)
+                                                                    .width *
+                                                                0.45,
+                                                        fit: BoxFit.fitHeight,
+                                                      ),
+                                                      Container(
+                                                          decoration: BoxDecoration(
+                                                              color: ColorApp.dark
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              borderRadius: const BorderRadius
+                                                                      .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
                                                                           15),
                                                                   bottomRight: Radius
                                                                       .circular(
                                                                           15))),
-                                                      child: Padding(
-                                                        padding: EdgeInsets.symmetric(
-                                                            vertical: Const.size(
-                                                                        context)
-                                                                    .width *
-                                                                0.0111111111111),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            SizedBox(),
-                                                            Row(
+                                                          child: Padding(
+                                                            padding: EdgeInsets.symmetric(
+                                                                vertical: Const.size(
+                                                                            context)
+                                                                        .width *
+                                                                    0.0111111111111),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
                                                               children: [
-                                                                Icon(
-                                                                  Icons
-                                                                      .location_on,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  size: 15,
-                                                                ),
-                                                                Text(
-                                                                  '2.3 km',
-                                                                  style: StyleApp.textStyle600(
+                                                                const SizedBox(),
+                                                                Row(
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .location_on,
                                                                       color: Colors
                                                                           .white,
-                                                                      fontSize:
-                                                                          12),
+                                                                      size: 15,
+                                                                    ),
+                                                                    Text(
+                                                                      '2.3 km',
+                                                                      style: StyleApp.textStyle600(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontSize:
+                                                                              12),
+                                                                    ),
+                                                                  ],
                                                                 ),
+                                                                const SizedBox()
                                                               ],
                                                             ),
-                                                            SizedBox()
-                                                          ],
-                                                        ),
-                                                      )),
-                                                ],
-                                              ),
-                                              Text(
-                                                'Sorella Beauty',
-                                                style: StyleApp.textStyle600(
-                                                    color: ColorApp.dark),
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  SizedBox(),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.star,
-                                                        color: ColorApp.yellow,
-                                                      ),
-                                                      Text(
-                                                        '4.7',
-                                                        style: StyleApp
-                                                            .textStyle700(
-                                                                color: ColorApp
-                                                                    .yellow),
-                                                      ),
-                                                      Text(' (98)',
-                                                          style: StyleApp
-                                                              .textStyle700(
-                                                                  color: Color(
-                                                                      0xff717171))),
+                                                          )),
                                                     ],
                                                   ),
-                                                  SizedBox(),
+                                                  Text(
+                                                    'Sorella Beauty',
+                                                    style:
+                                                        StyleApp.textStyle600(
+                                                            color:
+                                                                ColorApp.dark),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      const SizedBox(),
+                                                      Row(
+                                                        children: [
+                                                          const Icon(
+                                                            Icons.star,
+                                                            color:
+                                                                ColorApp.yellow,
+                                                          ),
+                                                          Text(
+                                                            '4.7',
+                                                            style: StyleApp
+                                                                .textStyle700(
+                                                                    color: ColorApp
+                                                                        .yellow),
+                                                          ),
+                                                          Text(' (98)',
+                                                              style: StyleApp
+                                                                  .textStyle700(
+                                                                      color: const Color(
+                                                                          0xff717171))),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(),
+                                                    ],
+                                                  ),
                                                 ],
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    }),
+                                            ),
+                                          );
+                                        }),
                                 SizedBox(
                                   height: Const.size(context).width * 0.3,
                                 ),
@@ -782,9 +528,253 @@ bool showmore=false;
               ],
             );
           }
-          return SizedBox();
+          return const SizedBox();
         },
       ),
+    );
+  }
+
+  SizedBox _discoveryNearYou(
+      double fem, BuildContext context, Language language, double ffem) {
+    return SizedBox(
+      width: double.infinity,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              // autogroupkubnXVJ (WiaWecQA7afnEnGakiKuBN)
+              width: double.infinity,
+              height: 317 * fem,
+              child: Stack(
+                children: [
+                  // SvgPicture.asset(
+                  //   'assets/svg/map.svg',
+                  // ),
+                  Positioned(
+                    // group3JZE (157:9162)
+
+                    child: Container(
+                      width: 372 * fem,
+                      height: 317 * fem,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            'assets/page-1/images/vector-1EY.png',
+                          ),
+                        ),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: Const.size(context).width * 0.09),
+                          child: SizedBox(
+                            height: Const.size(context).width * 0.4,
+                            child: ListView.builder(
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, RouterName.infoSpaScreen);
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder:
+                                    //             (context) =>
+                                    //                 const InfoSpaScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 2),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.location_on,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              '2.3 km',
+                                              style: StyleApp.textStyle600(
+                                                  fontSize: 12,
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        ),
+                                        Image.asset(
+                                          'assets/images/exKhamPha.png',
+                                          width:
+                                              Const.size(context).width * 0.25,
+                                          height:
+                                              Const.size(context).width * 0.22,
+                                        ),
+                                        SizedBox(
+                                          width:
+                                              Const.size(context).width * 0.25,
+                                          child: Text('Sorella Beauty ',
+                                              style: StyleApp.textStyle600(
+                                                  fontSize: 14,
+                                                  color: Colors.white)),
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.star,
+                                              color: ColorApp.yellow,
+                                              size: 16,
+                                            ),
+                                            Text(
+                                              '4.8',
+                                              style: StyleApp.textStyle600(
+                                                  fontSize: 12,
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                              itemCount: 10,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    // khmphgnbnJxY (157:9167)
+                    left: 18 * fem,
+                    top: 54 * fem,
+                    child: Align(
+                      child: SizedBox(
+                        width: 156 * fem,
+                        height: 23 * fem,
+                        child: Text(
+                          language.khamPhaGanBan,
+                          style: safeGoogleFont(
+                            'SVN-Gilroy',
+                            fontSize: 18 * ffem,
+                            fontWeight: FontWeight.w700,
+                            height: 1.2575 * ffem / fem,
+                            letterSpacing: 0.0180000003 * fem,
+                            color: const Color(0xffffffff),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    // group6z4g (157:9168)
+                    left: 256 * fem,
+                    top: 50 * fem,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(
+                          10 * fem, 6 * fem, 13 * fem, 4 * fem),
+                      width: 101 * fem,
+                      height: 27 * fem,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffffc94d),
+                        borderRadius: BorderRadius.circular(7 * fem),
+                      ),
+                      child: SizedBox(
+                        // group56G8 (157:9170)
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              // frame3BN (157:9171)
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 5 * fem, 0 * fem),
+                              width: 14 * fem,
+                              height: 14 * fem,
+                              child: Image.asset(
+                                'assets/page-1/images/frame-LNU.png',
+                                width: 14 * fem,
+                                height: 14 * fem,
+                              ),
+                            ),
+                            Container(
+                              // xemthmwnY (157:9174)
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                              child: Text(
+                                'Xem Thêm',
+                                style: safeGoogleFont(
+                                  'SVN-Gilroy',
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.2575 * ffem / fem,
+                                  letterSpacing: 0.012 * fem,
+                                  color: const Color(0xff252525),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column _listService(Language language, BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          language.dichvu,
+          style: StyleApp.textStyle700(fontSize: 18),
+        ),
+        SizedBox(
+          height: Const.size(context).width * 0.05,
+        ),
+        SizedBox(
+          height: Const.size(context).width * 0.29,
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return SizedBox(
+                height: Const.size(context).width * 0.28,
+                width: Const.size(context).width * 0.25,
+                child: Card(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SvgPicture.asset('assets/svg/serviceIcon$index.svg'),
+                      Text(
+                        listSer[index],
+                        style: StyleApp.textStyle600(color: ColorApp.dark),
+                        textAlign: TextAlign.center,
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+            itemCount: listSer.length,
+            shrinkWrap: true,
+            physics: const AlwaysScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+      ],
     );
   }
 }

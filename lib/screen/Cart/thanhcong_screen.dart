@@ -52,9 +52,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [SizedBox(),
-
-                  SizedBox()],
+                            children: const [SizedBox(), SizedBox()],
                           ),
                         ],
                       ),
@@ -70,8 +68,8 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -90,7 +88,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -103,7 +101,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                       children: [
                         Container(
                             height: MediaQuery.of(context).size.height * 0.1,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(25),
@@ -112,7 +110,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                         SizedBox(
                           height: Const.size(context).height * 50 / 844,
                         ),
-                        Container(
+                        SizedBox(
                             width: Const.size(context).width * 0.65,
                             child: Text(
                               language.camOnBan,
@@ -120,10 +118,10 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                               style: StyleApp.textStyle700(
                                   color: ColorApp.darkGreen, fontSize: 18),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                             width: Const.size(context).width * 0.9,
                             child: Text(
                               'Mỗi booking của quý khách được hoàn thành sẽ tương ứng với 1000 đồng gửi tới Tổ chức trẻ em Rồng Xanh.',
@@ -137,14 +135,22 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(),
+                            const SizedBox(),
                             Row(
                               children: [
-                                Text(language.timHieuThem,style: StyleApp.textStyle500(color: ColorApp.bottomBar),),
-                                Icon(Icons.double_arrow_rounded,color: ColorApp.bottomBar,size: 16,)
+                                Text(
+                                  language.timHieuThem,
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.bottomBar),
+                                ),
+                                const Icon(
+                                  Icons.double_arrow_rounded,
+                                  color: ColorApp.bottomBar,
+                                  size: 16,
+                                )
                               ],
                             ),
-                            SizedBox(),
+                            const SizedBox(),
                           ],
                         )
                       ],
@@ -157,8 +163,11 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
           bottomSheet: Padding(
             padding: const EdgeInsets.all(16.0),
             child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>MaDatLichScreen()));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MaDatLichScreen()));
               },
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.065,
@@ -170,7 +179,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
                   padding: EdgeInsets.symmetric(
                       vertical: Const.size(context).width * 0.02615384615),
                   child: Text(
-                    '${language.xemthemMaDatLich.toUpperCase()}',
+                    language.xemthemMaDatLich.toUpperCase(),
                     style: StyleApp.textStyle700(color: ColorApp.dark),
                   ),
                 ),
@@ -179,7 +188,7 @@ class _ThanhCongScreenState extends State<ThanhCongScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

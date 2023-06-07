@@ -18,9 +18,10 @@ class NotifyScreen extends StatefulWidget {
 class _NotifyScreenState extends State<NotifyScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang,StateBloc>(builder: (context,StateBloc state){
-      if(state is LoadSuccess){
-        Language language=state.data;
+    return BlocBuilder<BlocLang, StateBloc>(
+        builder: (context, StateBloc state) {
+      if (state is LoadSuccess) {
+        Language language = state.data;
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -28,14 +29,14 @@ class _NotifyScreenState extends State<NotifyScreen> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.clear,
                   color: Colors.white,
                 )),
             centerTitle: true,
             backgroundColor: ColorApp.darkGreen,
             title: Text(
-              '${language.thongBao}',
+              language.thongBao,
               style: StyleApp.textStyle700(color: Colors.white, fontSize: 18),
             ),
           ),
@@ -47,7 +48,7 @@ class _NotifyScreenState extends State<NotifyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${language.homNay}',
+                  Text(language.homNay,
                       style: StyleApp.textStyle700(
                           fontSize: 16, color: ColorApp.dark)),
                   ListView.builder(
@@ -62,12 +63,12 @@ class _NotifyScreenState extends State<NotifyScreen> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(width: Const.size(context).width*0.65,
+                                SizedBox(
+                                  width: Const.size(context).width * 0.65,
                                   child: Text(
                                     'Thanh toán không thành côndsfsdjfiosdufiosdjsdiojfiosdfdsfsdfsdfhsduhfdjhg',
-
-                                    style:
-                                    StyleApp.textStyle600(color: ColorApp.dark),
+                                    style: StyleApp.textStyle600(
+                                        color: ColorApp.dark),
                                   ),
                                 ),
                                 SizedBox(
@@ -76,11 +77,11 @@ class _NotifyScreenState extends State<NotifyScreen> {
                                 Text(
                                   '10:21 pm',
                                   style: StyleApp.textStyle400(
-                                      color: Color(0xff717171)),
+                                      color: const Color(0xff717171)),
                                 )
                               ],
                             ),
-                            Icon(
+                            const Icon(
                               Icons.more_horiz,
                               color: ColorApp.bottomBar,
                             )
@@ -90,12 +91,12 @@ class _NotifyScreenState extends State<NotifyScreen> {
                     },
                     itemCount: 3,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                   ),
                   SizedBox(
                     height: Const.size(context).width * 0.05,
                   ),
-                  Text('${language.ganDay}',
+                  Text(language.ganDay,
                       style: StyleApp.textStyle700(
                           fontSize: 16, color: ColorApp.dark)),
                   ListView.builder(
@@ -107,16 +108,17 @@ class _NotifyScreenState extends State<NotifyScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                                child: SvgPicture.asset('assets/svg/notiIcon.svg')),
+                                child: SvgPicture.asset(
+                                    'assets/svg/notiIcon.svg')),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(width: Const.size(context).width*0.65,
+                                SizedBox(
+                                  width: Const.size(context).width * 0.65,
                                   child: Text(
                                     'Thanh toán không thành côndsfsdjfiosdufiosdjsdiojfiosdfdsfsdfsdfhsduhfdjhg',
-
-                                    style:
-                                    StyleApp.textStyle600(color: ColorApp.dark),
+                                    style: StyleApp.textStyle600(
+                                        color: ColorApp.dark),
                                   ),
                                 ),
                                 SizedBox(
@@ -125,11 +127,11 @@ class _NotifyScreenState extends State<NotifyScreen> {
                                 Text(
                                   '10:21 pm',
                                   style: StyleApp.textStyle400(
-                                      color: Color(0xff717171)),
+                                      color: const Color(0xff717171)),
                                 )
                               ],
                             ),
-                            Icon(
+                            const Icon(
                               Icons.more_horiz,
                               color: ColorApp.bottomBar,
                             )
@@ -139,7 +141,7 @@ class _NotifyScreenState extends State<NotifyScreen> {
                     },
                     itemCount: 3,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                   ),
                 ],
               ),
@@ -147,7 +149,7 @@ class _NotifyScreenState extends State<NotifyScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

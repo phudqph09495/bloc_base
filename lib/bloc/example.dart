@@ -24,24 +24,26 @@ class _ExampleState extends State<Example> {
               builder: (_, StateBloc state) {
                 //giao diện khi load thành công
                 if (state is LoadSuccess) {
-                  return SizedBox();
+                  return const SizedBox();
                 }
                 //giao diện khi loading
                 if (state is Loading) {
-                  return SizedBox();
+                  return const SizedBox();
                 }
                 //giao diện khi load thất bại
                 if (state is LoadFail) {
-                  return SizedBox();
+                  return const SizedBox();
                 }
                 // giao diện mặc định
-                return SizedBox();
+                return const SizedBox();
               },
               bloc: blocLogin,
             ),
             BlocListener(
               listener: (_, StateBloc state) {
-                CheckLogState.check(context, state: state,msg: 'dòng thông báo khi submit thành công',success: (){
+                CheckLogState.check(context,
+                    state: state,
+                    msg: 'dòng thông báo khi submit thành công', success: () {
                   // function chạy khi load thành công
                 });
               },
@@ -50,7 +52,7 @@ class _ExampleState extends State<Example> {
                 onTap: () {
                   // function khi bấm
                 },
-                child: Icon(Icons.add),
+                child: const Icon(Icons.add),
               ),
             )
           ],

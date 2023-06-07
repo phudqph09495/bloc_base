@@ -28,12 +28,11 @@ class _GioHangScreenState extends State<GioHangScreen> {
     ModelCart(name: 'Chăm sóc cơ thể', soLuong: 1, gia: 350000),
     ModelCart(name: 'Body Massage', soLuong: 3, gia: 420000),
   ];
- int choosen=0;
-  int sum=0;
-  bool showToast=false;
+  int choosen = 0;
+  int sum = 0;
+  bool showToast = false;
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
@@ -47,7 +46,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                     Container(
                       color: ColorApp.darkGreen,
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height*0.25,
+                      height: MediaQuery.of(context).size.height * 0.25,
                       child: Column(
                         children: [
                           SizedBox(
@@ -56,13 +55,13 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
                                 '${language.gioHang} (3)',
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -73,14 +72,19 @@ class _GioHangScreenState extends State<GioHangScreen> {
                       left: 10,
                       child: InkWell(
                         onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage(index: 0,)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyHomePage(
+                                        index: 0,
+                                      )));
                         },
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -95,25 +99,23 @@ class _GioHangScreenState extends State<GioHangScreen> {
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.12,
-                height: MediaQuery.of(context).size.height*1.5,
+                height: MediaQuery.of(context).size.height * 1.5,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-height: MediaQuery.of(context).size.height*1.5,
-                  decoration: BoxDecoration(
+                  height: MediaQuery.of(context).size.height * 1.5,
+                  decoration: const BoxDecoration(
                       color: ColorApp.whiteF0,
-
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
-
                   child: SingleChildScrollView(
                       child: SizedBox(
-height: MediaQuery.of(context).size.height*3,
-                        child: Column(
-                    children: [
+                    height: MediaQuery.of(context).size.height * 3,
+                    child: Column(
+                      children: [
                         Container(
                             height: MediaQuery.of(context).size.height * 0.02,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(25),
@@ -135,9 +137,9 @@ height: MediaQuery.of(context).size.height*3,
                                                 0.04615384615,
                                             right: Const.size(context).width *
                                                 0.04615384615),
-                                        child: Container(
-                                          width: Const.size(context).width * 0.9,
-
+                                        child: SizedBox(
+                                          width:
+                                              Const.size(context).width * 0.9,
                                           child: Column(
                                             children: [
                                               Row(
@@ -147,42 +149,53 @@ height: MediaQuery.of(context).size.height*3,
                                                   Expanded(
                                                     flex: 1,
                                                     child: Checkbox(
-                                                        shape: CircleBorder(),
+                                                        shape:
+                                                            const CircleBorder(),
                                                         activeColor:
                                                             ColorApp.bottomBar,
-                                                        value: list[index].value,
+                                                        value:
+                                                            list[index].value,
                                                         onChanged: (value) {
-
                                                           setState(() {
                                                             list[index].value =
                                                                 value;
-                                                            choosen=0;sum=0;
+                                                            choosen = 0;
+                                                            sum = 0;
 
-                                                            for(int i=0;i<list.length;i++){
-                                                            if(list[i].value==true){sum=sum+list[i].gia*list[i].soLuong;
-                                                            choosen++;}
+                                                            for (int i = 0;
+                                                                i < list.length;
+                                                                i++) {
+                                                              if (list[i]
+                                                                      .value ==
+                                                                  true) {
+                                                                sum = sum +
+                                                                    list[i].gia *
+                                                                        list[i]
+                                                                            .soLuong;
+                                                                choosen++;
+                                                              }
                                                             }
-
                                                           });
-
                                                         }),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 5,
                                                   ),
                                                   Expanded(
                                                     flex: 4,
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: Const.size(context)
                                                               .width *
                                                           0.17948717948,
-                                                      height: Const.size(context)
-                                                              .width *
-                                                          0.17948717948,
+                                                      height:
+                                                          Const.size(context)
+                                                                  .width *
+                                                              0.17948717948,
                                                       child: ClipRRect(
-                                                        borderRadius: BorderRadius.circular(12.0),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
                                                         child: Image.asset(
-
                                                           'assets/images/exSpa.png',
                                                           fit: BoxFit.cover,
                                                         ),
@@ -190,8 +203,8 @@ height: MediaQuery.of(context).size.height*3,
                                                     ),
                                                   ),
                                                   Expanded(
-                                                    child: Container(),
                                                     flex: 1,
+                                                    child: Container(),
                                                   ),
                                                   Expanded(
                                                     flex: 14,
@@ -208,26 +221,26 @@ height: MediaQuery.of(context).size.height*3,
                                                             Expanded(
                                                                 flex: 5,
                                                                 child: Text(
-                                                                  '${list[index].name}',
-                                                                  style: StyleApp
-                                                                      .textStyle700(
-                                                                          fontSize:
-                                                                              16,
-                                                                          color: ColorApp
-                                                                              .dark),
+                                                                  list[index]
+                                                                      .name,
+                                                                  style: StyleApp.textStyle700(
+                                                                      fontSize:
+                                                                          16,
+                                                                      color: ColorApp
+                                                                          .dark),
                                                                 )),
                                                             Expanded(
                                                               flex: 2,
                                                               child: Container(
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                        border: Border
-                                                                            .all()),
+                                                                        border:
+                                                                            Border.all()),
                                                                 child: Padding(
-                                                                  padding: EdgeInsets
-                                                                      .symmetric(
-                                                                          vertical:
-                                                                              4),
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      vertical:
+                                                                          4),
                                                                   child: Row(
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
@@ -236,29 +249,29 @@ height: MediaQuery.of(context).size.height*3,
                                                                       InkWell(
                                                                           onTap:
                                                                               () {
-showToast=false;
-                                                                         setState(() {
-                                                                           if (list[index].soLuong >
-                                                                               0) {
-                                                                             list[index].soLuong--;
-                                                                             choosen=0;sum=0;
+                                                                            showToast =
+                                                                                false;
+                                                                            setState(() {
+                                                                              if (list[index].soLuong > 0) {
+                                                                                list[index].soLuong--;
+                                                                                choosen = 0;
+                                                                                sum = 0;
 
-                                                                             for(int i=0;i<list.length;i++){
-                                                                               if(list[i].value==true){sum=sum+list[i].gia*list[i].soLuong;
-                                                                               choosen++;}
-                                                                             }
-                                                                           }
-                                                                         });
-
+                                                                                for (int i = 0; i < list.length; i++) {
+                                                                                  if (list[i].value == true) {
+                                                                                    sum = sum + list[i].gia * list[i].soLuong;
+                                                                                    choosen++;
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            });
                                                                           },
                                                                           child:
-                                                                          FaIcon(
-                                                                            FontAwesomeIcons
-                                                                                .minus,
+                                                                              const FaIcon(
+                                                                            FontAwesomeIcons.minus,
                                                                             size:
-                                                                            14,
+                                                                                14,
                                                                           )),
-
                                                                       Text(
                                                                         ' ${list[index].soLuong} ',
                                                                         style: StyleApp.textStyle500(
@@ -271,28 +284,30 @@ showToast=false;
                                                                         onTap:
                                                                             () {
                                                                           setState(
-                                                                                  () {
-                                                                               if( list[index]
-                                                                                   .soLuong<3){
-                                                                                 list[index]
-                                                                                     .soLuong++;
-                                                                                 choosen=0;sum=0;
+                                                                              () {
+                                                                            if (list[index].soLuong <
+                                                                                3) {
+                                                                              list[index].soLuong++;
+                                                                              choosen = 0;
+                                                                              sum = 0;
 
-                                                                                 for(int i=0;i<list.length;i++){
-                                                                                   if(list[i].value==true){sum=sum+list[i].gia*list[i].soLuong;
-                                                                                   choosen++;}
-                                                                                 }
-                                                                               }else{
-                                                                                 showToast=true;
-                                                                               }
-                                                                              });
+                                                                              for (int i = 0; i < list.length; i++) {
+                                                                                if (list[i].value == true) {
+                                                                                  sum = sum + list[i].gia * list[i].soLuong;
+                                                                                  choosen++;
+                                                                                }
+                                                                              }
+                                                                            } else {
+                                                                              showToast = true;
+                                                                            }
+                                                                          });
                                                                         },
                                                                         child:
-                                                                        Icon(
+                                                                            const Icon(
                                                                           Icons
                                                                               .add,
                                                                           size:
-                                                                          14,
+                                                                              14,
                                                                         ),
                                                                       ),
                                                                     ],
@@ -302,12 +317,12 @@ showToast=false;
                                                             )
                                                           ],
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           height: 7,
                                                         ),
                                                         Row(
                                                           children: [
-                                                            Icon(
+                                                            const Icon(
                                                               Icons.home,
                                                               size: 16,
                                                               color: ColorApp
@@ -323,7 +338,7 @@ showToast=false;
                                                             ),
                                                           ],
                                                         ),
-                                                        SizedBox(
+                                                        const SizedBox(
                                                           height: 7,
                                                         ),
                                                         Row(
@@ -333,7 +348,7 @@ showToast=false;
                                                           children: [
                                                             Row(
                                                               children: [
-                                                                Icon(
+                                                                const Icon(
                                                                   Icons.star,
                                                                   size: 16,
                                                                   color: ColorApp
@@ -351,24 +366,35 @@ showToast=false;
                                                                   ' (86)',
                                                                   style: StyleApp
                                                                       .textStyle500(
-                                                                          color: ColorApp
-                                                                              .dark500),
+                                                                          color:
+                                                                              ColorApp.dark500),
                                                                 ),
                                                               ],
                                                             ),
                                                             InkWell(
-                                                              onTap: (){
+                                                              onTap: () {
                                                                 setState(() {
-                                                                  list.removeAt(index);
-                                                                  choosen=0;sum=0;
+                                                                  list.removeAt(
+                                                                      index);
+                                                                  choosen = 0;
+                                                                  sum = 0;
 
-                                                                  for(int i=0;i<list.length;i++){
-                                                                    if(list[i].value==true){sum=sum+list[i].gia*list[i].soLuong;
-                                                                    choosen++;}
+                                                                  for (int i =
+                                                                          0;
+                                                                      i < list.length;
+                                                                      i++) {
+                                                                    if (list[i]
+                                                                            .value ==
+                                                                        true) {
+                                                                      sum = sum +
+                                                                          list[i].gia *
+                                                                              list[i].soLuong;
+                                                                      choosen++;
+                                                                    }
                                                                   }
                                                                 });
                                                               },
-                                                              child: Icon(
+                                                              child: const Icon(
                                                                   Icons
                                                                       .delete_forever,
                                                                   color: ColorApp
@@ -381,7 +407,7 @@ showToast=false;
                                                   ),
                                                 ],
                                               ),
-                                              Divider(),
+                                              const Divider(),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -391,15 +417,16 @@ showToast=false;
                                                     children: [
                                                       Transform.scale(
                                                           scale: 0.75,
-                                                          child: SvgPicture.asset(
+                                                          child:
+                                                              SvgPicture.asset(
                                                             'assets/svg/notiIcon.svg',
-                                                            color:
-                                                                ColorApp.dark500,
+                                                            color: ColorApp
+                                                                .dark500,
                                                           )),
                                                       Text(
                                                         ' 4/6/2023 - 15:35',
-                                                        style:
-                                                            StyleApp.textStyle400(
+                                                        style: StyleApp
+                                                            .textStyle400(
                                                                 color: ColorApp
                                                                     .dark500,
                                                                 fontSize: 14),
@@ -408,15 +435,15 @@ showToast=false;
                                                   ),
                                                   Row(
                                                     children: [
-                                                      Icon(
+                                                      const Icon(
                                                         Icons
                                                             .watch_later_outlined,
                                                         color: ColorApp.dark500,
                                                       ),
                                                       Text(
                                                         ' 70 phút',
-                                                        style:
-                                                            StyleApp.textStyle400(
+                                                        style: StyleApp
+                                                            .textStyle400(
                                                                 color: ColorApp
                                                                     .dark500,
                                                                 fontSize: 14),
@@ -425,9 +452,11 @@ showToast=false;
                                                   ),
                                                   Text(
                                                     '${Const.ConvertPrice.format(list[index].gia * list[index].soLuong)} ₫',
-                                                    style: StyleApp.textStyle700(
-                                                        color: ColorApp.darkGreen,
-                                                        fontSize: 16),
+                                                    style:
+                                                        StyleApp.textStyle700(
+                                                            color: ColorApp
+                                                                .darkGreen,
+                                                            fontSize: 16),
                                                   )
                                                 ],
                                               ),
@@ -436,7 +465,6 @@ showToast=false;
                                               )
                                             ],
                                           ),
-
                                         ),
                                       ),
                                       Container(
@@ -448,24 +476,36 @@ showToast=false;
                                 },
                                 itemCount: list.length,
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                               ),
-           showToast?                   Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(decoration: BoxDecoration(
-                                  color: ColorApp.pink.withOpacity(0.5),borderRadius: BorderRadius.circular(12)
-                                ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.report_problem_outlined,color: ColorApp.pink,),
-                                        Text(' ${language.canhBao}',style: StyleApp.textStyle500(color: ColorApp.pink),)
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ):SizedBox(),
+                              showToast
+                                  ? Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color:
+                                                ColorApp.pink.withOpacity(0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.report_problem_outlined,
+                                                color: ColorApp.pink,
+                                              ),
+                                              Text(
+                                                ' ${language.canhBao}',
+                                                style: StyleApp.textStyle500(
+                                                    color: ColorApp.pink),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox(),
                               Container(
                                 height: 5,
                                 color: Colors.white,
@@ -473,123 +513,161 @@ showToast=false;
                             ],
                           ),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                      child:   DottedBorder(
-                          borderType: BorderType.RRect,
-                          radius: const Radius.circular(15),
-                          color: ColorApp.bottomBar,
-                          dashPattern: const [5, 1],
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,borderRadius: BorderRadius.circular(15)
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(3),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment
-                                    .spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(
-                                        Const.size(context)
-                                            .width *
-                                            0.03),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment
-                                          .spaceBetween,
-                                      children: [
-                                        SvgPicture.asset(
-                                            'assets/svg/discount2.svg'),
-                                        Text(
-                                          '   ${language.nhapMagiamGia}',
-                                          style: StyleApp
-                                              .textStyle500(
-                                              color: ColorApp
-                                                  .dark500,
-                                              fontSize: 13),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DottedBorder(
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(15),
+                              color: ColorApp.bottomBar,
+                              dashPattern: const [5, 1],
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(
+                                            Const.size(context).width * 0.03),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SvgPicture.asset(
+                                                'assets/svg/discount2.svg'),
+                                            Text(
+                                              '   ${language.nhapMagiamGia}',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.dark500,
+                                                  fontSize: 13),
+                                            ),
+                                            const SizedBox(),
+                                          ],
                                         ),
-                                        SizedBox(),
-                                      ],
-                                    ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            color: ColorApp.bottomBar),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal:
+                                                  Const.size(context).width *
+                                                      0.05277777777,
+                                              vertical:
+                                                  Const.size(context).width *
+                                                      0.03277777777),
+                                          child: Text(
+                                            language.apDung,
+                                            style: StyleApp.textStyle700(
+                                                color: Colors.white,
+                                                fontSize: 13),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: ColorApp.bottomBar),
+                                ),
+                              )),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      language.tongThanhToan,
+                                      style: StyleApp.textStyle600(
+                                          color: ColorApp.dark, fontSize: 16),
+                                    ),
+                                    Text(
+                                      '₫ 3.820.000',
+                                      style: StyleApp.textStyle700(
+                                          color: ColorApp.dark500,
+                                          fontSize: 12,
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Đã chọn $choosen dịch vụ, giá đã bao gồm thuế',
+                                      style: StyleApp.textStyle400(
+                                          color: ColorApp.dark500,
+                                          fontSize: 14),
+                                    ),
+                                    Text(
+                                      '₫ ${Const.ConvertPrice.format(sum)}',
+                                      style: StyleApp.textStyle700(
+                                        color: ColorApp.darkGreen,
+                                        fontSize: 16,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ThanhToanScreen()));
+                                  },
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.065,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        color: ColorApp.orange,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Padding(
-                                      padding:  EdgeInsets.symmetric(horizontal:Const.size(context).width *
-                                          0.05277777777,vertical: Const.size(context).width *
-                                          0.03277777777 ),
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: Const.size(context).width *
+                                              0.02615384615),
                                       child: Text(
-                                        '${language.apDung}',
+                                        language.thanhToan.toUpperCase(),
                                         style: StyleApp.textStyle700(
-                                            color: Colors.white,
-                                            fontSize: 13),
+                                            color: ColorApp.dark),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          )),
-                      ),
-                      Container(width: double.infinity,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    Text('${language.tongThanhToan}',style: StyleApp.textStyle600(color: ColorApp.dark,fontSize: 16),),
-    Text('₫ 3.820.000',style: StyleApp.textStyle700(color: ColorApp.dark500,fontSize: 12,decoration: TextDecoration.lineThrough),)
-  ],
-),
-                              SizedBox(height: 10,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Đã chọn ${choosen} dịch vụ, giá đã bao gồm thuế',style: StyleApp.textStyle400(color: ColorApp.dark500,fontSize: 14),),
-                                  Text('₫ ${Const.ConvertPrice.format(sum)}',style: StyleApp.textStyle700(color: ColorApp.darkGreen,fontSize: 16,),)
-                                ],
-                              ),
-                              SizedBox(height: 30,),
-                              InkWell(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ThanhToanScreen()));
-                                },
-                                child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.065,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: ColorApp.orange,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: Const.size(context).width * 0.02615384615),
-                                    child: Text(
-                                      '${language.thanhToan.toUpperCase()}',
-                                      style: StyleApp.textStyle700(color: ColorApp.dark),
-                                    ),
-                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-
-                    ],
-                  ),
-                      )),
+                        )
+                      ],
+                    ),
+                  )),
                 ),
               ),
             ],
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

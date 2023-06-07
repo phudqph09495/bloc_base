@@ -32,7 +32,6 @@ class _LichSuScreenState extends State<LichSuScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.selectIndex(0);
   }
@@ -61,13 +60,13 @@ class _LichSuScreenState extends State<LichSuScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
-                                '${language.lichSu}',
+                                language.lichSu,
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -84,8 +83,8 @@ class _LichSuScreenState extends State<LichSuScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -104,7 +103,7 @@ class _LichSuScreenState extends State<LichSuScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: ColorApp.whiteF0,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
@@ -130,7 +129,7 @@ class _LichSuScreenState extends State<LichSuScreen> {
                                   Const.size(context).width * 0.02615384615),
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: double.infinity,
                                 child: GroupButton(
                                   controller: controller,
@@ -146,158 +145,196 @@ class _LichSuScreenState extends State<LichSuScreen> {
                                       borderRadius: BorderRadius.circular(12)),
                                   isRadio: true,
                                   onSelected: (name, index, isSelected) {},
-                                  buttons: [
+                                  buttons: const [
                                     "Tất cả",
                                     "Đã đặt",
                                     "Đã huỷ",
                                   ],
                                 ),
                               ),
-                              SizedBox(height: Const.size(context).height * 10 / 844 ,),
-                              SizedBox(   height:
-                              Const.size(context).height * 38 / 844,
+                              SizedBox(
+                                height: Const.size(context).height * 10 / 844,
+                              ),
+                              SizedBox(
+                                height: Const.size(context).height * 38 / 844,
                                 child: Row(
                                   children: [
-                                    Expanded(flex: 14,
+                                    Expanded(
+                                        flex: 14,
                                         child: InputText1(
-
-                                      label: '${language.timKiem}',
-                                      hasLeading: true,
-                                      iconPreFix: Icon(
-                                        Icons.search,
-                                        color: ColorApp.bottomBar,
-                                      ),
-                                    )),
-                                    Expanded(child: SizedBox(),flex: 1,),
-                                    Expanded(flex: 14,
+                                          label: language.timKiem,
+                                          hasLeading: true,
+                                          iconPreFix: const Icon(
+                                            Icons.search,
+                                            color: ColorApp.bottomBar,
+                                          ),
+                                        )),
+                                    const Expanded(
+                                      flex: 1,
+                                      child: SizedBox(),
+                                    ),
+                                    Expanded(
+                                        flex: 14,
                                         child: InputText1(
-
-                                      label: '30 ngày gần đây',
-                                    hasSuffix: true,
-                                          suffix: Transform.scale(scale: 0.5,child: SvgPicture.asset('assets/svg/notiIcon.svg')),
-                                    ))
+                                          label: '30 ngày gần đây',
+                                          hasSuffix: true,
+                                          suffix: Transform.scale(
+                                              scale: 0.5,
+                                              child: SvgPicture.asset(
+                                                  'assets/svg/notiIcon.svg')),
+                                        ))
                                   ],
                                 ),
                               ),
-                              SizedBox(height: Const.size(context).height * 20 / 844 ,),
+                              SizedBox(
+                                height: Const.size(context).height * 20 / 844,
+                              ),
                               ListView.builder(
                                 padding: EdgeInsets.zero,
                                 itemBuilder: (context, index) {
                                   return InkWell(
-                                    onTap: (){
-                                    },
+                                    onTap: () {},
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(10.0),
                                         child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                                flex: 8,
-                                                child:    Stack(
-                                                  alignment: Alignment.bottomCenter,
-                                                  children: [
-                                                    ClipRRect(borderRadius:
-                                                BorderRadius.only(
-                                                bottomLeft: Radius
-                                                    .circular(
-                                                    5),
-                                            bottomRight: Radius
-                                                .circular(
-                                                5)),
-                                                      child: Container(
-                                                        width: Const.size(context).width*0.45,
-                                                        height: Const.size(context).height*0.1,
-                                                        child: Image.asset(
-                                                          'assets/images/exSpa.png',fit: BoxFit.cover,
-                                                        ),
+                                              flex: 8,
+                                              child: Stack(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    5),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    5)),
+                                                    child: SizedBox(
+                                                      width: Const.size(context)
+                                                              .width *
+                                                          0.45,
+                                                      height:
+                                                          Const.size(context)
+                                                                  .height *
+                                                              0.1,
+                                                      child: Image.asset(
+                                                        'assets/images/exSpa.png',
+                                                        fit: BoxFit.cover,
                                                       ),
                                                     ),
-                                                    Container(
-                                                        decoration: BoxDecoration(
-                                                            color: index%2==1?ColorApp.bottomBar:ColorApp.pink,
-                                                            borderRadius:
-                                                            BorderRadius.only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                    5),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                    5))),
-                                                        child: Padding(
-                                                          padding: EdgeInsets.symmetric(
-                                                              vertical: Const.size(
-                                                                  context)
-                                                                  .width *
-                                                                  0.0111111111111),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                            children: [
-                                                              SizedBox(),
-                                                              Row(
-                                                                children: [
-
-                                                                  Text(
-                                                                    index%2==1  ?'Đã đặt':'Đã huỷ',
-                                                                    style: StyleApp.textStyle600(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize:
-                                                                        12),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              SizedBox()
-                                                            ],
-                                                          ),
-                                                        )),
-                                                  ],
-                                                ),),
-                                            Expanded(flex: 1, child: SizedBox()),
+                                                  ),
+                                                  Container(
+                                                      decoration: BoxDecoration(
+                                                          color: index % 2 == 1
+                                                              ? ColorApp
+                                                                  .bottomBar
+                                                              : ColorApp.pink,
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                      .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          5),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          5))),
+                                                      child: Padding(
+                                                        padding: EdgeInsets.symmetric(
+                                                            vertical: Const.size(
+                                                                        context)
+                                                                    .width *
+                                                                0.0111111111111),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            const SizedBox(),
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  index % 2 == 1
+                                                                      ? 'Đã đặt'
+                                                                      : 'Đã huỷ',
+                                                                  style: StyleApp.textStyle600(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          12),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            const SizedBox()
+                                                          ],
+                                                        ),
+                                                      )),
+                                                ],
+                                              ),
+                                            ),
+                                            const Expanded(
+                                                flex: 1, child: SizedBox()),
                                             Expanded(
                                                 flex: 20,
-                                                child: Container(
-                                                  height:  Const.size(context).height*0.1,
+                                                child: SizedBox(
+                                                  height: Const.size(context)
+                                                          .height *
+                                                      0.1,
                                                   child: Column(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         'Chăm sóc da mặt',
-                                                        style: StyleApp.textStyle600(
-                                                            color: ColorApp.dark),
+                                                        style: StyleApp
+                                                            .textStyle600(
+                                                                color: ColorApp
+                                                                    .dark),
                                                       ),
-
                                                       Row(
                                                         children: [
                                                           Text(
                                                             'đ ${Const.ConvertPrice.format(1450000)} ',
                                                             style: StyleApp.textStyle700(
-                                                                color: ColorApp.dark500,
-                                                                decoration: TextDecoration
-                                                                    .lineThrough),
+                                                                color: ColorApp
+                                                                    .dark500,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .lineThrough),
                                                           ),
                                                           Text(
                                                             '  ${Const.ConvertPrice.format(1200000)} đ',
                                                             style: StyleApp.textStyle700(
-                                                                color: ColorApp.dark,
+                                                                color: ColorApp
+                                                                    .dark,
                                                                 decoration:
-                                                                TextDecoration.none),
+                                                                    TextDecoration
+                                                                        .none),
                                                           )
                                                         ],
                                                       ),
-
-                                                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
                                                           Row(
                                                             children: [
                                                               Transform.scale(
                                                                   scale: 0.7,
                                                                   child:
-                                                                  SvgPicture
-                                                                      .asset(
+                                                                      SvgPicture
+                                                                          .asset(
                                                                     'assets/svg/notiIcon.svg',
                                                                     color: ColorApp
                                                                         .dark500,
@@ -306,21 +343,33 @@ class _LichSuScreenState extends State<LichSuScreen> {
                                                                 ' 4/6/2023 - 15:35',
                                                                 style: StyleApp
                                                                     .textStyle400(
-                                                                    color: ColorApp
-                                                                        .dark500,
-                                                                    fontSize:
-                                                                    14),
+                                                                        color: ColorApp
+                                                                            .dark500,
+                                                                        fontSize:
+                                                                            14),
                                                               ),
                                                             ],
                                                           ),
-                                                      index%2==1?    Text('Hoàn thành',style: StyleApp.textStyle600(color: ColorApp.bottomBar),):
-                                                          Text('Sắp tới',style: StyleApp.textStyle600(color: ColorApp.darkGreen),)
+                                                          index % 2 == 1
+                                                              ? Text(
+                                                                  'Hoàn thành',
+                                                                  style: StyleApp
+                                                                      .textStyle600(
+                                                                          color:
+                                                                              ColorApp.bottomBar),
+                                                                )
+                                                              : Text(
+                                                                  'Sắp tới',
+                                                                  style: StyleApp
+                                                                      .textStyle600(
+                                                                          color:
+                                                                              ColorApp.darkGreen),
+                                                                )
                                                         ],
                                                       ),
                                                     ],
                                                   ),
-                                                )
-                                            ),
+                                                )),
                                           ],
                                         ),
                                       ),
@@ -328,7 +377,7 @@ class _LichSuScreenState extends State<LichSuScreen> {
                                   );
                                 },
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: 6,
                               )
                             ],
@@ -343,7 +392,7 @@ class _LichSuScreenState extends State<LichSuScreen> {
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

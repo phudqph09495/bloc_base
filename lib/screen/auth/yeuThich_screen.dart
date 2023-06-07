@@ -28,18 +28,17 @@ class YeuThichScreen extends StatefulWidget {
 class _YeuThichScreenState extends State<YeuThichScreen> {
   final controller = GroupButtonController();
 
-  bool dv=true;
+  bool dv = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.selectIndex(0);
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
-
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -61,13 +60,13 @@ class _YeuThichScreenState extends State<YeuThichScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(),
+                              const SizedBox(),
                               Text(
-                                '${language.yeuThich}',
+                                language.yeuThich,
                                 style: StyleApp.textStyle700(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              SizedBox()
+                              const SizedBox()
                             ],
                           ),
                         ],
@@ -84,8 +83,8 @@ class _YeuThichScreenState extends State<YeuThichScreen> {
                           decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 8),
                             child: FaIcon(
                               FontAwesomeIcons.arrowLeftLong,
@@ -104,308 +103,354 @@ class _YeuThichScreenState extends State<YeuThichScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 1.5,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: ColorApp.whiteF0,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
                   child: SingleChildScrollView(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 3,
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Container(
-                            //     height: MediaQuery.of(context).size.height * 0.03,
-                            //     decoration: BoxDecoration(
-                            //         color: Colors.white,
-                            //         borderRadius: BorderRadius.only(
-                            //             topLeft: Radius.circular(25),
-                            //             topRight: Radius.circular(25)))),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical:
+                    height: MediaQuery.of(context).size.height * 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Container(
+                        //     height: MediaQuery.of(context).size.height * 0.03,
+                        //     decoration: BoxDecoration(
+                        //         color: Colors.white,
+                        //         borderRadius: BorderRadius.only(
+                        //             topLeft: Radius.circular(25),
+                        //             topRight: Radius.circular(25)))),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical:
                                   Const.size(context).width * 0.02179487179,
-                                  horizontal:
+                              horizontal:
                                   Const.size(context).width * 0.02615384615),
-                              child: Column(
-                                children: [
-                                  Container(width: double.infinity,
-                                    child: GroupButton(
-                                      controller: controller,
-                                      options: GroupButtonOptions(
-                                        buttonWidth: Const.size(context).width*0.44,
-                                          selectedColor:
-                                          ColorApp.darkGreen,
-                                          mainGroupAlignment: MainGroupAlignment.spaceBetween,
-                                          unselectedTextStyle:
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: GroupButton(
+                                  controller: controller,
+                                  options: GroupButtonOptions(
+                                      buttonWidth:
+                                          Const.size(context).width * 0.44,
+                                      selectedColor: ColorApp.darkGreen,
+                                      mainGroupAlignment:
+                                          MainGroupAlignment.spaceBetween,
+                                      unselectedTextStyle:
                                           StyleApp.textStyle500(
-                                              color: ColorApp
-                                                  .dark500),
-                                          borderRadius:
-                                          BorderRadius.circular(
-                                              12)),
-                                      isRadio: true,
-                                      onSelected: (name, index,
-                                          isSelected) {
-                                        if(index==0){
-                                          dv=true;
-                                          controller.selectIndex(0);
-                                        }else if(index==1){
-                                          dv=false;
-                                          controller.selectIndex(1);
-                                        }
-                                        print(index);
-                                      setState(() {
-
-                                      });
-
-
-                                      },
-                                      buttons: [
-                                        "${language.spa}",
-                                        "${language.dichvu}",
-
-                                      ],
-                                    ),
-                                  ),
-                               dv?
-                               ListView.builder(
-                                 padding: EdgeInsets.zero,
-                                 itemBuilder: (context, index) {
-                                   return InkWell(
-                                     onTap: (){
-                                     },
-                                     child: Card(
-                                       child: Padding(
-                                         padding: const EdgeInsets.all(8.0),
-                                         child: Row(
-                                           children: [
-                                             Expanded(
-                                                 flex: 8,
-                                                 child: Image.asset(
-                                                     'assets/images/searchImgList.png')),
-                                             Expanded(flex: 1, child: SizedBox()),
-                                             Expanded(
-                                                 flex: 20,
-                                                 child: Column(
-                                                   children: [
-                                                     Row(crossAxisAlignment: CrossAxisAlignment.start,
-                                                       mainAxisAlignment:
-                                                       MainAxisAlignment.spaceBetween,
-                                                       children: [
-                                                         Text(
-                                                           'Sorella Beauty Spa',
-                                                           style: StyleApp.textStyle600(
-                                                               color: ColorApp.dark),
-                                                         ),
-                                                         Icon(
-                                                           Icons.clear,
-                                                           color: ColorApp.dark500.withOpacity(0.7),
-                                                         )
-                                                       ],
-                                                     ),
-                                                     Text(
-                                                       'Trung tâm chăm sóc sức khoẻ cộng đồng',
-                                                       style: StyleApp.textStyle500(
-                                                           color: ColorApp.dark500,
-                                                           decoration:
-                                                           TextDecoration.none),
-                                                     ),
-                                                     Row(
-                                                       mainAxisAlignment:
-                                                       MainAxisAlignment.spaceBetween,
-                                                       children: [
-                                                         Row(
-                                                           children: [
-                                                             Icon(
-                                                               Icons.location_on,
-                                                               color: ColorApp.bottomBar,
-                                                             ),
-                                                             Text(
-                                                               ' 2.3 km',
-                                                               style: StyleApp.textStyle500(
-                                                                 color: ColorApp.bottomBar,
-                                                               ),
-                                                             ),
-                                                           ],
-                                                         ),
-                                                   SizedBox()
-                                                       ],
-                                                     ),
-
-                                                   ],
-                                                 )),
-                                           ],
-                                         ),
-                                       ),
-                                     ),
-                                   );
-                                 },
-                                 shrinkWrap: true,
-                                 physics: NeverScrollableScrollPhysics(),
-                                 itemCount: 5,
-                               ):
-                                  ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    itemBuilder: (context, index) {
-                                      return InkWell(
-                                        onTap: (){
-                                        },
-                                        child: Card(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                    flex: 8,
-                                                    child: Image.asset(
-                                                        'assets/images/searchImgList.png')),
-                                                Expanded(flex: 1, child: SizedBox()),
-                                                Expanded(
-                                                    flex: 20,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            Text(
-                                                              'Chăm sóc da mặt',
-                                                              style: StyleApp.textStyle600(
-                                                                  color: ColorApp.dark),
-                                                            ),
-                                                             Icon(
-                                                              Icons.clear,
-                                                              color: ColorApp.dark500.withOpacity(0.7),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Text(
-                                                              'đ ${Const.ConvertPrice.format(1450000)} ',
-                                                              style: StyleApp.textStyle700(
-                                                                  color: ColorApp.dark500,
-                                                                  decoration: TextDecoration
-                                                                      .lineThrough),
-                                                            ),
-                                                            Text(
-                                                              '${Const.ConvertPrice.format(1200000)} đ',
-                                                              style: StyleApp.textStyle700(
-                                                                  color: ColorApp.dark,
-                                                                  decoration:
-                                                                  TextDecoration.none),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Icon(
-                                                                  Icons.home,size: 16,
-                                                                  color: ColorApp.darkGreen,
-                                                                ),
-                                                                Text(
-                                                                  ' Sviet Beauty Spa',
-                                                                  style: StyleApp.textStyle700(
-                                                                    color: ColorApp.darkGreen,
+                                              color: ColorApp.dark500),
+                                      borderRadius: BorderRadius.circular(12)),
+                                  isRadio: true,
+                                  onSelected: (name, index, isSelected) {
+                                    if (index == 0) {
+                                      dv = true;
+                                      controller.selectIndex(0);
+                                    } else if (index == 1) {
+                                      dv = false;
+                                      controller.selectIndex(1);
+                                    }
+                                    print(index);
+                                    setState(() {});
+                                  },
+                                  buttons: [
+                                    (language.spa),
+                                    (language.dichvu),
+                                  ],
+                                ),
+                              ),
+                              dv
+                                  ? ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      itemBuilder: (context, index) {
+                                        return InkWell(
+                                          onTap: () {},
+                                          child: Card(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                      flex: 8,
+                                                      child: Image.asset(
+                                                          'assets/images/searchImgList.png')),
+                                                  const Expanded(
+                                                      flex: 1,
+                                                      child: SizedBox()),
+                                                  Expanded(
+                                                      flex: 20,
+                                                      child: Column(
+                                                        children: [
+                                                          Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                'Sorella Beauty Spa',
+                                                                style: StyleApp
+                                                                    .textStyle600(
+                                                                        color: ColorApp
+                                                                            .dark),
+                                                              ),
+                                                              Icon(
+                                                                Icons.clear,
+                                                                color: ColorApp
+                                                                    .dark500
+                                                                    .withOpacity(
+                                                                        0.7),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Text(
+                                                            'Trung tâm chăm sóc sức khoẻ cộng đồng',
+                                                            style: StyleApp.textStyle500(
+                                                                color: ColorApp
+                                                                    .dark500,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none),
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  const Icon(
+                                                                    Icons
+                                                                        .location_on,
+                                                                    color: ColorApp
+                                                                        .bottomBar,
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Icon(
-                                                                  Icons.watch_later_rounded,
-                                                                  color: ColorApp.dark500,
-                                                                  size: 16,
-                                                                ),
-                                                                Text(
-                                                                  ' 125 phút',
-                                                                  style: StyleApp.textStyle700(
-                                                                      color: ColorApp.dark500,
-                                                                      fontSize: 12,
-                                                                      decoration:
-                                                                      TextDecoration.none),
-                                                                ),
-                                                              ],
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Icon(
-                                                                  Icons.star,size: 16,
-                                                                  color: ColorApp.yellow,
-                                                                ),
-                                                                Text(
-                                                                  '4.7  ',
-                                                                  style: StyleApp.textStyle700(
-                                                                    color: ColorApp.yellow,
+                                                                  Text(
+                                                                    ' 2.3 km',
+                                                                    style: StyleApp
+                                                                        .textStyle500(
+                                                                      color: ColorApp
+                                                                          .bottomBar,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                Text(
-                                                                  '(86)',
-                                                                  style: StyleApp.textStyle700(
-                                                                    color: ColorApp.dark500,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Icon(
-                                                                  Icons.location_on,
-                                                                  color: ColorApp.dark500,
-                                                                  size: 18,
-                                                                ),
-                                                                Text(
-                                                                  ' 2.3 km',
-                                                                  style: StyleApp.textStyle700(
-                                                                      color: ColorApp.dark500,
-                                                                      fontSize: 12,
-                                                                      decoration:
-                                                                      TextDecoration.none),
-                                                                ),
-                                                              ],
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    )),
-                                              ],
+                                                                ],
+                                                              ),
+                                                              const SizedBox()
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )),
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                    shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemCount: 6,
-                                  )
-                                ],
-                              ),
-                            ),
-
-                          ],
+                                        );
+                                      },
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: 5,
+                                    )
+                                  : ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      itemBuilder: (context, index) {
+                                        return InkWell(
+                                          onTap: () {},
+                                          child: Card(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Row(
+                                                children: [
+                                                  Expanded(
+                                                      flex: 8,
+                                                      child: Image.asset(
+                                                          'assets/images/searchImgList.png')),
+                                                  const Expanded(
+                                                      flex: 1,
+                                                      child: SizedBox()),
+                                                  Expanded(
+                                                      flex: 20,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                'Chăm sóc da mặt',
+                                                                style: StyleApp
+                                                                    .textStyle600(
+                                                                        color: ColorApp
+                                                                            .dark),
+                                                              ),
+                                                              Icon(
+                                                                Icons.clear,
+                                                                color: ColorApp
+                                                                    .dark500
+                                                                    .withOpacity(
+                                                                        0.7),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                'đ ${Const.ConvertPrice.format(1450000)} ',
+                                                                style: StyleApp.textStyle700(
+                                                                    color: ColorApp
+                                                                        .dark500,
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .lineThrough),
+                                                              ),
+                                                              Text(
+                                                                '${Const.ConvertPrice.format(1200000)} đ',
+                                                                style: StyleApp.textStyle700(
+                                                                    color:
+                                                                        ColorApp
+                                                                            .dark,
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .none),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  const Icon(
+                                                                    Icons.home,
+                                                                    size: 16,
+                                                                    color: ColorApp
+                                                                        .darkGreen,
+                                                                  ),
+                                                                  Text(
+                                                                    ' Sviet Beauty Spa',
+                                                                    style: StyleApp
+                                                                        .textStyle700(
+                                                                      color: ColorApp
+                                                                          .darkGreen,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  const Icon(
+                                                                    Icons
+                                                                        .watch_later_rounded,
+                                                                    color: ColorApp
+                                                                        .dark500,
+                                                                    size: 16,
+                                                                  ),
+                                                                  Text(
+                                                                    ' 125 phút',
+                                                                    style: StyleApp.textStyle700(
+                                                                        color: ColorApp
+                                                                            .dark500,
+                                                                        fontSize:
+                                                                            12,
+                                                                        decoration:
+                                                                            TextDecoration.none),
+                                                                  ),
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  const Icon(
+                                                                    Icons.star,
+                                                                    size: 16,
+                                                                    color: ColorApp
+                                                                        .yellow,
+                                                                  ),
+                                                                  Text(
+                                                                    '4.7  ',
+                                                                    style: StyleApp
+                                                                        .textStyle700(
+                                                                      color: ColorApp
+                                                                          .yellow,
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    '(86)',
+                                                                    style: StyleApp
+                                                                        .textStyle700(
+                                                                      color: ColorApp
+                                                                          .dark500,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  const Icon(
+                                                                    Icons
+                                                                        .location_on,
+                                                                    color: ColorApp
+                                                                        .dark500,
+                                                                    size: 18,
+                                                                  ),
+                                                                  Text(
+                                                                    ' 2.3 km',
+                                                                    style: StyleApp.textStyle700(
+                                                                        color: ColorApp
+                                                                            .dark500,
+                                                                        fontSize:
+                                                                            12,
+                                                                        decoration:
+                                                                            TextDecoration.none),
+                                                                  ),
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      )),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: 6,
+                                    )
+                            ],
+                          ),
                         ),
-                      )),
+                      ],
+                    ),
+                  )),
                 ),
               ),
             ],
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }

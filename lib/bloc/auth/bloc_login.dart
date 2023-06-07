@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../config/api.dart';
 import '../../config/path/api_path.dart';
 
-
 import '../event_bloc.dart';
 import '../state_bloc.dart';
 
@@ -23,7 +22,6 @@ class BlocLogin extends Bloc<EventBloc, StateBloc> {
             endPoint: ApiPath.login, req: req, isToken: false);
         print(res);
         if (res['status'] == 1) {
-
         } else if (res['status'] == 0) {
           yield LoadFail(error: res['errors']['login'] ?? "Lỗi kết nối");
         }

@@ -43,10 +43,10 @@ class _XacNhanScreenState extends State<XacNhanScreen> {
                         style: StyleApp.textStyle700(
                             color: ColorApp.darkGreen, fontSize: 18),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Container(
+                      SizedBox(
                         width: Const.sizeWidth(context, 324),
                         child: Text(
                           language.vuiLongKT,
@@ -59,34 +59,62 @@ class _XacNhanScreenState extends State<XacNhanScreen> {
                         height: Const.sizeHeight(context, 30),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: Const.sizeWidth(context, 18)),
-                        child: Container(color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Const.sizeWidth(context, 18)),
+                        child: Container(
+                          color: Colors.white,
                           child: Column(
                             children: [
                               ListView.builder(
                                 padding: EdgeInsets.zero,
                                 itemBuilder: (context, index) {
                                   return Padding(
-
-                                    padding:  EdgeInsets.symmetric(horizontal: Const.sizeWidth(context, 16),vertical: Const.sizeHeight(context, 8)),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            Const.sizeWidth(context, 16),
+                                        vertical: Const.sizeHeight(context, 8)),
                                     child: Column(
                                       children: [
                                         Row(
                                           children: [
-                                            Expanded(flex: 4,child: Text('2 x Chăm sóc da mặt',style: StyleApp.textStyle600(color: ColorApp.dark),)),
-                                            Expanded(flex: 1,child: Text('₫ 500.000',style: StyleApp.textStyle700(color: ColorApp.darkGreen),))
+                                            Expanded(
+                                                flex: 4,
+                                                child: Text(
+                                                  '2 x Chăm sóc da mặt',
+                                                  style: StyleApp.textStyle600(
+                                                      color: ColorApp.dark),
+                                                )),
+                                            Expanded(
+                                                flex: 1,
+                                                child: Text(
+                                                  '₫ 500.000',
+                                                  style: StyleApp.textStyle700(
+                                                      color:
+                                                          ColorApp.darkGreen),
+                                                ))
                                           ],
                                         ),
-                                        SizedBox(height: Const.sizeHeight(context, 8),),
+                                        SizedBox(
+                                          height: Const.sizeHeight(context, 8),
+                                        ),
                                         Row(
                                           children: [
-                                            Icon(Icons.home,size: 16,color: ColorApp.bottomBar,),
-                                            Text('Sviet Beauty Spa',style: StyleApp.textStyle500(color: ColorApp.bottomBar),)
+                                            const Icon(
+                                              Icons.home,
+                                              size: 16,
+                                              color: ColorApp.bottomBar,
+                                            ),
+                                            Text(
+                                              'Sviet Beauty Spa',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.bottomBar),
+                                            )
                                           ],
                                         ),
-                                        SizedBox(height: Const.sizeHeight(context, 8),),
+                                        SizedBox(
+                                          height: Const.sizeHeight(context, 8),
+                                        ),
                                         Row(
-
                                           children: [
                                             Row(
                                               children: [
@@ -94,56 +122,63 @@ class _XacNhanScreenState extends State<XacNhanScreen> {
                                                     scale: 0.75,
                                                     child: SvgPicture.asset(
                                                       'assets/svg/notiIcon.svg',
-                                                      color:
-                                                      ColorApp.dark500,
+                                                      color: ColorApp.dark500,
                                                     )),
                                                 Text(
                                                   ' 4/6/2023 - 15:35',
-                                                  style:
-                                                  StyleApp.textStyle400(
-                                                      color: ColorApp
-                                                          .dark500,
+                                                  style: StyleApp.textStyle400(
+                                                      color: ColorApp.dark500,
                                                       fontSize: 14),
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(width: Const.sizeWidth(context, 30),),
+                                            SizedBox(
+                                              width:
+                                                  Const.sizeWidth(context, 30),
+                                            ),
                                             Row(
                                               children: [
-                                                Icon(
-                                                  Icons
-                                                      .watch_later_outlined,
+                                                const Icon(
+                                                  Icons.watch_later_outlined,
                                                   color: ColorApp.dark500,
                                                 ),
                                                 Text(
                                                   ' 70 phút',
-                                                  style:
-                                                  StyleApp.textStyle400(
-                                                      color: ColorApp
-                                                          .dark500,
+                                                  style: StyleApp.textStyle400(
+                                                      color: ColorApp.dark500,
                                                       fontSize: 14),
                                                 ),
                                               ],
                                             ),
-
                                           ],
                                         ),
-                                        Divider()
+                                        const Divider()
                                       ],
                                     ),
                                   );
                                 },
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: 3,
                               ),
                               Padding(
-                                padding:  EdgeInsets.symmetric(horizontal: Const.sizeWidth(context, 16),vertical: Const.sizeHeight(context, 8)),
-
-                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: Const.sizeWidth(context, 16),
+                                    vertical: Const.sizeHeight(context, 8)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Tổng',style: StyleApp.textStyle600(color: ColorApp.dark),),
-                                    Text('₫ 500.000',style: StyleApp.textStyle700(color: ColorApp.darkGreen),)
+                                    Text(
+                                      'Tổng',
+                                      style: StyleApp.textStyle600(
+                                          color: ColorApp.dark),
+                                    ),
+                                    Text(
+                                      '₫ 500.000',
+                                      style: StyleApp.textStyle700(
+                                          color: ColorApp.darkGreen),
+                                    )
                                   ],
                                 ),
                               ),
@@ -156,9 +191,14 @@ class _XacNhanScreenState extends State<XacNhanScreen> {
                 ),
               ),
               Positioned(
-              top: Const.sizeHeight(context, 50),left:  Const.sizeWidth(context, 20),child: InkWell(onTap: (){
-                Navigator.pop(context);
-              },child: Icon(Icons.arrow_back_ios),))
+                  top: Const.sizeHeight(context, 50),
+                  left: Const.sizeWidth(context, 20),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(Icons.arrow_back_ios),
+                  ))
             ],
           ),
           bottomSheet: Padding(
@@ -169,9 +209,9 @@ class _XacNhanScreenState extends State<XacNhanScreen> {
                 Expanded(
                   flex: 1,
                   child: InkWell(
-onTap: (){
-  Navigator.pop(context);
-},
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.065,
                       alignment: Alignment.center,
@@ -181,24 +221,25 @@ onTap: (){
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical:
-                            Const.size(context).width * 0.02615384615),
+                                Const.size(context).width * 0.02615384615),
                         child: Text(
-                          '${language.huyBo.toUpperCase()}',
+                          language.huyBo.toUpperCase(),
                           style: StyleApp.textStyle700(color: Colors.white),
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
                   flex: 1,
                   child: InkWell(
-onTap: (){
-  CustomToast.showToast(context: context, msg: 'Đã bấm vào nút xác nhận');
-},
+                    onTap: () {
+                      CustomToast.showToast(
+                          context: context, msg: 'Đã bấm vào nút xác nhận');
+                    },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.065,
                       alignment: Alignment.center,
@@ -208,9 +249,9 @@ onTap: (){
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical:
-                            Const.size(context).width * 0.02615384615),
+                                Const.size(context).width * 0.02615384615),
                         child: Text(
-                          '${language.xacNhan.toUpperCase()}',
+                          language.xacNhan.toUpperCase(),
                           style: StyleApp.textStyle700(color: ColorApp.dark),
                         ),
                       ),
@@ -222,7 +263,7 @@ onTap: (){
           ),
         );
       }
-      return Scaffold();
+      return const Scaffold();
     });
   }
 }
