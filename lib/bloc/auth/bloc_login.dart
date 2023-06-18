@@ -15,11 +15,14 @@ class BlocLogin extends Bloc<EventBloc, StateBloc> {
     if (event is LoginApp) {
       yield Loading();
       try {
-        Map<String, dynamic> req = Map();
+        Map<String, dynamic> req = {};
         req['id'] = event.id;
         req['password'] = event.password;
         var res = await Api.postAsync(
-            endPoint: ApiPath.login, req: req, isToken: false);
+          endPoint: ApiPath.login,
+          req: req,
+          isToken: false,
+        );
         print(res);
         if (res['status'] == 1) {
         } else if (res['status'] == 0) {

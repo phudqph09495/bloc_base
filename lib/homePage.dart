@@ -1,27 +1,20 @@
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
-import 'package:bloc_base/screen/Cart/gioHang_screen.dart';
-import 'package:bloc_base/screen/auth/account_screen.dart';
-import 'package:bloc_base/screen/ex.dart';
-import 'package:bloc_base/screen/home/home_screen.dart';
-import 'package:bloc_base/screen/search/search_tab_screen.dart';
-import 'package:bloc_base/widget/drawler.dart';
+import 'package:bloc_base/screen/auth/account_screen/account_screen.dart';
+import 'package:bloc_base/screen/home/home_screen/home_screen.dart';
+import 'package:bloc_base/screen/search/search_tab_screen/view/search_tab_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import '../bloc/auth/bloc_checkLogin.dart';
-
-import '../bloc/event_bloc.dart';
-import '../bloc/state_bloc.dart';
 import '../styles/init_style.dart';
+import 'screen/cart/cart_screen/cart_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   int index;
-  MyHomePage({this.index = 0});
+  MyHomePage({this.index = 3});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -48,17 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
       body: IndexedStack(
         index: widget.index,
-        children: [
-          const HomeScreen(),
+        children: const [
+          HomeScreen(),
           // Scene(),
-          Container(),
-          const SearchTabScreen(),
-          const GioHangScreen(),
+          SizedBox(),
+          SearchTabScreen(),
+          GioHangScreen(),
           // LoveScreen(),
-          const AccountScreen(),
+          AccountScreen(),
           // AccountScreen()
         ],
       ),
@@ -82,214 +76,100 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.025,
-          right: MediaQuery.of(context).size.width * 0.025,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-              color: ColorApp.bottomBar,
-              borderRadius: BorderRadius.circular(25)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height * 8 / 844,
-                horizontal: MediaQuery.of(context).size.width * 20 / 390),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.index = 0;
-                    });
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: widget.index == 0
-                              ? ColorApp.darkGreen
-                              : Colors.transparent),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.03),
-                        child: SvgPicture.asset(
-                          'assets/svg/IconHome.svg',
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.index = 1;
-                    });
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: widget.index == 1
-                              ? ColorApp.darkGreen
-                              : Colors.transparent),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.03),
-                        child: SvgPicture.asset(
-                          'assets/svg/IconMap.svg',
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.index = 2;
-                    });
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: widget.index == 2
-                              ? ColorApp.darkGreen
-                              : Colors.transparent),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.03),
-                        child: SvgPicture.asset(
-                          'assets/svg/IconSe.svg',
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.index = 3;
-                    });
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: widget.index == 3
-                              ? ColorApp.darkGreen
-                              : Colors.transparent),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.03),
-                        child: SvgPicture.asset(
-                          'assets/svg/IconCart.svg',
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.index = 4;
-                    });
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: widget.index == 4
-                              ? ColorApp.darkGreen
-                              : Colors.transparent),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.03),
-                        child: SvgPicture.asset(
-                          'assets/svg/IconAcc.svg',
-                        ),
-                      )),
-                )
-              ],
+      floatingActionButton: Container(
+        color: ColorApp.backgroundF6F6EF,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: 2,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+                color: ColorApp.bottomBarABCA74,
+                borderRadius: BorderRadius.circular(25)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height * 8 / 844,
+                  horizontal: MediaQuery.of(context).size.width * 20 / 390),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BottomBarButton(
+                    widget: widget,
+                    index: 0,
+                    linkImage: 'assets/svg/IconHome.svg',
+                    onTap: () => setState(() {}),
+                  ),
+                  BottomBarButton(
+                    widget: widget,
+                    index: 1,
+                    linkImage: 'assets/svg/IconMap.svg',
+                    onTap: () => setState(() {}),
+                  ),
+                  BottomBarButton(
+                    widget: widget,
+                    index: 2,
+                    linkImage: 'assets/svg/IconSe.svg',
+                    onTap: () => setState(() {}),
+                  ),
+                  BottomBarButton(
+                    widget: widget,
+                    index: 3,
+                    linkImage: 'assets/svg/IconCart.svg',
+                    onTap: () => setState(() {}),
+                  ),
+                  BottomBarButton(
+                    widget: widget,
+                    index: 4,
+                    linkImage: 'assets/svg/IconAcc.svg',
+                    onTap: () => setState(() {}),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
-      // bottomNavigationBar: Padding(
-      //   padding: EdgeInsets.only(
-      //       left: MediaQuery.of(context).size.width * 0.025,
-      //       right: MediaQuery.of(context).size.width * 0.025,
-      //       bottom: MediaQuery.of(context).size.width * 0.021,
-      //       top: MediaQuery.of(context).size.width * 0.013),
-      //   child: ClipRRect(
-      //     borderRadius: BorderRadius.circular(25),
-      //     child: BottomNavigationBar(
-      //       items: [
-      //         BottomNavigationBarItem(
-      //           label: 'a',
-      //             icon: Container(
-      //                 decoration: BoxDecoration(
-      //                     shape: BoxShape.circle, color:widget.index==0? ColorApp.darkGreen:Colors.transparent),
-      //                 child: Padding(
-      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-      //                   child: SvgPicture.asset(
-      //                     'assets/svg/IconHome.svg',
-      //                   ),
-      //                 ))),
-      //         BottomNavigationBarItem(
-      //             label: 'a',
-      //             icon: Container(
-      //                 decoration: BoxDecoration(
-      //                     shape: BoxShape.circle,  color:widget.index==1? ColorApp.darkGreen:Colors.transparent),
-      //                 child: Padding(
-      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-      //                   child: SvgPicture.asset(
-      //                     'assets/svg/IconMap.svg',
-      //                   ),
-      //                 ))),
-      //         BottomNavigationBarItem(
-      //             label: 'a',
-      //             icon: Container(
-      //                 decoration: BoxDecoration(
-      //                     shape: BoxShape.circle, color:widget.index==2? ColorApp.darkGreen:Colors.transparent),
-      //                 child: Padding(
-      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-      //                   child: SvgPicture.asset(
-      //                     'assets/svg/IconSe.svg',
-      //                   ),
-      //                 ))),
-      //         BottomNavigationBarItem(
-      //             label: 'a',
-      //             icon: Container(
-      //                 decoration: BoxDecoration(
-      //                     shape: BoxShape.circle, color:widget.index==3? ColorApp.darkGreen:Colors.transparent),
-      //                 child: Padding(
-      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-      //                   child: SvgPicture.asset(
-      //                     'assets/svg/IconCart.svg',
-      //                   ),
-      //                 ))),
-      //         BottomNavigationBarItem(
-      //             label: 'a',
-      //             icon: Container(
-      //                 decoration: BoxDecoration(
-      //                     shape: BoxShape.circle, color:widget.index==4? ColorApp.darkGreen:Colors.transparent),
-      //                 child: Padding(
-      //                   padding:  EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-      //                   child: SvgPicture.asset(
-      //                     'assets/svg/IconAcc.svg',
-      //                   ),
-      //                 ))),
-      //         // BottomNavigationBarItem(
-      //         //     icon:ImageIcon(AssetImage(ImagePath.bottomBarAccount)), label: "Tài khoản"),
-      //       ],
-      //       onTap: (val) {
-      //         widget.index = val;
-      //         setState(() {});
-      //       },
-      //       selectedFontSize: 0,
-      //       showSelectedLabels: false,
-      //       showUnselectedLabels: false,
-      //       backgroundColor: ColorApp.bottomBar,
-      //       currentIndex: widget.index,
-      //       type: BottomNavigationBarType.fixed,
-      //       selectedItemColor: ColorApp.red,
-      //       selectedLabelStyle:
-      //           StyleApp.textStyle400(color: ColorApp.red, fontSize: 12),
-      //       unselectedItemColor: ColorApp.black,
-      //       unselectedLabelStyle:
-      //           StyleApp.textStyle400(color: ColorApp.black, fontSize: 12),
-      //     ),
-      //   ),
-      // ),
+    );
+  }
+}
+
+class BottomBarButton extends StatelessWidget {
+  const BottomBarButton({
+    super.key,
+    required this.widget,
+    required this.index,
+    required this.linkImage,
+    required this.onTap,
+  });
+
+  final MyHomePage widget;
+  final int index;
+  final String linkImage;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        print(index.toString());
+        // setState(() {
+        widget.index = index;
+        // widget.index = 0;
+        onTap.call();
+        // });
+      },
+      child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color:
+                widget.index == index ? ColorApp.darkGreen : Colors.transparent,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+            child: SvgPicture.asset(linkImage),
+          )),
     );
   }
 }

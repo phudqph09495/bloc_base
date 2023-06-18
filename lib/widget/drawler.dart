@@ -1,9 +1,7 @@
-import 'package:bloc_base/screen/Cart/gioHang_screen.dart';
-import 'package:bloc_base/screen/auth/profile_screen.dart';
+import 'package:bloc_base/screen/cart/cart_screen/cart_screen.dart';
+import 'package:bloc_base/screen/auth/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../bloc/language/bloc_lang.dart';
 import '../bloc/language/event_bloc2.dart';
@@ -13,6 +11,8 @@ import '../model/model_local.dart';
 import '../styles/init_style.dart';
 
 class ItemDrawer extends StatefulWidget {
+  const ItemDrawer({super.key});
+
   @override
   State<ItemDrawer> createState() => _ItemDrawerState();
 }
@@ -91,7 +91,8 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                                     Const.size(context).width *
                                                         0.06153846153,
                                                 decoration: const BoxDecoration(
-                                                    shape: BoxShape.circle),
+                                                  shape: BoxShape.circle,
+                                                ),
                                                 child: ClipOval(
                                                     child: Image.asset(
                                                   'assets/images/${list[index].title}',
@@ -107,7 +108,7 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                   Text(
                                     lang.string1,
                                     style: StyleApp.textStyle700(
-                                        color: ColorApp.dark),
+                                        color: ColorApp.dark252525),
                                   ),
                                   const SizedBox(
                                     width: 5,
@@ -124,7 +125,7 @@ class _ItemDrawerState extends State<ItemDrawer> {
                                       'assets/images/${lang.co}',
                                       fit: BoxFit.cover,
                                     )),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),

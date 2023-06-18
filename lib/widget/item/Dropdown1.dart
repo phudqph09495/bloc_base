@@ -2,34 +2,34 @@ import 'package:flutter/material.dart';
 
 import '../../styles/init_style.dart';
 
-
-
 class DropDown2 extends StatefulWidget {
-  List listItem;
-  String hint;
-  dynamic value;
-  bool filled;
-  ValueChanged onChanged;
-  double radius;
-  IconData? iconData;
-  Color? colorBorder;
-  Function(String)? validator;
-  double pad;
+  final List listItem;
+  final String hint;
+  final dynamic value;
+  final bool filled;
+  final ValueChanged onChanged;
+  final double radius;
+  final IconData? iconData;
+  final Color? colorBorder;
+  final Function(String)? validator;
+  final double pad;
 
-  DropDown2(
-      {required this.listItem,
-        required this.hint,
-         this.value,
-        required this.onChanged,
-        this.filled = true,
-        this.radius = 10,
-        this.colorBorder,
-        this.iconData,
-        this.validator,
-        this.pad = 15});
+  const DropDown2(
+      {super.key,
+      required this.listItem,
+      required this.hint,
+      this.value,
+      required this.onChanged,
+      this.filled = true,
+      this.radius = 10,
+      this.colorBorder,
+      this.iconData,
+      this.validator,
+      this.pad = 15});
 
   @override
-  _DropDown2State createState() => _DropDown2State();
+  // State<DropDown2>
+  State<DropDown2> createState() => _DropDown2State();
 }
 
 class _DropDown2State extends State<DropDown2> {
@@ -60,7 +60,7 @@ class _DropDown2State extends State<DropDown2> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),
           borderSide:
-          BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
+              BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),
@@ -80,17 +80,14 @@ class _DropDown2State extends State<DropDown2> {
       ),
       items: List.generate(
         widget.listItem.length,
-            (index) => DropdownMenuItem(
+        (index) => DropdownMenuItem(
+          value: widget.listItem[index],
           child: Text(
             widget.listItem[index].name.toString(),
-            style: StyleApp.textStyle400(
-              fontSize: 12
-            ),
+            style: StyleApp.textStyle400(fontSize: 12),
           ),
-          value: widget.listItem[index],
         ),
       ),
     );
   }
 }
-

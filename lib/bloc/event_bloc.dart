@@ -6,13 +6,14 @@ class LoadMoreEvent extends EventBloc {
   bool cleanList, loadMore;
   String? sort;
 
-  LoadMoreEvent(
-      {this.id = '',
-      this.cleanList = false,
-      this.limit = 0,
-      this.page = 1,
-      this.loadMore = false,
-      this.sort});
+  LoadMoreEvent({
+    this.id = '',
+    this.cleanList = false,
+    this.limit = 0,
+    this.page = 1,
+    this.loadMore = false,
+    this.sort,
+  });
 }
 
 class GetData extends EventBloc {
@@ -35,8 +36,6 @@ class GetData extends EventBloc {
   });
 }
 
-
-
 class LoginApp extends EventBloc {
   String id;
   String password;
@@ -46,10 +45,3 @@ class LoginApp extends EventBloc {
     required this.password,
   });
 }
-
-
-
-
-
-
-

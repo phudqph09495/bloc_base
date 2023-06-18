@@ -6,13 +6,12 @@ class LoadSuccess extends StateBloc {
   String? mess;
   dynamic data;
   dynamic data2;
-String? token;
+  String? token;
   String? code;
   int? page;
   bool hasMore;
   bool cuoi;
   bool checkLength;
-
 
   LoadSuccess({
     this.data,
@@ -20,7 +19,9 @@ String? token;
     this.token,
     this.code,
     this.mess,
-    this.data2,this.page,this.cuoi=false,
+    this.data2,
+    this.page,
+    this.cuoi = false,
     this.checkLength = false,
   });
 }
@@ -33,21 +34,24 @@ class LoadFail extends StateBloc {
     required this.error,
   });
 }
-class LoadFail2 extends StateBloc{
+
+class LoadFail2 extends StateBloc {
   final String error;
 
   LoadFail2({
     required this.error,
   });
 }
-class LoadFail3 extends StateBloc{
+
+class LoadFail3 extends StateBloc {
   final String error;
 
   LoadFail3({
     required this.error,
   });
 }
-class LoadFail4 extends StateBloc{
+
+class LoadFail4 extends StateBloc {
   final String error;
 
   LoadFail4({

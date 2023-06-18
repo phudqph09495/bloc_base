@@ -1,99 +1,121 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../styles/init_style.dart';
+import '../../styles/colors.dart';
+import '../../styles/styles.dart';
 
+// class AppBarWidget extends StatelessWidget {
+//   const AppBarWidget({
+//     super.key,
+//     this.title,
+//     this.isBack = true,
+//     this.onTap,
+//   });
 
-class AppBarCustom extends StatefulWidget implements PreferredSizeWidget {
-  BuildContext context;
-  GlobalKey<ScaffoldState> scaffoldKey;
-  Widget tittle;
+//   final String? title;
+//   final bool isBack;
+//   final VoidCallback? onTap;
 
-  Function()? leadingTap;
-  AppBarCustom({required this.context, required this.scaffoldKey,required this.tittle,this.leadingTap});
+//   @override
+//   Widget build(BuildContext context) {
+//     return Positioned(
+//       top: 0,
+//       child: Stack(
+//         children: [
+//           Container(
+//             color: ColorApp.darkGreen,
+//             width: MediaQuery.of(context).size.width,
+//             height: MediaQuery.of(context).size.height * 0.25,
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               children: [
+//                 SizedBox(
+//                   height: MediaQuery.of(context).size.height * 0.06,
+//                 ),
+//                 title == null
+//                     ? const SizedBox()
+//                     : Text(
+//                         title!,
+//                         style: StyleApp.textStyle700(
+//                             color: Colors.white, fontSize: 20),
+//                       ),
+//               ],
+//             ),
+//           ),
+//           isBack
+//               ? Positioned(
+//                   top: MediaQuery.of(context).size.height * 0.05,
+//                   left: 10,
+//                   child: AppBarBackButton(
+//                     onTap: onTap ?? () => Navigator.pop(context),
+//                   ))
+//               : const SizedBox(),
+//         ],
+//       ),
+//     );
+//   }
+// }
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarWidget({
+    super.key,
+    this.title,
+    this.isBack = true,
+    this.onTap,
+  });
+
+  final String? title;
+  final bool isBack;
+  final VoidCallback? onTap;
+  @override
+  final Size preferredSize = const Size.fromHeight(kToolbarHeight);
 
   @override
-  State<AppBarCustom> createState() => _AppBarCustomState();
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize =>
-      Size(double.maxFinite, MediaQuery.of(context).size.height * 0.07);
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      leadingWidth: 80,
+      centerTitle: true,
+      leading: isBack
+          ? AppBarBackButton(
+              onTap: onTap ?? () => Navigator.pop(context),
+            )
+          : null,
+      title: Text(
+        title ?? '',
+        style: StyleApp.textStyle700(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+      elevation: 0,
+      backgroundColor: ColorApp.darkGreen,
+    );
+  }
 }
 
-class _AppBarCustomState extends State<AppBarCustom> {
+class AppBarBackButton extends StatelessWidget {
+  const AppBarBackButton({
+    super.key,
+    required this.onTap,
+  });
+  final VoidCallback? onTap;
+
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-  }
   Widget build(BuildContext context) {
-    return PreferredSize(
-        preferredSize:
-        Size.fromHeight(MediaQuery.of(context).size.height * 0.45),
-        child: AppBar(
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Stack(alignment: Alignment.bottomCenter,children: [
-            SvgPicture.asset('assets/svg/bgApp.svg'),
-            Positioned(
-              bottom: -3,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(onTap:widget.leadingTap,
-                    child: Container(
-                      decoration: BoxDecoration( shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Icon(
-                          Icons.list,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      child: widget.tittle),
-                  Row(
-                    children: [
-
-                      InkWell(
-                        onTap: (){
-
-                        },
-                        child: Container(
-
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Icon(
-                                  Icons.notifications_none_outlined,
-                                  color: Colors.white,
-                                  size: 25,
-                                ),
-                              ),
-                              Positioned(bottom: -3,right: 0,child: Container(
-                                decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.orange),
-
-                              ))
-                            ],
-                          ),
-                        ),
-                      ),
-
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],),
-        ));
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 8),
+        decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.3),
+            borderRadius: BorderRadius.circular(18)),
+        child: const Icon(
+          Icons.west,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
+    );
   }
 }

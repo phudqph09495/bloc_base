@@ -1,22 +1,17 @@
-import 'dart:ui';
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:time_elapsed/time_elapsed.dart';
-
-
 import 'path/share_pref_path.dart';
 import 'share_pref.dart';
 
 class Const {
   static final ConvertPrice = NumberFormat("#,##0.##", "vi");
 
-  static const image_host = '';
+  static const imageHost = '';
 
-  static const api_host = 'https://khohangnhat.vn/api';
+  static const apiHost = 'http://nail-api.sotavn.com/';
 
   static const domain = "";
 
@@ -24,18 +19,18 @@ class Const {
 
   static const int debug = 1;
 
-static Size  size(BuildContext context){
-  return MediaQuery.of(context).size;
-}
-
-  static double  sizeHeight(BuildContext context,double size){
-
-    return MediaQuery.of(context).size.height*size/844;
+  static Size size(BuildContext context) {
+    return MediaQuery.of(context).size;
   }
-  static double  sizeWidth(BuildContext context,double size){
 
-    return MediaQuery.of(context).size.width*size/390;
+  static double sizeHeight(BuildContext context, double size) {
+    return MediaQuery.of(context).size.height * size / 844;
   }
+
+  static double sizeWidth(BuildContext context, double size) {
+    return MediaQuery.of(context).size.width * size / 390;
+  }
+
   static checkLogin(BuildContext context, {required Function nextPage}) async {
     bool isLogin = await SharedPrefs.readBool(SharePrefsKeys.login);
     if (isLogin) {
@@ -55,7 +50,7 @@ static Size  size(BuildContext context){
     }
     var check = isNumeric(time.toString());
     if (check) {
-      return DateFormat(format ?? 'HH:mm  dd/MM/yyyy ', 'en_US')
+      return DateFormat(format ?? 'dd/MM/yyyy - HH:mm ', 'en_US')
           .format(DateTime.fromMillisecondsSinceEpoch(time));
     }
     return '';
@@ -66,13 +61,17 @@ static Size  size(BuildContext context){
         .format(DateTime.parse(time));
   }
 
- static Duration parseDurationFromDouble(double hours) {
-    return Duration(
-        microseconds: (hours * Duration.microsecondsPerHour*8).toInt()
-    );
+  static formatDateTimeToString(time, {String? format}) {
+    return DateFormat(format ?? 'dd/MM/yyyy-HH:mm ', 'en_US')
+        .format(DateTime.parse(time));
   }
- static String printDuration(Duration duration) {
 
+  static Duration parseDurationFromDouble(double hours) {
+    return Duration(
+        microseconds: (hours * Duration.microsecondsPerHour * 8).toInt());
+  }
+
+  static String printDuration(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
     return "${twoDigits(duration.inHours)} giờ $twoDigitMinutes phút";
@@ -222,11 +221,11 @@ static Size  size(BuildContext context){
     }
   }
 
-  static checkTime(int timestamp,String code) {
+  static checkTime(int timestamp, String code) {
     if (timestamp == 0) {
       return "";
     }
-    DateTime _timeDate = DateTime.fromMillisecondsSinceEpoch(timestamp );
+    DateTime _timeDate = DateTime.fromMillisecondsSinceEpoch(timestamp);
 
     String timestr = "";
     final customDate = CustomTimeElapsed(
@@ -248,27 +247,29 @@ static Size  size(BuildContext context){
 
     switch (key) {
       case "s":
-        return code=='en'?"$text seconds ago" :"$text giây trước";
+        return code == 'en' ? "$text seconds ago" : "$text giây trước";
       case "m":
-        return code=='en'?"$text minutes ago":"$text phút trước";
+        return code == 'en' ? "$text minutes ago" : "$text phút trước";
       case "h":
-        return code=='en'?"$text hours ago":"$text giờ trước";
+        return code == 'en' ? "$text hours ago" : "$text giờ trước";
       case "d":
-        return code=='en'?"$text days trước":"$text ngày trước";
+        return code == 'en' ? "$text days trước" : "$text ngày trước";
       case "w":
         if (int.parse(text) >= 52) {
-          return code=='en'? "${(int.parse(text) / 52).round()} years ago":"${(int.parse(text) / 52).round()} năm trước";
+          return code == 'en'
+              ? "${(int.parse(text) / 52).round()} years ago"
+              : "${(int.parse(text) / 52).round()} năm trước";
         }
         if (int.parse(text) >= 4) {
-          return code=='en'?"${(int.parse(text) / 4).round()} months ago": "${(int.parse(text) / 4).round()} tháng trước";
+          return code == 'en'
+              ? "${(int.parse(text) / 4).round()} months ago"
+              : "${(int.parse(text) / 4).round()} tháng trước";
         }
         return "$text tuần trước";
       default:
-        return  code=='en'?"just now": "vừa xong";
+        return code == 'en' ? "just now" : "vừa xong";
     }
   }
-
-
 }
 
 extension HexColor on Color {
@@ -287,6 +288,7 @@ extension HexColor on Color {
       '${green.toRadixString(16).padLeft(2, '0')}'
       '${blue.toRadixString(16).padLeft(2, '0')}';
 }
+
 class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   static const separator = '.'; // Change this to '.' for other locales
 
@@ -294,7 +296,7 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     // Short-circuit if the new value is empty
-    if (newValue.text.length == 0) {
+    if (newValue.text.isEmpty) {
       return newValue.copyWith(text: '');
     }
 
@@ -332,6 +334,7 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
     return newValue;
   }
 }
+
 class CardExpirationFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
@@ -357,12 +360,13 @@ class CardExpirationFormatter extends TextInputFormatter {
     );
   }
 }
+
 class NoSpaceFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue,
-      TextEditingValue newValue,
-      ) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final hasEmptySpace = newValue.text.trim() == oldValue.text;
     if (hasEmptySpace) {
       return TextEditingValue(

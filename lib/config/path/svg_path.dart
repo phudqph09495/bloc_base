@@ -1,5 +1,3 @@
 class SvgPath {
-
-
-  static const String delete="assets/svg/";
+  static const String delete = "assets/svg/";
 }

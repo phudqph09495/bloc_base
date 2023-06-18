@@ -30,19 +30,27 @@ class ColorApp {
   static const Color orangeF0 = Color(0xffF5BE41);
   static const Color orangeF01 = Color(0xffCF3721);
   static const Color red = Color(0xffF11313);
-  static const Color redText=Color(0xffD70040);
-static const Color bottomBar=Color(0xffABCA74);
-static const Color darkGreen=Color(0xff529E66);
-static const Color dark=Color(0xff252525);
-  static const Color orange=Color(0xffFFC94D);
-  static const Color pink=Color(0xffF59398);
-  static const Color dark500=Color(0xff717171);
-  static const Color border=Color(0xffEAEAEA);
-  static  Color greyF9= const Color(0xff8B8B8B).withOpacity(0.1);
-  static const Color yellow=Color(0xffEFB839);
-  static const Color black3F=Color(0xff3F3F3F);
-  static const LinearGradient linearGradientMain =
-      LinearGradient(colors: [whiteF7, whiteF0],begin: Alignment.topCenter,end: Alignment.bottomCenter);
+  static const Color redText = Color(0xffD70040);
+  static const Color bottomBarABCA74 = Color(0xffABCA74);
+  static const Color darkGreen = Color(0xff529E66);
+  static const Color dark252525 = Color(0xff252525);
+  static const Color orange = Color(0xffFFC94D);
+  static const Color pink = Color(0xffF59398);
+  static const Color dark500 = Color(0xff717171);
+  static const Color borderEAEAEA = Color(0xffEAEAEA);
+  static Color greyF9 = const Color(0xff8B8B8B).withOpacity(0.1);
+  static const background = Color(0xffFFFFFF);
+  static const backgroundF5F6EE = Color(0xffF5F6EE);
+  static const backgroundF9F9F4 = Color(0xffF9F9F4);
+  static const backgroundF6F6EF = Color(0xffF6F6EF);
+
+  static const Color yellow = Color(0xffEFB839);
+  static const Color black3F = Color(0xff3F3F3F);
+  static const LinearGradient linearGradientMain = LinearGradient(
+    colors: [whiteF7, whiteF0],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
   static const LinearGradient linearGradientSale =
       LinearGradient(colors: [orangeF8, orangeFF]);
 }

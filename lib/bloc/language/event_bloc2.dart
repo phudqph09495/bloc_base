@@ -8,7 +8,6 @@ class Language {
   String dichvu;
   String khamPhaGanBan;
   String xemThem;
-  String xemThem1;
   String danhGiaCaoNhat;
   String gioiThieu;
   String hoTro;
@@ -75,7 +74,6 @@ class Language {
   String soDienThoai;
   String matKhau;
   String quenMK;
-  String quenMK2;
   String dangKyTaiKhoan;
   String hoacDangNhap;
   String khiDangNhap;
@@ -149,18 +147,35 @@ class Language {
   String vuiLongKT;
   String huyBo;
   String xacNhan;
-  String CommomViewCart;
+  String commomViewCart;
+  String acceptTermsAndConditions;
+  String successConfirm;
+  String dichVuDaXacNhan;
+  String goHome;
+  String myService;
+  String target;
+  String commonAsk;
+  String lamSaoDatLich;
+  String toiCoTheHuyDichVu;
+  String thanhToanAnToan;
+  String serviceQuestion;
+  String comeBack;
+  String plsConnectToNetwork;
+  String youDoNotHaveNetwork;
+  String later;
+  String tksForUseMyService;
+  String plsRattingForHelpUs;
+  String emptyData;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
         co = code == 'en' ? 'coAnh.png' : 'coVN.png',
         codeNow = code == 'en' ? 'en' : 'vi',
-        timKiem = code == 'en' ? '' : 'Tìm Kiếm',
+        timKiem = code == 'en' ? 'Search' : 'Tìm Kiếm',
         dichvu = code == 'en' ? 'Service' : 'Dịch Vụ',
         khamPhaGanBan =
             code == 'en' ? 'Explore around you' : 'Khám Phá Gần Bạn',
         xemThem = code == 'en' ? 'See more' : 'Xem Thêm',
-        xemThem1 = code == 'en' ? 'See more' : 'Xem Thêm',
         danhGiaCaoNhat = code == 'en' ? 'Highest rated' : 'Đánh Giá Cao Nhất',
         gioiThieu = code == 'en' ? 'About' : 'Giới Thiệu',
         hoTro = code == 'en' ? 'Support' : 'Hỗ Trợ',
@@ -169,154 +184,218 @@ class Language {
         thongBao = code == 'en' ? 'Notifications' : 'Thông Báo',
         dieuKhoan =
             code == 'en' ? 'Terms and conditions' : 'Điều Khoản & Điều Kiện',
-        homNay = code == 'en' ? '' : 'Hôm Nay',
-        ganDay = code == 'en' ? '' : 'Gần đây',
+        homNay = code == 'en' ? 'Today' : 'Hôm Nay',
+        ganDay = code == 'en' ? 'Recently' : 'Gần đây',
         locKQ = code == 'en' ? 'Filters' : 'Lọc kết quả',
         xemBanDo = code == 'en' ? 'See map' : 'Xem bản đồ',
         boLoc = code == 'en' ? 'Clear' : 'Bỏ lọc',
-        loaiDV = code == 'en' ? '' : 'Loại dịch vụ',
+        loaiDV = code == 'en' ? 'Type Of Service' : 'Loại dịch vụ',
         gia = code == 'en' ? 'Price' : 'Giá',
-        giaTu = code == 'en' ? '' : 'Giá từ',
-        den = code == 'en' ? '' : 'đến',
-        phamVi = code == 'en' ? '' : 'Phạm vi',
-        chiSpaTrong = code == 'en' ? '' : 'Chỉ hiện spa còn trống',
+        giaTu = code == 'en' ? 'Price from' : 'Giá từ',
+        den = code == 'en' ? 'to' : 'đến',
+        phamVi = code == 'en' ? 'Limit' : 'Phạm vi',
+        chiSpaTrong = code == 'en'
+            ? 'Only spa is available now'
+            : 'Chỉ hiện spa còn trống',
         sapXepTheo = code == 'en' ? 'Sort by' : 'SẮP XẾP THEO',
-        danhGiaTotNhat = code == 'en' ? '' : 'Đánh giá tốt nhất',
-        giaThapNhat = code == 'en' ? '' : 'Giá thấp nhất',
-        khoangCachNganNhat = code == 'en' ? '' : 'Khoảng cách ngắn nhất',
-        danhSachYeuThich = code == 'en' ? '' : 'Danh sách yêu thích',
+        danhGiaTotNhat = code == 'en' ? 'Best Rating' : 'Đánh giá tốt nhất',
+        giaThapNhat = code == 'en' ? 'Lowest price' : 'Giá thấp nhất',
+        khoangCachNganNhat =
+            code == 'en' ? 'Shortest Distance' : 'Khoảng cách ngắn nhất',
+        danhSachYeuThich =
+            code == 'en' ? 'Favourite List' : 'Danh sách yêu thích',
         hienThi = code == 'en' ? 'View' : 'HIỂN THỊ',
         danhSach = code == 'en' ? 'List' : 'DANH SÁCH',
         luoi = code == 'en' ? 'Grid' : 'LƯỚI     ',
         apDung = code == 'en' ? 'Apply' : 'ÁP DỤNG',
-        chiNhanh = code == 'en' ? '' : 'Chi Nhánh',
+        chiNhanh = code == 'en' ? 'Branch' : 'Chi Nhánh',
         trangThai = code == 'en' ? 'Status' : 'Trạng Thái',
         khoangCach = code == 'en' ? 'Distance' : 'Khoảng Cách',
         thongTin = code == 'en' ? 'About' : 'THÔNG TIN',
-        danhGia = code == 'en' ? 'Reviews' : 'ĐÁNH GIÁ',
-        diaChi = code == 'en' ? '' : 'Địa Chỉ',
-        chiDuong = code == 'en' ? '' : 'Chỉ đường',
+        danhGia = code == 'en' ? 'Reviews :' : 'ĐÁNH GIÁ :',
+        diaChi = code == 'en' ? 'Location' : 'Địa Chỉ',
+        chiDuong = code == 'en' ? 'Direct' : 'Chỉ đường',
         dienThoai = code == 'en' ? 'Phone number' : 'Điện Thoại ',
-        website = code == 'en' ? '' : 'Website',
-        gioHoatDOng = code == 'en' ? '' : 'Giờ Hoạt Động',
-        ngayThuong = code == 'en' ? '' : 'Ngày thường',
-        cuoiTuan = code == 'en' ? '' : 'Cuối tuần',
+        website = code == 'en' ? 'Website' : 'Website',
+        gioHoatDOng = code == 'en' ? 'Hours of Operation' : 'Giờ Hoạt Động',
+        ngayThuong = code == 'en' ? 'Weekdays' : 'Ngày thường',
+        cuoiTuan = code == 'en' ? 'Weekend' : 'Cuối tuần',
         lienHe = code == 'en' ? 'Contact' : 'LIÊN HỆ',
-        chonLoaiDV = code == 'en' ? '' : 'Chọn loại dịch vụ',
+        chonLoaiDV = code == 'en' ? 'Select Service Type' : 'Chọn loại dịch vụ',
         chiTiet = code == 'en' ? 'See more' : 'Chi Tiết',
-        dvKhac = code == 'en' ? '' : 'Dịch Vụ Khác',
+        dvKhac = code == 'en' ? 'Other services' : 'Dịch Vụ Khác',
         muaGoi = code == 'en' ? 'Purchase package' : 'MUA GÓI',
         datLichNgay = code == 'en' ? 'Book now' : 'ĐẶT LỊCH NGAY',
         thongTinDichVu =
             code == 'en' ? 'About the service' : 'THÔNG TIN DỊCH VỤ',
-        chonDV = code == 'en' ? '' : 'Chọn Dịch Vụ',
-        thuNho = code == 'en' ? '' : 'Thu Nhỏ',
-        daHet = code == 'en' ? '' : 'Đã hết',
+        chonDV = code == 'en' ? 'Select Service' : 'Chọn Dịch Vụ',
+        thuNho = code == 'en' ? 'Miniature' : 'Thu Nhỏ',
+        daHet = code == 'en' ? 'Its over' : 'Đã hết',
         datLich = code == 'en' ? 'Book' : 'Đặt Lịch',
-        chonChiNhanh = code == 'en' ? '' : 'Chọn chi nhánh',
-        ngayThucHien = code == 'en' ? '' : 'Ngày Thực Hiện',
-        gioGoiY = code == 'en' ? '' : 'Giờ Gợi Ý',
-        yeuCauDacBiet = code == 'en' ? '' : 'Yêu Cầu Đặc Biệt',
-        maGiamGia = code == 'en' ? '' : 'Mã giảm giá',
-        tongThanhToan = code == 'en' ? '' : 'Tổng Thanh Toán',
-        daThemVaoGioHang = code == 'en' ? '' : 'Đã Thêm Vào Giỏ Hàng',
+        chonChiNhanh = code == 'en' ? 'Pick Branch' : 'Chọn chi nhánh',
+        ngayThucHien = code == 'en' ? 'Implementation Date' : 'Ngày Thực Hiện',
+        gioGoiY = code == 'en' ? 'Hour of Hints' : 'Giờ Gợi Ý',
+        yeuCauDacBiet =
+            code == 'en' ? 'Special Requirements' : 'Yêu Cầu Đặc Biệt',
+        maGiamGia = code == 'en' ? 'Discount' : 'Mã giảm giá',
+        tongThanhToan = code == 'en' ? 'Total Payment' : 'Tổng Thanh Toán',
+        daThemVaoGioHang =
+            code == 'en' ? 'Added to Cart' : 'Đã Thêm Vào Giỏ Hàng',
         banDaThem = code == 'en'
-            ? ''
+            ? 'You have added the service to the cart, please pay for the service before the scheduled time!'
             : 'Bạn đã thêm dịch vụ vào giỏ hàng, vui lòng thanh toán dịch vụ trước thời gian đặt lịch!',
-        camOnBan =
-            code == 'en' ? '' : 'Cảm ơn bạn đã sử dụng dịch vụ của Joy Bookie!',
+        camOnBan = code == 'en'
+            ? '''Thank you for using Joy Bookie's service!'''
+            : 'Cảm ơn bạn đã sử dụng dịch vụ của Joy Bookie!',
         thanhToan = code == 'en' ? 'Payment' : 'Thanh toán',
-        CommomViewCart = code == 'en' ? 'View Cart' : 'Xem Giỏ Hàng',
+        commomViewCart = code == 'en' ? 'View Cart' : 'Xem Giỏ Hàng',
         timDVKhac = code == 'en' ? 'Browse more services' : 'Tìm dịch vụ khác',
         dangNhap = code == 'en' ? 'Log in' : 'Đăng Nhập',
         soDienThoai = code == 'en' ? 'Phone number' : 'Số Điện Thoại',
-        matKhau = code == 'en' ? '' : 'Mật Khẩu',
-        quenMK = code == 'en' ? '' : 'Quên mật khẩu',
-        quenMK2 = code == 'en' ? '' : 'Quên Mật Khẩu',
-        dangKyTaiKhoan = code == 'en' ? '' : 'Đăng ký tài khoản',
-        hoacDangNhap = code == 'en' ? '' : 'hoặc đăng nhập bằng',
-        khiDangNhap = code == 'en' ? '' : 'Khi đăng nhập, tôi đồng ý với các',
-        khiDangKy = code == 'en' ? '' : 'Khi đăng ký, tôi đồng ý với các',
+        matKhau = code == 'en' ? 'Password' : 'Mật Khẩu',
+        quenMK = code == 'en' ? 'Forgot Password' : 'Quên mật khẩu',
+        dangKyTaiKhoan =
+            code == 'en' ? 'Sign up for an account' : 'Đăng ký tài khoản',
+        hoacDangNhap = code == 'en' ? 'or login with' : 'hoặc đăng nhập bằng',
+        khiDangNhap = code == 'en'
+            ? 'By logging in, I agree to the'
+            : 'Khi đăng nhập, tôi đồng ý với các',
+        khiDangKy = code == 'en'
+            ? 'By registering, I agree to the'
+            : 'Khi đăng ký, tôi đồng ý với các',
         dieuKhoanSuDung =
             code == 'en' ? 'Terms and conditions' : ' Điều khoản sử dụng',
-        va = code == 'en' ? '' : 'và',
-        chinhSachbaoMat = code == 'en' ? '' : ' Chính sách bảo mật',
-        cuaJoyBookie = code == 'en' ? '' : ' của Joy Bookie.',
-        dangKy = code == 'en' ? '' : 'Đăng Ký',
+        va = code == 'en' ? 'and' : 'và',
+        chinhSachbaoMat =
+            code == 'en' ? 'Privacy Policy' : ' Chính sách bảo mật',
+        cuaJoyBookie = code == 'en' ? 'of Joy Bookie' : ' của Joy Bookie.',
+        dangKy = code == 'en' ? 'Register' : 'Đăng Ký',
         hoTen = code == 'en' ? 'Full name' : 'Họ Tên',
         ngaySinh = code == 'en' ? 'DOB' : 'Ngày Sinh',
         gioiTinh = code == 'en' ? 'Gender' : 'Giới Tính',
-        xacNhanMatKhau = code == 'en' ? '' : 'Nhập lại mật khẩu',
-        nam = code == 'en' ? '' : 'Nam',
-        nu = code == 'en' ? '' : 'Nữ',
+        xacNhanMatKhau = code == 'en' ? 'Retype Password' : 'Nhập lại mật khẩu',
+        nam = code == 'en' ? 'Male' : 'Nam',
+        nu = code == 'en' ? 'Female' : 'Nữ',
         nhanEmail = code == 'en'
-            ? ''
+            ? 'Receive exclusive promotional emails from Joy Bookie. This subscription can be canceled at a later date as outlined in the Privacy Policy.'
             : 'Nhận email khuyến mãi độc quyền từ Joy Bookie. Có thể hủy đăng ký này về sau như đã nêu trong Chính sách bảo mật.',
         canhBao = code == 'en'
-            ? ''
+            ? 'Maximum number that can be selected: 3. Please re-enter.'
             : 'Số lượng tối đa có thể chọn: 3. Vui lòng nhập lại.',
-        nhapMagiamGia = code == 'en' ? '' : 'Nhập mã giảm giá',
-        phuongThucThanhToan = code == 'en' ? '' : 'Phương thức thanh toán',
-        theTinDung = code == 'en' ? '' : 'Thẻ tín dụng / ghi nợ',
-        goiDaDat = code == 'en' ? '' : 'Gói Đã Đặt',
-        soThe = code == 'en' ? '' : 'Số Thẻ',
-        ngayHetHan = code == 'en' ? '' : 'Ngày hết hạn',
-        xemLichSu = code == 'en' ? '' : 'Xem lịch sử',
-        viMomo = code == 'en' ? '' : 'Ví Momo',
-        thanhToanBangDiem = code == 'en' ? '' : 'Thanh toán bằng điểm',
-        thongtinLienHe = code == 'en' ? '' : 'Thông tin liên hệ',
-        taoTaiKhoanMoi = code == 'en' ? '' : 'Tạo tài khoản mới',
-        lichDaDat = code == 'en' ? '' : 'Lịch Đã Đặt',
-        yeuThich = code == 'en' ? 'English' : 'Yêu Thích',
-        dangKyDoiTac = code == 'en' ? 'English' : 'Đăng ký đối tác',
-        taiKhoan = code == 'en' ? 'English' : 'Tài Khoản',
-        ngonNgu = code == 'en' ? 'English' : 'Ngôn Ngữ',
-        danhGiaCuaToi = code == 'en' ? 'English' : 'Đánh giá của tôi',
-        tinNhan = code == 'en' ? 'English' : 'Tin nhắn',
-        uuDai = code == 'en' ? 'English' : 'Ưu đãi',
-        ttHT = code == 'en' ? 'English' : 'Trung tâm hỗ trợ',
-        cauHoiThuongGap = code == 'en' ? 'English' : 'Câu hỏi thường gặp',
-        timHieuThem = code == 'en' ? 'English' : 'Tìm hiểu thêm',
-        caiDat = code == 'en' ? 'English' : 'Cài đặt',
-        dangXuat = code == 'en' ? 'English' : 'Đăng Xuất',
+        nhapMagiamGia =
+            code == 'en' ? 'Enter discount code' : 'Nhập mã giảm giá',
+        phuongThucThanhToan =
+            code == 'en' ? 'Payment Methods' : 'Phương thức thanh toán',
+        theTinDung =
+            code == 'en' ? 'Credit / Debit Card' : 'Thẻ tín dụng / ghi nợ',
+        goiDaDat = code == 'en' ? 'Packages Purchased' : 'Gói Đã Đặt',
+        soThe = code == 'en' ? 'Card Number' : 'Số Thẻ',
+        ngayHetHan = code == 'en' ? 'Expiration date' : 'Ngày hết hạn',
+        xemLichSu = code == 'en' ? 'View History' : 'Xem lịch sử',
+        viMomo = code == 'en' ? 'Momo Wallet' : 'Ví Momo',
+        thanhToanBangDiem =
+            code == 'en' ? 'Pay with points' : 'Thanh toán bằng điểm',
+        thongtinLienHe = code == 'en' ? 'Contact Info' : 'Thông tin liên hệ',
+        taoTaiKhoanMoi =
+            code == 'en' ? 'Create a new account' : 'Tạo tài khoản mới',
+        lichDaDat = code == 'en' ? 'Booked Calendar' : 'Lịch Đã Đặt',
+        yeuThich = code == 'en' ? 'Favourite' : 'Yêu Thích',
+        dangKyDoiTac =
+            code == 'en' ? 'Partner Registration' : 'Đăng ký đối tác',
+        taiKhoan = code == 'en' ? 'Account' : 'Tài Khoản',
+        ngonNgu = code == 'en' ? 'Language' : 'Ngôn Ngữ',
+        danhGiaCuaToi = code == 'en' ? 'My Rating' : 'Đánh giá của tôi',
+        tinNhan = code == 'en' ? 'Message' : 'Tin nhắn',
+        uuDai = code == 'en' ? 'Endow' : 'Ưu đãi',
+        ttHT = code == 'en' ? 'Support Center' : 'Trung tâm hỗ trợ',
+        cauHoiThuongGap =
+            code == 'en' ? 'Frequently asked questions' : 'Câu hỏi thường gặp',
+        timHieuThem = code == 'en' ? 'Find out more' : 'Tìm hiểu thêm',
+        caiDat = code == 'en' ? 'Setting' : 'Cài đặt',
+        dangXuat = code == 'en' ? 'Log Out' : 'Đăng Xuất',
         xinChao = code == 'en' ? 'Hello' : 'Xin Chào',
-        datThem = code == 'en' ? 'English' : 'Mua Thêm',
-        caiDatThongBao = code == 'en' ? 'English' : 'Cài Đặt Thông Báo',
-        nhanThongBao = code == 'en' ? 'English' : 'Nhận thông báo',
-        tat = code == 'en' ? 'English' : 'Tắt',
-        ttCN = code == 'en' ? 'English' : 'Thông Tin Cá Nhân',
-        thayDoiMK = code == 'en' ? 'English' : 'Thay Đổi Mật Khẩu',
-        matKhauCu = code == 'en' ? 'English' : 'Mật khẩu cũ',
-        matKhauMoi = code == 'en' ? 'English' : 'Mật khẩu mới',
-        luuThayDoi = code == 'en' ? 'English' : 'Lưu thay đổi',
-        spa = code == 'en' ? 'English' : 'Spa & Salon',
-        lichSu = code == 'en' ? 'English' : 'Lịch Sử',
-        dkDoiTac = code == 'en' ? 'English' : 'Đăng Ký Trở Thành Đối Tác',
-        nhapTTDK = code == 'en' ? 'English' : 'Nhập Thông Tin Để Đăng Ký',
-        tenSpa = code == 'en' ? 'English' : 'Tên Spa',
-        nguoiDaiDien = code == 'en' ? 'English' : 'Người Đại Diện',
+        datThem = code == 'en' ? 'Buy More' : 'Mua Thêm',
+        caiDatThongBao =
+            code == 'en' ? 'Setting Notifications' : 'Cài Đặt Thông Báo',
+        nhanThongBao = code == 'en' ? 'Get Notifications' : 'Nhận thông báo',
+        tat = code == 'en' ? 'Turn off' : 'Tắt',
+        ttCN = code == 'en' ? 'Personal Information' : 'Thông Tin Cá Nhân',
+        thayDoiMK = code == 'en' ? 'Change Password' : 'Thay Đổi Mật Khẩu',
+        matKhauCu = code == 'en' ? 'Old Password' : 'Mật khẩu cũ',
+        matKhauMoi = code == 'en' ? 'New Password' : 'Mật khẩu mới',
+        luuThayDoi = code == 'en' ? 'Save Changes' : 'Lưu thay đổi',
+        spa = code == 'en' ? 'Spa & Salon' : 'Spa & Salon',
+        lichSu = code == 'en' ? 'History' : 'Lịch Sử',
+        dkDoiTac = code == 'en'
+            ? 'Sign Up to Become a Partner'
+            : 'Đăng Ký Trở Thành Đối Tác',
+        nhapTTDK = code == 'en'
+            ? 'Enter Information To Register'
+            : 'Nhập Thông Tin Để Đăng Ký',
+        tenSpa = code == 'en' ? 'Spa Name' : 'Tên Spa',
+        nguoiDaiDien = code == 'en' ? 'Representative' : 'Người Đại Diện',
         fanpage = code == 'en' ? 'English' : 'Fanpage (nếu có)',
-        gui = code == 'en' ? 'English' : 'GỬI',
+        gui = code == 'en' ? 'Send' : 'GỬI',
         vuiLongNhap = code == 'en'
             ? 'English'
             : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',
-        maOTP = code == 'en' ? 'English' : 'Mã OTP của quý khách',
-        nhap = code == 'en' ? 'English' : 'Nhập',
-        maDatLich = code == 'en' ? 'English' : 'Mã Đặt Lịch',
-        bat = code == 'en' ? 'English' : 'Bật',
-        soBooking = code == 'en' ? 'English' : 'Số Booking:',
+        maOTP = code == 'en' ? 'Your OTP' : 'Mã OTP của quý khách',
+        nhap = code == 'en' ? 'Enter' : 'Nhập',
+        maDatLich = code == 'en' ? 'Booking Code' : 'Mã Đặt Lịch',
+        bat = code == 'en' ? 'Turn On' : 'Bật',
+        soBooking = code == 'en' ? 'Booking Number' : 'Số Booking:',
         luuY = code == 'en'
-            ? 'English'
+            ? 'Note: Your appointment needs to be confirmed, see the confirmation and check-in process at'
             : 'Lưu ý: Lịch hẹn của quý khách cần được xác nhận, xem quy trình xác nhận và check in tại ',
-        day = code == 'en' ? 'English' : 'đây.',
-        xemthemDV = code == 'en' ? 'English' : 'Xem thêm dịch vụ khác',
-        xacnhanBooking = code == 'en' ? 'English' : 'Xác nhận booking!',
+        day = code == 'en' ? 'here' : 'đây.',
+        xemthemDV =
+            code == 'en' ? 'See more services' : 'Xem thêm dịch vụ khác',
+        xacnhanBooking =
+            code == 'en' ? 'Booking confirmation!' : 'Xác nhận booking!',
         vuiLongKT = code == 'en'
-            ? 'English'
+            ? 'Please double check the information and confirm the customer service'
             : 'Vui lòng kiểm tra lại thông tin và xác nhận dịch vụ của khách hàng',
-        huyBo = code == 'en' ? 'English' : 'Huỷ bỏ',
-        xacNhan = code == 'en' ? 'English' : 'Xác nhận',
-        xemthemMaDatLich = code == 'en' ? 'English' : 'Xem mã đặt lịch của bạn';
+        huyBo = code == 'en' ? 'Cancel' : 'Huỷ bỏ',
+        xacNhan = code == 'en' ? 'Confirm' : 'Xác nhận',
+        goHome = code == 'en' ? 'Go Home' : 'Về trang chủ',
+        successConfirm = code == 'en'
+            ? 'Successfully confirmed!'
+            : 'Đã xác nhận thành công!',
+        dichVuDaXacNhan = code == 'en'
+            ? 'Service has been confirmed successfully.\nThank you!'
+            : 'Dịch vụ đã được xác nhận thành công. \nXin cảm ơn!',
+        xemthemMaDatLich = code == 'en' ? 'English' : 'Xem mã đặt lịch của bạn',
+        acceptTermsAndConditions = code == 'en'
+            ? 'Accept terms and conditions .'
+            : 'Chấp nhận điều khoản điều kiện.',
+        target = code == 'en' ? 'Target' : 'Mục tiêu',
+        myService = code == 'en' ? 'My Service' : 'Dịch vụ của chúng tôi',
+        commonAsk = code == 'en' ? 'Common Ask' : 'Câu Hỏi Chung',
+        toiCoTheHuyDichVu = code == 'en'
+            ? 'Can I cancel the service?'
+            : 'Tôi có hủy được dịch vụ không?',
+        thanhToanAnToan =
+            code == 'en' ? 'How to make payment?' : 'Làm sao để thanh toán?',
+        lamSaoDatLich = code == 'en'
+            ? 'How to make an appointment?'
+            : 'Làm thế nào để đặt lịch?',
+        youDoNotHaveNetwork = code == 'en'
+            ? 'You do not have an internet connection'
+            : 'Quý khách không có kết nối mạng',
+        plsConnectToNetwork = code == 'en'
+            ? 'Please connect to the network to make changes or view updates'
+            : 'Vui lòng kết nối vào mạng để tạo thay đổi hoặc xem thông tin cập nhật',
+        comeBack = code == 'en' ? 'Come Back' : 'Quay lại',
+        tksForUseMyService = code == 'en'
+            ? 'Thank you for using our service'
+            : 'Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi',
+        serviceQuestion =
+            code == 'en' ? 'Service Question' : 'Câu Hỏi Về dịch vụ',
+        plsRattingForHelpUs = code == 'en'
+            ? 'Please rate to help us improve service quality'
+            : 'Vui lòng đánh giá để giúp chúng tôi cải thiện chất lượng dịch vụ',
+        emptyData = code == 'en' ? 'Empty Data' : 'Hiện tại không có Data',
+        later = code == 'en' ? 'Later' : 'Để sau';
 }
 
 class GetLang extends EventBloc2 {}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436346904953",
+    "project_id": "spa-app-63dfe",
+    "storage_bucket": "spa-app-63dfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436346904953:android:554ddef1fb99a2e8de8fa8",
+        "android_client_info": {
+          "package_name": "com.sota.bloc_base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436346904953-f6h0sl9a8tmc9nojv9ncmnq8b4u2jtm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbGixYVQTNaqlCStjBl9Hcl69xuAOprbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436346904953-f6h0sl9a8tmc9nojv9ncmnq8b4u2jtm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

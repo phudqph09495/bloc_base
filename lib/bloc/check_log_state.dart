@@ -1,24 +1,22 @@
-
 import 'package:bloc_base/bloc/state_bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 import '../widget/item/custom_toast.dart';
 import '../widget/item/dialog_item.dart';
 
-
-
 class CheckLogState {
-  static check(BuildContext context,
-      {required StateBloc state,
-      String? msg,
-        String? err,
-      bool isShowMsg = true,
-      bool isShowDlg = false,
-      int duration = 2,
-      Function()? ontap,
-      Function()? success}) {
+  static check(
+    BuildContext context, {
+    required StateBloc state,
+    String? msg,
+    String? err,
+    bool isShowMsg = true,
+    bool isShowDlg = false,
+    int duration = 2,
+    Function()? ontap,
+    Function()? success,
+  }) {
     if (state is Loading) {
       DialogItem.showLoading(context: context);
     }
@@ -30,12 +28,14 @@ class CheckLogState {
               context: context,
               msg: msg ?? state.data,
               duration: 3,
-              gravity: ToastGravity.CENTER)
+              gravity: ToastGravity.CENTER,
+            )
           : CustomToast.showToast(
               context: context,
               msg: msg ?? state.data,
               duration: 3,
-              gravity: ToastGravity.CENTER);
+              gravity: ToastGravity.CENTER,
+            );
       if (success != null) {
         success();
       }
@@ -46,12 +46,13 @@ class CheckLogState {
           ? DialogItem.showMsg(
               context: context,
               title: "Lỗi",
-              msg: state.error
-                 )
+              msg: state.error,
+            )
           : CustomToast.showToast(
               context: context,
               msg: state.error,
-              duration: 3);
+              duration: 3,
+            );
     }
   }
 }

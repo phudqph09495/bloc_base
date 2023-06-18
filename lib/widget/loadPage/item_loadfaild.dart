@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import '../../styles/init_style.dart';
 
 class ItemLoadFaild extends StatelessWidget {
-  String error;
-  String titleButton;
-  double width;
-  Function()? onTap;
+  final String error;
+  final String titleButton;
+  final double width;
+  final Function()? onTap;
 
-  ItemLoadFaild(
-      {required this.error,
+  const ItemLoadFaild(
+      {super.key,
+      required this.error,
       this.onTap,
       this.titleButton = "Tải lại",
       this.width = 100});

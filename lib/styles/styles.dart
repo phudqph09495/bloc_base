@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'utils.dart';
+
 class StyleApp {
   static TextStyle textStyle400(
       {Color color = Colors.black,
       double fontSize = 14,
-        FontStyle fontStyle=FontStyle.normal,
+      FontStyle fontStyle = FontStyle.normal,
       TextDecoration decoration = TextDecoration.none}) {
     return GoogleFonts.barlow(
       color: color,
@@ -64,4 +66,17 @@ class StyleApp {
     );
   }
 
+  static TextStyle styleGilroy700(
+      {Color color = Colors.black,
+      double fontSize = 14,
+      TextDecoration decoration = TextDecoration.none}) {
+    return safeGoogleFont(
+      'SVN-Gilroy',
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      height: (fontSize + 1) / fontSize,
+      letterSpacing: 0.001,
+      color: color,
+    );
+  }
 }

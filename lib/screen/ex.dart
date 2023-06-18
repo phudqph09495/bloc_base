@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../config/const.dart';
 import '../styles/init_style.dart';
@@ -52,7 +49,7 @@ class Scene extends StatelessWidget {
                                     padding: EdgeInsets.all(3.0),
                                     child: Icon(
                                       Icons.notifications_none_outlined,
-                                      color: ColorApp.dark,
+                                      color: ColorApp.dark252525,
                                       size: 25,
                                     ),
                                   ),
@@ -86,13 +83,14 @@ class Scene extends StatelessWidget {
                   label: 'Tìm kiếm',
                   hasLeading: true,
                   iconPreFix:
-                      const Icon(Icons.search, color: ColorApp.bottomBar),
+                      const Icon(Icons.search, color: ColorApp.bottomBarABCA74),
                   hasSuffix: true,
                   suffix: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Container(
                         decoration: const BoxDecoration(
-                            color: ColorApp.bottomBar, shape: BoxShape.circle),
+                            color: ColorApp.bottomBarABCA74,
+                            shape: BoxShape.circle),
                         child: Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: Transform.scale(
@@ -141,7 +139,7 @@ class Scene extends StatelessWidget {
                                         Text(
                                           listSer[index],
                                           style: StyleApp.textStyle600(
-                                              color: ColorApp.dark),
+                                              color: ColorApp.dark252525),
                                           textAlign: TextAlign.center,
                                         )
                                       ],
@@ -204,14 +202,8 @@ class Scene extends StatelessWidget {
                                         height: 23 * fem,
                                         child: Text(
                                           'KHÁM PHÁ GẦN BẠN',
-                                          style: safeGoogleFont(
-                                            'SVN-Gilroy',
-                                            fontSize: 18 * ffem,
-                                            fontWeight: FontWeight.w700,
-                                            height: 1.2575 * ffem / fem,
-                                            letterSpacing: 0.0180000003 * fem,
-                                            color: const Color(0xffffffff),
-                                          ),
+                                          style: StyleApp.styleGilroy700(
+                                              fontSize: 18),
                                         ),
                                       ),
                                     ),
