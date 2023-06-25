@@ -105,6 +105,9 @@ class BottomSheetInforService {
   static Future<dynamic> purchaseBuyBottomSheet(
       BuildContext context, Language lang) {
     return showModalBottomSheet(
+        enableDrag: false,
+        isDismissible: false,
+        isScrollControlled: true,
         context: context,
         builder: (BuildContext context) {
           return StatefulBuilder(
@@ -165,7 +168,7 @@ class BottomSheetInforService {
                                           )),
                                       Container(
                                         decoration: BoxDecoration(
-                                            color: ColorApp.pink,
+                                            color: ColorApp.pinkF59398,
                                             borderRadius:
                                                 BorderRadius.circular(12)),
                                         child: Padding(

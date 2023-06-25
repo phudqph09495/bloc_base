@@ -173,12 +173,13 @@ class _InfoServiceState extends State<InfoService> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language lang = state.data;
         return Scaffold(
           bottomSheet: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 5),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, bottom: 5, top: 5),
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.065,
               child: Row(

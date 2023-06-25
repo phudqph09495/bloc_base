@@ -18,7 +18,7 @@ class NotificationScreen extends StatefulWidget {
 class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(
+    return BlocBuilder<BlocLanguage, StateBloc>(
         builder: (context, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;

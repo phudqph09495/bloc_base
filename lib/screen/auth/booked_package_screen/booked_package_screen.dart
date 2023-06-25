@@ -54,7 +54,7 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
   String? selectedCN;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -141,7 +141,7 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                                           decoration: BoxDecoration(
                                               color: index % 2 == 1
                                                   ? ColorApp.bottomBarABCA74
-                                                  : ColorApp.orange,
+                                                  : ColorApp.orangeFFC94D,
                                               borderRadius:
                                                   BorderRadius.circular(12)),
                                           child: Padding(

@@ -2,6 +2,11 @@ abstract class EventBloc2 {}
 
 class Language {
   String string1;
+  String myRatting;
+  String doYouWantDeleteAccount;
+  String deleteAccount;
+  String khong;
+  String dongY;
   String codeNow;
   String co;
   String timKiem;
@@ -166,9 +171,12 @@ class Language {
   String tksForUseMyService;
   String plsRattingForHelpUs;
   String emptyData;
+  String searchMoreSpaAndSalon;
+  String getNotifications;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
+        myRatting = code == 'en' ? 'My Ratting' : 'Đánh giá của tôi',
         co = code == 'en' ? 'coAnh.png' : 'coVN.png',
         codeNow = code == 'en' ? 'en' : 'vi',
         timKiem = code == 'en' ? 'Search' : 'Tìm Kiếm',
@@ -395,11 +403,22 @@ class Language {
             ? 'Please rate to help us improve service quality'
             : 'Vui lòng đánh giá để giúp chúng tôi cải thiện chất lượng dịch vụ',
         emptyData = code == 'en' ? 'Empty Data' : 'Hiện tại không có Data',
-        later = code == 'en' ? 'Later' : 'Để sau';
+        later = code == 'en' ? 'Later' : 'Để sau',
+        searchMoreSpaAndSalon = code == 'en'
+            ? 'Search more Spa & Salon'
+            : 'Tìm kiếm thêm spa & Salon',
+        getNotifications =
+            code == 'en' ? 'Get Notifications' : 'Nhận thông báo',
+        deleteAccount = code == 'en' ? 'Delete Account' : 'Xóa tài khoản',
+        doYouWantDeleteAccount = code == 'en'
+            ? 'Do You Want Delete Account'
+            : 'Bạn có chắc chắn muốn xóa tài khoản không?',
+        khong = code == 'en' ? 'No' : 'Không',
+        dongY = code == 'en' ? 'Yes' : 'Đồng Ý';
 }
 
-class GetLang extends EventBloc2 {}
+class GetLanguage extends EventBloc2 {}
 
-class SangE extends EventBloc2 {}
+class ConvertToEngEvent extends EventBloc2 {}
 
-class SangVn extends EventBloc2 {}
+class ConvertToVNEvent extends EventBloc2 {}

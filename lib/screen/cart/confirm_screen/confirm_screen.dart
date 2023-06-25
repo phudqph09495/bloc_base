@@ -15,7 +15,7 @@ class ConfirmScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -236,7 +236,7 @@ class ConfirmScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.065,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: ColorApp.orange,
+                          color: ColorApp.orangeFFC94D,
                           borderRadius: BorderRadius.circular(20)),
                       child: Padding(
                         padding: EdgeInsets.symmetric(

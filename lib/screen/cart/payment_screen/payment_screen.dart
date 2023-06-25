@@ -28,7 +28,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool? isAcceptTerms = false;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(

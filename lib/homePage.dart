@@ -14,7 +14,7 @@ import 'screen/cart/cart_screen/cart_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   int index;
-  MyHomePage({this.index = 3});
+  MyHomePage({this.index = 0});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     // context.read<BlocCheckLogin>().add(GetData());
-    context.read<BlocLang>().add(GetLang());
+    context.read<BlocLanguage>().add(GetLanguage());
     // context.read<BlocFireBaseMS>().add(firebase());
   }
 
@@ -77,16 +77,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
-        color: ColorApp.backgroundF6F6EF,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            // BoxShadow(
+            //   color: ColorApp.bottomBarABCA74,
+            //   blurRadius: 50.0,
+            //   spreadRadius: 1, //New
+            // )
+          ],
+        ),
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-            bottom: 2,
-          ),
+          padding:
+              const EdgeInsets.only(left: 16, right: 16, bottom: 5, top: 5),
           child: Container(
             decoration: BoxDecoration(
                 color: ColorApp.bottomBarABCA74,
+                boxShadow: const [
+                  BoxShadow(
+                    color: ColorApp.bottomBarABCA74,
+                    blurRadius: 70.0,
+                    spreadRadius: 2, //New
+                  )
+                ],
                 borderRadius: BorderRadius.circular(25)),
             child: Padding(
               padding: EdgeInsets.symmetric(

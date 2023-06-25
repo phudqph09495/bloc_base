@@ -15,7 +15,7 @@ class ConfirmSuccesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -58,7 +58,7 @@ class ConfirmSuccesScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2,
                       child: ButtonWidget(
                         type: ButtonType.secondary,
-                        text: language.dangKyDoiTac.toUpperCase(),
+                        text: language.goHome.toUpperCase(),
                         onTap: () =>
                             Navigator.pushNamed(context, RouterName.homeScreen),
                       ),

@@ -67,12 +67,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool isBack;
   final VoidCallback? onTap;
+
   @override
   final Size preferredSize = const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      
       automaticallyImplyLeading: false,
       leadingWidth: 80,
       centerTitle: true,
@@ -103,7 +105,7 @@ class AppBarBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 8),

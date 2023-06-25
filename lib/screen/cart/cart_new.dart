@@ -39,7 +39,7 @@ class _CartNewState extends State<CartNew> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (context, state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (context, state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(

@@ -1,11 +1,14 @@
 import 'package:bloc_base/homepage.dart';
+import 'package:bloc_base/screen/auth/account_screen/member_screen.dart';
 import 'package:bloc_base/screen/auth/history_screen/history_screen.dart';
-import 'package:bloc_base/screen/cart/cart_new.dart';
 import 'package:bloc_base/screen/cart/confirm_screen/confirm_screen.dart';
 import 'package:bloc_base/screen/auth/login_screen/login_screen.dart';
 import 'package:bloc_base/screen/home/notification_screen/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
+import '../screen/auth/my_ratting_screen/my_ratting_screen.dart';
+import '../screen/auth/profile_screen/password_screen.dart';
+import '../screen/auth/setting_screen/setting_screen.dart';
 import '../screen/cart/cart_screen/cart_screen.dart';
 import '../screen/cart/confirm_success_screen/confirm_success_screen.dart';
 import '../screen/cart/booking_code_screen/booking_code_screen.dart';
@@ -129,6 +132,23 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const HistoryScreen());
     }
 
+    switch (settings.name) {
+      case RouterName.passworkScreen:
+        return MaterialPageRoute(builder: (context) => const PassworkScreen());
+    }
+    switch (settings.name) {
+      case RouterName.settingScreen:
+        return MaterialPageRoute(builder: (context) => const SettingScreen());
+    }
+    switch (settings.name) {
+      case RouterName.rattingScreen:
+        return MaterialPageRoute(builder: (context) => const RattingScreen());
+    }
+    switch (settings.name) {
+      case RouterName.memberScreen:
+        return MaterialPageRoute(builder: (context) => const MemberScreen());
+    }
+
     return null;
   }
 }
@@ -157,4 +177,8 @@ class RouterName {
   static const noConnectScreen = "/noConnectScreen";
   static const gioHangScreen = "/gioHangScreen";
   static const historyScreen = "/historyScreen";
+  static const passworkScreen = "/passworkScreen";
+  static const settingScreen = "/deleteScreen";
+  static const rattingScreen = "/rattingScreen";
+  static const memberScreen = "/memberScreen";
 }

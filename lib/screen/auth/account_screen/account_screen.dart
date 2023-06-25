@@ -33,8 +33,8 @@ class _AccountScreenState extends State<AccountScreen> {
     return Scaffold(
       drawer: const ItemDrawer(),
       key: _scaffoldKey,
-      body:
-          BlocBuilder<BlocLang, StateBloc>(builder: (context, StateBloc state) {
+      body: BlocBuilder<BlocLanguage, StateBloc>(
+          builder: (context, StateBloc state) {
         if (state is LoadSuccess) {
           Language lang = state.data;
           return Column(
@@ -94,7 +94,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           children: [
                             Stack(
                               children: [
-                                ClipOval(
+                                const ClipOval(
                                     child: LoadImage(
                                   url:
                                       'https://3.pik.vn/e1ec72b6-6b34-4e8b-89f2-ddd51e333d9d.jpg',
@@ -110,7 +110,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                           height: 25,
                                           width: 25,
                                           decoration: const BoxDecoration(
-                                              color: ColorApp.orange,
+                                              color: ColorApp.orangeFFC94D,
                                               shape: BoxShape.circle),
                                           child: const Icon(
                                             Icons.camera_alt,
@@ -132,31 +132,64 @@ class _AccountScreenState extends State<AccountScreen> {
                                         color: ColorApp.dark252525),
                                   ),
                                   const Gap(6),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: ColorApp.orange,
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 5),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'Thành viên vàng',
-                                            style: StyleApp.textStyle600(
-                                                color: ColorApp.dark252525),
-                                          ),
-                                          const Gap(4),
-                                          const Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 10,
-                                          )
-                                        ],
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, RouterName.memberScreen);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: ColorApp.orangeFFC94D,
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8, vertical: 5),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Thành viên vàng',
+                                              style: StyleApp.textStyle600(
+                                                  color: ColorApp.dark252525),
+                                            ),
+                                            const Gap(4),
+                                            const Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 10,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
+                                  ),
+                                  const Gap(6),
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 60,
+                                        height: 5,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10)),
+                                          child: LinearProgressIndicator(
+                                            value: 0.9,
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                                    ColorApp.bottomBarABCA74),
+                                            backgroundColor: ColorApp.grey82,
+                                          ),
+                                        ),
+                                      ),
+                                      Gap(5),
+                                      Text(
+                                        '88 %',
+                                        style: StyleApp.textStyle500(
+                                            fontSize: 12,
+                                            color: ColorApp.dark500),
+                                      )
+                                    ],
                                   )
                                 ],
                               ),
@@ -174,16 +207,16 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
               Expanded(
                   child: Container(
-                color: ColorApp.whiteF0,
+                color: ColorApp.backgroundF5F6EE,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18, vertical: 18),
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const Gap(18),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -240,15 +273,10 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: Const.size(context).width * 0.04,
-                            ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: Const.size(context).width * 0.08,
-                      ),
+                      const Gap(30),
                       Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -279,7 +307,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ColorApp.whiteF0,
+                                    color: ColorApp.backgroundF9F9F4,
                                     borderRadius: BorderRadius.circular(12)),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
@@ -295,6 +323,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                         children: [
                                           SvgPicture.asset(
                                               'assets/svg/tinNhan.svg'),
+                                          const Gap(8),
                                           Text(
                                             '  ${lang.tinNhan}',
                                             style: StyleApp.textStyle500(
@@ -319,76 +348,78 @@ class _AccountScreenState extends State<AccountScreen> {
                                 subText: "23",
                                 preLinkUrl: 'assets/svg/star.svg',
                                 onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => SimpleDialog(
-                                            shape: const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(30.0))),
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 12),
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  const Gap(40),
-                                                  SvgPicture.asset(
-                                                      'assets/svg/LogoApp.svg'),
-                                                  const Gap(40),
-                                                  Text(
-                                                    textAlign: TextAlign.center,
-                                                    lang.tksForUseMyService,
-                                                    style:
-                                                        StyleApp.styleGilroy700(
-                                                      fontSize: 18,
-                                                    ),
-                                                  ),
-                                                  const Gap(10),
-                                                  Text(
-                                                    textAlign: TextAlign.center,
-                                                    lang.plsRattingForHelpUs,
-                                                    style:
-                                                        StyleApp.textStyle500(),
-                                                  ),
-                                                  const Gap(30),
-                                                  const Divider(),
-                                                  RatingBar.builder(
-                                                    glowColor: Colors.red,
-                                                    initialRating: 0,
-                                                    minRating: 1,
-                                                    direction: Axis.horizontal,
-                                                    allowHalfRating: true,
-                                                    itemCount: 5,
-                                                    itemPadding:
-                                                        const EdgeInsets
-                                                                .symmetric(
-                                                            horizontal: 4.0),
-                                                    itemBuilder: (context, _) =>
-                                                        const Icon(
-                                                      Icons.star,
-                                                      color: Colors.amber,
-                                                    ),
-                                                    onRatingUpdate: (rating) {},
-                                                  ),
-                                                  const Divider(),
-                                                  const Gap(25),
-                                                  InkWell(
-                                                    onTap: () =>
-                                                        Navigator.pop(context),
-                                                    child: Text(
-                                                      lang.later.toUpperCase(),
-                                                      style: StyleApp
-                                                          .styleGilroy700(),
-                                                    ),
-                                                  ),
-                                                  const Gap(30)
-                                                ],
-                                              ),
-                                            ],
-                                          ));
+                                  Navigator.pushNamed(
+                                      context, RouterName.rattingScreen);
+                                  // showDialog(
+                                  //     context: context,
+                                  //     builder: (context) => SimpleDialog(
+                                  //           shape: const RoundedRectangleBorder(
+                                  //               borderRadius: BorderRadius.all(
+                                  //                   Radius.circular(30.0))),
+                                  //           contentPadding:
+                                  //               const EdgeInsets.symmetric(
+                                  //                   horizontal: 12),
+                                  //           children: [
+                                  //             Column(
+                                  //               crossAxisAlignment:
+                                  //                   CrossAxisAlignment.center,
+                                  //               mainAxisSize: MainAxisSize.min,
+                                  //               children: [
+                                  //                 const Gap(40),
+                                  //                 SvgPicture.asset(
+                                  //                     'assets/svg/LogoApp.svg'),
+                                  //                 const Gap(40),
+                                  //                 Text(
+                                  //                   textAlign: TextAlign.center,
+                                  //                   lang.tksForUseMyService,
+                                  //                   style:
+                                  //                       StyleApp.styleGilroy700(
+                                  //                     fontSize: 18,
+                                  //                   ),
+                                  //                 ),
+                                  //                 const Gap(10),
+                                  //                 Text(
+                                  //                   textAlign: TextAlign.center,
+                                  //                   lang.plsRattingForHelpUs,
+                                  //                   style:
+                                  //                       StyleApp.textStyle500(),
+                                  //                 ),
+                                  //                 const Gap(30),
+                                  //                 const Divider(),
+                                  //                 RatingBar.builder(
+                                  //                   glowColor: Colors.red,
+                                  //                   initialRating: 0,
+                                  //                   minRating: 1,
+                                  //                   direction: Axis.horizontal,
+                                  //                   allowHalfRating: true,
+                                  //                   itemCount: 5,
+                                  //                   itemPadding:
+                                  //                       const EdgeInsets
+                                  //                               .symmetric(
+                                  //                           horizontal: 4.0),
+                                  //                   itemBuilder: (context, _) =>
+                                  //                       const Icon(
+                                  //                     Icons.star,
+                                  //                     color: Colors.amber,
+                                  //                   ),
+                                  //                   onRatingUpdate: (rating) {},
+                                  //                 ),
+                                  //                 const Divider(),
+                                  //                 const Gap(25),
+                                  //                 InkWell(
+                                  //                   onTap: () =>
+                                  //                       Navigator.pop(context),
+                                  //                   child: Text(
+                                  //                     lang.later.toUpperCase(),
+                                  //                     style: StyleApp
+                                  //                         .styleGilroy700(),
+                                  //                   ),
+                                  //                 ),
+                                  //                 const Gap(30)
+                                  //               ],
+                                  //             ),
+                                  //           ],
+                                  //         ));
                                 },
                               ),
                               const SizedBox(
@@ -405,7 +436,10 @@ class _AccountScreenState extends State<AccountScreen> {
                               _SettingOption(
                                 text: lang.matKhau,
                                 preLinkUrl: 'assets/svg/matKhau.svg',
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouterName.passworkScreen);
+                                },
                               ),
                               const Gap(10),
                               ButtonWidget(
@@ -467,7 +501,10 @@ class _AccountScreenState extends State<AccountScreen> {
                               _SettingOption(
                                 text: lang.caiDat,
                                 preLinkUrl: 'assets/svg/caiDat.svg',
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouterName.settingScreen);
+                                },
                               ),
                               const SizedBox(
                                 height: 7,
@@ -557,7 +594,8 @@ class _SettingOption extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: ColorApp.whiteF0, borderRadius: BorderRadius.circular(12)),
+            color: ColorApp.backgroundF9F9F4,
+            borderRadius: BorderRadius.circular(12)),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 15,

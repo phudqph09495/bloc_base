@@ -5,7 +5,9 @@ import 'package:bloc_base/router/router.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_bloc.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_state.dart';
 import 'package:bloc_base/widget/drawler.dart';
+import 'package:bloc_base/widget/item/dialog_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -115,189 +117,227 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   const SystemUiOverlayStyle(
+    //     statusBarColor: Colors.transparent,
+    //   ),
+    // );
     // double baseWidth = 390;
 
     // double fem = MediaQuery.of(context).size.width / baseWidth;
     RangeValues range = RangeValues(fromPrice, toPrice);
 
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: ColorApp.backgroundF6F6EF,
-      drawer: const ItemDrawer(),
-      key: _scaffoldKey,
-      body:
-          BlocBuilder<BlocLang, StateBloc>(builder: (context, StateBloc state) {
-        if (state is LoadSuccess) {
-          Language lang = state.data;
-          return Column(
-            children: [
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/bgApp.png',
-                        fit: BoxFit.fitWidth,
-                      ),
-                      Positioned(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 18),
-                                child: InputText1(
-                                  borderColor: ColorApp.background,
-                                  colorBg: ColorApp.background,
-                                  label: lang.timKiem,
-                                  hasLeading: true,
-                                  iconPreFix: const Icon(Icons.search,
-                                      color: ColorApp.bottomBarABCA74),
-                                  hasSuffix: false,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: ColorApp.backgroundF6F6EF,
+        drawer: const ItemDrawer(),
+        key: _scaffoldKey,
+        body: BlocBuilder<BlocLanguage, StateBloc>(
+            builder: (context, StateBloc state) {
+          if (state is LoadSuccess) {
+            Language lang = state.data;
+            return Column(
+              children: [
+                Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/bgApp.png',
+                          fit: BoxFit.fitWidth,
+                        ),
+                        Positioned(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 18),
+                                  child: InputText1(
+                                    borderColor: ColorApp.background,
+                                    colorBg: ColorApp.background,
+                                    label: lang.timKiem,
+                                    hasLeading: true,
+                                    iconPreFix: const Icon(Icons.search,
+                                        color: ColorApp.bottomBarABCA74),
+                                    hasSuffix: false,
+                                  ),
                                 ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                _scaffoldKey.currentState!.openDrawer();
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
-                                child:
-                                    SvgPicture.asset('assets/svg/Vector.svg'),
+                              InkWell(
+                                onTap: () {
+                                  _scaffoldKey.currentState!.openDrawer();
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child:
+                                      SvgPicture.asset('assets/svg/Vector.svg'),
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RouterName.notifyScreen);
-                              },
-                              child: Stack(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(3.0),
-                                    child: Icon(
-                                      Icons.notifications_none_outlined,
-                                      color: ColorApp.dark252525,
-                                      size: 25,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouterName.notifyScreen);
+                                },
+                                child: Stack(
+                                  children: [
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 3, right: 16),
+                                      child: Icon(
+                                        Icons.notifications_none_outlined,
+                                        color: ColorApp.dark252525,
+                                        size: 25,
+                                      ),
                                     ),
-                                  ),
-                                  Positioned(
-                                      left: 3,
-                                      top: 5,
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.03,
-                                        width: Const.size(context).width * 0.03,
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: ColorApp.orange),
-                                      ))
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                      child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: IconButtonWidget(
-                            onTap: () =>
-                                _fillerResultBottomSheet(context, lang, range),
-                            text: lang.locKQ,
-                            imageUrl: 'assets/svg/filterIcon.svg',
-                          ),
-                        ),
-                        const Gap(10),
-                        Expanded(
-                          child: IconButtonWidget(
-                            isPrefixIcon: false,
-                            text: lang.xemBanDo,
-                            imageUrl: 'assets/svg/mapIcon.svg',
+                                    Positioned(
+                                        left: 3,
+                                        top: 5,
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.03,
+                                          width:
+                                              Const.size(context).width * 0.03,
+                                          decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: ColorApp.orangeFFC94D),
+                                        ))
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  )),
-                ],
-              ),
-              Expanded(child: BlocBuilder<SearchTabBloc, SearchTabState>(
-                builder: (context, state) {
-                  if (state is LoadingState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is LoadSuccessState) {
-                    return SingleChildScrollView(
-                      child: Column(
+                    Positioned(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 3),
+                      child: Row(
                         children: [
-                          const Gap(25),
-                          typeList
-                              ? ListView.separated(
-                                  separatorBuilder: (context, index) =>
-                                      const Gap(8),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  itemBuilder: (context, index) {
-                                    return CardServiceItem(
-                                      index: index,
-                                      state: state,
-                                    );
-                                  },
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: state.serviceModel.data!.length,
-                                )
-                              : GridView.builder(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithMaxCrossAxisExtent(
-                                          maxCrossAxisExtent: 200,
-                                          childAspectRatio: 0.7,
-                                          crossAxisSpacing: 10,
-                                          mainAxisSpacing: 10),
-                                  itemCount: state.serviceModel.data!.length,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemBuilder: (BuildContext ctx, index) {
-                                    return GridServiceItem(
-                                      index: index,
-                                      state: state,
-                                    );
-                                  }),
-                          const SizedBox(height: 80
-                              // Const.size(context).width * 0.3,
-                              ),
+                          Expanded(
+                            child: IconButtonWidget(
+                              onTap: () => _fillerResultBottomSheet(
+                                  context, lang, range),
+                              text: lang.locKQ,
+                              imageUrl: 'assets/svg/filterIcon.svg',
+                            ),
+                          ),
+                          const Gap(10),
+                          Expanded(
+                            child: IconButtonWidget(
+                              isPrefixIcon: false,
+                              text: lang.xemBanDo,
+                              imageUrl: 'assets/svg/mapIcon.svg',
+                            ),
+                          ),
                         ],
                       ),
-                    );
-                  } else if (state is DataEmptyState) {
-                    return Text(
-                      "Data Empty",
-                      style: StyleApp.textStyle600(fontSize: 16),
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
-              ))
-            ],
-          );
-        }
-        return const SizedBox();
-      }),
+                    )),
+                  ],
+                ),
+                Expanded(
+                    child: BlocConsumer<SearchTabBloc, SearchTabState>(
+                  listener: (context, state) {
+                    if (state is LoadFailState) {
+                      // showDialog(
+                      //   context: context,
+                      //   builder: (context) => AlertDialog(
+                      //     title: Text(
+                      //       'Thông báo',
+                      //       style: StyleApp.styleGilroy700(
+                      //           fontSize: 22, color: ColorApp.red),
+                      //     ),
+                      //     content: Text(
+                      //       'Lỗi kết nối server',
+                      //       style: StyleApp.styleGilroy700(
+                      //           color: ColorApp.dark252525),
+                      //     ),
+                      //     actions: [
+                      //       TextButton(
+                      //           onPressed: () => Navigator.pop(context),
+                      //           child: const Text('Đóng'))
+                      //     ],
+                      //   ),
+                      // );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is LoadingState) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (state is LoadSuccessState) {
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const Gap(25),
+                            typeList
+                                ? ListView.separated(
+                                    separatorBuilder: (context, index) =>
+                                        const Gap(8),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    itemBuilder: (context, index) {
+                                      return CardServiceItem(
+                                        index: index,
+                                        state: state,
+                                      );
+                                    },
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: state.serviceModel.data!.length,
+                                  )
+                                : GridView.builder(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                                            maxCrossAxisExtent: 200,
+                                            childAspectRatio: 0.7,
+                                            crossAxisSpacing: 10,
+                                            mainAxisSpacing: 10),
+                                    itemCount: state.serviceModel.data!.length,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (BuildContext ctx, index) {
+                                      return GridServiceItem(
+                                        index: index,
+                                        state: state,
+                                      );
+                                    }),
+                            const SizedBox(height: 80
+                                // Const.size(context).width * 0.3,
+                                ),
+                          ],
+                        ),
+                      );
+                    } else if (state is DataEmptyState) {
+                      return Text(
+                        "Data Empty",
+                        style: StyleApp.textStyle600(fontSize: 16),
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ))
+              ],
+            );
+          }
+          return const SizedBox();
+        }),
+      ),
     );
   }
 }

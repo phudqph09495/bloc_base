@@ -15,28 +15,29 @@ class NotificationButton extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, RouterName.notifyScreen);
       },
-      child: Stack(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(right: 16, left: 8),
-            // EdgeInsets.all(3.0),
-            child: Icon(
-              Icons.notifications_none_outlined,
-              color: ColorApp.dark252525,
-              size: 25,
-            ),
-          ),
-          Positioned(
-              left: 8,
-              top: 5,
-              child: Container(
-                height: MediaQuery.of(context).size.width * 0.03,
-                width: Const.size(context).width * 0.03,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: ColorApp.orange),
-              ))
-        ],
+      child: const Icon(
+        Icons.notifications_none_outlined,
+        color: ColorApp.dark252525,
+        size: 25,
       ),
+      // Stack(
+      //   children: [
+      //     const Icon(
+      //       Icons.notifications_none_outlined,
+      //       color: ColorApp.dark252525,
+      //       size: 25,
+      //     ),
+      //     Positioned(
+      //         left: 8,
+      //         top: 5,
+      //         child: Container(
+      //           height: MediaQuery.of(context).size.width * 0.03,
+      //           width: Const.size(context).width * 0.03,
+      //           decoration: const BoxDecoration(
+      //               shape: BoxShape.circle, color: ColorApp.orangeFFC94D),
+      //         ))
+      //   ],
+      // ),
     );
   }
 }

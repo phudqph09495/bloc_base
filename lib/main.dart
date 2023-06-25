@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => CounterCubit()),
         BlocProvider(create: (_) => BlocCheckLogin()..add(GetData())),
-        BlocProvider(create: (_) => BlocLang()..add(GetLang())),
+        BlocProvider(create: (_) => BlocLanguage()..add(GetLanguage())),
         BlocProvider(create: (_) => SearchTabBloc()),
 
         // BlocProvider(create: (_) => BlocFireBaseMS()..add(firebase())),

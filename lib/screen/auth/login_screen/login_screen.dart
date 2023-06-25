@@ -24,8 +24,17 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
+  void initState() {
+    super.initState();
+    // context.read<BlocCheckLogin>().add(GetData());
+    context.read<BlocLanguage>().add(GetLanguage());
+
+    // context.read<BlocFireBaseMS>().add(firebase());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -47,7 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     const Gap(30),
-                    SvgPicture.asset('assets/svg/LogoApp.svg'),
+                    Image.asset(
+                      'assets/images/logo_app.png',
+                      height: Const.sizeWidth(context, 68),
+                    ),
                     const Gap(30),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,10 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: Const.size(context).width * 0.01),
                             child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RouterName.paymentScreen);
-                              },
+                              onTap: () {},
                               child: Container(
                                 height:
                                     MediaQuery.of(context).size.height * 0.065,

@@ -59,7 +59,7 @@ class CardServiceItem extends StatelessWidget {
                                   size: 14,
                                   color: index % 2 == 1
                                       ? ColorApp.whiteF0.withOpacity(0.5)
-                                      : ColorApp.orange,
+                                      : ColorApp.orangeFFC94D,
                                 )
                               : const Icon(
                                   Icons.close,

@@ -28,7 +28,7 @@ class _FrequentlyQuestionsScreenState extends State<FrequentlyQuestionsScreen> {
   Widget build(BuildContext context) {
     // bool isShow = false;
 
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         List<String> listTile = [
@@ -47,7 +47,7 @@ class _FrequentlyQuestionsScreenState extends State<FrequentlyQuestionsScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                      color: ColorApp.whiteF0,
+                      color: ColorApp.backgroundF5F6EE,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),

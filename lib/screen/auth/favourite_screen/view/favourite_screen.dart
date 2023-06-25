@@ -11,6 +11,7 @@ import '../../../../bloc/language/bloc_lang.dart';
 import '../../../../config/const.dart';
 import '../../../../styles/init_style.dart';
 import '../../../../widget/item/appbar.dart';
+import '../../../../widget/item/button.dart';
 import '../../../search/search_tab_screen/bloc/search_tab_event.dart';
 import '../../../search/search_tab_screen/view/search_tab_screen.dart';
 part 'widget/card_spa_item.dart';
@@ -41,7 +42,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -54,7 +55,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25)),
-                color: ColorApp.whiteF0),
+                color: ColorApp.backgroundF5F6EE),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +70,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             controller: controller,
                             options: GroupButtonOptions(
                                 buttonWidth: Const.size(context).width * 0.44,
-                                selectedColor: ColorApp.darkGreen,
+                                selectedColor: ColorApp.bottomBarABCA74,
                                 mainGroupAlignment:
                                     MainGroupAlignment.spaceBetween,
                                 unselectedTextStyle: StyleApp.textStyle500(
@@ -146,6 +147,23 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+          bottomSheet: Padding(
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, bottom: 5, top: 5),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.065,
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ButtonWidget(
+                    type: ButtonType.secondary,
+                    text: language.searchMoreSpaAndSalon,
+                    onTap: () {},
+                  )),
                 ],
               ),
             ),

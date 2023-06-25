@@ -39,343 +39,325 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: ColorApp.backgroundF6F6EF,
       drawer: const ItemDrawer(),
       key: _scaffoldKey,
-      body: BlocBuilder<BlocLang, StateBloc>(
+      body: BlocBuilder<BlocLanguage, StateBloc>(
         builder: (context, StateBloc state) {
           if (state is LoadSuccess) {
             Language language = state.data;
-            return Column(
-              children: [
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/bgApp.png',
-                          fit: BoxFit.fitHeight,
-                          width: double.infinity,
-                        ),
-                        Positioned(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  _scaffoldKey.currentState!.openDrawer();
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 18),
-                                  child:
-                                      SvgPicture.asset('assets/svg/Vector.svg'),
-                                ),
-                              ),
-                              SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                  child: SvgPicture.asset(
-                                      'assets/svg/LogoApp.svg')),
-                              Row(
-                                children: [
-                                  InkWell(
-                                    child: const Icon(
-                                      Icons.qr_code_scanner,
-                                      size: 25,
-                                    ),
-                                    onTap: () async {
-                                      var res = await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                SimpleBarcodeScannerPage(
-                                              cancelButtonText: language.huyBo,
-                                            ),
-                                          ));
-                                      setState(() {
-                                        if (res is String) {
-                                          Navigator.pushNamed(context,
-                                              RouterName.confirmScreen);
-                                        }
-                                      });
-                                    },
-                                  ),
-                                  const NotificationButton(),
-                                ],
-                              )
-                            ],
+            return GestureDetector(
+              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+              child: Column(
+                children: [
+                  Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/bgApp.png',
+                            fit: BoxFit.fitHeight,
+                            width: double.infinity,
                           ),
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                        child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                      child: InputText1(
-                        colorBg: ColorApp.background,
-                        borderColor: ColorApp.background,
-                        label: language.timKiem,
-                        hasLeading: true,
-                        iconPreFix: const Icon(Icons.search,
-                            color: ColorApp.bottomBarABCA74),
-                        hasSuffix: true,
-                        suffix: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Container(
-                              width: 30,
-                              decoration: const BoxDecoration(
-                                  color: ColorApp.bottomBarABCA74,
-                                  shape: BoxShape.circle),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: SvgPicture.asset(
-                                  'assets/svg/locator.svg',
-                                ),
-                              )),
-                        ),
-                      ),
-                    )),
-                  ],
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 18, right: 18, top: 25),
-                          child: _listService(language, context),
-                        ),
-                        _discoveryNearYou(fem, context, language, ffem),
-                        // Image.asset('assets/images/bannerHome.png'),
-                        ImageSlideshow(
-                          height: MediaQuery.of(context).size.height * 0.14,
-                          width: MediaQuery.of(context).size.width - 32,
-                          indicatorColor: ColorApp.bottomBarABCA74,
-                          isLoop: true,
-                          autoPlayInterval: 5000,
-                          children: List.generate(
-                              3,
-                              (index) => ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-                                      'assets/images/bannerHome.png',
-                                      fit: BoxFit.fitHeight,
-                                    ),
-                                  )),
-                        ),
-                        Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18,
-                              vertical: 18,
-                            ),
-                            child: Column(
+                          Positioned(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      flex: 232,
-                                      child: Image.asset(
-                                        'assets/images/bannerAds1.png',
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                    ),
-                                    const Gap(12),
-                                    Expanded(
-                                      flex: 110,
-                                      child: Image.asset(
-                                        'assets/images/bannerAds2.png',
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: Image.asset(
-                                        'assets/images/bannerAds3.png',
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                    ),
-                                    const Gap(12),
-                                    Expanded(
-                                      child: Image.asset(
-                                        'assets/images/bannerAds4.png',
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                    ),
-                                  ],
+                                InkWell(
+                                  onTap: () {
+                                    _scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 18),
+                                    child: SvgPicture.asset(
+                                        'assets/svg/Vector.svg'),
+                                  ),
                                 ),
                                 SizedBox(
-                                  height: Const.size(context).width * 0.05,
-                                ),
-                                DottedBorder(
-                                    borderType: BorderType.RRect,
-                                    radius: const Radius.circular(15),
-                                    color: ColorApp.pink,
-                                    dashPattern: const [5, 1],
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(3),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width:
-                                                Const.size(context).width * 0.6,
-                                            decoration: BoxDecoration(
-                                                color: ColorApp.pink,
-                                                borderRadius:
-                                                    BorderRadius.circular(12)),
-                                            child: Row(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(12),
-                                                  child: SvgPicture.asset(
-                                                      'assets/svg/discount.svg'),
-                                                ),
-                                                Text(
-                                                  'Giảm giá 15% cho lần đầu \nđặt qua App',
-                                                  style: StyleApp.textStyle700(
-                                                      color: Colors.white,
-                                                      fontSize: 13),
-                                                ),
-                                                // const SizedBox(),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 16),
-                                            child: Text(
-                                              'Nhận Ngay',
-                                              style: StyleApp.textStyle700(
-                                                  color: ColorApp.pink,
-                                                  fontSize: 13),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                                const SizedBox(
-                                  height: 26,
-                                ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child: SvgPicture.asset(
+                                        'assets/svg/LogoApp.svg')),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      language.danhGiaCaoNhat,
-                                      style: StyleApp.textStyle700(
-                                          color: ColorApp.dark252525,
-                                          fontSize: 18),
-                                    ),
                                     InkWell(
-                                      onTap: () {
+                                      child: const Icon(
+                                        Icons.qr_code_scanner,
+                                        size: 25,
+                                      ),
+                                      onTap: () async {
+                                        var res = await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SimpleBarcodeScannerPage(
+                                                cancelButtonText:
+                                                    language.huyBo,
+                                              ),
+                                            ));
                                         setState(() {
-                                          showmore = true;
+                                          if (res is String) {
+                                            Navigator.pushNamed(context,
+                                                RouterName.confirmScreen);
+                                          }
                                         });
                                       },
-                                      child: Container(
-                                        padding: EdgeInsets.fromLTRB(10 * fem,
-                                            6 * fem, 13 * fem, 4 * fem),
-                                        width: 102 * fem,
-                                        height: 27 * fem,
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xffffc94d),
-                                          borderRadius:
-                                              BorderRadius.circular(7 * fem),
+                                    ),
+                                    const NotificationButton(),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                          child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        child: InputText1(
+                          colorBg: ColorApp.background,
+                          borderColor: ColorApp.background,
+                          label: language.timKiem,
+                          hasLeading: true,
+                          iconPreFix: const Icon(Icons.search,
+                              color: ColorApp.bottomBarABCA74),
+                          hasSuffix: true,
+                          suffix: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Container(
+                                width: 30,
+                                decoration: const BoxDecoration(
+                                    color: ColorApp.bottomBarABCA74,
+                                    shape: BoxShape.circle),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: SvgPicture.asset(
+                                    'assets/svg/locator.svg',
+                                  ),
+                                )),
+                          ),
+                        ),
+                      )),
+                    ],
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 18, right: 18, top: 25),
+                            child: _listService(language, context),
+                          ),
+                          _discoveryNearYou(fem, context, language, ffem),
+                          // Image.asset('assets/images/bannerHome.png'),
+                          ImageSlideshow(
+                            height: MediaQuery.of(context).size.height * 0.14,
+                            width: MediaQuery.of(context).size.width - 32,
+                            indicatorColor: ColorApp.bottomBarABCA74,
+                            isLoop: true,
+                            autoPlayInterval: 5000,
+                            children: List.generate(
+                                3,
+                                (index) => ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.asset(
+                                        'assets/images/bannerHome.png',
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                    )),
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 18,
+                                vertical: 18,
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        flex: 232,
+                                        child: Image.asset(
+                                          'assets/images/bannerAds1.png',
+                                          fit: BoxFit.fitWidth,
                                         ),
-                                        child: SizedBox(
-                                          // group56G8 (157:9170)
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                // frame3BN (157:9171)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0 * fem,
-                                                    0 * fem,
-                                                    5 * fem,
-                                                    0 * fem),
-                                                width: 14 * fem,
-                                                height: 14 * fem,
-                                                child: Image.asset(
-                                                  'assets/page-1/images/frame-LNU.png',
-                                                  width: 14 * fem,
-                                                  height: 14 * fem,
-                                                ),
-                                              ),
-                                              Container(
-                                                // xemthmwnY (157:9174)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0 * fem,
-                                                    1 * fem,
-                                                    0 * fem,
-                                                    0 * fem),
-                                                child: Text(
-                                                  'Xem Thêm',
-                                                  style: safeGoogleFont(
-                                                    'SVN-Gilroy',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w700,
-                                                    height: 1.2575 * ffem / fem,
-                                                    letterSpacing:
-                                                        0.0120000001 * fem,
-                                                    color:
-                                                        const Color(0xff252525),
+                                      ),
+                                      const Gap(12),
+                                      Expanded(
+                                        flex: 110,
+                                        child: Image.asset(
+                                          'assets/images/bannerAds2.png',
+                                          fit: BoxFit.fitWidth,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Image.asset(
+                                          'assets/images/bannerAds3.png',
+                                          fit: BoxFit.fitWidth,
+                                        ),
+                                      ),
+                                      const Gap(12),
+                                      Expanded(
+                                        child: Image.asset(
+                                          'assets/images/bannerAds4.png',
+                                          fit: BoxFit.fitWidth,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: Const.size(context).width * 0.05,
+                                  ),
+                                  DottedBorder(
+                                      borderType: BorderType.RRect,
+                                      radius: const Radius.circular(15),
+                                      color: ColorApp.pinkF59398,
+                                      dashPattern: const [5, 1],
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              width: Const.size(context).width *
+                                                  0.6,
+                                              decoration: BoxDecoration(
+                                                  color: ColorApp.pinkF59398,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12)),
+                                              child: Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12),
+                                                    child: SvgPicture.asset(
+                                                        'assets/svg/discount.svg'),
                                                   ),
-                                                ),
+                                                  Text(
+                                                    'Giảm giá 15% cho lần đầu \nđặt qua App',
+                                                    style:
+                                                        StyleApp.textStyle700(
+                                                            color: Colors.white,
+                                                            fontSize: 13),
+                                                  ),
+                                                  // const SizedBox(),
+                                                ],
                                               ),
-                                            ],
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 16),
+                                              child: Text(
+                                                'Nhận Ngay',
+                                                style: StyleApp.textStyle700(
+                                                    color: ColorApp.pinkF59398,
+                                                    fontSize: 13),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                  const SizedBox(
+                                    height: 26,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        language.danhGiaCaoNhat,
+                                        style: StyleApp.textStyle700(
+                                            color: ColorApp.dark252525,
+                                            fontSize: 18),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            showmore = true;
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.fromLTRB(10 * fem,
+                                              6 * fem, 13 * fem, 4 * fem),
+                                          width: 102 * fem,
+                                          height: 27 * fem,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xffffc94d),
+                                            borderRadius:
+                                                BorderRadius.circular(7 * fem),
+                                          ),
+                                          child: SizedBox(
+                                            // group56G8 (157:9170)
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            child: Container(
+                                              // xemthmwnY (157:9174)
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0 * fem,
+                                                  1 * fem,
+                                                  0 * fem,
+                                                  0 * fem),
+                                              child: Center(
+                                                child: Text('Xem Thêm',
+                                                    style:
+                                                        StyleApp.styleGilroy700(
+                                                            fontSize: 12,
+                                                            color: const Color(
+                                                                0xff252525))),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: Const.size(context).width * 0.02,
-                                ),
-                                showmore
-                                    ? const MoreSpaScreen()
-                                    : GridView.builder(
-                                        padding: EdgeInsets.zero,
-                                        gridDelegate:
-                                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                                                maxCrossAxisExtent: 200,
-                                                crossAxisSpacing: 12,
-                                                mainAxisSpacing: 20),
-                                        itemCount: 6,
-                                        shrinkWrap: true,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemBuilder: (BuildContext ctx, index) {
-                                          return const IntroduceSpaWidget();
-                                        }),
-                                SizedBox(
-                                  height: Const.size(context).width * 0.2,
-                                ),
-                              ],
-                            )),
-                      ],
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  showmore
+                                      ? const MoreSpaScreen()
+                                      : GridView.builder(
+                                          padding: EdgeInsets.zero,
+                                          gridDelegate:
+                                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                                                  maxCrossAxisExtent: 200,
+                                                  crossAxisSpacing: 12,
+                                                  mainAxisSpacing: 20),
+                                          itemCount: 6,
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemBuilder:
+                                              (BuildContext ctx, index) {
+                                            return const IntroduceSpaWidget();
+                                          }),
+                                  SizedBox(
+                                    height: Const.size(context).width * 0.2,
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             );
           }
           return const SizedBox();
@@ -442,6 +424,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 color: Colors.white,
                                                 size: 10,
                                               ),
+                                              const Gap(3),
                                               Text(
                                                 '2.3 km',
                                                 style: StyleApp.textStyle600(
@@ -472,6 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 color: ColorApp.yellow,
                                                 size: 16,
                                               ),
+                                              const Gap(3),
                                               Text(
                                                 '4.8',
                                                 style: StyleApp.textStyle500(
@@ -502,7 +486,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     top: 54 * fem,
                     child: Align(
                       child: SizedBox(
-                        width: 156 * fem,
+                        width: 180 * fem,
                         height: 23 * fem,
                         child: Text(
                           language.khamPhaGanBan,
@@ -552,12 +536,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   0 * fem, 1 * fem, 0 * fem, 0 * fem),
                               child: Text(
                                 'Xem Thêm',
-                                style: safeGoogleFont(
-                                  'SVN-Gilroy',
-                                  fontSize: 12 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.2575 * ffem / fem,
-                                  letterSpacing: 0.012 * fem,
+                                style: StyleApp.styleGilroy700(
+                                  fontSize: 12,
                                   color: const Color(0xff252525),
                                 ),
                               ),

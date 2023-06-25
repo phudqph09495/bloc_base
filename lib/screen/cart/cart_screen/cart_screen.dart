@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
 import 'package:bloc_base/homepage.dart';
 import 'package:bloc_base/router/router.dart';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-
 import '../../../bloc/language/bloc_lang.dart';
 import '../../../config/const.dart';
 import '../../../model/model_local.dart';
@@ -28,30 +28,52 @@ class GioHangScreen extends StatefulWidget {
 }
 
 class _GioHangScreenState extends State<GioHangScreen> {
-  List<ModelCart> listService = [
-    ModelCart(name: 'Chăm sóc da mặt', soLuong: 2, gia: 250000),
-    ModelCart(name: 'Chăm sóc cơ thể', soLuong: 1, gia: 350000),
-    ModelCart(name: 'Body Massage', soLuong: 3, gia: 420000),
+  List<SpaService> listSpa = [
+    SpaService(
+      listService: [
+        ModelCart(name: 'Chăm sóc da mặt', soLuong: 2, gia: 250000),
+        ModelCart(name: 'Chăm sóc cơ thể', soLuong: 1, gia: 350000),
+        ModelCart(name: 'Body Massage', soLuong: 3, gia: 420000),
+      ],
+      listPacket: [
+        ModelCart(name: 'Chăm sóc da mặt toàn diện', soLuong: 2, gia: 250000),
+        ModelCart(name: 'Chăm sóc cơ thể toàn diện', soLuong: 1, gia: 350000),
+      ],
+      nameSpa: 'Sorella Beauty Spa',
+      indexMaximunPackget: [],
+      indexMaximunService: [],
+    ),
+    SpaService(
+      listService: [
+        ModelCart(name: 'Chăm sóc Nail', soLuong: 2, gia: 75000),
+        ModelCart(name: 'Chăm sóc tóc', soLuong: 1, gia: 250000),
+        ModelCart(name: 'Body Massage', soLuong: 3, gia: 420000),
+      ],
+      listPacket: [
+        ModelCart(name: 'Chăm sóc da mặt toàn diện', soLuong: 2, gia: 250000),
+        ModelCart(name: 'Chăm sóc cơ thể toàn diện', soLuong: 1, gia: 350000),
+      ],
+      nameSpa: 'Andeva Spa',
+      indexMaximunPackget: [],
+      indexMaximunService: [],
+    )
   ];
-  List<ModelCart> listPacket = [
-    ModelCart(name: 'Chăm sóc da mặt toàn diện', soLuong: 2, gia: 250000),
-    ModelCart(name: 'Chăm sóc cơ thể toàn diện', soLuong: 1, gia: 350000),
-  ];
-  int numberServiceHasPick = 0;
-  int numberPackgetHasPick = 0;
-  int sum = 0;
-  // bool showToastService = false;
-  // bool showToastPackget = false;
-  bool isChoose = false;
-  int indexMaximun1 = -1;
-  List<int> indexMaximunService = [-1];
-  List<int> indexMaximunPackget = [];
+  int totalPrice = 0;
+  int totalServiceSelect = 0;
+  // int numberServiceHasPick = 0;
+  // int numberPackgetHasPick = 0;
+  // int sumPriceService = 0;
+  // int sumPricePackget = 0;
+
+  // bool isChoose = false;
+  // List<int> indexMaximunService = [-1];
+  // List<int> indexMaximunPackget = [];
   String dateTime =
       '${Const.formatTime(DateTime.now().millisecondsSinceEpoch)}';
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(builder: (_, StateBloc state) {
+    return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
         return Scaffold(
@@ -75,46 +97,110 @@ class _GioHangScreenState extends State<GioHangScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 20),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 18,
-                              height: 18,
-                              child: Checkbox(
-                                  shape: const CircleBorder(),
-                                  activeColor: ColorApp.bottomBarABCA74,
-                                  value: isChoose,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      isChoose = value!;
-                                    });
-                                  }),
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: listSpa.length,
+                    itemBuilder: (context, i) => Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: Checkbox(
+                                    shape: const CircleBorder(),
+                                    activeColor: ColorApp.bottomBarABCA74,
+                                    value: listSpa[i].isChoose,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        listSpa[i].isChoose = value!;
+                                        tickAllService(listSpa[i]);
+                                        tickAllPackget(listSpa[i]);
+
+                                        //Tính tổng mỗi Listview
+                                        if (listSpa[i].listService != null) {
+                                          listSpa[i].sumPriceService = 0;
+                                          listSpa[i].numberServiceHasPick = 0;
+                                          listSpa[i].sumPriceService =
+                                              calculatorPrice(
+                                                  listSpa[i].listService!,
+                                                  listSpa[i].sumPriceService);
+                                          calculatorUserPick(
+                                              listSpa[i].listService!,
+                                              listSpa[i].numberServiceHasPick);
+                                        }
+                                        if (listSpa[i].listPacket != null) {
+                                          listSpa[i].sumPricePackget = 0;
+                                          listSpa[i].numberPackgetHasPick = 0;
+                                          listSpa[i].sumPricePackget =
+                                              calculatorPrice(
+                                                  listSpa[i].listPacket!,
+                                                  listSpa[i].sumPricePackget);
+                                          calculatorUserPick(
+                                              listSpa[i].listPacket!,
+                                              listSpa[i].numberPackgetHasPick);
+                                        }
+
+                                        totalPrice = calculatorTotalPrice();
+                                        totalServiceSelect =
+                                            calculatorTotalSelect();
+                                      });
+                                    }),
+                              ),
+                              const Gap(10),
+                              Text(listSpa[i].nameSpa,
+                                  style: StyleApp.styleGilroy700(
+                                    color: ColorApp.darkGreen,
+                                    fontSize: 16,
+                                  ))
+                            ],
+                          ),
+                        ),
+                        listSpa[i].listService != null
+                            ? _buildListService(language, listSpa[i], listSpa)
+                            : const SizedBox.shrink(),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 16),
+                          child: Divider(
+                            height: 1,
+                          ),
+                        ),
+                        listSpa[i].listPacket != null
+                            ? _buildListPacket(language, listSpa[i], listSpa)
+                            : const SizedBox.shrink(),
+                        Container(
+                          color: ColorApp.darkGreen,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 14),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Tổng',
+                                  style: StyleApp.textStyle600(
+                                      fontSize: 16, color: ColorApp.background),
+                                ),
+                                Text(
+                                  '₫ ${Const.ConvertPrice.format(listSpa[i].sumPriceService + listSpa[i].sumPricePackget)}',
+                                  style: StyleApp.textStyle700(
+                                    color: ColorApp.background,
+                                    fontSize: 16,
+                                  ),
+                                )
+                              ],
                             ),
-                            const Gap(10),
-                            Text("Sorella Beauty Spa",
-                                style: StyleApp.styleGilroy700(
-                                  color: ColorApp.darkGreen,
-                                  fontSize: 16,
-                                ))
-                          ],
-                        ),
-                      ),
-                      _buildListService(language),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 16),
-                        child: Divider(
-                          height: 1,
-                        ),
-                      ),
-                      _buildListPacket(language)
-                    ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
+                  const Gap(15),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: DottedBorder(
@@ -202,13 +288,13 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Đã chọn $numberServiceHasPick dịch vụ, giá đã bao gồm thuế',
+                                'Đã chọn $totalServiceSelect dịch vụ, giá đã bao gồm thuế',
                                 style: StyleApp.textStyle400(
                                   color: ColorApp.dark500,
                                 ),
                               ),
                               Text(
-                                '₫ ${Const.ConvertPrice.format(sum)}',
+                                '₫ ${Const.ConvertPrice.format(totalPrice)}',
                                 style: StyleApp.textStyle700(
                                   color: ColorApp.darkGreen,
                                   fontSize: 16,
@@ -244,7 +330,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
     });
   }
 
-  ListView _buildListService(Language language) {
+  ListView _buildListService(
+      Language language, SpaService spa, List<SpaService> listsSpaService) {
     return ListView.separated(
       separatorBuilder: (context, index) => const Divider(
         height: 1,
@@ -270,27 +357,24 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             child: Checkbox(
                                 shape: const CircleBorder(),
                                 activeColor: ColorApp.bottomBarABCA74,
-                                value: listService[index].value,
+                                value: spa.listService![index].value,
                                 onChanged: (value) {
                                   setState(
                                     () {
-                                      listService[index].value = value;
-                                      numberServiceHasPick = 0;
-                                      sum = 0;
-                                      // sum = calculatePrice(listService, sum);
-                                      // numberServiceHasPick =
-                                      //     calculateUserPickService(listService,
-                                      //         numberServiceHasPick);
-                                      for (int i = 0;
-                                          i < listService.length;
-                                          i++) {
-                                        if (listService[i].value == true) {
-                                          sum = sum +
-                                              listService[i].gia *
-                                                  listService[i].soLuong;
-                                          numberServiceHasPick++;
-                                        }
-                                      }
+                                      spa.listService![index].value = value;
+                                      spa.numberServiceHasPick = 0;
+                                      spa.sumPriceService = 0;
+                                      //TODO
+                                      totalPrice = calculatorTotalPrice();
+                                      totalServiceSelect =
+                                          calculatorTotalSelect();
+                                      //TODO
+                                      spa.sumPriceService = calculatorPrice(
+                                          spa.listService!,
+                                          spa.sumPriceService);
+                                      spa.numberServiceHasPick =
+                                          calculatorUserPick(spa.listService!,
+                                              spa.numberServiceHasPick);
                                     },
                                   );
                                 }),
@@ -298,14 +382,18 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           const SizedBox(
                             width: 12,
                           ),
-                          SizedBox(
-                            width: Const.size(context).width * 0.17948717948,
-                            height: Const.size(context).width * 0.17948717948,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12.0),
-                              child: Image.asset(
-                                'assets/images/exSpa.png',
-                                fit: BoxFit.cover,
+                          InkWell(
+                            onTap: () => Navigator.pushNamed(
+                                context, RouterName.infoService),
+                            child: SizedBox(
+                              width: Const.size(context).width * 0.17948717948,
+                              height: Const.size(context).width * 0.17948717948,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Image.asset(
+                                  'assets/images/exSpa.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
@@ -325,7 +413,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                     Expanded(
                                         flex: 5,
                                         child: Text(
-                                          listService[index].name,
+                                          spa.listService![index].name,
                                           style: StyleApp.textStyle700(
                                               fontSize: 16,
                                               color: ColorApp.dark252525),
@@ -347,33 +435,33 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                   onTap: () {
                                                     // showToastService = false;
                                                     setState(() {
-                                                      if (listService[index]
+                                                      if (spa
+                                                              .listService![
+                                                                  index]
                                                               .soLuong >
                                                           0) {
-                                                        listService[index]
+                                                        spa.listService![index]
                                                             .soLuong--;
-                                                        numberServiceHasPick =
+                                                        //TODO
+                                                        totalPrice =
+                                                            calculatorTotalPrice();
+                                                        totalServiceSelect =
+                                                            calculatorTotalSelect();
+                                                        //TODO
+                                                        spa.numberServiceHasPick =
                                                             0;
-                                                        sum = 0;
-                                                        indexMaximunService
+                                                        spa.sumPriceService = 0;
+                                                        spa.indexMaximunService
                                                             .remove(index);
-                                                        for (int i = 0;
-                                                            i <
-                                                                listService
-                                                                    .length;
-                                                            i++) {
-                                                          if (listService[i]
-                                                                  .value ==
-                                                              true) {
-                                                            sum = sum +
-                                                                listService[i]
-                                                                        .gia *
-                                                                    listService[
-                                                                            i]
-                                                                        .soLuong;
-                                                            numberServiceHasPick++;
-                                                          }
-                                                        }
+
+                                                        spa.sumPriceService =
+                                                            calculatorPrice(
+                                                                spa.listService!,
+                                                                spa.sumPriceService);
+                                                        spa.numberServiceHasPick =
+                                                            calculatorUserPick(
+                                                                spa.listService!,
+                                                                spa.numberServiceHasPick);
                                                       }
                                                     });
                                                   },
@@ -383,44 +471,44 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                     color: ColorApp.darkGreen,
                                                   )),
                                               Text(
-                                                ' ${listService[index].soLuong} ',
+                                                ' ${spa.listService![index].soLuong} ',
                                                 style: StyleApp.textStyle500(
                                                     fontSize: 16,
                                                     color: ColorApp.dark500),
                                               ),
                                               InkWell(
                                                 onTap: () {
-                                                  print(indexMaximunService);
+                                                  print(
+                                                      spa.indexMaximunService);
                                                   setState(() {
-                                                    if (listService[index]
+                                                    if (spa.listService![index]
                                                             .soLuong <
                                                         3) {
-                                                      listService[index]
+                                                      spa.listService![index]
                                                           .soLuong++;
-                                                      numberServiceHasPick = 0;
-                                                      sum = 0;
-
-                                                      for (int i = 0;
-                                                          i <
-                                                              listService
-                                                                  .length;
-                                                          i++) {
-                                                        if (listService[i]
-                                                                .value ==
-                                                            true) {
-                                                          sum = sum +
-                                                              listService[i]
-                                                                      .gia *
-                                                                  listService[i]
-                                                                      .soLuong;
-                                                          numberServiceHasPick++;
-                                                        }
-                                                      }
+                                                      spa.numberServiceHasPick =
+                                                          0;
+                                                      spa.sumPriceService = 0;
+                                                      //TODO
+                                                      totalPrice =
+                                                          calculatorTotalPrice();
+                                                      totalServiceSelect =
+                                                          calculatorTotalSelect();
+                                                      //TODO
+                                                      spa.sumPriceService =
+                                                          calculatorPrice(
+                                                              spa.listService!,
+                                                              spa.sumPriceService);
+                                                      spa.numberServiceHasPick =
+                                                          calculatorUserPick(
+                                                              spa.listService!,
+                                                              spa.numberServiceHasPick);
                                                     } else {
                                                       // showToastService = true;
-                                                      if (!indexMaximunService
+                                                      if (!spa
+                                                          .indexMaximunService
                                                           .contains(index)) {
-                                                        indexMaximunService
+                                                        spa.indexMaximunService
                                                             .add(index);
                                                       }
                                                     }
@@ -482,25 +570,27 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                     InkWell(
                                       onTap: () {
                                         setState(() {
-                                          listService.removeAt(index);
-                                          numberServiceHasPick = 0;
-                                          sum = 0;
+                                          spa.listService!.removeAt(index);
+                                          spa.numberServiceHasPick = 0;
+                                          spa.sumPriceService = 0;
                                           // sum =
                                           //     calculatePrice(listService, sum);
-                                          for (int i = 0;
-                                              i < listService.length;
-                                              i++) {
-                                            if (listService[i].value == true) {
-                                              sum = sum +
-                                                  listService[i].gia *
-                                                      listService[i].soLuong;
-                                              numberServiceHasPick++;
-                                            }
-                                          }
+                                          //TODO
+                                          totalPrice = calculatorTotalPrice();
+                                          totalServiceSelect =
+                                              calculatorTotalSelect();
+                                          //TODO
+                                          spa.sumPriceService = calculatorPrice(
+                                              spa.listService!,
+                                              spa.sumPriceService);
+                                          spa.numberServiceHasPick =
+                                              calculatorUserPick(
+                                                  spa.listService!,
+                                                  spa.numberServiceHasPick);
                                         });
                                       },
                                       child: const Icon(Icons.delete_forever,
-                                          color: ColorApp.pink),
+                                          color: ColorApp.pinkF59398),
                                     )
                                   ],
                                 ),
@@ -565,7 +655,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             ],
                           ),
                           Text(
-                            '${Const.ConvertPrice.format(listService[index].gia * listService[index].soLuong)} ₫',
+                            '${Const.ConvertPrice.format(spa.listService![index].gia * spa.listService![index].soLuong)} ₫',
                             style: StyleApp.textStyle700(
                                 color: ColorApp.darkGreen, fontSize: 16),
                           )
@@ -573,8 +663,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 33),
-                      child: (indexMaximunService.contains(index))
+                      padding: const EdgeInsets.only(left: 35),
+                      child: (spa.indexMaximunService.contains(index))
                           ? _WarningNumberService(language: language)
                           : const SizedBox(),
                     ),
@@ -590,13 +680,14 @@ class _GioHangScreenState extends State<GioHangScreen> {
           ),
         );
       },
-      itemCount: listService.length,
+      itemCount: spa.listService!.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
     );
   }
 
-  ListView _buildListPacket(Language language) {
+  ListView _buildListPacket(
+      Language language, SpaService spa, List<SpaService> listsSpaService) {
     return ListView.separated(
       separatorBuilder: (context, index) => const Divider(
         height: 1,
@@ -604,7 +695,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: listPacket.length,
+      itemCount: spa.listPacket!.length,
       itemBuilder: (context, index) => Padding(
         padding:
             const EdgeInsets.only(left: 28, right: 16, top: 10, bottom: 15),
@@ -619,21 +710,20 @@ class _GioHangScreenState extends State<GioHangScreen> {
                   child: Checkbox(
                       shape: const CircleBorder(),
                       activeColor: ColorApp.bottomBarABCA74,
-                      value: listPacket[index].value,
+                      value: spa.listPacket![index].value,
                       onChanged: (value) {
                         setState(
                           () {
-                            listPacket[index].value = value;
-                            numberServiceHasPick = 0;
-                            sum = 0;
-                            sum = calculatePrice(listPacket, sum);
-                            // for (int i = 0; i < listPacket.length; i++) {
-                            //   if (listPacket[i].value == true) {
-                            //     sum = sum +
-                            //         listPacket[i].gia * listPacket[i].soLuong;
-                            //     choosen++;
-                            //   }
-                            // }
+                            spa.listPacket![index].value = value;
+
+                            //TODO
+                            totalPrice = calculatorTotalPrice();
+                            totalServiceSelect = calculatorTotalSelect();
+                            //TODO
+                            spa.numberPackgetHasPick = 0;
+                            spa.sumPricePackget = 0;
+                            spa.sumPricePackget = calculatorPrice(
+                                spa.listPacket!, spa.sumPricePackget);
                           },
                         );
                       }),
@@ -653,7 +743,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           Expanded(
                               flex: 4,
                               child: Text(
-                                listPacket[index].name,
+                                spa.listPacket![index].name,
                                 style: StyleApp.textStyle700(
                                     fontSize: 16, color: ColorApp.dark252525),
                               )),
@@ -672,19 +762,29 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                   children: [
                                     InkWell(
                                         onTap: () {
-                                          // showToastPackget = false;
                                           setState(() {
-                                            if (listPacket[index].soLuong > 0) {
-                                              listPacket[index].soLuong--;
-                                              numberServiceHasPick = 0;
-                                              sum = 0;
-                                              indexMaximunPackget.remove(index);
-                                              sum = calculatePrice(
-                                                  listPacket, sum);
-                                              numberPackgetHasPick =
-                                                  calculateUserPickService(
-                                                      listPacket,
-                                                      numberPackgetHasPick);
+                                            if (spa.listPacket![index].soLuong >
+                                                0) {
+                                              spa.listPacket![index].soLuong--;
+
+                                              spa.numberPackgetHasPick = 0;
+                                              spa.sumPricePackget = 0;
+                                              spa.indexMaximunPackget
+                                                  .remove(index);
+                                              spa.sumPricePackget =
+                                                  calculatorPrice(
+                                                      spa.listPacket!,
+                                                      spa.sumPricePackget);
+                                              spa.numberPackgetHasPick =
+                                                  calculatorUserPick(
+                                                      spa.listPacket!,
+                                                      spa.numberPackgetHasPick);
+                                              //TODO
+                                              totalPrice =
+                                                  calculatorTotalPrice();
+                                              totalServiceSelect =
+                                                  calculatorTotalSelect();
+                                              //TODO
                                             }
                                           });
                                         },
@@ -694,7 +794,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                           color: ColorApp.darkGreen,
                                         )),
                                     Text(
-                                      ' ${listPacket[index].soLuong} ',
+                                      ' ${spa.listPacket![index].soLuong} ',
                                       style: StyleApp.textStyle500(
                                           fontSize: 16,
                                           color: ColorApp.dark500),
@@ -702,21 +802,29 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                     InkWell(
                                       onTap: () {
                                         setState(() {
-                                          if (listPacket[index].soLuong < 3) {
-                                            listPacket[index].soLuong++;
-                                            numberServiceHasPick = 0;
-                                            sum = 0;
-                                            sum =
-                                                calculatePrice(listPacket, sum);
-                                            numberPackgetHasPick =
-                                                calculateUserPickService(
-                                                    listPacket,
-                                                    numberPackgetHasPick);
+                                          if (spa.listPacket![index].soLuong <
+                                              3) {
+                                            spa.listPacket![index].soLuong++;
+                                            spa.numberPackgetHasPick = 0;
+                                            spa.sumPricePackget = 0;
+                                            //TODO
+                                            totalPrice = calculatorTotalPrice();
+                                            totalServiceSelect =
+                                                calculatorTotalSelect();
+                                            //TODO
+                                            spa.sumPricePackget =
+                                                calculatorPrice(spa.listPacket!,
+                                                    spa.sumPricePackget);
+                                            spa.numberPackgetHasPick =
+                                                calculatorUserPick(
+                                                    spa.listPacket!,
+                                                    spa.numberPackgetHasPick);
                                           } else {
                                             // showToastPackget = true;
-                                            if (!indexMaximunPackget
+                                            if (!spa.indexMaximunPackget
                                                 .contains(index)) {
-                                              indexMaximunPackget.add(index);
+                                              spa.indexMaximunPackget
+                                                  .add(index);
                                             }
                                           }
                                         });
@@ -757,16 +865,21 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                listPacket.removeAt(index);
-                                numberServiceHasPick = 0;
-                                sum = 0;
-                                sum = calculatePrice(listPacket, sum);
-                                numberPackgetHasPick = calculateUserPickService(
-                                    listPacket, numberPackgetHasPick);
+                                spa.listPacket!.removeAt(index);
+                                spa.numberPackgetHasPick = 0;
+                                spa.sumPricePackget = 0;
+                                //TODO
+                                totalPrice = calculatorTotalPrice();
+                                totalServiceSelect = calculatorTotalSelect();
+                                //TODO
+                                spa.sumPricePackget = calculatorPrice(
+                                    spa.listPacket!, spa.sumPricePackget);
+                                spa.numberPackgetHasPick = calculatorUserPick(
+                                    spa.listPacket!, spa.numberPackgetHasPick);
                               });
                             },
                             child: const Icon(Icons.delete_forever,
-                                color: ColorApp.pink),
+                                color: ColorApp.pinkF59398),
                           )
                         ],
                       ),
@@ -796,13 +909,13 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             ],
                           ),
                           Text(
-                            '${Const.ConvertPrice.format(listPacket[index].gia * listPacket[index].soLuong)} ₫',
+                            '${Const.ConvertPrice.format(spa.listPacket![index].gia * spa.listPacket![index].soLuong)} ₫',
                             style: StyleApp.textStyle700(
                                 color: ColorApp.darkGreen, fontSize: 16),
                           )
                         ],
                       ),
-                      (indexMaximunPackget.contains(index))
+                      (spa.indexMaximunPackget.contains(index))
                           ? _WarningNumberService(language: language)
                           : const SizedBox.shrink(),
                     ],
@@ -830,7 +943,7 @@ class _WarningNumberService extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Container(
         decoration: BoxDecoration(
-            color: ColorApp.pink.withOpacity(0.5),
+            color: ColorApp.pinkF59398.withOpacity(0.5),
             borderRadius: BorderRadius.circular(12)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -838,7 +951,7 @@ class _WarningNumberService extends StatelessWidget {
             children: [
               const Icon(
                 Icons.report_problem_outlined,
-                color: ColorApp.pink,
+                color: ColorApp.pinkF59398,
                 size: 14,
               ),
               const Gap(8),
@@ -846,7 +959,7 @@ class _WarningNumberService extends StatelessWidget {
                 child: Text(
                   language.canhBao,
                   overflow: TextOverflow.ellipsis,
-                  style: StyleApp.textStyle500(color: ColorApp.pink),
+                  style: StyleApp.textStyle500(color: ColorApp.pinkF59398),
                 ),
               )
             ],

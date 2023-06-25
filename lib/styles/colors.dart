@@ -34,8 +34,8 @@ class ColorApp {
   static const Color bottomBarABCA74 = Color(0xffABCA74);
   static const Color darkGreen = Color(0xff529E66);
   static const Color dark252525 = Color(0xff252525);
-  static const Color orange = Color(0xffFFC94D);
-  static const Color pink = Color(0xffF59398);
+  static const Color orangeFFC94D = Color(0xffFFC94D);
+  static const Color pinkF59398 = Color(0xffF59398);
   static const Color dark500 = Color(0xff717171);
   static const Color borderEAEAEA = Color(0xffEAEAEA);
   static Color greyF9 = const Color(0xff8B8B8B).withOpacity(0.1);

@@ -21,50 +21,53 @@ class ListQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 15,
-                  backgroundColor: ColorApp.darkGreen,
-                  child: Text((index + 1).toString(),
-                      style: StyleApp.styleGilroy700(
-                        color: ColorApp.whiteF0,
-                        fontSize: 12,
-                      )),
-                ),
-                const Gap(10),
-                Expanded(
-                  child: Text(listTile[index],
-                      style: StyleApp.styleGilroy700(
-                        color: ColorApp.dark252525,
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    if (listIndex.contains(index)) {
-                      listIndex.remove(index);
-                    } else {
-                      listIndex.add(index);
-                    }
-                    onTap.call();
-                  },
-                  child: Icon(
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () {
+          if (listIndex.contains(index)) {
+            listIndex.remove(index);
+          } else {
+            listIndex.add(index);
+          }
+          onTap.call();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 15,
+                    backgroundColor: ColorApp.darkGreen,
+                    child: Text((index + 1).toString(),
+                        style: StyleApp.styleGilroy700(
+                          color: ColorApp.whiteF0,
+                          fontSize: 12,
+                        )),
+                  ),
+                  const Gap(10),
+                  Expanded(
+                    child: Text(listTile[index],
+                        style: StyleApp.styleGilroy700(
+                          color: ColorApp.dark252525,
+                        )),
+                  ),
+                  Icon(
                     listIndex.contains(index) ? Icons.remove : Icons.add,
                   ),
-                ),
-              ],
-            ),
-            listIndex.contains(index)
-                ? Text(
-                    description,
-                    style: StyleApp.textStyle500(color: ColorApp.dark500),
-                  )
-                : const SizedBox(),
-          ],
+                ],
+              ),
+              listIndex.contains(index)
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        description,
+                        style: StyleApp.textStyle500(color: ColorApp.dark500),
+                      ),
+                    )
+                  : const SizedBox(),
+            ],
+          ),
         ),
       ),
       separatorBuilder: (context, index) => const Divider(),

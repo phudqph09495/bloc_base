@@ -46,7 +46,7 @@ class GridServiceItem extends StatelessWidget {
                           size: 16,
                           color: index % 2 == 1
                               ? ColorApp.background.withOpacity(0.5)
-                              : ColorApp.orange)),
+                              : ColorApp.orangeFFC94D)),
                   Positioned(
                     right: 5,
                     bottom: 5,
@@ -62,7 +62,7 @@ class GridServiceItem extends StatelessWidget {
                           children: [
                             const Icon(
                               Icons.star,
-                              color: ColorApp.orange,
+                              color: ColorApp.orangeFFC94D,
                               size: 12,
                             ),
                             const Gap(3),

@@ -14,15 +14,11 @@ class MoreSpaScreen extends StatelessWidget {
   // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(
+    return BlocBuilder<BlocLanguage, StateBloc>(
         builder: (context, StateBloc state) {
       if (state is LoadSuccess) {
         return Column(
           children: [
-            const SizedBox(
-              height: 16,
-            ),
-            // ),
             GridView.builder(
                 padding: EdgeInsets.zero,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -66,18 +62,21 @@ class IntroduceSpaWidget extends StatelessWidget {
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Image.asset(
-                  'assets/images/mostRate.png',
-                  width: Const.size(context).width * 0.45,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/images/mostRate.png',
+                    width: Const.size(context).width * 0.45,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         color: ColorApp.dark252525.withOpacity(0.75),
                         borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15))),
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10))),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           vertical:

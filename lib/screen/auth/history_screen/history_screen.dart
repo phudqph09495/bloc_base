@@ -37,7 +37,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocLang, StateBloc>(
+    return BlocBuilder<BlocLanguage, StateBloc>(
       builder: (_, StateBloc state) {
         if (state is LoadSuccess) {
           Language language = state.data;
@@ -70,7 +70,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                               16 * 2 -
                                               12 * 3) /
                                           3,
-                                  selectedColor: ColorApp.darkGreen,
+                                  selectedColor: ColorApp.bottomBarABCA74,
                                   mainGroupAlignment:
                                       MainGroupAlignment.spaceBetween,
                                   unselectedTextStyle: StyleApp.textStyle500(
@@ -157,7 +157,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                                       color: index % 2 == 1
                                                           ? ColorApp
                                                               .bottomBarABCA74
-                                                          : ColorApp.pink,
+                                                          : ColorApp.pinkF59398,
                                                       borderRadius:
                                                           const BorderRadius
                                                                   .only(

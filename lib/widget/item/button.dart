@@ -24,7 +24,9 @@ class ButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
             color: type == ButtonType.primary
                 ? ColorApp.bottomBarABCA74
-                : ColorApp.orange,
+                : type == ButtonType.secondary
+                    ? ColorApp.orangeFFC94D
+                    : ColorApp.dark500,
             borderRadius: BorderRadius.circular(18)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 18.0),
@@ -34,7 +36,9 @@ class ButtonWidget extends StatelessWidget {
               style: StyleApp.textStyle700(
                   color: type == ButtonType.primary
                       ? ColorApp.whiteF0
-                      : ColorApp.dark252525),
+                      : type == ButtonType.secondary
+                          ? ColorApp.dark252525
+                          : ColorApp.background),
             ),
           ),
         ),
@@ -43,4 +47,4 @@ class ButtonWidget extends StatelessWidget {
   }
 }
 
-enum ButtonType { secondary, primary }
+enum ButtonType { secondary, primary, grey }
