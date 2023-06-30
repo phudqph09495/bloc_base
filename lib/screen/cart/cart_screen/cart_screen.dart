@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
 import 'package:bloc_base/homepage.dart';
@@ -7,7 +5,7 @@ import 'package:bloc_base/router/router.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -60,6 +58,9 @@ class _GioHangScreenState extends State<GioHangScreen> {
   ];
   int totalPrice = 0;
   int totalServiceSelect = 0;
+  int warningPayment = 0;
+  bool isWarningPayment = false;
+
   // int numberServiceHasPick = 0;
   // int numberPackgetHasPick = 0;
   // int sumPriceService = 0;
@@ -113,8 +114,13 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                 width: 18,
                                 height: 18,
                                 child: Checkbox(
+                                    side: const BorderSide(
+                                        // color: ColorApp.borderCheckbox,
+                                        width: 1),
+                                    activeColor: ColorApp.whiteF0,
+                                    // hoverColor: Colors.red,
                                     shape: const CircleBorder(),
-                                    activeColor: ColorApp.bottomBarABCA74,
+                                    checkColor: ColorApp.bottomBarABCA74,
                                     value: listSpa[i].isChoose,
                                     onChanged: (value) {
                                       setState(() {
@@ -305,11 +311,32 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           const SizedBox(
                             height: 30,
                           ),
+                          isWarningPayment
+                              ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: _WarningNumberService(
+                                      language: language,
+                                      title: language.plsJustChoiseOneServiec),
+                                )
+                              : const SizedBox.shrink(),
                           ButtonWidget(
                             text: language.thanhToan.toUpperCase(),
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, RouterName.paymentScreen);
+                              warningPayment = 0;
+                              isWarningPayment = false;
+                              for (var spa in listSpa) {
+                                if (spa.isChoose) {
+                                  warningPayment++;
+                                  print(warningPayment.toString());
+                                }
+                              }
+                              if (warningPayment < 2) {
+                                Navigator.pushNamed(
+                                    context, RouterName.paymentScreen);
+                              } else {
+                                isWarningPayment = true;
+                              }
+                              setState(() {});
                             },
                             type: ButtonType.secondary,
                           ),
@@ -414,7 +441,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                         flex: 5,
                                         child: Text(
                                           spa.listService![index].name,
-                                          style: StyleApp.textStyle700(
+                                          style: StyleApp.textStyle600(
                                               fontSize: 16,
                                               color: ColorApp.dark252525),
                                         )),
@@ -536,7 +563,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                     ),
                                     Text(
                                       ' Sviet Beauty Spa',
-                                      style: StyleApp.textStyle700(
+                                      style: StyleApp.textStyle600(
+                                        fontSize: 13,
                                         color: ColorApp.bottomBarABCA74,
                                       ),
                                     ),
@@ -611,15 +639,15 @@ class _GioHangScreenState extends State<GioHangScreen> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              DatePicker.showDateTimePicker(context,
-                                  currentTime: DateTime.now(),
-                                  locale: language.codeNow == 'en'
-                                      ? LocaleType.en
-                                      : LocaleType.vi, onConfirm: (date) {
-                                dateTime =
-                                    '${Const.formatTime(date.millisecondsSinceEpoch)}';
-                                setState(() {});
-                              });
+                              // DatePicker.showDateTimePicker(context,
+                              //     currentTime: DateTime.now(),
+                              //     locale: language.codeNow == 'en'
+                              //         ? LocaleType.en
+                              //         : LocaleType.vi, onConfirm: (date) {
+                              //   dateTime =
+                              //       '${Const.formatTime(date.millisecondsSinceEpoch)}';
+                              //   setState(() {});
+                              // });
                             },
                             child: Row(
                               children: [
@@ -744,7 +772,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                               flex: 4,
                               child: Text(
                                 spa.listPacket![index].name,
-                                style: StyleApp.textStyle700(
+                                style: StyleApp.textStyle600(
                                     fontSize: 16, color: ColorApp.dark252525),
                               )),
                           Expanded(
@@ -856,7 +884,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
                               ),
                               Text(
                                 ' Sviet Beauty Spa',
-                                style: StyleApp.textStyle700(
+                                style: StyleApp.textStyle600(
+                                  fontSize: 13,
                                   color: ColorApp.bottomBarABCA74,
                                 ),
                               ),
@@ -933,9 +962,11 @@ class _GioHangScreenState extends State<GioHangScreen> {
 class _WarningNumberService extends StatelessWidget {
   const _WarningNumberService({
     required this.language,
+    this.title,
   });
 
   final Language language;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -957,7 +988,7 @@ class _WarningNumberService extends StatelessWidget {
               const Gap(8),
               Expanded(
                 child: Text(
-                  language.canhBao,
+                  title == null ? language.canhBao : title!,
                   overflow: TextOverflow.ellipsis,
                   style: StyleApp.textStyle500(color: ColorApp.pinkF59398),
                 ),

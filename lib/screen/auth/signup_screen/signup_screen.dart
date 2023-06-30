@@ -6,7 +6,7 @@ import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
 import 'package:bloc_base/widget/item/input/text_filed2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -107,16 +107,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       colorBg: Colors.white,
                                       controller: dOBController,
                                       onTap: () {
-                                        DatePicker.showDatePicker(context,
-                                            currentTime: DateTime.now(),
-                                            locale: language.codeNow == 'en'
-                                                ? LocaleType.en
-                                                : LocaleType.vi,
-                                            onConfirm: (date) {
-                                          dOBController.text = Const.formatTime(
-                                              date.millisecondsSinceEpoch,
-                                              format: 'dd/MM/yyyy');
-                                        });
+                                        // DatePicker.showDatePicker(context,
+                                        //     currentTime: DateTime.now(),
+                                        //     locale: language.codeNow == 'en'
+                                        //         ? LocaleType.en
+                                        //         : LocaleType.vi,
+                                        //     onConfirm: (date) {
+                                        //   dOBController.text = Const.formatTime(
+                                        //       date.millisecondsSinceEpoch,
+                                        //       format: 'dd/MM/yyyy');
+                                        // });
                                       },
                                       label:
                                           '${Const.formatTime(DateTime.now().millisecondsSinceEpoch, format: 'dd/MM/yyyy')}',

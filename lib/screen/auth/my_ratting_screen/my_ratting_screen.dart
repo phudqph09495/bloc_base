@@ -94,7 +94,7 @@ class ShopFeedbackWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: ColorApp.backgroundF5F6EE,
-            border: Border.all(color: ColorApp.dark500),
+            border: Border.all(color: ColorApp.borderEAEAEA),
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -104,7 +104,7 @@ class ShopFeedbackWidget extends StatelessWidget {
                 Text(
                   'Phản hồi của Spa',
                   style: StyleApp.styleGilroy700(
-                      fontSize: 16, color: ColorApp.dark252525),
+                      fontSize: 14, color: ColorApp.dark252525),
                 ),
                 const SizedBox.shrink()
               ],
@@ -114,7 +114,7 @@ class ShopFeedbackWidget extends StatelessWidget {
               description,
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
-              style: StyleApp.textStyle500(color: ColorApp.grey82),
+              style: StyleApp.textStyle500(color: ColorApp.dark500),
             )
           ]),
         ),
@@ -133,7 +133,7 @@ class CustomerFeedback extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: ColorApp.dark500),
+          border: Border.all(color: ColorApp.borderEAEAEA),
           borderRadius: BorderRadius.circular(10)),
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -162,7 +162,7 @@ class CustomerFeedback extends StatelessWidget {
             description,
             maxLines: 5,
             overflow: TextOverflow.ellipsis,
-            style: StyleApp.textStyle500(color: ColorApp.grey82),
+            style: StyleApp.textStyle500(color: ColorApp.dark500),
           )
         ]),
       ),

@@ -1,4 +1,5 @@
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
+import 'package:bloc_base/router/router.dart';
 import 'package:bloc_base/widget/item/button.dart';
 import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
 import 'package:bloc_base/widget/item/load_image.dart';
@@ -245,23 +246,28 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                 style: StyleApp.textStyle700(
                                     fontSize: 16, color: ColorApp.darkGreen),
                               ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.star,
-                                    color: ColorApp.yellow,
-                                  ),
-                                  Text(
-                                    '4.7 ',
-                                    style: StyleApp.textStyle700(
-                                        fontSize: 14, color: ColorApp.yellow),
-                                  ),
-                                  Text(
-                                    ' (86)',
-                                    style: StyleApp.textStyle500(
-                                        fontSize: 14, color: ColorApp.dark500),
-                                  )
-                                ],
+                              InkWell(
+                                onTap: () => Navigator.pushNamed(
+                                    context, RouterName.rattingScreen),
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.star,
+                                      color: ColorApp.yellow,
+                                    ),
+                                    Text(
+                                      '4.7 ',
+                                      style: StyleApp.textStyle700(
+                                          fontSize: 14, color: ColorApp.yellow),
+                                    ),
+                                    Text(
+                                      ' (86)',
+                                      style: StyleApp.textStyle500(
+                                          fontSize: 14,
+                                          color: ColorApp.dark500),
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -437,7 +443,7 @@ class _InfoSpaScreenState extends State<InfoSpaScreen> {
                                               children: [
                                                 Padding(
                                                   padding: const EdgeInsets
-                                                          .symmetric(
+                                                      .symmetric(
                                                       horizontal: 10),
                                                   child: Row(
                                                     crossAxisAlignment:

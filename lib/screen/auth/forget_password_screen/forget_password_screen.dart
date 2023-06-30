@@ -1,5 +1,6 @@
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
+import 'package:bloc_base/router/router.dart';
 import 'package:bloc_base/widget/item/appbar.dart';
 import 'package:bloc_base/widget/item/button.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                      color: ColorApp.whiteF0,
+                      color: ColorApp.backgroundF5F6EE,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25))),
@@ -57,20 +58,29 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                         ),
                         Text(
                           language.vuiLongNhap,
-                          style: StyleApp.textStyle500(color: ColorApp.dark500),
+                          style: StyleApp.textStyle500(
+                              color: ColorApp.dark500, fontSize: 16),
                         ),
                         const Gap(30),
                         Text(
                           language.maOTP,
-                          style:
-                              StyleApp.textStyle700(color: ColorApp.dark252525),
+                          style: StyleApp.styleGilroy700(
+                              color: ColorApp.dark252525),
                         ),
                         const Gap(12),
-                        InputText1(label: ''),
+                        InputText1(
+                          radius: 10,
+                          label: '',
+                          borderColor: ColorApp.background,
+                          colorBg: ColorApp.borderEAEAEA,
+                        ),
                         const Gap(20),
                         ButtonWidget(
-                          text: language.nhap,
-                          onTap: () {},
+                          text: language.nhap.toUpperCase(),
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouterName.rePassworkScreen);
+                          },
                           type: ButtonType.secondary,
                         )
                       ],

@@ -19,14 +19,14 @@ import '../../../widget/item/input/text_filed.dart';
 import '../../../widget/item/notification_widget.dart';
 import 'widget/list_spa_more_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenTest extends StatefulWidget {
+  const HomeScreenTest({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenTest> createState() => _HomeScreenTestState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenTestState extends State<HomeScreenTest> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> listSer = ['Triệt lông', ' Chăm Sóc Da Mặt', 'Massage', 'Tóc'];
   bool showmore = false;
@@ -35,442 +35,320 @@ class _HomeScreenState extends State<HomeScreen> {
     double baseWidth = 390;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Scaffold(
-      backgroundColor: ColorApp.backgroundF6F6EF,
-      drawer: const ItemDrawer(),
-      key: _scaffoldKey,
-      body: BlocBuilder<BlocLanguage, StateBloc>(
-        builder: (context, StateBloc state) {
-          if (state is LoadSuccess) {
-            Language language = state.data;
-            return GestureDetector(
-                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                child: CustomScrollView(
-                  slivers: [
-                    SliverAppBar(
-                      flexibleSpace: FlexibleSpaceBar(
-                        centerTitle: true,
-                        title: Image.asset(
-                          'assets/images/logo_app.png',
-                          height: Const.sizeHeight(context, 55),
-                        ),
-                        background: Image.asset(
-                          'assets/images/background_appbar.png',
-                          height: Const.sizeHeight(context, 200),
-                        ),
-                      ),
-
-                      expandedHeight: Const.sizeHeight(context, 200),
-                      floating: true,
-                      pinned: true,
-
-                      // flexibleSpace: Const.sizeHeight(context, 160),
-                      leading: InkWell(
-                        onTap: () {
-                          _scaffoldKey.currentState!.openDrawer();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 18),
-                          child: SvgPicture.asset(
-                            'assets/svg/Vector.svg',
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: ColorApp.backgroundF6F6EF,
+        drawer: const ItemDrawer(),
+        key: _scaffoldKey,
+        body: BlocBuilder<BlocLanguage, StateBloc>(
+          builder: (context, StateBloc state) {
+            if (state is LoadSuccess) {
+              Language language = state.data;
+              return GestureDetector(
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        backgroundColor: ColorApp.backgroundF5F6EE,
+                        elevation: 0,
+                        flexibleSpace: FlexibleSpaceBar(
+                          centerTitle: true,
+                          title: Image.asset(
+                            'assets/images/logo_app.png',
                             height: Const.sizeHeight(context, 55),
                           ),
-                        ),
-                      ),
-                      // title: SizedBox(
-                      //     width: MediaQuery.of(context).size.width * 0.6,
-                      //     child: SvgPicture.asset('assets/svg/LogoApp.svg')),
-                      actions: [
-                        InkWell(
-                          child: const Icon(
-                            Icons.qr_code_scanner,
-                            size: 25,
+                          background: Image.asset(
+                            'assets/images/background_appbar.png',
+                            height: Const.sizeHeight(context, 200),
+                            fit: BoxFit.fitHeight,
                           ),
-                          onTap: () async {
-                            var res = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      SimpleBarcodeScannerPage(
-                                    cancelButtonText: language.huyBo,
-                                  ),
-                                ));
-                            setState(() {
-                              if (res is String) {
-                                Navigator.pushNamed(
-                                    context, RouterName.confirmScreen);
-                              }
-                            });
+                        ),
+
+                        expandedHeight: Const.sizeHeight(context, 200),
+                        floating: true,
+                        pinned: true,
+
+                        // flexibleSpace: Const.sizeHeight(context, 160),
+                        leading: InkWell(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openDrawer();
                           },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            child: SvgPicture.asset(
+                              'assets/svg/Vector.svg',
+                              height: Const.sizeHeight(context, 55),
+                            ),
+                          ),
                         ),
-                        const NotificationButton(),
-                      ],
-                    ),
-                    SliverToBoxAdapter(
-                      child: Column(
-                        children: [
-                          Container(
-                            color: Colors.green,
-                            height: 300,
+                        title: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: SvgPicture.asset('assets/svg/LogoApp.svg')),
+                        actions: [
+                          InkWell(
+                            child: const Icon(
+                              Icons.qr_code_scanner,
+                              size: 25,
+                            ),
+                            onTap: () async {
+                              var res = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        SimpleBarcodeScannerPage(
+                                      cancelButtonText: language.huyBo,
+                                    ),
+                                  ));
+                              setState(() {
+                                if (res is String) {
+                                  Navigator.pushNamed(
+                                      context, RouterName.confirmScreen);
+                                }
+                              });
+                            },
                           ),
-                          Container(
-                            color: Colors.blue,
-                            height: 300,
-                          ),
-                          Container(
-                            color: Colors.red,
-                            height: 300,
-                          ),
-                          // Stack(
-                          //   alignment: Alignment.bottomCenter,
-                          //   children: [
-                          //     Stack(
-                          //       alignment: Alignment.center,
-                          //       children: [
-                          //         Image.asset(
-                          //           'assets/images/bgApp.png',
-                          //           fit: BoxFit.fitHeight,
-                          //           width: double.infinity,
-                          //         ),
-                          //         Positioned(
-                          //           child: Row(
-                          //             mainAxisAlignment:
-                          //                 MainAxisAlignment.spaceBetween,
-                          //             children: [
-                          //               InkWell(
-                          //                 onTap: () {
-                          //                   _scaffoldKey.currentState!
-                          //                       .openDrawer();
-                          //                 },
-                          //                 child: Padding(
-                          //                   padding: const EdgeInsets.symmetric(
-                          //                       horizontal: 18),
-                          //                   child: SvgPicture.asset(
-                          //                       'assets/svg/Vector.svg'),
-                          //                 ),
-                          //               ),
-                          //               SizedBox(
-                          //                   width: MediaQuery.of(context)
-                          //                           .size
-                          //                           .width *
-                          //                       0.6,
-                          //                   child: SvgPicture.asset(
-                          //                       'assets/svg/LogoApp.svg')),
-                          //               Row(
-                          //                 children: [
-                          //                   InkWell(
-                          //                     child: const Icon(
-                          //                       Icons.qr_code_scanner,
-                          //                       size: 25,
-                          //                     ),
-                          //                     onTap: () async {
-                          //                       var res = await Navigator.push(
-                          //                           context,
-                          //                           MaterialPageRoute(
-                          //                             builder: (context) =>
-                          //                                 SimpleBarcodeScannerPage(
-                          //                               cancelButtonText:
-                          //                                   language.huyBo,
-                          //                             ),
-                          //                           ));
-                          //                       setState(() {
-                          //                         if (res is String) {
-                          //                           Navigator.pushNamed(
-                          //                               context,
-                          //                               RouterName
-                          //                                   .confirmScreen);
-                          //                         }
-                          //                       });
-                          //                     },
-                          //                   ),
-                          //                   const NotificationButton(),
-                          //                 ],
-                          //               )
-                          //             ],
-                          //           ),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //     Positioned(
-                          //         child: Padding(
-                          //       padding:
-                          //           const EdgeInsets.symmetric(horizontal: 18),
-                          //       child: InputText1(
-                          //         colorBg: ColorApp.background,
-                          //         borderColor: ColorApp.background,
-                          //         label: language.timKiem,
-                          //         hasLeading: true,
-                          //         iconPreFix: const Icon(Icons.search,
-                          //             color: ColorApp.bottomBarABCA74),
-                          //         hasSuffix: true,
-                          //         suffix: Padding(
-                          //           padding: const EdgeInsets.symmetric(
-                          //               horizontal: 10),
-                          //           child: Container(
-                          //               width: 30,
-                          //               decoration: const BoxDecoration(
-                          //                   color: ColorApp.bottomBarABCA74,
-                          //                   shape: BoxShape.circle),
-                          //               child: Padding(
-                          //                 padding: const EdgeInsets.symmetric(
-                          //                     horizontal: 8),
-                          //                 child: SvgPicture.asset(
-                          //                   'assets/svg/locator.svg',
-                          //                 ),
-                          //               )),
-                          //         ),
-                          //       ),
-                          //     )),
-                          //   ],
-                          // ),
-                          // Expanded(
-                          //   child: SingleChildScrollView(
-                          //     child: Column(
-                          //       children: [
-                          //         Padding(
-                          //           padding: const EdgeInsets.only(
-                          //               left: 18, right: 18, top: 25),
-                          //           child: _listService(language, context),
-                          //         ),
-                          //         _discoveryNearYou(
-                          //             fem, context, language, ffem),
-                          //         // Image.asset('assets/images/bannerHome.png'),
-                          //         ImageSlideshow(
-                          //           height: MediaQuery.of(context).size.height *
-                          //               0.14,
-                          //           width:
-                          //               MediaQuery.of(context).size.width - 32,
-                          //           indicatorColor: ColorApp.bottomBarABCA74,
-                          //           isLoop: true,
-                          //           autoPlayInterval: 5000,
-                          //           children: List.generate(
-                          //               3,
-                          //               (index) => ClipRRect(
-                          //                     borderRadius:
-                          //                         BorderRadius.circular(15),
-                          //                     child: Image.asset(
-                          //                       'assets/images/bannerHome.png',
-                          //                       fit: BoxFit.fitHeight,
-                          //                     ),
-                          //                   )),
-                          //         ),
-                          //         Padding(
-                          //             padding: const EdgeInsets.symmetric(
-                          //               horizontal: 18,
-                          //               vertical: 18,
-                          //             ),
-                          //             child: Column(
-                          //               children: [
-                          //                 Row(
-                          //                   mainAxisAlignment:
-                          //                       MainAxisAlignment.spaceBetween,
-                          //                   children: [
-                          //                     Expanded(
-                          //                       flex: 232,
-                          //                       child: Image.asset(
-                          //                         'assets/images/bannerAds1.png',
-                          //                         fit: BoxFit.fitWidth,
-                          //                       ),
-                          //                     ),
-                          //                     const Gap(12),
-                          //                     Expanded(
-                          //                       flex: 110,
-                          //                       child: Image.asset(
-                          //                         'assets/images/bannerAds2.png',
-                          //                         fit: BoxFit.fitWidth,
-                          //                       ),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //                 const SizedBox(
-                          //                   height: 12,
-                          //                 ),
-                          //                 Row(
-                          //                   mainAxisAlignment:
-                          //                       MainAxisAlignment.spaceBetween,
-                          //                   children: [
-                          //                     Expanded(
-                          //                       child: Image.asset(
-                          //                         'assets/images/bannerAds3.png',
-                          //                         fit: BoxFit.fitWidth,
-                          //                       ),
-                          //                     ),
-                          //                     const Gap(12),
-                          //                     Expanded(
-                          //                       child: Image.asset(
-                          //                         'assets/images/bannerAds4.png',
-                          //                         fit: BoxFit.fitWidth,
-                          //                       ),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //                 SizedBox(
-                          //                   height: Const.size(context).width *
-                          //                       0.05,
-                          //                 ),
-                          //                 DottedBorder(
-                          //                     borderType: BorderType.RRect,
-                          //                     radius: const Radius.circular(15),
-                          //                     color: ColorApp.pinkF59398,
-                          //                     dashPattern: const [5, 1],
-                          //                     child: Padding(
-                          //                       padding:
-                          //                           const EdgeInsets.all(3),
-                          //                       child: Row(
-                          //                         mainAxisAlignment:
-                          //                             MainAxisAlignment
-                          //                                 .spaceBetween,
-                          //                         children: [
-                          //                           Container(
-                          //                             width: Const.size(context)
-                          //                                     .width *
-                          //                                 0.6,
-                          //                             decoration: BoxDecoration(
-                          //                                 color: ColorApp
-                          //                                     .pinkF59398,
-                          //                                 borderRadius:
-                          //                                     BorderRadius
-                          //                                         .circular(
-                          //                                             12)),
-                          //                             child: Row(
-                          //                               children: [
-                          //                                 Padding(
-                          //                                   padding:
-                          //                                       const EdgeInsets
-                          //                                           .all(12),
-                          //                                   child: SvgPicture.asset(
-                          //                                       'assets/svg/discount.svg'),
-                          //                                 ),
-                          //                                 Text(
-                          //                                   'Giảm giá 15% cho lần đầu \nđặt qua App',
-                          //                                   style: StyleApp
-                          //                                       .textStyle700(
-                          //                                           color: Colors
-                          //                                               .white,
-                          //                                           fontSize:
-                          //                                               13),
-                          //                                 ),
-                          //                                 // const SizedBox(),
-                          //                               ],
-                          //                             ),
-                          //                           ),
-                          //                           Padding(
-                          //                             padding:
-                          //                                 const EdgeInsets.only(
-                          //                                     right: 16),
-                          //                             child: Text(
-                          //                               'Nhận Ngay',
-                          //                               style: StyleApp
-                          //                                   .textStyle700(
-                          //                                       color: ColorApp
-                          //                                           .pinkF59398,
-                          //                                       fontSize: 13),
-                          //                             ),
-                          //                           ),
-                          //                         ],
-                          //                       ),
-                          //                     )),
-                          //                 const SizedBox(
-                          //                   height: 26,
-                          //                 ),
-                          //                 Row(
-                          //                   mainAxisAlignment:
-                          //                       MainAxisAlignment.spaceBetween,
-                          //                   children: [
-                          //                     Text(
-                          //                       language.danhGiaCaoNhat,
-                          //                       style: StyleApp.textStyle700(
-                          //                           color: ColorApp.dark252525,
-                          //                           fontSize: 18),
-                          //                     ),
-                          //                     InkWell(
-                          //                       onTap: () {
-                          //                         setState(() {
-                          //                           showmore = true;
-                          //                         });
-                          //                       },
-                          //                       child: Container(
-                          //                         padding: EdgeInsets.fromLTRB(
-                          //                             10 * fem,
-                          //                             6 * fem,
-                          //                             13 * fem,
-                          //                             4 * fem),
-                          //                         width: 102 * fem,
-                          //                         height: 27 * fem,
-                          //                         decoration: BoxDecoration(
-                          //                           color:
-                          //                               const Color(0xffffc94d),
-                          //                           borderRadius:
-                          //                               BorderRadius.circular(
-                          //                                   7 * fem),
-                          //                         ),
-                          //                         child: SizedBox(
-                          //                           // group56G8 (157:9170)
-                          //                           width: double.infinity,
-                          //                           height: double.infinity,
-                          //                           child: Container(
-                          //                             // xemthmwnY (157:9174)
-                          //                             margin:
-                          //                                 EdgeInsets.fromLTRB(
-                          //                                     0 * fem,
-                          //                                     1 * fem,
-                          //                                     0 * fem,
-                          //                                     0 * fem),
-                          //                             child: Center(
-                          //                               child: Text('Xem Thêm',
-                          //                                   style: StyleApp
-                          //                                       .styleGilroy700(
-                          //                                           fontSize:
-                          //                                               12,
-                          //                                           color: const Color(
-                          //                                               0xff252525))),
-                          //                             ),
-                          //                           ),
-                          //                         ),
-                          //                       ),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //                 const SizedBox(
-                          //                   height: 16,
-                          //                 ),
-                          //                 showmore
-                          //                     ? const MoreSpaScreen()
-                          //                     : GridView.builder(
-                          //                         padding: EdgeInsets.zero,
-                          //                         gridDelegate:
-                          //                             const SliverGridDelegateWithMaxCrossAxisExtent(
-                          //                                 maxCrossAxisExtent:
-                          //                                     200,
-                          //                                 crossAxisSpacing: 12,
-                          //                                 mainAxisSpacing: 20),
-                          //                         itemCount: 6,
-                          //                         shrinkWrap: true,
-                          //                         physics:
-                          //                             const NeverScrollableScrollPhysics(),
-                          //                         itemBuilder:
-                          //                             (BuildContext ctx,
-                          //                                 index) {
-                          //                           return const IntroduceSpaWidget();
-                          //                         }),
-                          //                 SizedBox(
-                          //                   height:
-                          //                       Const.size(context).width * 0.2,
-                          //                 ),
-                          //               ],
-                          //             )),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // )
+                          const NotificationButton(),
                         ],
                       ),
-                    ),
-                  ],
-                ));
-          }
-          return const SizedBox();
-        },
+                      SliverToBoxAdapter(
+                        child: Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18, right: 18, top: 25),
+                                  child: _listService(language, context),
+                                ),
+                                _discoveryNearYou(fem, context, language, ffem),
+                                // Image.asset('assets/images/bannerHome.png'),
+                                ImageSlideshow(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.14,
+                                  width: MediaQuery.of(context).size.width - 32,
+                                  indicatorColor: ColorApp.bottomBarABCA74,
+                                  isLoop: true,
+                                  autoPlayInterval: 5000,
+                                  children: List.generate(
+                                      3,
+                                      (index) => ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            child: Image.asset(
+                                              'assets/images/bannerHome.png',
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                          )),
+                                ),
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 18,
+                                      vertical: 18,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              flex: 232,
+                                              child: Image.asset(
+                                                'assets/images/bannerAds1.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                            const Gap(12),
+                                            Expanded(
+                                              flex: 110,
+                                              child: Image.asset(
+                                                'assets/images/bannerAds2.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 12,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Image.asset(
+                                                'assets/images/bannerAds3.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                            const Gap(12),
+                                            Expanded(
+                                              child: Image.asset(
+                                                'assets/images/bannerAds4.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              Const.size(context).width * 0.05,
+                                        ),
+                                        DottedBorder(
+                                            borderType: BorderType.RRect,
+                                            radius: const Radius.circular(15),
+                                            color: ColorApp.pinkF59398,
+                                            dashPattern: const [5, 1],
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(3),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    width: Const.size(context)
+                                                            .width *
+                                                        0.6,
+                                                    decoration: BoxDecoration(
+                                                        color:
+                                                            ColorApp.pinkF59398,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12)),
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(12),
+                                                          child: SvgPicture.asset(
+                                                              'assets/svg/discount.svg'),
+                                                        ),
+                                                        Text(
+                                                          'Giảm giá 15% cho lần đầu \nđặt qua App',
+                                                          style: StyleApp
+                                                              .textStyle700(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 13),
+                                                        ),
+                                                        // const SizedBox(),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 16),
+                                                    child: Text(
+                                                      'Nhận Ngay',
+                                                      style:
+                                                          StyleApp.textStyle700(
+                                                              color: ColorApp
+                                                                  .pinkF59398,
+                                                              fontSize: 13),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
+                                        const SizedBox(
+                                          height: 26,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              language.danhGiaCaoNhat,
+                                              style: StyleApp.textStyle700(
+                                                  color: ColorApp.dark252525,
+                                                  fontSize: 18),
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                setState(() {
+                                                  showmore = true;
+                                                });
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.fromLTRB(
+                                                    10 * fem,
+                                                    6 * fem,
+                                                    13 * fem,
+                                                    4 * fem),
+                                                width: 102 * fem,
+                                                height: 27 * fem,
+                                                decoration: BoxDecoration(
+                                                  color:
+                                                      const Color(0xffffc94d),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          7 * fem),
+                                                ),
+                                                child: SizedBox(
+                                                  // group56G8 (157:9170)
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  child: Container(
+                                                    // xemthmwnY (157:9174)
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0 * fem,
+                                                        1 * fem,
+                                                        0 * fem,
+                                                        0 * fem),
+                                                    child: Center(
+                                                      child: Text('Xem Thêm',
+                                                          style: StyleApp
+                                                              .styleGilroy700(
+                                                                  fontSize: 12,
+                                                                  color: const Color(
+                                                                      0xff252525))),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        showmore
+                                            ? const MoreSpaScreen()
+                                            : GridView.builder(
+                                                padding: EdgeInsets.zero,
+                                                gridDelegate:
+                                                    const SliverGridDelegateWithMaxCrossAxisExtent(
+                                                        maxCrossAxisExtent: 200,
+                                                        crossAxisSpacing: 12,
+                                                        mainAxisSpacing: 20),
+                                                itemCount: 6,
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
+                                                itemBuilder:
+                                                    (BuildContext ctx, index) {
+                                                  return const IntroduceSpaWidget();
+                                                }),
+                                        SizedBox(
+                                          height:
+                                              Const.size(context).width * 0.2,
+                                        ),
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ));
+            }
+            return const SizedBox();
+          },
+        ),
       ),
     );
   }

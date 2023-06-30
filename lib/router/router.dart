@@ -1,8 +1,10 @@
 import 'package:bloc_base/homepage.dart';
 import 'package:bloc_base/screen/auth/account_screen/member_screen.dart';
 import 'package:bloc_base/screen/auth/history_screen/history_screen.dart';
+import 'package:bloc_base/screen/auth/profile_screen/re_password_screen.dart';
 import 'package:bloc_base/screen/cart/confirm_screen/confirm_screen.dart';
 import 'package:bloc_base/screen/auth/login_screen/login_screen.dart';
+import 'package:bloc_base/screen/home/home_screen/home_screen%20copy.dart';
 import 'package:bloc_base/screen/home/notification_screen/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
@@ -148,6 +150,15 @@ class AppRouter {
       case RouterName.memberScreen:
         return MaterialPageRoute(builder: (context) => const MemberScreen());
     }
+    switch (settings.name) {
+      case RouterName.homeScreenTest:
+        return MaterialPageRoute(builder: (context) => const HomeScreenTest());
+    }
+    switch (settings.name) {
+      case RouterName.rePassworkScreen:
+        return MaterialPageRoute(
+            builder: (context) => const RePassworkScreen());
+    }
 
     return null;
   }
@@ -181,4 +192,6 @@ class RouterName {
   static const settingScreen = "/deleteScreen";
   static const rattingScreen = "/rattingScreen";
   static const memberScreen = "/memberScreen";
+  static const homeScreenTest = "/homeScreenTest";
+  static const rePassworkScreen = "/rePassworkScreen";
 }

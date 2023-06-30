@@ -29,13 +29,13 @@ class _SettingScreenState extends State<SettingScreen> {
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: Scaffold(
               backgroundColor: ColorApp.darkGreen,
-              appBar: AppBarWidget(title: language.caiDatThongBao),
+              appBar: AppBarWidget(title: language.caiDat),
               body: Container(
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
-                    color: ColorApp.whiteF0),
+                    color: ColorApp.background),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -43,7 +43,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     children: [
                       const Gap(25),
                       Text(
-                        language.thayDoiMK,
+                        language.caiDatThongBao,
                         style: StyleApp.textStyle700(
                             color: ColorApp.dark252525, fontSize: 16),
                       ),
@@ -87,70 +87,16 @@ class _SettingScreenState extends State<SettingScreen> {
                           ),
                         ],
                       ),
+                      const Divider(
+                        color: ColorApp.borderEAEAEA,
+                        height: 30,
+                      ),
                       const Expanded(child: SizedBox()),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
+                        padding: const EdgeInsets.only(bottom: 15),
                         child: GestureDetector(
                             onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30)),
-                                  backgroundColor: ColorApp.background,
-                                  titlePadding: const EdgeInsets.only(
-                                      top: 20, left: 20, right: 20),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 25, vertical: 20),
-                                  actionsPadding: const EdgeInsets.symmetric(
-                                      horizontal: 25, vertical: 30),
-                                  title: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const SizedBox(),
-                                      Container(
-                                        color: Colors.red,
-                                        child: GestureDetector(
-                                          onTap: () => Navigator.pop(context),
-                                          child: const Icon(
-                                            Icons.close,
-                                            size: 18,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  content: Text(
-                                    language.doYouWantDeleteAccount,
-                                    style: StyleApp.styleGilroy700(
-                                        fontSize: 18,
-                                        color: ColorApp.dark252525),
-                                  ),
-                                  actions: [
-                                    Column(
-                                      children: [
-                                        ButtonWidget(
-                                          text: language.khong,
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          type: ButtonType.secondary,
-                                        ),
-                                        const Gap(10),
-                                        ButtonWidget(
-                                          text: language.dongY,
-                                          onTap: () {
-                                            Navigator.pushNamed(
-                                                context, RouterName.homeScreen);
-                                          },
-                                          type: ButtonType.grey,
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              );
+                              _dialogDeleteAccount(context, language);
                             },
                             child: Center(
                               child: Row(
@@ -171,14 +117,6 @@ class _SettingScreenState extends State<SettingScreen> {
                               ),
                             )),
                       )
-                      // Padding(
-                      //   padding: const EdgeInsets.symmetric(vertical: 5),
-                      //   child: ButtonWidget(
-                      //     type: ButtonType.secondary,
-                      //     text: language.luuThayDoi.toUpperCase(),
-                      //     onTap: () {},
-                      //   ),
-                      // )
                     ],
                   ),
                 ),
@@ -187,5 +125,61 @@ class _SettingScreenState extends State<SettingScreen> {
       }
       return const Scaffold();
     });
+  }
+
+  Future<dynamic> _dialogDeleteAccount(
+      BuildContext context, Language language) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: ColorApp.background,
+        titlePadding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+        actionsPadding:
+            const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(),
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: const Icon(
+                Icons.close,
+                size: 18,
+              ),
+            ),
+          ],
+        ),
+        content: Text(
+          textAlign: TextAlign.center,
+          language.doYouWantDeleteAccount,
+          style:
+              StyleApp.styleGilroy700(fontSize: 18, color: ColorApp.dark252525),
+        ),
+        actions: [
+          Column(
+            children: [
+              ButtonWidget(
+                text: language.khong.toUpperCase(),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                type: ButtonType.secondary,
+              ),
+              const Gap(10),
+              ButtonWidget(
+                text: language.dongY.toUpperCase(),
+                onTap: () {
+                  Navigator.pushNamed(context, RouterName.homeScreen);
+                },
+                type: ButtonType.grey,
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

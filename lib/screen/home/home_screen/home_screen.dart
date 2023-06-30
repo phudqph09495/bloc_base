@@ -168,190 +168,224 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     )),
                           ),
-                          Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 18,
-                                vertical: 18,
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        flex: 232,
-                                        child: Image.asset(
-                                          'assets/images/bannerAds1.png',
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                      const Gap(12),
-                                      Expanded(
-                                        flex: 110,
-                                        child: Image.asset(
-                                          'assets/images/bannerAds2.png',
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Image.asset(
-                                          'assets/images/bannerAds3.png',
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                      const Gap(12),
-                                      Expanded(
-                                        child: Image.asset(
-                                          'assets/images/bannerAds4.png',
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: Const.size(context).width * 0.05,
-                                  ),
-                                  DottedBorder(
-                                      borderType: BorderType.RRect,
-                                      radius: const Radius.circular(15),
-                                      color: ColorApp.pinkF59398,
-                                      dashPattern: const [5, 1],
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(3),
-                                        child: Row(
+                          Column(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20)),
+                                ),
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 18,
+                                      vertical: 18,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Container(
-                                              width: Const.size(context).width *
-                                                  0.6,
-                                              decoration: BoxDecoration(
-                                                  color: ColorApp.pinkF59398,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12)),
-                                              child: Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            12),
-                                                    child: SvgPicture.asset(
-                                                        'assets/svg/discount.svg'),
-                                                  ),
-                                                  Text(
-                                                    'Giảm giá 15% cho lần đầu \nđặt qua App',
-                                                    style:
-                                                        StyleApp.textStyle700(
-                                                            color: Colors.white,
-                                                            fontSize: 13),
-                                                  ),
-                                                  // const SizedBox(),
-                                                ],
+                                            Expanded(
+                                              flex: 232,
+                                              child: Image.asset(
+                                                'assets/images/bannerAds1.png',
+                                                fit: BoxFit.fitWidth,
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  right: 16),
-                                              child: Text(
-                                                'Nhận Ngay',
-                                                style: StyleApp.textStyle700(
-                                                    color: ColorApp.pinkF59398,
-                                                    fontSize: 13),
+                                            const Gap(12),
+                                            Expanded(
+                                              flex: 110,
+                                              child: Image.asset(
+                                                'assets/images/bannerAds2.png',
+                                                fit: BoxFit.fitWidth,
                                               ),
                                             ),
                                           ],
                                         ),
-                                      )),
-                                  const SizedBox(
-                                    height: 26,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        language.danhGiaCaoNhat,
-                                        style: StyleApp.textStyle700(
-                                            color: ColorApp.dark252525,
-                                            fontSize: 18),
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          setState(() {
-                                            showmore = true;
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.fromLTRB(10 * fem,
-                                              6 * fem, 13 * fem, 4 * fem),
-                                          width: 102 * fem,
-                                          height: 27 * fem,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xffffc94d),
-                                            borderRadius:
-                                                BorderRadius.circular(7 * fem),
-                                          ),
-                                          child: SizedBox(
-                                            // group56G8 (157:9170)
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            child: Container(
-                                              // xemthmwnY (157:9174)
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  1 * fem,
-                                                  0 * fem,
-                                                  0 * fem),
-                                              child: Center(
-                                                child: Text('Xem Thêm',
-                                                    style:
-                                                        StyleApp.styleGilroy700(
-                                                            fontSize: 12,
-                                                            color: const Color(
-                                                                0xff252525))),
+                                        const SizedBox(
+                                          height: 12,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Image.asset(
+                                                'assets/images/bannerAds3.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                            const Gap(12),
+                                            Expanded(
+                                              child: Image.asset(
+                                                'assets/images/bannerAds4.png',
+                                                fit: BoxFit.fitWidth,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              Const.size(context).width * 0.05,
+                                        ),
+                                        DottedBorder(
+                                            borderType: BorderType.RRect,
+                                            radius: const Radius.circular(15),
+                                            color: ColorApp.pinkF59398,
+                                            dashPattern: const [5, 1],
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(3),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    width: Const.size(context)
+                                                            .width *
+                                                        0.6,
+                                                    decoration: BoxDecoration(
+                                                        color:
+                                                            ColorApp.pinkF59398,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12)),
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(12),
+                                                          child: SvgPicture.asset(
+                                                              'assets/svg/discount.svg'),
+                                                        ),
+                                                        Text(
+                                                          'Giảm giá 15% cho lần đầu \nđặt qua App',
+                                                          style: StyleApp
+                                                              .textStyle700(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 13),
+                                                        ),
+                                                        // const SizedBox(),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 16),
+                                                    child: Text(
+                                                      'Nhận Ngay',
+                                                      style:
+                                                          StyleApp.textStyle700(
+                                                              color: ColorApp
+                                                                  .pinkF59398,
+                                                              fontSize: 13),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
+                                        const SizedBox(
+                                          height: 26,
+                                        ),
+                                      ],
+                                    )),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20)),
+                                    color: ColorApp.whiteF0),
+                                padding: const EdgeInsets.only(
+                                    top: 25, left: 18, right: 18),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          language.danhGiaCaoNhat,
+                                          style: StyleApp.textStyle700(
+                                              color: ColorApp.dark252525,
+                                              fontSize: 18),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              showmore = true;
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.fromLTRB(
+                                                10 * fem,
+                                                6 * fem,
+                                                13 * fem,
+                                                4 * fem),
+                                            width: 102 * fem,
+                                            height: 27 * fem,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xffffc94d),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      7 * fem),
+                                            ),
+                                            child: SizedBox(
+                                              // group56G8 (157:9170)
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              child: Container(
+                                                // xemthmwnY (157:9174)
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    1 * fem,
+                                                    0 * fem,
+                                                    0 * fem),
+                                                child: Center(
+                                                  child: Text('Xem Thêm',
+                                                      style: StyleApp
+                                                          .styleGilroy700(
+                                                              fontSize: 12,
+                                                              color: const Color(
+                                                                  0xff252525))),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 16,
-                                  ),
-                                  showmore
-                                      ? const MoreSpaScreen()
-                                      : GridView.builder(
-                                          padding: EdgeInsets.zero,
-                                          gridDelegate:
-                                              const SliverGridDelegateWithMaxCrossAxisExtent(
-                                                  maxCrossAxisExtent: 200,
-                                                  crossAxisSpacing: 12,
-                                                  mainAxisSpacing: 20),
-                                          itemCount: 6,
-                                          shrinkWrap: true,
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          itemBuilder:
-                                              (BuildContext ctx, index) {
-                                            return const IntroduceSpaWidget();
-                                          }),
-                                  SizedBox(
-                                    height: Const.size(context).width * 0.2,
-                                  ),
-                                ],
-                              )),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    showmore
+                                        ? const MoreSpaScreen()
+                                        : GridView.builder(
+                                            padding: EdgeInsets.zero,
+                                            gridDelegate:
+                                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                                                    maxCrossAxisExtent: 200,
+                                                    crossAxisSpacing: 12,
+                                                    mainAxisSpacing: 20),
+                                            itemCount: 6,
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemBuilder:
+                                                (BuildContext ctx, index) {
+                                              return const IntroduceSpaWidget();
+                                            }),
+                                    SizedBox(
+                                      height: Const.size(context).width * 0.2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),

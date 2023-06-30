@@ -4,7 +4,7 @@ import 'package:bloc_base/bloc/state_bloc.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -57,126 +57,130 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
     return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;
-        return Scaffold(
-          backgroundColor: ColorApp.darkGreen,
-          appBar: AppBarWidget(title: language.goiDaDat),
-          body: Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25))),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ListView.separated(
-                    separatorBuilder: (context, index) => const Gap(5),
-                    padding:
-                        const EdgeInsets.only(top: 18, left: 18, right: 18),
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: ColorApp.backgroundF5F6EE,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 18, vertical: 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: Const.size(context).width * 0.75,
-                                    child: Text(
-                                      'Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược',
-                                      style: StyleApp.textStyle600(
-                                          color: ColorApp.dark252525,
+        return GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
+          child: Scaffold(
+            backgroundColor: ColorApp.darkGreen,
+            appBar: AppBarWidget(title: language.goiDaDat),
+            body: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25))),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListView.separated(
+                      separatorBuilder: (context, index) => const Gap(5),
+                      padding:
+                          const EdgeInsets.only(top: 18, left: 18, right: 18),
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: ColorApp.backgroundF5F6EE,
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: Const.size(context).width * 0.75,
+                                      child: Text(
+                                        'Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược',
+                                        style: StyleApp.textStyle600(
+                                            color: ColorApp.dark252525,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 7,
+                                    ),
+                                    Text(
+                                      '₫ ${Const.ConvertPrice.format(1200000)}',
+                                      style: StyleApp.textStyle700(
+                                          color: ColorApp.bottomBarABCA74,
                                           fontSize: 16),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    '₫ ${Const.ConvertPrice.format(1200000)}',
-                                    style: StyleApp.textStyle700(
-                                        color: ColorApp.bottomBarABCA74,
-                                        fontSize: 16),
-                                  ),
-                                  const SizedBox(
-                                    height: 7,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SvgPicture.asset(
-                                              'assets/svg/notiIcon.svg'),
-                                          Text(
-                                            '   6 buổi',
-                                            style: StyleApp.textStyle500(
-                                                color: ColorApp.darkGreen),
-                                          ),
-                                          SizedBox(
-                                            width: Const.size(context).width *
-                                                0.03846153846,
-                                          ),
-                                          Text(
-                                            'Còn lại: 3 buổi',
-                                            style: StyleApp.textStyle500(
-                                                color: ColorApp.darkGreen),
-                                          )
-                                        ],
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          _bookingCalendaBottomSheet(
-                                              context, language);
-                                        },
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                              color: index % 2 == 1
-                                                  ? ColorApp.bottomBarABCA74
-                                                  : ColorApp.orangeFFC94D,
-                                              borderRadius:
-                                                  BorderRadius.circular(12)),
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical:
-                                                    Const.size(context).width *
-                                                        0.02615384615,
-                                                horizontal:
-                                                    Const.size(context).width *
-                                                        0.04615384615),
-                                            child: Text(
-                                              index % 2 == 1
-                                                  ? language.datLich
-                                                  : language.datThem,
-                                              style: StyleApp.textStyle700(
-                                                  color: Colors.white),
+                                    const SizedBox(
+                                      height: 7,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                                'assets/svg/notiIcon.svg'),
+                                            Text(
+                                              '   6 buổi',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.darkGreen),
+                                            ),
+                                            SizedBox(
+                                              width: Const.size(context).width *
+                                                  0.03846153846,
+                                            ),
+                                            Text(
+                                              'Còn lại: 3 buổi',
+                                              style: StyleApp.textStyle500(
+                                                  color: ColorApp.darkGreen),
+                                            )
+                                          ],
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            _bookingCalendaBottomSheet(
+                                                context, language);
+                                          },
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                                color: index % 2 == 1
+                                                    ? ColorApp.bottomBarABCA74
+                                                    : ColorApp.orangeFFC94D,
+                                                borderRadius:
+                                                    BorderRadius.circular(12)),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: Const.size(context)
+                                                          .width *
+                                                      0.02615384615,
+                                                  horizontal:
+                                                      Const.size(context)
+                                                              .width *
+                                                          0.04615384615),
+                                              child: Text(
+                                                index % 2 == 1
+                                                    ? language.datLich
+                                                    : language.datThem,
+                                                style: StyleApp.textStyle700(
+                                                    color: Colors.white),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    },
-                    shrinkWrap: true,
-                    itemCount: 10,
-                    physics: const ScrollPhysics(),
-                  ),
-                  const Gap(20)
-                ],
+                          ],
+                        );
+                      },
+                      shrinkWrap: true,
+                      itemCount: 10,
+                      physics: const ScrollPhysics(),
+                    ),
+                    const Gap(20)
+                  ],
+                ),
               ),
             ),
           ),
@@ -403,16 +407,16 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                           Expanded(
                               child: InputText1(
                             onTap: () {
-                              DatePicker.showDatePicker(context,
-                                  currentTime: DateTime.now(),
-                                  locale: language.codeNow == 'en'
-                                      ? LocaleType.en
-                                      : LocaleType.vi, onConfirm: (date) {
-                                ngayController.text = Const.formatTime(
-                                  date.millisecondsSinceEpoch,
-                                  format: 'dd/MM/yyyy',
-                                );
-                              });
+                              // DatePicker.showDatePicker(context,
+                              //     currentTime: DateTime.now(),
+                              //     locale: language.codeNow == 'en'
+                              //         ? LocaleType.en
+                              //         : LocaleType.vi, onConfirm: (date) {
+                              //   ngayController.text = Const.formatTime(
+                              //     date.millisecondsSinceEpoch,
+                              //     format: 'dd/MM/yyyy',
+                              //   );
+                              // });
                             },
                             controller: ngayController,
                             label:
@@ -426,16 +430,16 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                           Expanded(
                               child: InputText1(
                             onTap: () {
-                              DatePicker.showTimePicker(context,
-                                  currentTime: DateTime.now(),
-                                  locale: language.codeNow == 'en'
-                                      ? LocaleType.en
-                                      : LocaleType.vi, onConfirm: (date) {
-                                gioController.text = Const.formatTime(
-                                  date.millisecondsSinceEpoch,
-                                  format: 'HH:mm',
-                                );
-                              }, showSecondsColumn: false);
+                              // DatePicker.showTimePicker(context,
+                              //     currentTime: DateTime.now(),
+                              //     locale: language.codeNow == 'en'
+                              //         ? LocaleType.en
+                              //         : LocaleType.vi, onConfirm: (date) {
+                              //   gioController.text = Const.formatTime(
+                              //     date.millisecondsSinceEpoch,
+                              //     format: 'HH:mm',
+                              //   );
+                              // }, showSecondsColumn: false);
                             },
                             controller: gioController,
                             label:

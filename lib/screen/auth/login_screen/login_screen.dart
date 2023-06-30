@@ -235,7 +235,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         Expanded(
                           flex: 1,
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, RouterName.homeScreenTest);
+                            },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: Const.size(context).width * 0.01),

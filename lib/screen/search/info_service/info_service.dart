@@ -3,7 +3,7 @@ import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -765,7 +765,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lobortis e
                                                                 .circular(10)),
                                                     child: Padding(
                                                       padding: const EdgeInsets
-                                                              .symmetric(
+                                                          .symmetric(
                                                           horizontal: 10,
                                                           vertical: 5),
                                                       child: Text(
@@ -1040,7 +1040,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lobortis e
                                                         return Padding(
                                                           padding:
                                                               const EdgeInsets
-                                                                      .only(
+                                                                  .only(
                                                                   bottom: 5),
                                                           child: Container(
                                                             width:
@@ -1164,15 +1164,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lobortis e
                               flex: 10,
                               child: InputText1(
                                 onTap: () {
-                                  DatePicker.showDatePicker(context,
-                                      currentTime: DateTime.now(),
-                                      locale: lang.codeNow == 'en'
-                                          ? LocaleType.en
-                                          : LocaleType.vi, onConfirm: (date) {
-                                    ngay.text = Const.formatTime(
-                                        date.millisecondsSinceEpoch,
-                                        format: 'dd/MM/yyyy');
-                                  });
+                                  // DatePicker.showDatePicker(context,
+                                  //     currentTime: DateTime.now(),
+                                  //     locale: lang.codeNow == 'en'
+                                  //         ? LocaleType.en
+                                  //         : LocaleType.vi, onConfirm: (date) {
+                                  //   ngay.text = Const.formatTime(
+                                  //       date.millisecondsSinceEpoch,
+                                  //       format: 'dd/MM/yyyy');
+                                  // });
                                 },
                                 controller: ngay,
                                 label:
@@ -1190,15 +1190,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lobortis e
                               flex: 10,
                               child: InputText1(
                                 onTap: () {
-                                  DatePicker.showTimePicker(context,
-                                      currentTime: DateTime.now(),
-                                      locale: lang.codeNow == 'en'
-                                          ? LocaleType.en
-                                          : LocaleType.vi, onConfirm: (date) {
-                                    gio.text = Const.formatTime(
-                                        date.millisecondsSinceEpoch,
-                                        format: 'HH:mm');
-                                  }, showSecondsColumn: false);
+                                  // DatePicker.showTimePicker(context,
+                                  //     currentTime: DateTime.now(),
+                                  //     locale: lang.codeNow == 'en'
+                                  //         ? LocaleType.en
+                                  //         : LocaleType.vi, onConfirm: (date) {
+                                  //   gio.text = Const.formatTime(
+                                  //       date.millisecondsSinceEpoch,
+                                  //       format: 'HH:mm');
+                                  // }, showSecondsColumn: false);
                                 },
                                 controller: gio,
                                 label:

@@ -43,6 +43,7 @@ class ColorApp {
   static const backgroundF5F6EE = Color(0xffF5F6EE);
   static const backgroundF9F9F4 = Color(0xffF9F9F4);
   static const backgroundF6F6EF = Color(0xffF6F6EF);
+  static const borderCheckbox = Color(0xffDCDCDC);
 
   static const Color yellow = Color(0xffEFB839);
   static const Color black3F = Color(0xff3F3F3F);

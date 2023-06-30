@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../bloc/state_bloc.dart';
 import '../../../config/const.dart';
@@ -27,6 +28,12 @@ class AccountScreen extends StatefulWidget {
 
 class _AccountScreenState extends State<AccountScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+//  late SharedPreferences prefs ;
+//   checkLanguage ()async{
+//  prefs = await SharedPreferences.getInstance();
+
+//  return
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +50,21 @@ class _AccountScreenState extends State<AccountScreen> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Stack(
-                    alignment: Alignment.center,
+                    // alignment: Alignment.center,
                     children: [
-                      Image.asset('assets/images/bgApp.png'),
+                      Image.asset(
+                        'assets/images/bgApp.png',
+                        fit: BoxFit.cover,
+                      ),
                       Positioned(
+                        top: 25,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                        Const.size(context).width * 0.025),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 30),
                                 child: Text(
                                   ' ${lang.xinChao},Quỳnh!',
                                   style: StyleApp.textStyle700(
@@ -86,7 +96,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   Positioned(
                       child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 18, vertical: 15),
+                        horizontal: 16, vertical: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -182,7 +192,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                           ),
                                         ),
                                       ),
-                                      Gap(5),
+                                      const Gap(5),
                                       Text(
                                         '88 %',
                                         style: StyleApp.textStyle500(
@@ -300,7 +310,18 @@ class _AccountScreenState extends State<AccountScreen> {
                                 text: lang.ngonNgu,
                                 preLinkUrl: "assets/svg/language.svg",
                                 subText: lang.string1,
-                                onTap: () {},
+                                onTap: () {
+                                  // SharedPreferences prefs =
+                                  //     await SharedPreferences.getInstance();
+                                  // prefs.getString('code') == 'vn'
+                                  //     ?
+                                  // context
+                                  //     .read<BlocLanguage>()
+                                  //     .add(ConvertToEngEvent());
+                                  // : context
+                                  //     .read<BlocLanguage>()
+                                  //     .add(ConvertToVNEvent());
+                                },
                               ),
                               const SizedBox(
                                 height: 7,

@@ -1,6 +1,7 @@
 import 'package:bloc_base/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../bloc/language/bloc_lang.dart';
 import '../../../../bloc/language/event_bloc2.dart';
@@ -55,9 +56,11 @@ class IntroduceSpaWidget extends StatelessWidget {
       },
       child: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Stack(
               alignment: Alignment.bottomCenter,
@@ -89,8 +92,9 @@ class IntroduceSpaWidget extends StatelessWidget {
                               const Icon(
                                 Icons.location_on,
                                 color: Colors.white,
-                                size: 15,
+                                size: 11,
                               ),
+                              const Gap(3),
                               Text(
                                 '2.3 km',
                                 style: StyleApp.textStyle600(
@@ -103,10 +107,12 @@ class IntroduceSpaWidget extends StatelessWidget {
                     )),
               ],
             ),
+            const Gap(8),
             Text(
               'Sorella Beauty',
               style: StyleApp.textStyle600(color: ColorApp.dark252525),
             ),
+            const Gap(7),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -116,6 +122,7 @@ class IntroduceSpaWidget extends StatelessWidget {
                     const Icon(
                       Icons.star,
                       color: ColorApp.yellow,
+                      size: 12,
                     ),
                     Text(
                       '4.7',

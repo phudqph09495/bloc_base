@@ -33,7 +33,7 @@ class ButtonWidget extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: StyleApp.textStyle700(
+              style: StyleApp.styleGilroy700(
                   color: type == ButtonType.primary
                       ? ColorApp.whiteF0
                       : type == ButtonType.secondary

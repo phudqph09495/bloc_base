@@ -3,6 +3,13 @@ abstract class EventBloc2 {}
 class Language {
   String string1;
   String myRatting;
+  String upload;
+  String taxNumber;
+  String representative;
+  String email;
+  String fanpageOrWebsite;
+  String phoneNumber;
+  String picture;
   String doYouWantDeleteAccount;
   String deleteAccount;
   String khong;
@@ -130,6 +137,7 @@ class Language {
   String thayDoiMK;
   String matKhauCu;
   String matKhauMoi;
+  String nhapLaiMatKhauMoi;
   String luuThayDoi;
   String spa;
   String lichSu;
@@ -137,7 +145,6 @@ class Language {
   String nhapTTDK;
   String tenSpa;
   String nguoiDaiDien;
-  String fanpage;
   String gui;
   String vuiLongNhap;
   String maOTP;
@@ -173,10 +180,24 @@ class Language {
   String emptyData;
   String searchMoreSpaAndSalon;
   String getNotifications;
+  String plsJustChoiseOneServiec;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
+        plsJustChoiseOneServiec = code == 'en'
+            ? 'Please select only 1 spa or salon at a time.'
+            : 'Vui lòng chỉ chọn 1 spa hoặc salon trong một lần thanh toán.',
         myRatting = code == 'en' ? 'My Ratting' : 'Đánh giá của tôi',
+        nhapLaiMatKhauMoi =
+            code == 'en' ? 'ReEnter the password' : 'Nhập lại mật khẩu',
+        upload = code == 'en' ? 'Upload' : 'Tải lên',
+        representative = code == 'en' ? 'Representative' : 'Người đại diện',
+        email = code == 'en' ? 'Email' : 'Email',
+        phoneNumber = code == 'en' ? 'Phone Number' : 'Số điện thoại',
+        fanpageOrWebsite =
+            code == 'en' ? 'Fanpage Or Website' : 'Fanpage hoặc website',
+        picture = code == 'en' ? 'Picture' : 'Ảnh',
+        taxNumber = code == 'en' ? 'Tax Number' : 'Mã số thuế',
         co = code == 'en' ? 'coAnh.png' : 'coVN.png',
         codeNow = code == 'en' ? 'en' : 'vi',
         timKiem = code == 'en' ? 'Search' : 'Tìm Kiếm',
@@ -340,9 +361,8 @@ class Language {
         nhapTTDK = code == 'en'
             ? 'Enter Information To Register'
             : 'Nhập Thông Tin Để Đăng Ký',
-        tenSpa = code == 'en' ? 'Spa Name' : 'Tên Spa',
+        tenSpa = code == 'en' ? 'Spa Name' : 'Tên Cơ sở kinh doanh',
         nguoiDaiDien = code == 'en' ? 'Representative' : 'Người Đại Diện',
-        fanpage = code == 'en' ? 'English' : 'Fanpage (nếu có)',
         gui = code == 'en' ? 'Send' : 'GỬI',
         vuiLongNhap = code == 'en'
             ? 'English'

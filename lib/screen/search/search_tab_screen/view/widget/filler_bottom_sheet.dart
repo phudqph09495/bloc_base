@@ -220,13 +220,13 @@ extension FillerBottomSheet on _SearchTabScreenState {
                               radius: 10,
                               controller: dateTimeController,
                               onTap: () {
-                                DatePicker.showDatePicker(context,
-                                    currentTime: DateTime.now(),
-                                    locale: LocaleType.vi, onConfirm: (date) {
-                                  dateTimeController.text = Const.formatTime(
-                                      date.millisecondsSinceEpoch,
-                                      format: 'dd/MM/yyyy');
-                                });
+                                // DatePicker.showDatePicker(context,
+                                //     currentTime: DateTime.now(),
+                                //     locale: LocaleType.vi, onConfirm: (date) {
+                                //   dateTimeController.text = Const.formatTime(
+                                //       date.millisecondsSinceEpoch,
+                                //       format: 'dd/MM/yyyy');
+                                // });
                               },
                               label: Const.formatTime(
                                   DateTime.now().millisecondsSinceEpoch,

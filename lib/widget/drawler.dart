@@ -9,6 +9,7 @@ import '../bloc/language/event_bloc2.dart';
 import '../bloc/state_bloc.dart';
 import '../config/const.dart';
 import '../model/model_local.dart';
+import '../router/router.dart';
 import '../styles/init_style.dart';
 
 class ItemDrawer extends StatefulWidget {
@@ -206,7 +207,10 @@ class _ItemDrawerState extends State<ItemDrawer> {
                       const Divider(),
                       buildRow(
                           title: lang.thongBao,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouterName.notifyScreen);
+                          },
                           numW: Container(
                             decoration: const BoxDecoration(
                                 color: ColorApp.darkGreen,
