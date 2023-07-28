@@ -157,7 +157,7 @@ class _RegisterMemberScreenState extends State<RegisterMemberScreen> {
                         const Gap(30),
                         ButtonWidget(
                           type: ButtonType.secondary,
-                          text: language.gui,
+                          text: language.gui.toUpperCase(),
                           onTap: () {},
                         ),
                         const Gap(20),

@@ -43,7 +43,7 @@ dependencies:
   google_fonts: ^4.0.4
   flutter_bloc: ^7.0.1
   shared_preferences: ^2.0.18
-  intl: ^0.18.1
+
   time_elapsed: ^0.2.6
   device_preview: ^1.1.0
   fluttertoast: ^8.1.1

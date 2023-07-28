@@ -1,23 +1,25 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class GridViewCustom extends StatelessWidget {
-  final bool shrinkWrap;
-  final bool showFull;
-  final ScrollPhysics? physics;
-  final int itemCount;
-  final int? crossAxisCount;
-  final IndexedWidgetBuilder itemBuilder;
-  final double mainAxisExtent;
-  final double maxWight;
-  final double crossAxisSpacing;
-  final double mainAxisSpacing;
-  final EdgeInsetsGeometry? padding;
-  final ScrollController? controller;
-  final Axis scrollDirection;
+  bool shrinkWrap;
+  bool showFull;
+  ScrollPhysics? physics;
+  int itemCount;
+  int? crossAxisCount;
+  IndexedWidgetBuilder itemBuilder;
+  double mainAxisExtent;
+  double maxWight;
+  double crossAxisSpacing;
+  double mainAxisSpacing;
+  EdgeInsetsGeometry? padding;
+  ScrollController? controller;
+  Axis scrollDirection;
 
-  const GridViewCustom({
-    super.key,
+  GridViewCustom({
     this.physics,
     this.shrinkWrap = false,
     required this.itemCount,
@@ -49,26 +51,25 @@ class GridViewCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     checkSize(size);
-    return itemCount != 0
-        ? GridView.builder(
-            controller: controller,
-            shrinkWrap: shrinkWrap,
-            physics: physics,
-            itemCount: itemCount > (checkSize(size) * 2) && !showFull
-                ? (checkSize(size) * 2)
-                : itemCount,
-            padding: padding,
-            scrollDirection: scrollDirection,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: scrollDirection == Axis.horizontal
-                  ? crossAxisCount
-                  : checkSize(size),
-              crossAxisSpacing: crossAxisSpacing,
-              mainAxisSpacing: mainAxisSpacing,
-              mainAxisExtent: mainAxisExtent,
-            ),
-            itemBuilder: itemBuilder,
-          )
-        : Container();
+    return itemCount!=0? GridView.builder(
+      controller: controller,
+      shrinkWrap: shrinkWrap,
+      physics: physics,
+      itemCount: itemCount > (checkSize(size) * 2) && !showFull
+          ? (checkSize(size) * 2)
+          : itemCount,
+      padding: padding,
+      scrollDirection: scrollDirection,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: scrollDirection == Axis.horizontal
+            ? crossAxisCount
+            : checkSize(size),
+        crossAxisSpacing: crossAxisSpacing,
+        mainAxisSpacing: mainAxisSpacing,
+        mainAxisExtent: mainAxisExtent,
+      ),
+      itemBuilder: itemBuilder,
+    ):SvgPicture.asset('assets/svg/photo.svg',width: 40,height: 50,);
   }
 }
+

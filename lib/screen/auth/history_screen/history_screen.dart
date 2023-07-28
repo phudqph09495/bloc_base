@@ -44,7 +44,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           return Scaffold(
             backgroundColor: ColorApp.darkGreen,
             appBar: AppBarWidget(
-              title: language.yeuThich,
+              title: language.lichDaDat,
             ),
             body: Container(
               decoration: const BoxDecoration(

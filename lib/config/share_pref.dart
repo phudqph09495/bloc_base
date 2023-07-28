@@ -14,6 +14,12 @@ class SharedPrefs {
   static saveString(String key, value) async {
     await _preferences.setString(key, json.encode(value));
   }
+  static setString(String key, value) async {
+    await _preferences.setString(key, value);
+  }
+  static getString(String key) async {
+    return _preferences.getString(key) ?? '';
+  }
 
   static readString(String key) async {
     return _preferences.getString(key) != null

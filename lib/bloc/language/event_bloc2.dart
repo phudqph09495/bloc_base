@@ -96,6 +96,7 @@ class Language {
   String cuaJoyBookie;
   String dangKy;
   String hoTen;
+  String danhGiaDichVu;
   String ngaySinh;
   String gioiTinh;
   String xacNhanMatKhau;
@@ -123,9 +124,11 @@ class Language {
   String tinNhan;
   String uuDai;
   String ttHT;
+  String ttHT2;
   String cauHoiThuongGap;
   String timHieuThem;
   String caiDat;
+  String danhGia2;
   String dangXuat;
   String xinChao;
   String datThem;
@@ -181,6 +184,11 @@ class Language {
   String searchMoreSpaAndSalon;
   String getNotifications;
   String plsJustChoiseOneServiec;
+  String chatLuongDV;
+  String themHinhAnh;
+  String guiDanhGia;
+  String noidung;
+  String vietDanhGia;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
@@ -188,8 +196,14 @@ class Language {
             ? 'Please select only 1 spa or salon at a time.'
             : 'Vui lòng chỉ chọn 1 spa hoặc salon trong một lần thanh toán.',
         myRatting = code == 'en' ? 'My Ratting' : 'Đánh giá của tôi',
+        noidung = code == 'en' ? '' : 'Nội dung',
+        chatLuongDV = code == 'en' ? 'Rating' : 'Chất lượng dịch vụ',
+        themHinhAnh = code == 'en' ? 'Add images' : 'Thêm hình ảnh',
+        guiDanhGia = code == 'en' ? 'Send review' : 'Gửi đánh giá',
         nhapLaiMatKhauMoi =
             code == 'en' ? 'ReEnter the password' : 'Nhập lại mật khẩu',
+        vietDanhGia = code == 'en' ? 'Write your comment' : 'Viết đánh giá',
+        danhGiaDichVu = code == 'en' ? 'Review service' : 'Đánh giá dịch vụ',
         upload = code == 'en' ? 'Upload' : 'Tải lên',
         representative = code == 'en' ? 'Representative' : 'Người đại diện',
         email = code == 'en' ? 'Email' : 'Email',
@@ -242,6 +256,7 @@ class Language {
         khoangCach = code == 'en' ? 'Distance' : 'Khoảng Cách',
         thongTin = code == 'en' ? 'About' : 'THÔNG TIN',
         danhGia = code == 'en' ? 'Reviews :' : 'ĐÁNH GIÁ :',
+        danhGia2 = code == 'en' ? 'Reviews' : 'Đánh giá',
         diaChi = code == 'en' ? 'Location' : 'Địa Chỉ',
         chiDuong = code == 'en' ? 'Direct' : 'Chỉ đường',
         dienThoai = code == 'en' ? 'Phone number' : 'Điện Thoại ',
@@ -337,6 +352,7 @@ class Language {
         tinNhan = code == 'en' ? 'Message' : 'Tin nhắn',
         uuDai = code == 'en' ? 'Endow' : 'Ưu đãi',
         ttHT = code == 'en' ? 'Support Center' : 'Trung tâm hỗ trợ',
+        ttHT2 = code == 'en' ? 'Support Center' : 'Trung Tâm Hỗ Trợ',
         cauHoiThuongGap =
             code == 'en' ? 'Frequently asked questions' : 'Câu hỏi thường gặp',
         timHieuThem = code == 'en' ? 'Find out more' : 'Tìm hiểu thêm',
@@ -363,7 +379,7 @@ class Language {
             : 'Nhập Thông Tin Để Đăng Ký',
         tenSpa = code == 'en' ? 'Spa Name' : 'Tên Cơ sở kinh doanh',
         nguoiDaiDien = code == 'en' ? 'Representative' : 'Người Đại Diện',
-        gui = code == 'en' ? 'Send' : 'GỬI',
+        gui = code == 'en' ? 'Send' : 'Gửi',
         vuiLongNhap = code == 'en'
             ? 'English'
             : 'Vui lòng nhập mã OTP đã được gửi tới số điện thoại của Quý khách để xác thực',

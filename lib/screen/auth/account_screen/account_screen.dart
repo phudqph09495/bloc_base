@@ -484,7 +484,10 @@ class _AccountScreenState extends State<AccountScreen> {
                               _SettingOption(
                                 text: lang.ttHT,
                                 preLinkUrl: 'assets/svg/ttHt.svg',
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouterName.ttHTScreen);
+                                },
                               ),
                               const SizedBox(
                                 height: 7,

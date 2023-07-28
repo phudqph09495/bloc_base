@@ -9,8 +9,10 @@ import 'package:bloc_base/screen/home/notification_screen/notification_screen.da
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 import '../screen/auth/my_ratting_screen/my_ratting_screen.dart';
+import '../screen/auth/my_ratting_screen/rate_ser_screen.dart';
 import '../screen/auth/profile_screen/password_screen.dart';
 import '../screen/auth/setting_screen/setting_screen.dart';
+import '../screen/auth/ttHT/ttht_screen.dart';
 import '../screen/cart/cart_screen/cart_screen.dart';
 import '../screen/cart/confirm_success_screen/confirm_success_screen.dart';
 import '../screen/cart/booking_code_screen/booking_code_screen.dart';
@@ -139,12 +141,20 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const PassworkScreen());
     }
     switch (settings.name) {
+      case RouterName.ttHTScreen:
+        return MaterialPageRoute(builder: (context) => const TTHTScreen());
+    }
+    switch (settings.name) {
       case RouterName.settingScreen:
         return MaterialPageRoute(builder: (context) => const SettingScreen());
     }
     switch (settings.name) {
       case RouterName.rattingScreen:
         return MaterialPageRoute(builder: (context) => const RattingScreen());
+    }
+    switch (settings.name) {
+      case RouterName.rateSer:
+        return MaterialPageRoute(builder: (context) => const DanhGiaDVSCreen());
     }
     switch (settings.name) {
       case RouterName.memberScreen:
@@ -191,7 +201,9 @@ class RouterName {
   static const passworkScreen = "/passworkScreen";
   static const settingScreen = "/deleteScreen";
   static const rattingScreen = "/rattingScreen";
+  static const rateSer="/rateSerScreen";
   static const memberScreen = "/memberScreen";
   static const homeScreenTest = "/homeScreenTest";
   static const rePassworkScreen = "/rePassworkScreen";
+  static const ttHTScreen="/TTHTScreen";
 }
