@@ -133,17 +133,6 @@ class _ItemDrawerState extends State<ItemDrawer> {
                               ),
                             ),
                           )
-                          // BlocListener(bloc: blocLang,
-                          //   listener: (context,StateBloc state) { if(state is LoadSuccess){
-                          //     context.read<BlocLang>().add(getLang());
-                          //   } },
-                          //   child: InkWell(
-                          //     onTap: (){
-                          //       blocLang.add(sangE());
-                          //     },
-                          //     child:,
-                          //   ),
-                          // )
                         ],
                       ),
                       const Gap(90),

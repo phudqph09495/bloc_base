@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../config/const.dart';
 import '../../../styles/init_style.dart';
 
 class InputText1 extends StatefulWidget {
@@ -21,7 +22,7 @@ class InputText1 extends StatefulWidget {
   double radius;
   Color colorBg;
   double height;
-  Color? borderColor;
+  Color borderColor;
   Function()? search;
   bool readOnly;
   double colorLabel;
@@ -31,9 +32,14 @@ class InputText1 extends StatefulWidget {
   Widget? widgetLabel;
   Function()? onComplete;
   List<TextInputFormatter>? inputformater;
+  double borderSize ;
+  Color laberColor;
+
 
   InputText1({
     super.key,
+    this.laberColor = ColorApp.dark500,
+    this.borderSize = 0.001,
     this.obscureText = false,
     required this.label,
     this.keyboardType,
@@ -46,9 +52,9 @@ class InputText1 extends StatefulWidget {
     this.hasLeading = false,
     this.validator,
     this.iconPreFix,
-    this.radius = 20,
+    this.radius = 22,
     this.width = double.infinity,
-    this.borderColor,
+    this.borderColor = Colors.black,
     this.colorBg = ColorApp.backgroundF9F9F4,
     this.colorLabel = 0.5,
     this.height = 50,
@@ -70,70 +76,65 @@ class InputText1 extends StatefulWidget {
 class _InputText1State extends State<InputText1> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      maxLines: widget.maxLine,
-      initialValue: widget.initVal,
-      onEditingComplete: widget.onComplete,
-      inputFormatters: widget.inputformater,
-      readOnly: widget.readOnly,
-      onTap: widget.onTap,
-      obscureText: widget.obscureText,
-      onChanged: widget.onChanged,
-      controller: widget.controller,
-      keyboardType: widget.keyboardType,
-      textAlign: TextAlign.left,
-      style: StyleApp.textStyle400(),
-      decoration: InputDecoration(
-        errorStyle: StyleApp.textStyle500(color: Colors.red, fontSize: 14),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.radius),
-          // borderSide:
-          // const BorderSide(color: ColorApp.black, width: 1),
-          borderSide: BorderSide(
-              color: widget.borderColor ?? widget.colorBg, width: 0.5),
+    return Container(
+      child: TextFormField(
+        maxLines: null,
+        initialValue: widget.initVal,
+        onEditingComplete: widget.onComplete,
+        inputFormatters: widget.inputformater,
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
+        obscureText: widget.obscureText,
+        onChanged: widget.onChanged,
+        controller: widget.controller,
+        keyboardType: widget.keyboardType,
+        textAlign: TextAlign.left,
+        style: StyleApp.textStyle400(),
+        decoration: InputDecoration(
+          errorStyle: StyleApp.textStyle500(color: Colors.red, fontSize: 14),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.radius),
+            borderSide: BorderSide(
+                color: Colors.black.withOpacity(0.2), width: widget.borderSize),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.radius),
+            borderSide:
+                BorderSide(color: Colors.black.withOpacity(0.2), width: widget.borderSize),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.radius),
+            borderSide: const BorderSide(color: Colors.red, width: 0.5),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.radius),
+            borderSide: const BorderSide(color: Colors.red, width: 0.5),
+          ),
+          label: widget.widgetLabel,
+          labelStyle: TextStyle(color: widget.laberColor),
+          filled: true,
+          fillColor: widget.colorBg,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+          prefixIcon: widget.hasLeading ? widget.iconPreFix : null,
+          hintText: widget.label,
+          hintStyle: StyleApp.textStyle400(
+              fontSize: widget.labelSize,
+              color: widget.laberColor),
+          suffixIcon: widget.hasSuffix
+              ? InkWell(
+                  onTap: widget.search,
+                  child: widget.suffix,
+                )
+              : null,
+          errorText: null,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.radius),
-          borderSide:
-              BorderSide(color: Colors.black.withOpacity(0.2), width: 0.5),
-          // borderSide:
-          // const BorderSide(color: ColorApp.black, width: 1),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.radius),
-          borderSide: const BorderSide(color: Colors.red, width: 0.5),
-          // borderSide:
-          // const BorderSide(color: ColorApp.black, width: 1),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.radius),
-          borderSide: const BorderSide(color: Colors.red, width: 0.5),
-          // borderSide:
-          // const BorderSide(color: ColorApp.black, width: 1),
-        ),
-        label: widget.widgetLabel,
-        filled: true,
-        fillColor: widget.colorBg,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-        prefixIcon: widget.hasLeading ? widget.iconPreFix : null,
-        hintText: widget.label,
-        hintStyle: StyleApp.textStyle400(
-            fontSize: widget.labelSize,
-            color: ColorApp.dark500.withOpacity(0.7)),
-        suffixIcon: widget.hasSuffix
-            ? InkWell(
-                onTap: widget.search,
-                child: widget.suffix,
-              )
-            : null,
-        errorText: null,
+        validator: (val) {
+          if (val != null && widget.validator != null) {
+            return widget.validator!(val);
+          }
+          return null;
+        },
       ),
-      validator: (val) {
-        if (val != null && widget.validator != null) {
-          return widget.validator!(val);
-        }
-        return null;
-      },
     );
   }
 }

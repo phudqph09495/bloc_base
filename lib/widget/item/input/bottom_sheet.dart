@@ -109,17 +109,23 @@ class BottomSheetInforService {
         isDismissible: false,
         isScrollControlled: true,
         context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15))
+        ),
         builder: (BuildContext context) {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
             return SizedBox(
               height: Const.size(context).height * 0.8,
               child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(15))
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: Const.sizeHeight(context, 14), horizontal: Const.sizeWidth(context, 16)),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
@@ -133,119 +139,121 @@ class BottomSheetInforService {
                             style: StyleApp.textStyle700(
                                 fontSize: 18, color: ColorApp.dark252525),
                           ),
-                          const SizedBox()
+                          const SizedBox(width: 20,)
                         ],
                       ),
-                      const Divider(),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount:
-                            3, // The number of RadioListTiles you want to display
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 5),
-                            decoration: BoxDecoration(color: ColorApp.greyF9),
-                            child: Padding(
-                              padding: EdgeInsets.all(
-                                  Const.size(context).width * 0.05),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                          width:
-                                              Const.size(context).width * 0.63,
-                                          child: Text(
-                                            'Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược',
-                                            style: StyleApp.textStyle700(
-                                                color: ColorApp.dark252525,
-                                                fontSize: 16),
-                                          )),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: ColorApp.pinkF59398,
-                                            borderRadius:
-                                                BorderRadius.circular(12)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 6, horizontal: 9),
-                                          child: Text(
-                                            '-78%',
-                                            style: StyleApp.textStyle700(
-                                                color: Colors.white),
-                                          ),
+                    ),
+                    const Divider(color: ColorApp.dark500),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount:
+                          3, // The number of RadioListTiles you want to display
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(vertical:Const.sizeHeight(context, 6), horizontal: Const.sizeWidth(context, 16)),
+                          decoration: BoxDecoration(color: ColorApp.backgroundF5F6EE,
+                            borderRadius: BorderRadius.circular(16)
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                                Const.size(context).width * 0.05),
+                            child: Column(
+                              children: [
+                                Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                        width:
+                                            Const.size(context).width * 0.63,
+                                        child: Text(
+                                          'Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược',
+                                          style: StyleApp.textStyle700(
+                                              color: ColorApp.dark252525,
+                                              fontSize: 16),
+                                        )),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          color: ColorApp.pinkF59398,
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 6, horizontal: 9),
+                                        child: Text(
+                                          '-78%',
+                                          style: StyleApp.textStyle700(
+                                              color: Colors.white),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: Const.size(context).width * 0.023,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '₫ 400.000 ',
-                                            style: StyleApp.textStyle700(
-                                                decoration:
-                                                    TextDecoration.lineThrough,
-                                                color: ColorApp.dark500),
-                                          ),
-                                          Text(
-                                            '₫ 200.000',
-                                            style: StyleApp.textStyle700(
-                                                color: ColorApp.darkGreen),
-                                          ),
-                                        ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Transform.scale(
-                                              scale: 0.8,
-                                              child: SvgPicture.asset(
-                                                  'assets/svg/notiIcon.svg')),
-                                          Text(
-                                            '  6 buổi',
-                                            style: StyleApp.textStyle700(
-                                                color: ColorApp.darkGreen,
-                                                fontSize: 15),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: Const.size(context).width * 0.023,
-                                  ),
-                                  Text(
-                                    'Tấm Home Spa - Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược. Voucher 550,000 VNĐ, Còn 119,000 VNĐ, Giảm 78%.',
-                                    style: StyleApp.textStyle500(
-                                        color: ColorApp.dark500),
-                                  ),
-                                  SizedBox(
-                                    height: Const.size(context).width * 0.033,
-                                  ),
-                                  ButtonWidget(
-                                    text: lang.muaGoi,
-                                    onTap: () =>
-                                        addedToCartBottomSheet(context, lang),
-                                  )
-                                ],
-                              ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: Const.size(context).width * 0.023,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          '₫ 400.000 ',
+                                          style: StyleApp.textStyle700(
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              color: ColorApp.dark500),
+                                        ),
+                                        Text(
+                                          '₫ 200.000',
+                                          style: StyleApp.textStyle700(
+                                              color: ColorApp.darkGreen),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Transform.scale(
+                                            scale: 0.8,
+                                            child: SvgPicture.asset(
+                                                'assets/svg/notiIcon.svg')),
+                                        Text(
+                                          '  6 buổi',
+                                          style: StyleApp.textStyle700(
+                                              color: ColorApp.darkGreen,
+                                              fontSize: 15),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: Const.size(context).width * 0.023,
+                                ),
+                                Text(
+                                  'Tấm Home Spa - Combo Chăm Sóc Da Mặt + Gội Đầu Thảo Dược. Voucher 550,000 VNĐ, Còn 119,000 VNĐ, Giảm 78%.',
+                                  style: StyleApp.textStyle500(
+                                      color: ColorApp.dark500),
+                                ),
+                                SizedBox(
+                                  height: Const.size(context).width * 0.033,
+                                ),
+                                ButtonWidget(
+                                  text: lang.muaGoi,
+                                  onTap: () =>
+                                      addedToCartBottomSheet(context, lang),
+                                )
+                              ],
                             ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             );

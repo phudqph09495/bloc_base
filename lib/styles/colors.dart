@@ -45,6 +45,7 @@ class ColorApp {
   static const backgroundF6F6EF = Color(0xffF6F6EF);
   static const borderCheckbox = Color(0xffDCDCDC);
 
+  static const Color yellowNHAT = Color(0xffFFC94D);
   static const Color yellow = Color(0xffEFB839);
   static const Color black3F = Color(0xff3F3F3F);
   static const LinearGradient linearGradientMain = LinearGradient(

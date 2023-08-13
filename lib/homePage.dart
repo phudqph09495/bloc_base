@@ -47,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
         index: widget.index,
         children: const [
           HomeScreen(),
-          // Scene(),
           SizedBox(),
           SearchTabScreen(),
           GioHangScreen(),
@@ -95,8 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 boxShadow: const [
                   BoxShadow(
                     color: ColorApp.bottomBarABCA74,
-                    blurRadius: 70.0,
-                    spreadRadius: 2, //New
+                    blurRadius: 5,
+                    spreadRadius: 1, //New
                   )
                 ],
                 borderRadius: BorderRadius.circular(25)),

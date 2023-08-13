@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/const.dart';
 import '../../styles/colors.dart';
 import '../../styles/styles.dart';
 
@@ -20,26 +21,33 @@ class ButtonWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        height: 45,
         width: double.infinity,
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.7),
+              spreadRadius: 1,
+              blurRadius: 4,
+              offset: Offset(0, 3),
+            ),
+          ],
             color: type == ButtonType.primary
                 ? ColorApp.bottomBarABCA74
                 : type == ButtonType.secondary
                     ? ColorApp.orangeFFC94D
                     : ColorApp.dark500,
-            borderRadius: BorderRadius.circular(18)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18.0),
-          child: Center(
-            child: Text(
-              text,
-              style: StyleApp.styleGilroy700(
-                  color: type == ButtonType.primary
-                      ? ColorApp.whiteF0
-                      : type == ButtonType.secondary
-                          ? ColorApp.dark252525
-                          : ColorApp.background),
-            ),
+            borderRadius: BorderRadius.circular(20)),
+        child: Center(
+          child: Text(
+            text,
+            style: StyleApp.styleGilroy700(
+              fontSize: 17,
+                color: type == ButtonType.primary
+                    ? ColorApp.background
+                    : type == ButtonType.secondary
+                        ? ColorApp.dark252525
+                        : ColorApp.background),
           ),
         ),
       ),

@@ -35,7 +35,6 @@ class _DanhGiaDVSCreenState extends State<DanhGiaDVSCreen> {
   Stream get imageStream => imagesController.stream;
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<BlocLanguage, StateBloc>(builder: (_, StateBloc state) {
       if (state is LoadSuccess) {
         Language language = state.data;

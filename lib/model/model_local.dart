@@ -12,6 +12,19 @@ class ModelLocal2 {
   ModelLocal2({this.id, this.name, this.value = false});
 }
 
+class ServiceModel{
+  final String? name;
+  final List<String>? detailSrvice;
+  ServiceModel({this.name, this.detailSrvice});
+}
+
+class SaleModel{
+  String level;
+  String value;
+  String percent;
+  SaleModel(this.level,this.value,this.percent);
+}
+
 class ModelCart {
   String name;
   int soLuong;

@@ -5,9 +5,7 @@ import 'package:bloc_base/router/router.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import '../../../bloc/language/bloc_lang.dart';
 import '../../../config/const.dart';
@@ -15,12 +13,11 @@ import '../../../model/model_local.dart';
 import '../../../styles/init_style.dart';
 import '../../../widget/item/appbar.dart';
 import '../../../widget/item/button.dart';
-import '../../../widget/item/input/text_filed.dart';
+
 part 'cart_screen.extension.dart';
 
 class GioHangScreen extends StatefulWidget {
   const GioHangScreen({Key? key}) : super(key: key);
-
   @override
   State<GioHangScreen> createState() => _GioHangScreenState();
 }
@@ -29,8 +26,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
   List<SpaService> listSpa = [
     SpaService(
       listService: [
-        ModelCart(name: 'Chăm sóc da mặt', soLuong: 2, gia: 250000),
-        ModelCart(name: 'Chăm sóc cơ thể', soLuong: 1, gia: 350000),
+        ModelCart(name: 'Chăm Sóc Da Mặt', soLuong: 2, gia: 250000),
+        ModelCart(name: 'Chăm Sóc Cơ Thể', soLuong: 1, gia: 350000),
         ModelCart(name: 'Body Massage', soLuong: 3, gia: 420000),
       ],
       listPacket: [
@@ -61,16 +58,8 @@ class _GioHangScreenState extends State<GioHangScreen> {
   int warningPayment = 0;
   bool isWarningPayment = false;
 
-  // int numberServiceHasPick = 0;
-  // int numberPackgetHasPick = 0;
-  // int sumPriceService = 0;
-  // int sumPricePackget = 0;
-
-  // bool isChoose = false;
-  // List<int> indexMaximunService = [-1];
-  // List<int> indexMaximunPackget = [];
   String dateTime =
-      '${Const.formatTime(DateTime.now().millisecondsSinceEpoch)}';
+      '${Const.formatTime(DateTime.now().millisecondsSinceEpoch, format: 'd/M/yyyy - hh:mm')}';
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +83,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25)),
                 color: ColorApp.background),
+            padding: const EdgeInsets.only(bottom: 50),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,9 +94,10 @@ class _GioHangScreenState extends State<GioHangScreen> {
                     itemCount: listSpa.length,
                     itemBuilder: (context, i) => Column(
                       children: [
+                        Gap(20),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 20),
+                              horizontal: 20),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -114,11 +105,13 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                 width: 18,
                                 height: 18,
                                 child: Checkbox(
-                                    side: const BorderSide(
-                                        // color: ColorApp.borderCheckbox,
-                                        width: 1),
-                                    activeColor: ColorApp.whiteF0,
-                                    // hoverColor: Colors.red,
+                                    side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
+                                      if (states.contains(MaterialState.selected)) {
+                                        return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                                      }
+                                      return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                                    },),
+                                    activeColor: ColorApp.background,
                                     shape: const CircleBorder(),
                                     checkColor: ColorApp.bottomBarABCA74,
                                     value: listSpa[i].isChoose,
@@ -169,7 +162,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                         ),
                         listSpa[i].listService != null
                             ? _buildListService(language, listSpa[i], listSpa)
-                            : const SizedBox.shrink(),
+                            : const SizedBox(),
                         const Padding(
                           padding: EdgeInsets.only(right: 16),
                           child: Divider(
@@ -178,25 +171,25 @@ class _GioHangScreenState extends State<GioHangScreen> {
                         ),
                         listSpa[i].listPacket != null
                             ? _buildListPacket(language, listSpa[i], listSpa)
-                            : const SizedBox.shrink(),
+                            : const SizedBox(),
                         Container(
                           color: ColorApp.darkGreen,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 14),
+                                horizontal: 16, vertical: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Tổng',
                                   style: StyleApp.textStyle600(
-                                      fontSize: 16, color: ColorApp.background),
+                                      fontSize: 18, color: ColorApp.background),
                                 ),
                                 Text(
                                   '₫ ${Const.ConvertPrice.format(listSpa[i].sumPriceService + listSpa[i].sumPricePackget)}',
                                   style: StyleApp.textStyle700(
                                     color: ColorApp.background,
-                                    fontSize: 16,
+                                    fontSize: 18,
                                   ),
                                 )
                               ],
@@ -206,69 +199,71 @@ class _GioHangScreenState extends State<GioHangScreen> {
                       ],
                     ),
                   ),
-                  const Gap(15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: DottedBorder(
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(15),
-                        color: ColorApp.bottomBarABCA74,
-                        dashPattern: const [5, 1],
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SvgPicture.asset(
-                                          'assets/svg/discount2.svg'),
-                                      Text(
-                                        '   ${language.nhapMagiamGia}',
-                                        style: StyleApp.textStyle500(
-                                            color: ColorApp.dark500,
-                                            fontSize: 13),
-                                      ),
-                                      const SizedBox(),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: ColorApp.bottomBarABCA74),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 17,
-                                      vertical: 10,
-                                    ),
-                                    child: Text(
-                                      language.apDung,
-                                      style: StyleApp.textStyle700(
-                                        color: Colors.white,
-                                      ),
+                  Container(
+                    color: ColorApp.backgroundF5F6EE,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      child: DottedBorder(
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(12),
+                          color: ColorApp.bottomBarABCA74,
+                          dashPattern: const [5, 4],
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/svg/discount2.svg'),
+                                        Text(
+                                          '   ${language.nhapMagiamGia}',
+                                          style: StyleApp.textStyle500(
+                                              color: ColorApp.dark500,
+                                              fontSize: 13),
+                                        ),
+                                        const SizedBox(),
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: ColorApp.bottomBarABCA74),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 17,
+                                        vertical: 10,
+                                      ),
+                                      child: Text(
+                                        language.apDung,
+                                        style: StyleApp.textStyle700(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        )),
+                          )),
+                    ),
                   ),
                   Container(
                     width: double.infinity,
                     color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
+                          vertical: 10, horizontal: 16),
                       child: Column(
                         children: [
                           const Gap(15),
@@ -363,18 +358,18 @@ class _GioHangScreenState extends State<GioHangScreen> {
       separatorBuilder: (context, index) => const Divider(
         height: 1,
       ),
-      padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15),
           child: Column(
             children: [
               SizedBox(
                 width: Const.size(context).width * 0.9,
+                // height: Const.size(context).height*0.25,
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -382,8 +377,15 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             height: 18,
                             width: 18,
                             child: Checkbox(
+                                side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.selected)) {
+                                    return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                                  }
+                                  return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                                },),
+                                activeColor: ColorApp.background,
                                 shape: const CircleBorder(),
-                                activeColor: ColorApp.bottomBarABCA74,
+                                checkColor: ColorApp.bottomBarABCA74,
                                 value: spa.listService![index].value,
                                 onChanged: (value) {
                                   setState(
@@ -428,44 +430,95 @@ class _GioHangScreenState extends State<GioHangScreen> {
                             width: 15,
                           ),
                           Expanded(
-                            flex: 14,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                        flex: 5,
-                                        child: Text(
-                                          spa.listService![index].name,
-                                          style: StyleApp.textStyle600(
-                                              fontSize: 16,
-                                              color: ColorApp.dark252525),
-                                        )),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Container(
+                            child: SizedBox(
+                              height: Const.sizeHeight(context, 70),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        spa.listService![index].name,
+                                        style: StyleApp.textStyle600(
+                                            fontSize: 16,
+                                            color: ColorApp.dark252525),
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.home,
+                                            size: 16,
+                                            color: ColorApp.bottomBarABCA74,
+                                          ),
+                                          Text(
+                                            ' Sorella Beauty Spa',
+                                            style: StyleApp.textStyle600(
+                                              fontSize: 14,
+                                              color: ColorApp.bottomBarABCA74,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.star,
+                                                size: 16,
+                                                color: ColorApp.yellow,
+                                              ),
+                                              Text(
+                                                ' 4.7 ',
+                                                style: StyleApp.textStyle700(
+                                                  color: ColorApp.yellow,
+                                                ),
+                                              ),
+                                              Text(
+                                                ' (86)',
+                                                style: StyleApp.textStyle500(
+                                                    color: ColorApp.dark500),
+                                              ),
+                                            ],
+                                          ),
+
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        width: Const.sizeWidth(context, 60),
                                         decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(3),
                                             border: Border.all(
-                                                color: ColorApp.background)),
+                                                width: 0.2,
+                                                color: ColorApp.dark500)),
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
-                                              vertical: 4),
+                                            horizontal: 6,
+                                              vertical: 7),
                                           child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.spaceBetween,
                                             children: [
                                               InkWell(
                                                   onTap: () {
                                                     // showToastService = false;
                                                     setState(() {
                                                       if (spa
-                                                              .listService![
-                                                                  index]
-                                                              .soLuong >
+                                                          .listService![
+                                                      index]
+                                                          .soLuong >
                                                           0) {
                                                         spa.listService![index]
                                                             .soLuong--;
@@ -476,7 +529,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                             calculatorTotalSelect();
                                                         //TODO
                                                         spa.numberServiceHasPick =
-                                                            0;
+                                                        0;
                                                         spa.sumPriceService = 0;
                                                         spa.indexMaximunService
                                                             .remove(index);
@@ -492,15 +545,20 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                       }
                                                     });
                                                   },
-                                                  child: const Icon(
-                                                    Icons.remove,
-                                                    size: 12,
-                                                    color: ColorApp.darkGreen,
-                                                  )),
+                                                  child: Text(
+                                                    String.fromCharCode(Icons.remove.codePoint),
+                                                    style: TextStyle(
+                                                      inherit: false,
+                                                      fontSize: 15,
+                                                      fontWeight: FontWeight.w900,
+                                                      color: ColorApp.darkGreen,
+                                                      fontFamily: Icons.remove.fontFamily,
+                                                    ),
+                                                  ),),
                                               Text(
                                                 ' ${spa.listService![index].soLuong} ',
-                                                style: StyleApp.textStyle500(
-                                                    fontSize: 16,
+                                                style: StyleApp.textStyle700(
+                                                    fontSize: 15,
                                                     color: ColorApp.dark500),
                                               ),
                                               InkWell(
@@ -509,12 +567,12 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                       spa.indexMaximunService);
                                                   setState(() {
                                                     if (spa.listService![index]
-                                                            .soLuong <
+                                                        .soLuong <
                                                         3) {
                                                       spa.listService![index]
                                                           .soLuong++;
                                                       spa.numberServiceHasPick =
-                                                          0;
+                                                      0;
                                                       spa.sumPriceService = 0;
                                                       //TODO
                                                       totalPrice =
@@ -541,96 +599,64 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                                     }
                                                   });
                                                 },
-                                                child: const Icon(
-                                                  Icons.add,
-                                                  size: 12,
-                                                  color: ColorApp.darkGreen,
+                                                // child: Icon(Icons.add, size: 16,),
+                                                child: Text(
+                                                  String.fromCharCode(Icons.add.codePoint),
+                                                  style: TextStyle(
+                                                    inherit: false,
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w900,
+                                                    color: ColorApp.darkGreen,
+                                                    fontFamily: Icons.add.fontFamily,
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.home,
-                                      size: 16,
-                                      color: ColorApp.bottomBarABCA74,
-                                    ),
-                                    Text(
-                                      ' Sviet Beauty Spa',
-                                      style: StyleApp.textStyle600(
-                                        fontSize: 13,
-                                        color: ColorApp.bottomBarABCA74,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.star,
-                                          size: 16,
-                                          color: ColorApp.yellow,
+                                      InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            spa.listService!.removeAt(index);
+                                            spa.numberServiceHasPick = 0;
+                                            spa.sumPriceService = 0;
+                                            // sum =
+                                            //     calculatePrice(listService, sum);
+                                            //TODO
+                                            totalPrice = calculatorTotalPrice();
+                                            totalServiceSelect =
+                                                calculatorTotalSelect();
+                                            //TODO
+                                            spa.sumPriceService = calculatorPrice(
+                                                spa.listService!,
+                                                spa.sumPriceService);
+                                            spa.numberServiceHasPick =
+                                                calculatorUserPick(
+                                                    spa.listService!,
+                                                    spa.numberServiceHasPick);
+                                          });
+                                        },
+                                        child: SvgPicture.asset(
+                                          'assets/svg/deleteIcon.svg',
+                                          color: ColorApp.pinkF59398,
+                                          width: Const.sizeWidth(context, 16),
                                         ),
-                                        Text(
-                                          ' 4.7 ',
-                                          style: StyleApp.textStyle700(
-                                            color: ColorApp.yellow,
-                                          ),
-                                        ),
-                                        Text(
-                                          ' (86)',
-                                          style: StyleApp.textStyle500(
-                                              color: ColorApp.dark500),
-                                        ),
-                                      ],
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          spa.listService!.removeAt(index);
-                                          spa.numberServiceHasPick = 0;
-                                          spa.sumPriceService = 0;
-                                          // sum =
-                                          //     calculatePrice(listService, sum);
-                                          //TODO
-                                          totalPrice = calculatorTotalPrice();
-                                          totalServiceSelect =
-                                              calculatorTotalSelect();
-                                          //TODO
-                                          spa.sumPriceService = calculatorPrice(
-                                              spa.listService!,
-                                              spa.sumPriceService);
-                                          spa.numberServiceHasPick =
-                                              calculatorUserPick(
-                                                  spa.listService!,
-                                                  spa.numberServiceHasPick);
-                                        });
-                                      },
-                                      child: const Icon(Icons.delete_forever,
-                                          color: ColorApp.pinkF59398),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 35),
-                      child: Divider(),
+                      padding: EdgeInsets.fromLTRB(35,10,0,10),
+                      child: Divider(
+                        height: 1,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 35),
@@ -639,15 +665,6 @@ class _GioHangScreenState extends State<GioHangScreen> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              // DatePicker.showDateTimePicker(context,
-                              //     currentTime: DateTime.now(),
-                              //     locale: language.codeNow == 'en'
-                              //         ? LocaleType.en
-                              //         : LocaleType.vi, onConfirm: (date) {
-                              //   dateTime =
-                              //       '${Const.formatTime(date.millisecondsSinceEpoch)}';
-                              //   setState(() {});
-                              // });
                             },
                             child: Row(
                               children: [
@@ -685,7 +702,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           Text(
                             '${Const.ConvertPrice.format(spa.listService![index].gia * spa.listService![index].soLuong)} ₫',
                             style: StyleApp.textStyle700(
-                                color: ColorApp.darkGreen, fontSize: 16),
+                                color: ColorApp.darkGreen, fontSize: 15),
                           )
                         ],
                       ),
@@ -736,14 +753,20 @@ class _GioHangScreenState extends State<GioHangScreen> {
                   height: 18,
                   width: 18,
                   child: Checkbox(
+                      side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                        }
+                        return const BorderSide(width: 0.3, color: ColorApp.dark500);
+                      },),
+                      activeColor: ColorApp.background,
                       shape: const CircleBorder(),
-                      activeColor: ColorApp.bottomBarABCA74,
+                      checkColor: ColorApp.bottomBarABCA74,
                       value: spa.listPacket![index].value,
                       onChanged: (value) {
                         setState(
                           () {
                             spa.listPacket![index].value = value;
-
                             //TODO
                             totalPrice = calculatorTotalPrice();
                             totalServiceSelect = calculatorTotalSelect();
@@ -760,7 +783,6 @@ class _GioHangScreenState extends State<GioHangScreen> {
                   width: 12,
                 ),
                 Expanded(
-                  // flex: 14,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -768,103 +790,110 @@ class _GioHangScreenState extends State<GioHangScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                              flex: 4,
-                              child: Text(
-                                spa.listPacket![index].name,
-                                style: StyleApp.textStyle600(
-                                    fontSize: 16, color: ColorApp.dark252525),
-                              )),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: ColorApp.background)),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 4),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    InkWell(
-                                        onTap: () {
-                                          setState(() {
-                                            if (spa.listPacket![index].soLuong >
-                                                0) {
-                                              spa.listPacket![index].soLuong--;
-
-                                              spa.numberPackgetHasPick = 0;
-                                              spa.sumPricePackget = 0;
-                                              spa.indexMaximunPackget
-                                                  .remove(index);
-                                              spa.sumPricePackget =
-                                                  calculatorPrice(
-                                                      spa.listPacket!,
-                                                      spa.sumPricePackget);
-                                              spa.numberPackgetHasPick =
-                                                  calculatorUserPick(
-                                                      spa.listPacket!,
-                                                      spa.numberPackgetHasPick);
-                                              //TODO
-                                              totalPrice =
-                                                  calculatorTotalPrice();
-                                              totalServiceSelect =
-                                                  calculatorTotalSelect();
-                                              //TODO
-                                            }
-                                          });
-                                        },
-                                        child: const Icon(
-                                          Icons.remove,
-                                          size: 12,
-                                          color: ColorApp.darkGreen,
-                                        )),
-                                    Text(
-                                      ' ${spa.listPacket![index].soLuong} ',
-                                      style: StyleApp.textStyle500(
-                                          fontSize: 16,
-                                          color: ColorApp.dark500),
-                                    ),
-                                    InkWell(
+                          Text(
+                            spa.listPacket![index].name,
+                            style: StyleApp.textStyle600(
+                                fontSize: 16, color: ColorApp.dark252525),
+                          ),
+                          Container(
+                            width: Const.sizeWidth(context, 60),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius.circular(3),
+                                border: Border.all(
+                                    width: 0.2,
+                                    color: ColorApp.dark500)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  InkWell(
                                       onTap: () {
                                         setState(() {
-                                          if (spa.listPacket![index].soLuong <
-                                              3) {
-                                            spa.listPacket![index].soLuong++;
+                                          if (spa.listPacket![index].soLuong >
+                                              0) {
+                                            spa.listPacket![index].soLuong--;
                                             spa.numberPackgetHasPick = 0;
                                             spa.sumPricePackget = 0;
-                                            //TODO
-                                            totalPrice = calculatorTotalPrice();
-                                            totalServiceSelect =
-                                                calculatorTotalSelect();
-                                            //TODO
+                                            spa.indexMaximunPackget
+                                                .remove(index);
                                             spa.sumPricePackget =
-                                                calculatorPrice(spa.listPacket!,
+                                                calculatorPrice(
+                                                    spa.listPacket!,
                                                     spa.sumPricePackget);
                                             spa.numberPackgetHasPick =
                                                 calculatorUserPick(
                                                     spa.listPacket!,
                                                     spa.numberPackgetHasPick);
-                                          } else {
-                                            // showToastPackget = true;
-                                            if (!spa.indexMaximunPackget
-                                                .contains(index)) {
-                                              spa.indexMaximunPackget
-                                                  .add(index);
-                                            }
+                                            //TODO
+                                            totalPrice =
+                                                calculatorTotalPrice();
+                                            totalServiceSelect =
+                                                calculatorTotalSelect();
+                                            //TODO
                                           }
                                         });
                                       },
-                                      child: const Icon(
-                                        Icons.add,
-                                        size: 12,
+                                      child: Text(
+                                        String.fromCharCode(Icons.remove.codePoint),
+                                        style: TextStyle(
+                                          inherit: false,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w900,
+                                          color: ColorApp.darkGreen,
+                                          fontFamily: Icons.remove.fontFamily,
+                                        ),
+                                      ),),
+                                  Text(
+                                    ' ${spa.listPacket![index].soLuong} ',
+                                    style: StyleApp.textStyle700(
+                                        fontSize: 15,
+                                        color: ColorApp.dark500),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        if (spa.listPacket![index].soLuong <
+                                            3) {
+                                          spa.listPacket![index].soLuong++;
+                                          spa.numberPackgetHasPick = 0;
+                                          spa.sumPricePackget = 0;
+                                          //TODO
+                                          totalPrice = calculatorTotalPrice();
+                                          totalServiceSelect =
+                                              calculatorTotalSelect();
+                                          //TODO
+                                          spa.sumPricePackget =
+                                              calculatorPrice(spa.listPacket!,
+                                                  spa.sumPricePackget);
+                                          spa.numberPackgetHasPick =
+                                              calculatorUserPick(
+                                                  spa.listPacket!,
+                                                  spa.numberPackgetHasPick);
+                                        } else {
+                                          // showToastPackget = true;
+                                          if (!spa.indexMaximunPackget
+                                              .contains(index)) {
+                                            spa.indexMaximunPackget
+                                                .add(index);
+                                          }
+                                        }
+                                      });
+                                    },
+                                    child: Text(
+                                      String.fromCharCode(Icons.add.codePoint),
+                                      style: TextStyle(
+                                        inherit: false,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w900,
                                         color: ColorApp.darkGreen,
+                                        fontFamily: Icons.add.fontFamily,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           )
@@ -883,9 +912,9 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                 color: ColorApp.bottomBarABCA74,
                               ),
                               Text(
-                                ' Sviet Beauty Spa',
+                                ' Sorella Beauty Spa',
                                 style: StyleApp.textStyle600(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   color: ColorApp.bottomBarABCA74,
                                 ),
                               ),
@@ -907,16 +936,20 @@ class _GioHangScreenState extends State<GioHangScreen> {
                                     spa.listPacket!, spa.numberPackgetHasPick);
                               });
                             },
-                            child: const Icon(Icons.delete_forever,
-                                color: ColorApp.pinkF59398),
+                            child: SvgPicture.asset(
+                              'assets/svg/deleteIcon.svg',
+                              color: ColorApp.pinkF59398,
+                              width: Const.sizeWidth(context, 16),
+                            ),
                           )
                         ],
                       ),
-                      const Gap(10),
-                      const Divider(
-                        height: 1,
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Divider(
+                          height: 1,
+                        ),
                       ),
-                      const Gap(10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -940,7 +973,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                           Text(
                             '${Const.ConvertPrice.format(spa.listPacket![index].gia * spa.listPacket![index].soLuong)} ₫',
                             style: StyleApp.textStyle700(
-                                color: ColorApp.darkGreen, fontSize: 16),
+                                color: ColorApp.darkGreen, fontSize: 15),
                           )
                         ],
                       ),
@@ -971,26 +1004,27 @@ class _WarningNumberService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 13),
       child: Container(
         decoration: BoxDecoration(
-            color: ColorApp.pinkF59398.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(12)),
+            color: ColorApp.pinkF59398.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(10)),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Icon(
-                Icons.report_problem_outlined,
+                Icons.report_problem,
                 color: ColorApp.pinkF59398,
-                size: 14,
+                size: 18,
               ),
               const Gap(8),
               Expanded(
                 child: Text(
                   title == null ? language.canhBao : title!,
-                  overflow: TextOverflow.ellipsis,
-                  style: StyleApp.textStyle500(color: ColorApp.pinkF59398),
+                  overflow: TextOverflow.visible,
+                  style: StyleApp.textStyle600(color: ColorApp.pinkF59398, fontSize: 14),
                 ),
               )
             ],

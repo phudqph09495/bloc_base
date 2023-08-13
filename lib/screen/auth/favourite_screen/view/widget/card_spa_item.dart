@@ -26,7 +26,7 @@ class CardShopItem extends StatelessWidget {
                         Text(
                           'Sorella Beauty Spa',
                           style:
-                              StyleApp.textStyle600(color: ColorApp.dark252525),
+                          StyleApp.textStyle600(color: ColorApp.dark252525),
                         ),
                         Icon(
                           Icons.clear,

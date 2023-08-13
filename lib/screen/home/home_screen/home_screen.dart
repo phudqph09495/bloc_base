@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> listSer = ['Triệt lông', ' Chăm Sóc Da Mặt', 'Massage', 'Tóc'];
   bool showmore = false;
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 390;
@@ -62,49 +63,56 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                InkWell(
-                                  onTap: () {
-                                    _scaffoldKey.currentState!.openDrawer();
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 18),
-                                    child: SvgPicture.asset(
-                                        'assets/svg/Vector.svg'),
+                                Container(
+                                  width: Const.sizeWidth(context, 80),
+                                  alignment: Alignment.centerLeft,
+                                  child: InkWell(
+                                    onTap: () {
+                                      _scaffoldKey.currentState!.openDrawer();
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 18),
+                                      child: SvgPicture.asset(
+                                          'assets/svg/Vector.svg',
+                                          width: Const.sizeWidth(context, 22)),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
                                     child: SvgPicture.asset(
                                         'assets/svg/LogoApp.svg')),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      child: const Icon(
-                                        Icons.qr_code_scanner,
-                                        size: 25,
+                                Padding(
+                                  padding: EdgeInsets.only(right: 14),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                        child: const Icon(
+                                          Icons.qr_code_scanner,
+                                          size: 28,
+                                        ),
+                                        onTap: () async {
+                                          var res = await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SimpleBarcodeScannerPage(
+                                                  cancelButtonText:
+                                                      language.huyBo,
+                                                ),
+                                              ));
+                                          setState(() {
+                                            if (res is String) {
+                                              Navigator.pushNamed(context,
+                                                  RouterName.confirmScreen);
+                                            }
+                                          });
+                                        },
                                       ),
-                                      onTap: () async {
-                                        var res = await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SimpleBarcodeScannerPage(
-                                                cancelButtonText:
-                                                    language.huyBo,
-                                              ),
-                                            ));
-                                        setState(() {
-                                          if (res is String) {
-                                            Navigator.pushNamed(context,
-                                                RouterName.confirmScreen);
-                                          }
-                                        });
-                                      },
-                                    ),
-                                    const NotificationButton(),
-                                  ],
+                                      const Gap(10),
+                                      const NotificationButton(),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
@@ -113,29 +121,43 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Positioned(
                           child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 18),
-                        child: InputText1(
-                          colorBg: ColorApp.background,
-                          borderColor: ColorApp.background,
-                          label: language.timKiem,
-                          hasLeading: true,
-                          iconPreFix: const Icon(Icons.search,
-                              color: ColorApp.bottomBarABCA74),
-                          hasSuffix: true,
-                          suffix: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Container(
-                                width: 30,
-                                decoration: const BoxDecoration(
-                                    color: ColorApp.bottomBarABCA74,
-                                    shape: BoxShape.circle),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: SvgPicture.asset(
-                                    'assets/svg/locator.svg',
-                                  ),
-                                )),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18, vertical: 10),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color:
+                                      ColorApp.bottomBarABCA74.withOpacity(0.3),
+                                  blurRadius: 4,
+                                  spreadRadius: 1, //New
+                                ),
+                              ]),
+                          child: InputText1(
+                            colorBg: ColorApp.background,
+                            borderColor: ColorApp.background,
+                            label: language.timKiem,
+                            hasLeading: true,
+                            iconPreFix: const Icon(Icons.search,
+                                color: ColorApp.bottomBarABCA74),
+                            hasSuffix: true,
+                            suffix: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Container(
+                                  width: 30,
+                                  decoration: const BoxDecoration(
+                                      color: ColorApp.bottomBarABCA74,
+                                      shape: BoxShape.circle),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    child: SvgPicture.asset(
+                                      'assets/svg/locator.svg',
+                                    ),
+                                  )),
+                            ),
                           ),
                         ),
                       )),
@@ -146,8 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(
-                                left: 18, right: 18, top: 25),
+                            padding: const EdgeInsets.only(left: 18, top: 25),
                             child: _listService(language, context),
                           ),
                           _discoveryNearYou(fem, context, language, ffem),
@@ -415,8 +436,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Stack(
                 children: [
                   Positioned(
-                    // group3JZE (157:9162)
-
                     child: Container(
                       width: 372 * fem,
                       height: 317 * fem,
@@ -487,15 +506,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                               const Icon(
                                                 Icons.star,
                                                 color: ColorApp.yellow,
-                                                size: 16,
+                                                size: 18,
                                               ),
-                                              const Gap(3),
                                               Text(
-                                                '4.8',
-                                                style: StyleApp.textStyle500(
-                                                    fontSize: 12,
-                                                    color: Colors.white),
-                                              )
+                                                ' 4.7 ',
+                                                style: StyleApp.textStyle700(
+                                                    fontSize: 15,
+                                                    color: ColorApp.yellow),
+                                              ),
+                                              Text(
+                                                ' (86)',
+                                                style: StyleApp.textStyle400(
+                                                    color: ColorApp.dark500,
+                                                    fontSize: 15),
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -515,7 +539,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Positioned(
-                    // khmphgnbnJxY (157:9167)
                     left: 18 * fem,
                     top: 54 * fem,
                     child: Align(

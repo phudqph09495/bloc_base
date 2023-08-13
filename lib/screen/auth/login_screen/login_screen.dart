@@ -28,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     // context.read<BlocCheckLogin>().add(GetData());
     context.read<BlocLanguage>().add(GetLanguage());
-
     // context.read<BlocFireBaseMS>().add(firebase());
   }
 
@@ -73,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: Const.size(context).width * 0.02615384615,
                         ),
                         InputText1(
+                          borderSize: 0.8,
                           borderColor: ColorApp.borderEAEAEA,
                           radius: 10,
                           label: '',

@@ -1,16 +1,15 @@
-import 'package:bloc_base/bloc/event_bloc.dart';
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/router/router.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_bloc.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_state.dart';
 import 'package:bloc_base/widget/drawler.dart';
-import 'package:bloc_base/widget/item/dialog_item.dart';
+import 'package:bloc_base/widget/item/notification_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:gap/gap.dart';
 import '../../../../bloc/state_bloc.dart';
 import '../../../../config/const.dart';
@@ -22,8 +21,11 @@ import '../../../../widget/item/input/bottom_sheet.dart';
 import '../../../../widget/item/input/text_filed.dart';
 import 'package:group_button/group_button.dart';
 import '../bloc/search_tab_event.dart';
+
 part 'widget/grid_service_item.dart';
+
 part 'widget/cart_service_item.dart';
+
 part 'widget/filler_bottom_sheet.dart';
 
 class SearchTabScreen extends StatefulWidget {
@@ -37,7 +39,10 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController dateTimeController = TextEditingController();
   TextEditingController serviceTypeController = TextEditingController();
+  TextEditingController detailServiceController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   int selectedIndex = 0;
+  bool isSelected = false;
   bool typeList = true;
   List<ModelLocal2> listFilter = [
     ModelLocal2(name: 'Đánh giá tốt nhất', id: 'filterIcon1.svg'),
@@ -45,6 +50,31 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
     ModelLocal2(name: 'Khoảng cách ngắn nhất', id: 'filterIcon3.svg'),
     ModelLocal2(name: 'Danh sách yêu thích', id: 'filterIcon4.svg')
   ];
+  List<ModelLocal2> listService = [
+    ModelLocal2(name: 'Tắm trắng toàn thân', id: '1'),
+    ModelLocal2(name: 'Trị liệu khử mùi', id: '2'),
+    ModelLocal2(name: 'Trị liệu thâm nám', id: '3'),
+    ModelLocal2(name: 'Tẩy da chết', id: '4'),
+    ModelLocal2(name: 'Trị liệu sẹo giỗ', id: '5'),
+    ModelLocal2(name: 'Trị liệu quầng thâm mắt', id: '6'),
+    ModelLocal2(name: 'Trị liệu gò má cao', id: '7'),
+    ModelLocal2(name: 'Trị liệu mồ hôi nách ', id: '8')
+  ];
+  List<ModelLocal2> listAddress = [
+    ModelLocal2(name: 'Hoài Đức', id: '1'),
+    ModelLocal2(name: 'Ba Đình', id: '2'),
+    ModelLocal2(name: 'Hoàng Mai', id: '3'),
+    ModelLocal2(name: 'Hà Đông', id: '4'),
+    ModelLocal2(name: 'Vĩnh Tuy', id: '5'),
+    ModelLocal2(name: 'Cầu Giấy', id: '6'),
+    ModelLocal2(name: 'Nhổm', id: '7'),
+    ModelLocal2(name: 'Trần Duy Hưng', id: '8'),
+    ModelLocal2(name: 'Gia Lâm', id: '9'),
+    ModelLocal2(name: 'Giáp Bát', id: '10'),
+    ModelLocal2(name: 'Linh Đàm', id: '11'),
+    ModelLocal2(name: 'Kim Giang', id: '12')
+  ];
+
   List<ModelLocal2> checkListItems = [
     ModelLocal2(
       name: 'Chăm sóc da mặt',
@@ -74,13 +104,9 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
       name: 'Chăm sóc da mặt',
       id: '1',
     ),
-    ModelLocal2(
-      name: 'Chăm sóc da mặt',
-      id: '1',
+    ModelLocal2(name: 'Chăm sóc da mặt', id: '1',
     ),
-    ModelLocal2(
-      name: 'Chăm sóc da mặt',
-      id: '1',
+    ModelLocal2(name: 'Chăm sóc da mặt', id: '1',
     ),
     ModelLocal2(
       name: 'Chăm sóc da mặt',
@@ -102,6 +128,7 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
   double fromPrice = 10000;
   double toPrice = 1000000;
   bool checkedValue = true;
+
   @override
   void initState() {
     super.initState();
@@ -117,14 +144,6 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   const SystemUiOverlayStyle(
-    //     statusBarColor: Colors.transparent,
-    //   ),
-    // );
-    // double baseWidth = 390;
-
-    // double fem = MediaQuery.of(context).size.width / baseWidth;
     RangeValues range = RangeValues(fromPrice, toPrice);
 
     return GestureDetector(
@@ -148,7 +167,8 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                       children: [
                         Image.asset(
                           'assets/images/bgApp.png',
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.fitHeight,
+                          width: double.infinity,
                         ),
                         Positioned(
                           child: Row(
@@ -157,15 +177,27 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 18),
-                                  child: InputText1(
-                                    borderColor: ColorApp.background,
-                                    colorBg: ColorApp.background,
-                                    label: lang.timKiem,
-                                    hasLeading: true,
-                                    iconPreFix: const Icon(Icons.search,
-                                        color: ColorApp.bottomBarABCA74),
-                                    hasSuffix: false,
+                                      horizontal: 16),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: ColorApp.bottomBarABCA74
+                                                .withOpacity(0.3),
+                                            blurRadius: 4,
+                                            spreadRadius: 1, //New
+                                          ),
+                                        ]),
+                                    child: InputText1(
+                                      borderColor: ColorApp.background,
+                                      colorBg: ColorApp.background,
+                                      label: lang.timKiem,
+                                      hasLeading: true,
+                                      iconPreFix: const Icon(Icons.search,
+                                          color: ColorApp.bottomBarABCA74),
+                                      hasSuffix: false,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -176,43 +208,21 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10),
-                                  child:
-                                      SvgPicture.asset('assets/svg/Vector.svg'),
+                                  child: SvgPicture.asset(
+                                    'assets/svg/Vector.svg',
+                                    width: 22,
+                                  ),
                                 ),
                               ),
+                              const Gap(6),
                               InkWell(
                                 onTap: () {
                                   Navigator.pushNamed(
                                       context, RouterName.notifyScreen);
                                 },
-                                child: Stack(
-                                  children: [
-                                    const Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 3, right: 16),
-                                      child: Icon(
-                                        Icons.notifications_none_outlined,
-                                        color: ColorApp.dark252525,
-                                        size: 25,
-                                      ),
-                                    ),
-                                    Positioned(
-                                        left: 3,
-                                        top: 5,
-                                        child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.03,
-                                          width:
-                                              Const.size(context).width * 0.03,
-                                          decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: ColorApp.orangeFFC94D),
-                                        ))
-                                  ],
-                                ),
-                              )
+                                child: const NotificationButton(),
+                              ),
+                              const Gap(16),
                             ],
                           ),
                         ),
@@ -225,19 +235,43 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                       child: Row(
                         children: [
                           Expanded(
-                            child: IconButtonWidget(
-                              onTap: () => _fillerResultBottomSheet(
-                                  context, lang, range),
-                              text: lang.locKQ,
-                              imageUrl: 'assets/svg/filterIcon.svg',
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: ColorApp.bottomBarABCA74
+                                          .withOpacity(0.3),
+                                      blurRadius: 4,
+                                      spreadRadius: 1, //New
+                                    ),
+                                  ]),
+                              child: IconButtonWidget(
+                                onTap: () => _fillerResultBottomSheet(
+                                    context, lang, range),
+                                text: lang.locKQ,
+                                imageUrl: 'assets/svg/filterIcon.svg',
+                              ),
                             ),
                           ),
                           const Gap(10),
                           Expanded(
-                            child: IconButtonWidget(
-                              isPrefixIcon: false,
-                              text: lang.xemBanDo,
-                              imageUrl: 'assets/svg/mapIcon.svg',
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: ColorApp.bottomBarABCA74
+                                          .withOpacity(0.3),
+                                      blurRadius: 4,
+                                      spreadRadius: 1, //New
+                                    ),
+                                  ]),
+                              child: IconButtonWidget(
+                                isPrefixIcon: false,
+                                text: lang.xemBanDo,
+                                imageUrl: 'assets/svg/mapIcon.svg',
+                              ),
                             ),
                           ),
                         ],

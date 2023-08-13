@@ -1,7 +1,10 @@
+
+
 import 'package:bloc_base/homepage.dart';
 import 'package:bloc_base/screen/auth/account_screen/member_screen.dart';
 import 'package:bloc_base/screen/auth/history_screen/history_screen.dart';
 import 'package:bloc_base/screen/auth/profile_screen/re_password_screen.dart';
+import 'package:bloc_base/screen/auth/sale_screen/sale_menber_screen.dart';
 import 'package:bloc_base/screen/cart/confirm_screen/confirm_screen.dart';
 import 'package:bloc_base/screen/auth/login_screen/login_screen.dart';
 import 'package:bloc_base/screen/home/home_screen/home_screen%20copy.dart';
@@ -166,10 +169,12 @@ class AppRouter {
     }
     switch (settings.name) {
       case RouterName.rePassworkScreen:
-        return MaterialPageRoute(
-            builder: (context) => const RePassworkScreen());
+        return MaterialPageRoute(builder: (context) => const RePassworkScreen());
     }
-
+    switch(settings.name){
+      case RouterName.saleMenberScreen:
+        return MaterialPageRoute(builder: (context) => const SaleMenberScreen());
+    }
     return null;
   }
 }
@@ -206,4 +211,5 @@ class RouterName {
   static const homeScreenTest = "/homeScreenTest";
   static const rePassworkScreen = "/rePassworkScreen";
   static const ttHTScreen="/TTHTScreen";
+  static const saleMenberScreen ="/saleMenberScreen";
 }

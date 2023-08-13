@@ -189,9 +189,22 @@ class Language {
   String guiDanhGia;
   String noidung;
   String vietDanhGia;
+  String uuDaiThanhVien;
+  String uuDaiKhac;
+  String uuDaiThanhVienMoi;
+  String nhanNgay;
+  String levelMemBer;
+  String quan;
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
+        quan = code == 'en' ? 'district' : "Quận",
+        levelMemBer = code == 'en' ? 'Level MemBer' : 'Hạng Thành Viên',
+        nhanNgay = code == 'en' ? 'Get now' : 'Nhận Ngay',
+        uuDaiThanhVienMoi =
+            code == 'en' ? 'Sale New Member' : 'Ưu đãi thành viên mới',
+        uuDaiThanhVien = code == 'en' ? 'Sale Member' : 'Ưu Đãi Thành Viên',
+        uuDaiKhac = code == 'en' ? 'Sale Other' : 'Ưu Đãi Khác',
         plsJustChoiseOneServiec = code == 'en'
             ? 'Please select only 1 spa or salon at a time.'
             : 'Vui lòng chỉ chọn 1 spa hoặc salon trong một lần thanh toán.',
@@ -214,8 +227,8 @@ class Language {
         taxNumber = code == 'en' ? 'Tax Number' : 'Mã số thuế',
         co = code == 'en' ? 'coAnh.png' : 'coVN.png',
         codeNow = code == 'en' ? 'en' : 'vi',
-        timKiem = code == 'en' ? 'Search' : 'Tìm Kiếm',
-        dichvu = code == 'en' ? 'Service' : 'Dịch Vụ',
+        timKiem = code == 'en' ? 'Search' : 'Tìm kiếm...',
+        dichvu = code == 'en' ? ' Service ' : '  Dịch Vụ  ',
         khamPhaGanBan =
             code == 'en' ? 'Explore around you' : 'Khám Phá Gần Bạn',
         xemThem = code == 'en' ? 'See more' : 'Xem Thêm',
@@ -255,7 +268,7 @@ class Language {
         trangThai = code == 'en' ? 'Status' : 'Trạng Thái',
         khoangCach = code == 'en' ? 'Distance' : 'Khoảng Cách',
         thongTin = code == 'en' ? 'About' : 'THÔNG TIN',
-        danhGia = code == 'en' ? 'Reviews :' : 'ĐÁNH GIÁ :',
+        danhGia = code == 'en' ? 'Reviews :' : 'ĐÁNH GIÁ',
         danhGia2 = code == 'en' ? 'Reviews' : 'Đánh giá',
         diaChi = code == 'en' ? 'Location' : 'Địa Chỉ',
         chiDuong = code == 'en' ? 'Direct' : 'Chỉ đường',

@@ -2,12 +2,12 @@ import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
 
 import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
-import 'package:bloc_base/widget/item/input/text_filed2.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 import '../../../bloc/language/bloc_lang.dart';
 import '../../../config/const.dart';
@@ -110,16 +110,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               'assets/svg/notiIcon.svg')),
                                       controller: dOBController,
                                       onTap: () {
-                                        // DatePicker.showDatePicker(context,
-                                        //     currentTime: DateTime.now(),
-                                        //     locale: language.codeNow == 'en'
-                                        //         ? LocaleType.en
-                                        //         : LocaleType.vi,
-                                        //     onConfirm: (date) {
-                                        //   dOBController.text = Const.formatTime(
-                                        //       date.millisecondsSinceEpoch,
-                                        //       format: 'dd/MM/yyyy');
-                                        // });
+                                        DatePicker.showDatePicker(
+                                          context,
+                                          locale: DateTimePickerLocale.vi,
+                                          dateFormat: 'dd MMMM yyyy',
+                                          initialDateTime: DateTime.now(),
+                                          minDateTime: DateTime(2000),
+                                          maxDateTime: DateTime(2050),
+                                          onConfirm:
+                                              (dateTime, List<int> index) {
+                                            dOBController.text =
+                                                Const.formatTime(
+                                                    dateTime
+                                                        .millisecondsSinceEpoch,
+                                                    format: 'dd/MM/yyyy');
+                                          },
+                                        );
                                       },
                                       label:
                                           '${Const.formatTime(DateTime.now().millisecondsSinceEpoch, format: 'dd/MM/yyyy')}',

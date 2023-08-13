@@ -50,7 +50,7 @@ class Const {
     }
     var check = isNumeric(time.toString());
     if (check) {
-      return DateFormat(format ?? 'dd/MM/yyyy - HH:mm ', 'en_US')
+      return DateFormat(format ?? 'yyyy/MM/dd HH:mm:ss', 'en_US')
           .format(DateTime.fromMillisecondsSinceEpoch(time));
     }
     return '';

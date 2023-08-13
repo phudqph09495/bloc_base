@@ -122,16 +122,21 @@ class IntroduceSpaWidget extends StatelessWidget {
                     const Icon(
                       Icons.star,
                       color: ColorApp.yellow,
-                      size: 12,
+                      size: 18,
                     ),
                     Text(
-                      '4.7',
-                      style: StyleApp.textStyle700(color: ColorApp.yellow),
+                      ' 4.7 ',
+                      style: StyleApp.textStyle700(
+                          fontSize: 15,
+                          color: ColorApp.yellow),
                     ),
-                    Text(' (98)',
-                        style: StyleApp.textStyle700(
-                            color: const Color(0xff717171))),
-                  ],
+                    Text(
+                      ' (86)',
+                      style: StyleApp.textStyle400(
+                          color: ColorApp.dark500,
+                          fontSize: 15),
+                    ),
+                  ]
                 ),
                 const SizedBox(),
               ],

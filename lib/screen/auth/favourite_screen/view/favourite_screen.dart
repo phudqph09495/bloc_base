@@ -72,7 +72,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                 buttonWidth: Const.size(context).width * 0.44,
                                 selectedColor: ColorApp.bottomBarABCA74,
                                 mainGroupAlignment:
-                                    MainGroupAlignment.spaceBetween,
+                                MainGroupAlignment.spaceBetween,
                                 unselectedTextStyle: StyleApp.textStyle500(
                                     color: ColorApp.dark500),
                                 borderRadius: BorderRadius.circular(12)),
@@ -96,54 +96,54 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         const Gap(5),
                         isService
                             ? ListView.builder(
+                          primary: false,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyHomePage(
+                                        index: 2,
+                                      ),
+                                    ));
+                              },
+                              child: const CardShopItem(),
+                            );
+                          },
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 10,
+                        )
+                            : BlocBuilder<SearchTabBloc, SearchTabState>(
+                          builder: (context, state) {
+                            if (state is LoadingState) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            } else if (state is LoadSuccessState) {
+                              return ListView.separated(
+                                separatorBuilder: (context, index) =>
+                                const Gap(8),
                                 primary: false,
                                 padding: EdgeInsets.zero,
                                 itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => MyHomePage(
-                                              index: 2,
-                                            ),
-                                          ));
-                                    },
-                                    child: const CardShopItem(),
+                                  return CardServiceItem(
+                                    index: index,
+                                    isFavorite: false,
+                                    state: state,
                                   );
                                 },
-                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: 10,
-                              )
-                            : BlocBuilder<SearchTabBloc, SearchTabState>(
-                                builder: (context, state) {
-                                  if (state is LoadingState) {
-                                    return const Center(
-                                        child: CircularProgressIndicator());
-                                  } else if (state is LoadSuccessState) {
-                                    return ListView.separated(
-                                      separatorBuilder: (context, index) =>
-                                          const Gap(8),
-                                      primary: false,
-                                      padding: EdgeInsets.zero,
-                                      itemBuilder: (context, index) {
-                                        return CardServiceItem(
-                                          index: index,
-                                          isFavorite: false,
-                                          state: state,
-                                        );
-                                      },
-                                      shrinkWrap: true,
-                                      itemCount:
-                                          state.serviceModel.data!.length,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                    );
-                                  } else if (state is DataEmptyState) {}
-                                  return const SizedBox.shrink();
-                                },
-                              )
+                                itemCount:
+                                state.serviceModel.data!.length,
+                                physics:
+                                const NeverScrollableScrollPhysics(),
+                              );
+                            } else if (state is DataEmptyState) {}
+                            return const SizedBox.shrink();
+                          },
+                        )
                       ],
                     ),
                   ),
@@ -153,17 +153,17 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           ),
           bottomSheet: Padding(
             padding:
-                const EdgeInsets.only(left: 16, right: 16, bottom: 5, top: 5),
+            const EdgeInsets.only(left: 16, right: 16, bottom: 5, top: 5),
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.065,
               child: Row(
                 children: [
                   Expanded(
                       child: ButtonWidget(
-                    type: ButtonType.secondary,
-                    text: language.searchMoreSpaAndSalon,
-                    onTap: () {},
-                  )),
+                        type: ButtonType.secondary,
+                        text: language.searchMoreSpaAndSalon,
+                        onTap: () {},
+                      )),
                 ],
               ),
             ),
