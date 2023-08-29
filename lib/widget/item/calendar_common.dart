@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../config/const.dart';
 import 'input/text_filed.dart';
 
-Widget Calendar(BuildContext context , Controller ){
+Widget Calendar (BuildContext context , Controller ){
   return InputText1(
     suffix: Transform.scale(
         scale: 0.5,

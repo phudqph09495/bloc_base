@@ -1,3 +1,4 @@
+import 'package:bloc_base/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/const.dart';
@@ -21,7 +22,7 @@ class ButtonWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 45,
+        height: 48,
         width: double.infinity,
         decoration: BoxDecoration(
           boxShadow: [
@@ -35,19 +36,17 @@ class ButtonWidget extends StatelessWidget {
             color: type == ButtonType.primary
                 ? ColorApp.bottomBarABCA74
                 : type == ButtonType.secondary
-                    ? ColorApp.orangeFFC94D
+                    ? ColorApp.yellow
                     : ColorApp.dark500,
             borderRadius: BorderRadius.circular(20)),
         child: Center(
           child: Text(
             text,
-            style: StyleApp.styleGilroy700(
-              fontSize: 17,
-                color: type == ButtonType.primary
-                    ? ColorApp.background
-                    : type == ButtonType.secondary
-                        ? ColorApp.dark252525
-                        : ColorApp.background),
+            style: AppTextStyles.textDark18().copyWith(color: type == ButtonType.primary
+                ? ColorApp.background
+                : type == ButtonType.secondary
+                ? ColorApp.dark252525
+                : ColorApp.background)
           ),
         ),
       ),

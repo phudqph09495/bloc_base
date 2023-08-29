@@ -2,28 +2,27 @@ import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/model/model_local.dart';
 import 'package:bloc_base/router/router.dart';
-import 'package:bloc_base/widget/drawler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import '../../../bloc/state_bloc.dart';
-import '../../../config/const.dart';
 import '../../../styles/init_style.dart';
 import '../../../widget/item/appBar.dart';
-import '../../../widget/item/input/bottom_sheet.dart';
-import '../../../widget/item/input/text_filed.dart';
 import '../../../widget/item/load_image.dart';
-import '../../../widget/item/notification_widget.dart';
 
 class MemberScreen extends StatefulWidget {
-  const MemberScreen({Key? key}) : super(key: key);
-
+  const MemberScreen({Key? key , this.data}) : super(key: key);
+  final BunldData? data;
   @override
   State<MemberScreen> createState() => _MemberScreenState();
 }
 
 class _MemberScreenState extends State<MemberScreen> {
+  final userName = FirebaseAuth.instance.currentUser?.displayName;
+  final urlAvatar = FirebaseAuth.instance.currentUser?.photoURL;
+
   var selected = true;
 
   List<InforCollum> listNewMember = [
@@ -75,11 +74,10 @@ class _MemberScreenState extends State<MemberScreen> {
                         Row(
                           children: [
                             Stack(
-                              children: const [
+                              children: [
                                 ClipOval(
                                     child: LoadImage(
-                                  url:
-                                      'https://3.pik.vn/e1ec72b6-6b34-4e8b-89f2-ddd51e333d9d.jpg',
+                                  url: urlAvatar??'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi_guXp3VdsedwmecUjqvEmZEJ8B1Kp2RdlA&usqp=CAU',
                                   height: 90,
                                   width: 90,
                                   fit: BoxFit.cover,
@@ -95,7 +93,7 @@ class _MemberScreenState extends State<MemberScreen> {
                                   Row(
                                     children: [
                                       Text(
-                                        'Quỳnh Anh',
+                                         userName??widget.data?.name??"Quỳnh Anh" ,
                                         style: StyleApp.textStyle700(
                                             fontSize: 21,
                                             color: ColorApp.dark252525),
@@ -134,7 +132,7 @@ class _MemberScreenState extends State<MemberScreen> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 18),
                                           backgroundColor:
-                                              ColorApp.orangeFFC94D),
+                                              ColorApp.yellow),
                                       onPressed: () {},
                                       child: Row(
                                         children: [
@@ -151,19 +149,18 @@ class _MemberScreenState extends State<MemberScreen> {
                                       )),
                                   Row(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 115,
                                         height: 6,
                                         child: ClipRRect(
-                                          borderRadius: const BorderRadius.all(
+                                          borderRadius: BorderRadius.all(
                                               Radius.circular(10)),
                                           child: LinearProgressIndicator(
                                             value: 0.58,
                                             valueColor:
-                                                const AlwaysStoppedAnimation<Color>(
+                                                AlwaysStoppedAnimation<Color>(
                                                     ColorApp.bottomBarABCA74),
-                                            backgroundColor: ColorApp.grey82
-                                                .withOpacity(0.3),
+                                            backgroundColor: ColorApp.dark500,
                                           ),
                                         ),
                                       ),
@@ -200,7 +197,7 @@ class _MemberScreenState extends State<MemberScreen> {
                                       color: ColorApp.dark252525),
                                   children: [
                                     TextSpan(
-                                      text: ' Quỳnh Anh ',
+                                      text: userName ??widget.data?.name?? "Quỳnh Anh",
                                       style: StyleApp.textStyle700(
                                           fontSize: 20,
                                           color: ColorApp.bottomBarABCA74),
@@ -238,7 +235,7 @@ class _MemberScreenState extends State<MemberScreen> {
                             Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
-                                  color: ColorApp.backgroundF6F6EF),
+                                  color: ColorApp.background),
                               child: Padding(
                                 padding: const EdgeInsets.all(18),
                                 child: Column(
@@ -266,17 +263,16 @@ class _MemberScreenState extends State<MemberScreen> {
                                           vertical: 20),
                                       width: double.infinity,
                                       height: 7,
-                                      child: ClipRRect(
-                                        borderRadius: const BorderRadius.all(
+                                      child: const ClipRRect(
+                                        borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                         child: LinearProgressIndicator(
                                           value: 0.5,
                                           valueColor:
-                                              const AlwaysStoppedAnimation<
+                                              AlwaysStoppedAnimation<
                                                       Color>(
                                                   ColorApp.bottomBarABCA74),
-                                          backgroundColor: ColorApp.grey82
-                                              .withOpacity(0.3),
+                                          backgroundColor: ColorApp.dark500,
                                         ),
                                       ),
                                     ),
@@ -593,7 +589,7 @@ class TitleBroad extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: StyleApp.textStyle600(color: ColorApp.grey82),
+      style: StyleApp.textStyle600(color: ColorApp.dark500),
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );

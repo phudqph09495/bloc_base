@@ -37,7 +37,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
     double ffem = fem * 0.97;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorApp.backgroundF6F6EF,
+        backgroundColor: ColorApp.background,
         drawer: const ItemDrawer(),
         key: _scaffoldKey,
         body: BlocBuilder<BlocLanguage, StateBloc>(

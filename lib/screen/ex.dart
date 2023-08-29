@@ -63,7 +63,7 @@ class Scene extends StatelessWidget {
                                         width: Const.size(context).width * 0.03,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
-                                            color: ColorApp.orangeFFC94D),
+                                            color: ColorApp.yellow),
                                       ))
                                 ],
                               ),

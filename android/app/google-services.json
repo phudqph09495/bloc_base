@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "436346904953",
-    "project_id": "spa-app-63dfe",
-    "storage_bucket": "spa-app-63dfe.appspot.com"
+    "project_number": "1000204221269",
+    "project_id": "blocbase-83d49",
+    "storage_bucket": "blocbase-83d49.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:436346904953:android:554ddef1fb99a2e8de8fa8",
+        "mobilesdk_app_id": "1:1000204221269:android:2cf619055bea5bf5750ddc",
         "android_client_info": {
           "package_name": "com.sota.bloc_base"
         }
       },
       "oauth_client": [
         {
-          "client_id": "436346904953-f6h0sl9a8tmc9nojv9ncmnq8b4u2jtm4.apps.googleusercontent.com",
+          "client_id": "1000204221269-hc9n0o4vm2vhpprf0k58ur6sjprq2kid.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAbGixYVQTNaqlCStjBl9Hcl69xuAOprbI"
+          "current_key": "AIzaSyCVK1XRUCB-mAAqSRQNoDAzgLr65Kjs8YU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "436346904953-f6h0sl9a8tmc9nojv9ncmnq8b4u2jtm4.apps.googleusercontent.com",
+              "client_id": "1000204221269-fms0ru639gdaejq9je6k25kbo4htlrg4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1000204221269-3975sliom0qapt1tc3tq57bn35jmne1d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bigwallet"
+              }
             }
           ]
         }

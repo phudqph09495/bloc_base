@@ -236,7 +236,7 @@ class ConfirmScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.065,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: ColorApp.orangeFFC94D,
+                          color: ColorApp.yellow,
                           borderRadius: BorderRadius.circular(20)),
                       child: Padding(
                         padding: EdgeInsets.symmetric(

@@ -1,7 +1,9 @@
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
 import 'package:bloc_base/bloc/state_bloc.dart';
+import 'package:bloc_base/router/router.dart';
 
 import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.dispose();
   }
 
+  final userName = FirebaseAuth.instance.currentUser?.displayName;
+  final numberPhone = FirebaseAuth.instance.currentUser?.phoneNumber;
   TextEditingController genderController = TextEditingController();
   TextEditingController dOBController = TextEditingController();
   int selectedIndex = 0;
@@ -49,7 +53,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: Scaffold(
               backgroundColor: ColorApp.darkGreen,
-              appBar: AppBarWidget(title: language.ttTK),
+              appBar: AppBarWidget(title: language.ttTK,
+               ),
               body: Container(
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -82,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: Const.size(context).width * 0.02179487179,
                           ),
                           InputText1(
-                            label: 'Nguyễn Quang Vinh',
+                            label: userName??'Trương Quỳnh Anh',
                             radius: 10,
                           ),
                           SizedBox(
@@ -193,7 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           InputText1(
                             keyboardType: TextInputType.phone,
-                            label: '0974859632',
+                            label: numberPhone??'0326433182',
                             radius: 10,
                           ),
                           SizedBox(

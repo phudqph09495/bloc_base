@@ -9,6 +9,7 @@ import 'package:gap/gap.dart';
 import 'package:group_button/group_button.dart';
 import '../../../../bloc/language/bloc_lang.dart';
 import '../../../../config/const.dart';
+import '../../../../router/router.dart';
 import '../../../../styles/init_style.dart';
 import '../../../../widget/item/appbar.dart';
 import '../../../../widget/item/button.dart';
@@ -101,13 +102,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MyHomePage(
-                                        index: 2,
-                                      ),
-                                    ));
+                                Navigator.of(context,rootNavigator: true).pushNamed(RouterName.myHomePage, arguments: 2);
                               },
                               child: const CardShopItem(),
                             );
@@ -131,7 +126,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                   return CardServiceItem(
                                     index: index,
                                     isFavorite: false,
-                                    state: state,
+                                    state: state.serviceModel,
                                   );
                                 },
                                 shrinkWrap: true,

@@ -35,6 +35,7 @@ class _ExampleState extends State<Example> {
                   return const SizedBox();
                 }
                 // giao diện mặc định
+                // Model model=state is LoadSuccess ? state.data:Model()
                 return const SizedBox();
               },
               bloc: blocLogin,

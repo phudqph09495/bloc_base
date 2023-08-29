@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import '../../../bloc/language/event_bloc2.dart';
 import '../../../config/const.dart';
 import '../../../model/model_local.dart';
+import '../../../router/router.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/styles.dart';
 import '../button.dart';
@@ -67,13 +68,9 @@ class BottomSheetInforService {
                     ButtonWidget(
                       text: lang.commomViewCart.toUpperCase(),
                       onTap: () {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.pushNamedAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => MyHomePage(
-                              index: 3,
-                            ),
-                          ),
+                          RouterName.gioHangScreen,
                           (Route<dynamic> route) => false,
                         );
                       },
@@ -83,13 +80,9 @@ class BottomSheetInforService {
                     ButtonWidget(
                       text: lang.timDVKhac.toUpperCase(),
                       onTap: () {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.pushNamedAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => MyHomePage(
-                              index: 2,
-                            ),
-                          ),
+                          RouterName.myHomePage,arguments: 2,
                           (Route<dynamic> route) => false,
                         );
                       },

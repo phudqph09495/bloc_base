@@ -16,8 +16,8 @@ class LoadSuccessState extends SearchTabState {
 
 class LoadFailState extends SearchTabState {
   final String error;
-  dynamic data;
-
+  // dynamic data;
+  final ServiceModel? data;
   LoadFailState({
     this.data,
     required this.error,

@@ -70,12 +70,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
           backgroundColor: ColorApp.darkGreen,
           appBar: AppBarWidget(
             title: '${language.gioHang} (3)',
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyHomePage(
-                          index: 0,
-                        ))),
+            onTap: () => Navigator.pushNamed(context, RouterName.myHomePage,arguments: 0)
           ),
           body: Container(
             decoration: const BoxDecoration(
@@ -94,7 +89,7 @@ class _GioHangScreenState extends State<GioHangScreen> {
                     itemCount: listSpa.length,
                     itemBuilder: (context, i) => Column(
                       children: [
-                        Gap(20),
+                       const Gap(20),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20),

@@ -16,7 +16,6 @@ class NotificationButton extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, RouterName.notifyScreen);
       },
-      // child: Image.asset('assets/images/notifiaction.png', width: Const.sizeWidth(context, 25),fit: BoxFit.fitHeight,),
       child: Stack(
         children: [
           SvgPicture.asset('assets/svg/Frame 20.svg',
@@ -28,7 +27,7 @@ class NotificationButton extends StatelessWidget {
                 height: Const.sizeWidth(context, 15),
                 width: Const.sizeWidth(context, 15),
                 decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: ColorApp.orangeFFC94D),
+                    shape: BoxShape.circle, color: ColorApp.yellow),
               ))
         ],
       ),

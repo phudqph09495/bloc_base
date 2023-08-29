@@ -1,7 +1,9 @@
 import 'package:bloc_base/bloc/language/bloc_lang.dart';
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
+import 'package:bloc_base/model/model_local.dart';
 import 'package:bloc_base/router/router.dart';
 import 'package:bloc_base/widget/drawler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,8 +17,8 @@ import '../../../widget/item/notification_widget.dart';
 import '../history_screen/history_screen.dart';
 
 class AccountScreen extends StatefulWidget {
-  const AccountScreen({Key? key}) : super(key: key);
-
+  const AccountScreen({Key? key , this.data}) : super(key: key);
+  final BunldData? data;
   @override
   State<AccountScreen> createState() => _AccountScreenState();
 }
@@ -24,10 +26,13 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final userName = FirebaseAuth.instance.currentUser?.displayName;
+  String? urlImages = FirebaseAuth.instance.currentUser?.photoURL;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorApp.backgroundF6F6EF,
+      backgroundColor: ColorApp.background,
       drawer: const ItemDrawer(),
       key: _scaffoldKey,
       body: BlocBuilder<BlocLanguage, StateBloc>(
@@ -43,10 +48,10 @@ class _AccountScreenState extends State<AccountScreen> {
                 width: double.infinity,
               ),
               Container(
-                constraints: BoxConstraints.expand(),
+                constraints: const BoxConstraints.expand(),
                 child: Column(
                   children: [
-                    Gap(60),
+                    const Gap(60),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -55,7 +60,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 10),
                             child: Text(
-                              ' ${lang.xinChao} , Quỳnh !',
+                              ' ${lang.xinChao} , ${userName??widget.data?.name??"Quỳnh Anh"}!',
                               style: StyleApp.textStyle700(
                                   fontSize: 21, color: ColorApp.dark252525),
                             ),
@@ -88,10 +93,9 @@ class _AccountScreenState extends State<AccountScreen> {
                             children: [
                               Stack(
                                 children: [
-                                  const ClipOval(
+                                   ClipOval(
                                       child: LoadImage(
-                                        url:
-                                        'https://3.pik.vn/e1ec72b6-6b34-4e8b-89f2-ddd51e333d9d.jpg',
+                                        url: urlImages ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi_guXp3VdsedwmecUjqvEmZEJ8B1Kp2RdlA&usqp=CAU',
                                         height: 70,
                                         width: 70,
                                         fit: BoxFit.cover,
@@ -104,7 +108,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                             height: 25,
                                             width: 25,
                                             decoration: const BoxDecoration(
-                                                color: ColorApp.orangeFFC94D,
+                                                color: ColorApp.yellow,
                                                 shape: BoxShape.circle),
                                             child: const Icon(
                                               Icons.camera_alt,
@@ -121,7 +125,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Quỳnh Anh',
+                                      userName??widget.data?.name??"Quỳnh Anh",
                                       style: StyleApp.textStyle700(
                                           color: ColorApp.dark252525, fontSize: 16),
                                     ),
@@ -129,11 +133,11 @@ class _AccountScreenState extends State<AccountScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.pushNamed(
-                                            context, RouterName.memberScreen);
+                                            context, RouterName.memberScreen,arguments: widget.data);
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            color: ColorApp.orangeFFC94D,
+                                            color: ColorApp.yellow,
                                             borderRadius:
                                             BorderRadius.circular(12)),
                                         child: Padding(
@@ -172,7 +176,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                               valueColor:
                                               const AlwaysStoppedAnimation<Color>(
                                                   ColorApp.bottomBarABCA74),
-                                              backgroundColor: ColorApp.grey82.withOpacity(0.3),
+                                              backgroundColor: ColorApp.dark500,
                                             ),
                                           ),
                                         ),
@@ -521,8 +525,9 @@ class _AccountScreenState extends State<AccountScreen> {
                                           text: lang.dangXuat,
                                           preLinkUrl: 'assets/svg/dangXuat.svg',
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, RouterName.noConnectScreen);
+                                            FirebaseAuth.instance.signOut();
+                                            // Navigator.pushNamed(
+                                            //     context, RouterName.noConnectScreen);
                                           },
                                         ),
                                         const SizedBox(

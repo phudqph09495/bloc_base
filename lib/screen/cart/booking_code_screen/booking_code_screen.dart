@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../bloc/language/bloc_lang.dart';
 import '../../../config/const.dart';
 
+import '../../../router/router.dart';
 import '../../../styles/init_style.dart';
 import '../../../widget/item/appbar.dart';
 import '../../../widget/item/button.dart';
@@ -107,10 +108,9 @@ class _BookingCodeScreenState extends State<BookingCodeScreen> {
                 children: [
                   ButtonWidget(
                     type: ButtonType.secondary,
-                    onTap: () => Navigator.pushAndRemoveUntil(
+                    onTap: () => Navigator.pushNamedAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => MyHomePage(index: 2)),
+                      RouterName.myHomePage,arguments: 2,
                       (Route<dynamic> route) => false,
                     ),
                     text: language.xemthemDV.toUpperCase(),

@@ -12,11 +12,14 @@ class ModelLocal2 {
   ModelLocal2({this.id, this.name, this.value = false});
 }
 
-class ServiceModel{
-  final String? name;
-  final List<String>? detailSrvice;
-  ServiceModel({this.name, this.detailSrvice});
+class BunldData{
+  String? name ;
+  String? dateOfBirth;
+  String? gender;
+  String? phoneNumber;
+  BunldData({this.name, this.dateOfBirth,this.gender,this.phoneNumber});
 }
+
 
 class SaleModel{
   String level;

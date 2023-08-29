@@ -155,7 +155,7 @@ class CustomerFeedback extends StatelessWidget {
               RichText(
                 text: TextSpan(
                     text: 'Dịch vụ: ',
-                    style: StyleApp.textStyle500(color: ColorApp.grey82),
+                    style: StyleApp.textStyle500(color: ColorApp.dark500),
                     children: [
                       TextSpan(
                           text: 'Chăm sóc da mặt ',

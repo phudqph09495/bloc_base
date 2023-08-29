@@ -195,9 +195,18 @@ class Language {
   String nhanNgay;
   String levelMemBer;
   String quan;
+  String dangKySDT;
+  String xacNhanOTP;
+  String nhanOTP;
+  String xacMinhSDTcontent;
+
 
   Language({required String code})
       : string1 = code == 'en' ? 'English' : 'Tiếng Việt',
+        dangKySDT = code == 'en' ? 'Phone Number Verification' :'Xác Minh Số Điện Thoại',
+        xacMinhSDTcontent = code == 'en' ? 'we need to register your phone before getting started!' :'Chúng tôi cần xác nhận số điện thoại của bạn trước khi bắt đầu đăng ký!',
+        xacNhanOTP = code == 'en' ? 'Confirm OTP Code' : 'Xác Nhận Mã OTP',
+        nhanOTP = code == 'en' ? 'Send OTP Code' : 'Gửi mã OTP',
         quan = code == 'en' ? 'district' : "Quận",
         levelMemBer = code == 'en' ? 'Level MemBer' : 'Hạng Thành Viên',
         nhanNgay = code == 'en' ? 'Get now' : 'Nhận Ngay',

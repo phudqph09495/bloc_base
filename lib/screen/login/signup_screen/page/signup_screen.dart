@@ -6,18 +6,22 @@ import 'package:bloc_base/widget/item/input/bottom_sheet.dart';
 import 'package:bloc_base/widget/item/input/text_filed2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
+
 // import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-import '../../../bloc/language/bloc_lang.dart';
-import '../../../config/const.dart';
-import '../../../styles/init_style.dart';
-import '../../../widget/item/input/text_filed.dart';
+import '../../../../bloc/language/bloc_lang.dart';
+import '../../../../config/const.dart';
+import '../../../../router/router.dart';
+import '../../../../styles/init_style.dart';
+import '../../../../widget/item/button.dart';
+import '../../../../widget/item/input/text_filed.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-
+  const SignUpScreen({Key? key, required this.numberPhone}) : super(key: key);
+  final String numberPhone;
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -25,12 +29,14 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController genderController = TextEditingController();
   TextEditingController dOBController = TextEditingController();
+  final nameController = TextEditingController();
   int selectedIndex = -1;
   bool? taoTKMoi = false;
   List<ModelLocal2> genderList = [
     ModelLocal2(name: 'Nam'),
     ModelLocal2(name: 'Nữ'),
   ];
+
   @override
   void dispose() {
     genderController.dispose();
@@ -49,6 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             backgroundColor: ColorApp.darkGreen,
             appBar: AppBarWidget(
               title: language.dangKy,
+              isBack: false,
             ),
             body: Container(
               decoration: const BoxDecoration(
@@ -76,6 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: Const.size(context).width * 0.03179487179,
                           ),
                           InputText1(
+                            controller: nameController,
                             colorBg: Colors.white,
                             label: '',
                             radius: 10,
@@ -107,16 +115,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       colorBg: Colors.white,
                                       controller: dOBController,
                                       onTap: () {
-                                        // DatePicker.showDatePicker(context,
-                                        //     currentTime: DateTime.now(),
-                                        //     locale: language.codeNow == 'en'
-                                        //         ? LocaleType.en
-                                        //         : LocaleType.vi,
-                                        //     onConfirm: (date) {
-                                        //   dOBController.text = Const.formatTime(
-                                        //       date.millisecondsSinceEpoch,
-                                        //       format: 'dd/MM/yyyy');
-                                        // });
+                                        DatePicker.showDatePicker(
+                                          context,
+                                          locale: DateTimePickerLocale.vi,
+                                          dateFormat: 'dd MMMM yyyy',
+                                          initialDateTime: DateTime.now(),
+                                          minDateTime: DateTime(2000),
+                                          maxDateTime: DateTime(2050),
+                                          onConfirm:
+                                              (dateTime, List<int> index) {
+                                            dOBController.text =
+                                                Const.formatTime(
+                                                    dateTime
+                                                        .millisecondsSinceEpoch,
+                                                    format: 'dd/MM/yyyy');
+                                          },
+                                        );
                                       },
                                       label:
                                           '${Const.formatTime(DateTime.now().millisecondsSinceEpoch, format: 'dd/MM/yyyy')}',
@@ -185,8 +199,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: Const.size(context).width * 0.03179487179,
                           ),
                           InputText1(
+                            readOnly: true,
                             keyboardType: TextInputType.phone,
-                            label: '',
+                            label: widget.numberPhone,
                             radius: 10,
                             colorBg: Colors.white,
                           ),
@@ -261,22 +276,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(
                             height: Const.size(context).width * 0.05179487179,
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.065,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: ColorApp.orangeFFC94D,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: Const.size(context).width *
-                                      0.02615384615),
-                              child: Text(
-                                language.dangKy.toUpperCase(),
-                                style: StyleApp.textStyle700(
-                                    color: ColorApp.dark252525),
-                              ),
-                            ),
+                          ButtonWidget(
+                            type: ButtonType.secondary,
+                            text: language.dangKy.toUpperCase(),
+                            onTap: () {
+                              Navigator.pushReplacementNamed(context, RouterName.myHomePage, arguments: 0);
+                            },
                           ),
                           SizedBox(
                             height: Const.size(context).width * 0.05179487179,

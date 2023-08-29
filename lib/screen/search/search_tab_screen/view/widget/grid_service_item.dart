@@ -7,7 +7,7 @@ class GridServiceItem extends StatelessWidget {
     required this.state,
   });
   final int index;
-  final LoadSuccessState state;
+  final ServiceModel state;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class GridServiceItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Image.network(
-                      state.serviceModel.data![index].imageUrl ?? "",
+                      state.data![index].imageUrl ?? "",
                       fit: BoxFit.cover,
                       height: Const.sizeHeight(context, 105),
                       width: (Const.size(context).width - 18 * 2 - 10 * 2) / 2,
@@ -46,7 +46,7 @@ class GridServiceItem extends StatelessWidget {
                           size: 16,
                           color: index % 2 == 1
                               ? ColorApp.background.withOpacity(0.5)
-                              : ColorApp.orangeFFC94D)),
+                              : ColorApp.yellow)),
                   Positioned(
                     right: 5,
                     bottom: 5,
@@ -62,18 +62,18 @@ class GridServiceItem extends StatelessWidget {
                           children: [
                             const Icon(
                               Icons.star,
-                              color: ColorApp.orangeFFC94D,
+                              color: ColorApp.yellow,
                               size: 12,
                             ),
                             const Gap(3),
                             Text(
-                              '4.5',
+                              state.data![index].star.toString()??'',
                               style: StyleApp.textStyle500(
                                   color: ColorApp.yellow, fontSize: 12),
                             ),
                             const Gap(3),
                             Text(
-                              '(54)',
+                              '(${state.data![index].comment.toString()})',
                               style: StyleApp.textStyle500(
                                   color: Colors.white, fontSize: 12),
                             )
@@ -85,20 +85,20 @@ class GridServiceItem extends StatelessWidget {
                 ],
               ),
               Text(
-                state.serviceModel.data![index].description ?? "",
+                state.data![index].title ?? "",
                 style: StyleApp.textStyle600(color: ColorApp.dark252525),
               ),
               Row(
                 children: [
-                  Text(
-                    'đ ${Const.ConvertPrice.format(1450000)}  ',
+                  state.data![index].salePrice != null ? Text(
+                    '₫ ${Const.ConvertPrice.format(state.data![index].salePrice)} ',
                     style: StyleApp.textStyle600(
                         color: ColorApp.dark500,
                         decoration: TextDecoration.lineThrough),
-                  ),
+                  ): const SizedBox(),
                   Expanded(
                     child: Text(
-                      '${Const.ConvertPrice.format(1200000)} đ',
+                      '${Const.ConvertPrice.format(state.data![index].price)} ₫',
                       overflow: TextOverflow.ellipsis,
                       style: StyleApp.textStyle700(
                           color: ColorApp.dark252525,
@@ -116,7 +116,7 @@ class GridServiceItem extends StatelessWidget {
                   ),
                   const Gap(3),
                   Text(
-                    state.serviceModel.data![index].title ?? "",
+                    state.data![index].description ?? "",
                     style: StyleApp.textStyle600(
                       color: ColorApp.darkGreen,
                     ),
@@ -136,7 +136,7 @@ class GridServiceItem extends StatelessWidget {
                           size: 11,
                         ),
                         Text(
-                          ' 2.3km',
+                          state.data![index].km.toString()??"",
                           style: StyleApp.textStyle500(
                               color: ColorApp.greyAD, fontSize: 13),
                         )
@@ -150,7 +150,7 @@ class GridServiceItem extends StatelessWidget {
                           size: 11,
                         ),
                         Text(
-                          ' 90 phút',
+                          ' ${state.data![index].time.toString()} phút',
                           style: StyleApp.textStyle500(
                               color: ColorApp.greyAD, fontSize: 13),
                         )

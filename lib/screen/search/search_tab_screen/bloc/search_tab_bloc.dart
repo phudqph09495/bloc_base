@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bloc_base/data/dummy_data.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_event.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_state.dart';
 import 'package:dio/dio.dart';
@@ -16,15 +17,6 @@ class SearchTabBloc extends Bloc<SearchTabEvent, SearchTabState> {
     if (event is GetDataSearchTabEvent) {
       try {
         yield LoadingState();
-        print(state);
-        // Map<String, dynamic> req = {};
-        // req['id'] = event.id;
-        // req['password'] = event.password;
-        //  var res = await Api.postAsync(
-        //   endPoint: ApiPath.login,
-        //   req: req,
-        //   isToken: false,
-        // );
         var res = await Api.postAsync(
           endPoint: 'api/nailart/getAll',
           req: {
@@ -46,7 +38,7 @@ class SearchTabBloc extends Bloc<SearchTabEvent, SearchTabState> {
           yield LoadFailState(error: res['errors']['login'] ?? "Lỗi kết nối");
         }
       } on DioError catch (e) {
-        yield LoadFailState(error: e.error.error);
+        yield LoadFailState(error: e.error.error, data: dummyData);
       } catch (e) {
         print(e);
         yield LoadFailState(error: e.toString());

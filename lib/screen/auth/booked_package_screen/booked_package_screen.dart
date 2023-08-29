@@ -142,7 +142,7 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                                             decoration: BoxDecoration(
                                                 color: index % 2 == 1
                                                     ? ColorApp.bottomBarABCA74
-                                                    : ColorApp.orangeFFC94D,
+                                                    : ColorApp.yellow,
                                                 borderRadius:
                                                     BorderRadius.circular(12)),
                                             child: Padding(
@@ -621,7 +621,7 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                           return Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              color: ColorApp.greyF9,
+                              color: ColorApp.text,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -705,7 +705,7 @@ class _BookedPackageScreenState extends State<BookedPackageScreen> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: ColorApp.greyF9),
+                                  color: ColorApp.text),
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: Const.size(context).width *

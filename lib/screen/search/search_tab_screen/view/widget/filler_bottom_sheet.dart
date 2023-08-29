@@ -434,7 +434,7 @@ extension FillerBottomSheet on _SearchTabScreenState {
                           ),
                         ),
                         Container(
-                          color: ColorApp.greyF6,
+                          color: ColorApp.background,
                           width: double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -491,7 +491,7 @@ extension FillerBottomSheet on _SearchTabScreenState {
                           },
                         ),
                         Container(
-                          color: ColorApp.greyF6,
+                          color: ColorApp.background,
                           width: double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -613,7 +613,7 @@ extension FillerBottomSheet on _SearchTabScreenState {
                             text: lang.apDung,
                             onTap: () {
                               stateSetter(() {});
-                              Navigator.pop(context);
+                              Navigator.pop(context, typeList);
                             },
                           ),
                         ),

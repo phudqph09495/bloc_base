@@ -29,27 +29,46 @@ class ServiceModel {
 
 class Data {
   int? id;
-  String? title;
-  String? description;
   String? imageUrl;
+  String? title;
+  int? price;
+  int? salePrice;
+  double? star;
+  int? comment;
+  String? description;
+  int? time;
+  double? km;
   Null? tags;
 
-  Data({this.id, this.title, this.description, this.imageUrl, this.tags});
+  Data({this.salePrice,this.id, this.title, this.description, this.imageUrl, this.tags, this.comment, this.km, this.price, this.star, this.time});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    title = json['title'];
-    description = json['description'];
     imageUrl = json['image_url'];
+    title = json['title'];
+    price = json['price'];
+    salePrice = json['sale_price'];
+    star = json['star'];
+    comment = json['comment'];
+    description = json['description'];
+    time = json['time'];
+    km = json['km'];
+    tags = json['tags'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['image_url'] = this.imageUrl;
-    data['tags'] = this.tags;
+    data['id'] = id;
+    data['image_url'] = imageUrl;
+    data['title'] = title;
+    data['price'] = price;
+    data['sale_price'] = salePrice;
+    data['star'] = star;
+    data['comment'] = comment;
+    data['description'] = description;
+    data['time'] = time;
+    data['km'] = km;
+    data['tags'] = tags;
     return data;
   }
 }

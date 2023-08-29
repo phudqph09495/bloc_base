@@ -14,6 +14,7 @@ import 'package:gap/gap.dart';
 import '../../../../bloc/state_bloc.dart';
 import '../../../../config/const.dart';
 import '../../../../model/model_local.dart';
+import '../../../../model/service_model.dart';
 import '../../../../styles/init_style.dart';
 import '../../../../widget/item/button.dart';
 import '../../../home/home_screen/widget/icon_button.dart';
@@ -104,9 +105,13 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
       name: 'Chăm sóc da mặt',
       id: '1',
     ),
-    ModelLocal2(name: 'Chăm sóc da mặt', id: '1',
+    ModelLocal2(
+      name: 'Chăm sóc da mặt',
+      id: '1',
     ),
-    ModelLocal2(name: 'Chăm sóc da mặt', id: '1',
+    ModelLocal2(
+      name: 'Chăm sóc da mặt',
+      id: '1',
     ),
     ModelLocal2(
       name: 'Chăm sóc da mặt',
@@ -150,7 +155,7 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: ColorApp.backgroundF6F6EF,
+        backgroundColor: ColorApp.background,
         drawer: const ItemDrawer(),
         key: _scaffoldKey,
         body: BlocBuilder<BlocLanguage, StateBloc>(
@@ -247,8 +252,12 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                                     ),
                                   ]),
                               child: IconButtonWidget(
-                                onTap: () => _fillerResultBottomSheet(
-                                    context, lang, range),
+                                onTap: ()async{
+                                  typeList = await _fillerResultBottomSheet(
+                                      context, lang, range);
+                                  print(' Ket qua : $typeList');
+                                  setState(() {});
+                                },
                                 text: lang.locKQ,
                                 imageUrl: 'assets/svg/filterIcon.svg',
                               ),
@@ -306,11 +315,62 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                     }
                   },
                   builder: (context, state) {
+                    if(state is LoadFailState)
+                    {
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const Gap(25),
+                            typeList
+                                ? ListView.separated(
+                              separatorBuilder: (context, index) =>
+                              const Gap(8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16),
+                              itemBuilder: (context, index) {
+                                return CardServiceItem(
+                                  index: index,
+                                  state: state.data!,
+                                );
+                              },
+                              shrinkWrap: true,
+                              physics:
+                              const NeverScrollableScrollPhysics(),
+                              itemCount: state.data!.data!.length,
+                            )
+                                : GridView.builder(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10),
+                                gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 200,
+                                    childAspectRatio: 0.7,
+                                    crossAxisSpacing: 10,
+                                    mainAxisSpacing: 10),
+                                itemCount: state.data!.data!.length,
+                                shrinkWrap: true,
+                                physics:
+                                const NeverScrollableScrollPhysics(),
+                                itemBuilder: (BuildContext ctx, index) {
+                                  return GridServiceItem(
+                                    index: index,
+                                    state: state.data!,
+                                  );
+                                }),
+                            const SizedBox(height: 80
+                              // Const.size(context).width * 0.3,
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                     if (state is LoadingState) {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else if (state is LoadSuccessState) {
+                    } else
+                      if (state is LoadSuccessState)
+                    {
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -324,7 +384,7 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                                     itemBuilder: (context, index) {
                                       return CardServiceItem(
                                         index: index,
-                                        state: state,
+                                        state: state.serviceModel,
                                       );
                                     },
                                     shrinkWrap: true,
@@ -348,7 +408,7 @@ class _SearchTabScreenState extends State<SearchTabScreen> {
                                     itemBuilder: (BuildContext ctx, index) {
                                       return GridServiceItem(
                                         index: index,
-                                        state: state,
+                                        state: state.serviceModel,
                                       );
                                     }),
                             const SizedBox(height: 80

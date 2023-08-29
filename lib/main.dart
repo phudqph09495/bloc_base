@@ -1,7 +1,8 @@
 import 'package:bloc_base/bloc/language/event_bloc2.dart';
-import 'package:bloc_base/screen/auth/login_screen/login_screen.dart';
+import 'package:bloc_base/firebase_options.dart';
+import 'package:bloc_base/screen/login/login_screen/pages/login_screen.dart';
 import 'package:bloc_base/screen/search/search_tab_screen/bloc/search_tab_bloc.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,13 +15,12 @@ import 'bloc/event_bloc.dart';
 import 'bloc/language/bloc_lang.dart';
 import 'config/share_pref.dart';
 import 'router/router.dart';
-import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await SharedPrefs.init();
   Bloc.observer = CounterObserver();
@@ -58,6 +58,14 @@ class MyApp extends StatelessWidget {
         // useInheritedMediaQuery: true,
         // locale: DevicePreview.locale(context),
         // builder: DevicePreview.appBuilder,
+        // theme: ThemeData(
+        //   bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        //     backgroundColor: ColorApp.bottomBarABCA74,
+        //     selectedItemColor: Colors.white,
+        //     unselectedItemColor: Colors.white,
+        //     type: BottomNavigationBarType.fixed,
+        //   ),
+        // ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -70,7 +78,7 @@ class MyApp extends StatelessWidget {
           child: const LoginScreen(),
         ),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: RouterName.loginScreen,
+        initialRoute: RouterName.authScreen,
       ),
     );
   }

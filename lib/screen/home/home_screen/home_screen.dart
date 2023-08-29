@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      backgroundColor: ColorApp.backgroundF6F6EF,
+      backgroundColor: ColorApp.background,
       drawer: const ItemDrawer(),
       key: _scaffoldKey,
       body: BlocBuilder<BlocLanguage, StateBloc>(
@@ -178,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: MediaQuery.of(context).size.width - 32,
                             indicatorColor: ColorApp.bottomBarABCA74,
                             isLoop: true,
-                            autoPlayInterval: 5000,
+                            // autoPlayInterval: 5000,
                             children: List.generate(
                                 3,
                                 (index) => ClipRRect(

@@ -171,7 +171,7 @@ class _SaleMenberScreenState extends State<SaleMenberScreen> {
                                                       horizontal: 20,
                                                       vertical: 5),
                                                   backgroundColor:
-                                                      ColorApp.yellowNHAT,
+                                                      ColorApp.yellow,
                                                 ),
                                                 child: Text(
                                                   language.nhanNgay,
@@ -230,7 +230,7 @@ class _SaleMenberScreenState extends State<SaleMenberScreen> {
                                                 child: Text(
                                                   language.nhanNgay,
                                                   style: StyleApp.textStyle600(
-                                                      color: ColorApp.greyBD,
+                                                      color: ColorApp.dark500,
                                                       fontSize: 16),
                                                 )),
                                           ],
@@ -469,7 +469,7 @@ class _SaleMenberScreenState extends State<SaleMenberScreen> {
                                                               horizontal: 20,
                                                               vertical: 5),
                                                           backgroundColor:
-                                                          ColorApp.yellowNHAT,
+                                                          ColorApp.yellow,
                                                         ),
                                                         child: Text(
                                                           language.nhanNgay,
